@@ -32,9 +32,8 @@ ligne de commandes et pour éviter le gaspillage de temps de calcul.
 
 .. note::
 
-    En mode interactif, la quantité de ressources est limitée à environ
-    un quart de noeud et à un maximum de trois (3) à huit (8) heures,
-    selon la grappe.
+    En mode interactif, les tâches sont limitées à un maximum de trois (3) à
+    huit (8) heures, selon la grappe.
 
 Principales options
 ^^^^^^^^^^^^^^^^^^^
@@ -67,15 +66,16 @@ Principales options
 Suivi de tâches
 ---------------
 
-* :code:`squeue` : afficher toutes les tâches actuellement gérées par slurm
+* :code:`squeue` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
+  actuellement gérées par slurm.
 
-  * :code:`-t pending` : afficher les tâches en attente
-  * :code:`-t running` : afficher les tâches en cours
-  * :code:`-u $USER` : afficher uniquement vos tâches
+  * :code:`-t pending` : afficher les tâches en attente.
+  * :code:`-t running` : afficher les tâches en cours.
+  * :code:`-u $USER` : afficher uniquement vos tâches.
 
-* :code:`sq` : alias de :code:`squeue -u $USER`
+* :code:`sq` : alias de :code:`squeue -u $USER`.
 * :code:`scontrol show job -dd <jobid>` : afficher le détail d'une tâche gérée
-  par Slurm
-* :code:`seff <jobid>` : résumé des ressources utilisées
+  par Slurm.
+* :code:`seff <jobid>` : résumé des ressources utilisées.
 * :code:`sacct` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
-  complétées depuis minuit
+  complétées depuis minuit.
