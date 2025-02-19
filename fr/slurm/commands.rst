@@ -74,7 +74,7 @@ Suivi de tâches
   * :code:`-u $USER` : afficher uniquement vos tâches.
 
 * :code:`sq` : alias de :code:`squeue -u $USER`.
-* :code:`scontrol show job -dd <jobid>` : afficher le détail d'une tâche gérée
+* :code:`scontrol show job <jobid>` : afficher le détail d'une tâche gérée
   par Slurm.
 * :code:`seff <jobid>` : résumé des ressources utilisées.
 * :code:`sacct` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
