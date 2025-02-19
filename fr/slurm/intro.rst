@@ -16,9 +16,13 @@ Rappel de l'ordonnancement des tâches
 
 * Selon la priorité de chaque tâche et selon les ressources qui se libèrent,
   l'ordonnanceur Slurm joue à un genre de
-  `Tetris <https://fr.wikipedia.org/wiki/Tetris>`_ où chaque colonne
-  de pixels est une ressource de calcul (coeur CPU ou accélérateur GPU) et où
-  chaque rangée de pixels est un cycle d'ordonnancement (environ 30 secondes).
+  `Tetris <https://fr.wikipedia.org/wiki/Tetris>`_ où la largeur des blocs
+  correspond à une quantité de ressource demandée et où la hauteur d'un bloc
+  est le temps demandé pour la tâche.
+
+  * Ce qui est particulier, c'est que la durée réelle du calcul est
+    généralement plus courte que le temps demandé et que certains blocs de
+    calcul parallèle peuvent être scindés en plusieurs morceaux.
 
 .. image:: ../../images/scheduling-tetris_fr.svg
 
