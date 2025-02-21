@@ -64,8 +64,9 @@ int main(int argc, char ** argv)
 
     int * vect = alloc_rand(n);
 
+    fprintf(stderr, "quick(%lu):\n", n);
     quick_sort(vect, n);
-    printf("%d <= %d\n", vect[0], vect[n - 1]);
+    printf("\t%d ... %d\n", vect[0], vect[n - 1]);
 
     free(vect);
 

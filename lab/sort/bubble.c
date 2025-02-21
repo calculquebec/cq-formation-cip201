@@ -65,8 +65,9 @@ int main(int argc, char ** argv)
 
     int * vect = alloc_rand(n);
 
+    fprintf(stderr, "bubble(%lu):\n", n);
     bubble_sort(vect, n);
-    printf("%d <= %d\n", vect[0], vect[n - 1]);
+    printf("\t%d ... %d\n", vect[0], vect[n - 1]);
 
     free(vect);
 
