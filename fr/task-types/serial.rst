@@ -116,7 +116,7 @@ Demander les ressources appropriées
 Puisque une tâche sérielle ne peut utiliser qu’un seul cœur CPU, elle ne devrait
 inclure aucune des options relatives au parallélisme que sont
 ``--cpus-per-task``, ``--ntasks``, ``--ntasks-per-node`` ou ``--nodes``. Voici
-un script de tâche typique pour une tâche sérielle :
+un script de tâche minimal pour un programme sériel :
 
 .. code-block:: bash
 
@@ -127,9 +127,7 @@ un script de tâche typique pour une tâche sérielle :
     #SBATCH --time=4:00:00
     #SBATCH --account=def-alice
 
-    module load python/3.11.5
-
-    python script.py
+    ./serial-prog
 
 Pour expliciter la nature sérielle d’une tâche, son script peut inclure les
 valeurs par défaut des options pour le parallélisme :
