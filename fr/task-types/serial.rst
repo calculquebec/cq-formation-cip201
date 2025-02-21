@@ -96,7 +96,9 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
 
   - ``-u <username>`` : Afficher uniquement les tâches d’un utilisateur
     spécifique.
-  - ``-H`` : Afficher séparément les fils d’exécution de chaque programme.
+  - ``-H`` : Afficher séparément les fils d’exécution de chaque programme. Dans
+    ``top``, le racourci clavier :kbd:`Maj+h` alterne entre l’affichage
+    individuel et collectif des fils d’exécution.
 
 .. image:: ../../images/linux-top.png
 
