@@ -190,7 +190,8 @@ exercises est sériel.
    #. ``kill`` termine immédiatement un programme. ``%1`` identifie ``fibo``
       dans la liste affichée avec ``jobs``.
 
-#. Terminez votre tâche interactive avec ``exit``.
+#. Si vous n’êtes pas déjà de retour sur ``login1``, terminez votre tâche
+   interactive avec ``exit``.
 
 .. warning::
 
