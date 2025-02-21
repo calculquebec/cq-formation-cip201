@@ -1,7 +1,7 @@
 Commandes
 =========
 
-`English <../en/02-mem.html>`_
+`English <../en/commands.html>`_
 
 Soumission de tâches
 --------------------
@@ -12,70 +12,75 @@ ligne de commandes et pour éviter le gaspillage de temps de calcul.
 
 1. Via un script de tâche :
 
-.. code:: bash
+.. code-block:: bash
 
     sbatch [<options>] script.sh
 
 2. Via une commande bloquante :
 
-.. code:: bash
+.. code-block:: bash
 
     srun <options> ./application arg1 arg2 ...
 
 3. Via une tâche interactive sur le noeud de calcul :
 
-.. code:: bash
+.. code-block:: bash
 
     salloc <options>
     ./application arg1 arg2 ...
     exit
 
-.. note::
+.. warning::
 
     En mode interactif, les tâches sont limitées à un maximum de trois (3) à
     huit (8) heures, selon la grappe.
 
 Principales options
-^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''
 
-* :code:`--account=<compte>` :
+- ``--account=<compte>`` :
   `compte de calcul <https://slurm.schedmd.com/sbatch.html#OPT_account>`_.
 
-  * Sur les grappes nationales, les comptes ont la forme :code:`def-*`,
-    :code:`rrg-*`, :code:`rpp-*` ou :code:`ctb-*`.
-  * Pour l'atelier, le compte sera :code:`def-sponsor00`.
+  - Sur les grappes nationales, les comptes ont la forme ``def-*``,
+    ``rrg-*``, ``rpp-*`` ou ``ctb-*``.
+  - Pour l'atelier, le compte sera ``def-sponsor00``.
 
-* :code:`--time=J-HH:MM` ou :code:`--time=HH:MM:SS` :
+- ``--job-name=<nom>`` :
+  `nom au choix <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`_
+  de la tâche de calcul. C'est très utile pour différencier vos différents
+  types de tâches.
+
+- ``--time=J-HH:MM`` ou ``--time=HH:MM:SS`` :
   `limite de temps <https://slurm.schedmd.com/sbatch.html#OPT_time>`_
   pour l'exécution de la tâche de calcul.
 
-  * On peut spécifier des jours (:code:`J`), des heures (:code:`HH`), des
-    minutes (:code:`MM`) et des secondes (:code:`SS`).
-  * Par défaut : :code:`1:0:0`, soit une heure.
+  - On peut spécifier des jours (``J``), des heures (``HH``), des
+    minutes (``MM``) et des secondes (``SS``).
+  - Par défaut : ``1:0:0``, soit une heure.
 
-* :code:`--mem=<quantité>`, quantité de mémoire
+- ``--mem=<quantité>``, quantité de mémoire
   `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
 
-  * Unités :
+  - Unités :
 
-    * :code:`M` (mébioctet = 1024K, unité par défaut)
-    * :code:`G` (gibioctet = 1024M)
+    - ``M`` (mébioctet = 1024K, unité par défaut)
+    - ``G`` (gibioctet = 1024M)
 
-  * Par défaut : :code:`256M`
+  - Par défaut : ``256M``
 
 Suivi de tâches
 ---------------
 
-* :code:`squeue` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
+- ``squeue`` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
   actuellement gérées par slurm.
 
-  * :code:`-t pending` : afficher les tâches en attente.
-  * :code:`-t running` : afficher les tâches en cours.
-  * :code:`-u $USER` : afficher uniquement vos tâches.
+  - ``-t pending`` : afficher les tâches en attente.
+  - ``-t running`` : afficher les tâches en cours.
+  - ``-u $USER`` : afficher uniquement vos tâches.
 
-* :code:`sq` : alias de :code:`squeue -u $USER`.
-* :code:`scontrol show job <jobid>` : afficher le détail d'une tâche gérée
+- ``sq`` : alias de ``squeue -u $USER``.
+- ``scontrol show job <jobid>`` : afficher le détail d'une tâche gérée
   par Slurm.
-* :code:`seff <jobid>` : résumé des ressources utilisées.
-* :code:`sacct` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
+- ``seff <jobid>`` : résumé des ressources utilisées.
+- ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
   complétées depuis minuit.
