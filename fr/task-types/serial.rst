@@ -27,13 +27,6 @@ Comment déterminer si votre tâche est sérielle ou parallèle ?
 - Si le programme fonctionne sur votre ordinateur personnel, faites un test :
   lancez le programme et vérifiez combien de cœurs CPU il utilise à l’aide d’un
   :ref:`gestionnaire de tâches <task-manager>`.
-
-  - Si votre ordinateur a *n* cœurs CPU (vous pouvez trouver cette
-    information dans le panneau *Performance*), un programme sériel intensif
-    devrait avoir une consommation de 100 % / *n* dans le panneau *Processus*.
-    Par exemple 100 % / 4 = 25 % sur un ordinateur ayant 4 cœurs.
-    Un tel résultat voudrait dire qu’un cœur est sollicité à 100 % du temps.
-
 - Faites un court test sur un nœud de connexion d’une grappe : lancez le
   programme en arrière-plan et vérifiez combien de cœurs CPU il utilise à l’aide
   du gestionnaire de tâches ``top`` (ou, alternativement, ``htop``). Interrompez
@@ -62,6 +55,13 @@ affiché de deux manières :
 .. image:: ../../images/win-task-manager_fr.png
 
 .. note::
+
+    Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique
+    que tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a *n*
+    cœurs CPU (cette information est dans le panneau *Performance*), un
+    programme sériel intensif devrait avoir une consommation de 100 % / *n* dans
+    le panneau *Processus*. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant
+    4 cœurs.
 
     Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
     puisque l’utilisation dépasse 50% sur un ordinateur ayant 10 cœurs.
@@ -163,9 +163,11 @@ Exercise
 exercises est sériel.
 
 #. Allez dans le répertoire de l’exercise avec
-   ``cd ~/cip201-exercices/fibonacci-serial``.
+   ``cd ~/cq-formation-cip201-main/fibonacci-serial``.
 #. Compilez le programme ``fibo`` avec la commande ``make``.
-#. Lancez le programme sur le nœud de connexion avec ``./fibo 50 &``.
+#. Démarrez une tâche interactive avec ``salloc --cpus-per-task=2
+   --time=00:10:00``.
+#. Exécutez le programme avec ``./fibo 50 &``.
 
    #. Le caractère final ``&`` exécute un programme en arrière-plan. Vous pouvez
       alors taper de nouvelles commandes pendant que le programme s’exécute.
@@ -178,13 +180,15 @@ exercises est sériel.
 #. Pendant que ``fibo`` s’exécute, observez sa consommation de CPU dans le
    gestionnaire de tâches.
 
-   #. Affichez le gestionnaire avec ``top -u $USER``.
+   #. Affichez le gestionnaire avec ``top -u $USER -H``.
    #. Quittez le gestionnaire avec :kbd:`q`.
 
 #. Interrompez le programme ``fibo`` avec ``kill %1``.
 
    #. ``kill`` termine immédiatement un programme. ``%1`` identifie ``fibo``
       dans la liste affichée avec ``jobs``.
+
+#. Terminez votre tâche interactive avec ``exit``.
 
 .. warning::
 
