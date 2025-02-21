@@ -64,10 +64,9 @@ affiché de deux manières :
     4 cœurs.
 
     Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
-    puisque l’utilisation dépasse 50% sur un ordinateur ayant 10 cœurs.
-    En configurant :code:`export OMP_NUM_THREADS=1` avant de lancer le
-    programme, celui-ci s’est finalement exécuté en mode sériel avec un
-    pourcentage d’environ 10%, soit 100% / 10 cœurs.
+    puisque l’utilisation dépasse 50 % sur un ordinateur ayant 10 cœurs. Si le
+    programme avait été sériel, l’utilisation aurait été d’environ 10 %, soit
+    100 % / 10 cœurs.
 
 MacOS
 '''''
