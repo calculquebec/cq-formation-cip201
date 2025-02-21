@@ -100,8 +100,9 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
 
 .. image:: ../../images/linux-top.png
 
-Lors de l’exécution d’un programme sériel intensif, ``top -u $USER`` devrait
-afficher le processus et une utilisation CPU de près de 100% :
+Dans ``top``, une utilisation CPU de 100 % correspond à un cœur CPU pleinement
+utilisé. Lors de l’exécution d’un programme sériel intensif, ``top -u $USER``
+devrait afficher le processus et une utilisation CPU de près de 100% :
 
 .. code-block:: console
     :emphasize-lines: 8
