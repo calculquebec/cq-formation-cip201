@@ -12,7 +12,7 @@ l’inverse, les tâches parallèles sont capables d’utiliser simultanément
 plusieurs cœurs. Une autre manière de voir les choses est que, dans une tâche
 sérielle, les étapes du calcul sont toujours réalisées l’une après l’autre alors
 que, dans une tâche parallèle, certaines étapes sont réalisées simultanément
-(figure). Les calculs sériels sont de loin les plus communs.
+(voir figure ci-dessous). Les calculs sériels sont de loin les plus communs.
 
 .. image:: ../../images/task-types_fr.svg
     :align: center
