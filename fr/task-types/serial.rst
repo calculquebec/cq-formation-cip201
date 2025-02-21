@@ -139,7 +139,7 @@ un script de tâche minimal pour un programme sériel :
     #SBATCH --job-name=my-serial-job
     #SBATCH --mem=1G
     #SBATCH --time=4:00:00
-    #SBATCH --account=def-alice
+    #SBATCH --account=def-sponsor
 
     ./serial-prog
 
@@ -154,7 +154,7 @@ valeurs par défaut des options pour le parallélisme :
     #SBATCH --cpus-per-task=1
     #SBATCH --mem=1G
     #SBATCH --time=4:00:00
-    #SBATCH --account=def-alice
+    #SBATCH --account=def-sponsor
 
 Exercise
 --------
