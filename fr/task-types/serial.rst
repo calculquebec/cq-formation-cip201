@@ -165,7 +165,7 @@ Exercise
 exercises est sériel.
 
 #. Allez dans le répertoire de l’exercise avec
-   ``cd ~/cq-formation-cip201-main/fibonacci-serial``.
+   ``cd ~/cq-formation-cip201-main/exercice/fibonacci-serial``.
 #. Compilez le programme ``fibo`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc --cpus-per-task=2
    --time=00:10:00``.
