@@ -1,7 +1,7 @@
 Scripts de tâches
 =================
 
-`English <../en/scripts.html>`_
+`English <../en/slurm/scripts.html>`_
 
 Un script de tâche est communément un script Bash destiné à l'ordonnanceur
 Slurm. On y retrouve :
@@ -26,12 +26,12 @@ Exercice en groupe
 ------------------
 
 #. Allez dans le répertoire de l’exercice avec
-   ``cd ~/cq-formation-cip201-main/exercices/script``.
+   ``cd ~/cq-formation-cip201-main/lab/script``.
 #. Dans le fichier ``simple.sh``, éditez l'entête d'options
    ``#SBATCH`` selon les instructions qui s'y trouvent :
 
-   #. Demander une quantité de mémoire.
-   #. Fixer un temps limite d'exécution.
+   #. Demandez une quantité de mémoire.
+   #. Fixez un temps limite d'exécution.
 
    Note : l'ordonnanceur déterminera automatiquement le compte de calcul
    ``def-sponsor00``.
@@ -39,5 +39,5 @@ Exercice en groupe
 #. Soumettez ce script de tâche au moyen de la commande ``sbatch``.
 #. Visualisez l'état de la tâches avec la commande ``sq``.
 #. Une fois la tâche terminée, voyez le contenu du fichier de sortie
-   (``slurm-<jobid>.out``) avec ``less`` (appuyer sur la touche
+   (``slurm-<jobid>.out``) avec ``less`` (appuyez sur la touche
    :kbd:`q` pour sortir).
