@@ -158,14 +158,14 @@ valeurs par défaut des options pour le parallélisme :
     #SBATCH --time=4:00:00
     #SBATCH --account=def-sponsor
 
-Exercise
+Exercice
 --------
 
 **Objectif :** Vérifiez que le programme ``fibo`` dans le répertoire des
-exercises est sériel.
+exercices est sériel.
 
-#. Allez dans le répertoire de l’exercise avec
-   ``cd ~/cq-formation-cip201-main/exercice/fibonacci-serial``.
+#. Allez dans le répertoire de l’exercice avec
+   ``cd ~/cq-formation-cip201-main/lab/fibonacci-serial``.
 #. Compilez le programme ``fibo`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc --cpus-per-task=2
    --time=00:10:00``.
@@ -195,7 +195,7 @@ exercises est sériel.
 
 .. warning::
 
-    La commande ``jobs`` utilisée dans cet exercise affiche les programmes
+    La commande ``jobs`` utilisée dans cet exercice affiche les programmes
     lancés en arrière-plan avec l’interprète de commande Bash. Elle n’affiche
     pas et n’a rien à voir avec les tâches soumises à l’ordonnanceur !
 
