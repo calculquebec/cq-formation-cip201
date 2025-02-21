@@ -26,8 +26,14 @@ Comment déterminer si votre tâche est sérielle ou parallèle ?
   calcul parallèle, il s’agit probablement d’un programme sériel.
 - Si le programme fonctionne sur votre ordinateur personnel, faites un test :
   lancez le programme et vérifiez combien de cœurs CPU il utilise à l’aide d’un
-  :ref:`gestionnaire de tâches <task-manager>`. Un programme sériel intensif
-  devrait avoir une consommation cœur-CPU de 100 % (un cœur, 100 % du temps).
+  :ref:`gestionnaire de tâches <task-manager>`.
+
+  - Si votre ordinateur a *n* cœurs CPU (vous pouvez trouver cette
+    information dans le panneau *Performance*), un programme sériel intensif
+    devrait avoir une consommation de 100 % / *n* dans le panneau *Processus*.
+    Par exemple 100 % / 4 = 25 % sur un ordinateur ayant 4 cœurs.
+    Un tel résultat voudrait dire qu’un cœur est sollicité à 100 % du temps.
+
 - Faites un court test sur un nœud de connexion d’une grappe : lancez le
   programme en arrière-plan et vérifiez combien de cœurs CPU il utilise à l’aide
   du gestionnaire de tâches ``top`` (ou, alternativement, ``htop``). Interrompez
@@ -54,6 +60,14 @@ affiché de deux manières :
 - Utilisez le racourci clavier :kbd:`Ctrl+Alt+Suppr`.
 
 .. image:: ../../images/win-task-manager_fr.png
+
+.. note::
+
+    Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
+    puisque l’utilisation dépasse 50% sur un ordinateur ayant 10 cœurs.
+    En configurant :code:`export OMP_NUM_THREADS=1` avant de lancer le
+    programme, celui-ci s’est finalement exécuté en mode sériel avec un
+    pourcentage d’environ 10%, soit 100% / 10 cœurs.
 
 MacOS
 '''''
