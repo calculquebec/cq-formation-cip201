@@ -26,7 +26,7 @@ Exercice en groupe
 ------------------
 
 #. Allez dans le répertoire de l’exercice avec
-   ``cd ~/cq-formation-cip201-main/script``.
+   ``cd ~/cq-formation-cip201-main/exercices/script``.
 #. Dans le fichier ``simple.sh``, éditez l'entête d'options
    ``#SBATCH`` selon les instructions qui s'y trouvent :
 
