@@ -86,6 +86,25 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
 
 .. image:: ../../images/linux-top.png
 
+Lors de l’exécution d’un programme sériel intensif, ``top -u $USER`` devrait
+afficher le processus et une utilisation CPU de près de 100% :
+
+.. code-block:: console
+    :emphasize-lines: 8
+
+    top - 18:55:40 up 121 days, 10:34,  1 user,  load average: 0,84, 0,41, 0,56
+    Tâches: 1153 total,   2 en cours, 1151 en veille,   0 arrêté,   0 zombie
+    %Cpu(s):  0,9 ut,  0,1 sy,  0,0 ni, 98,9 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+    MiB Mem : 515670,6 total, 366210,5 libr,  20660,2 util, 128799,9 tamp/cache
+    MiB Éch :      0,0 total,      0,0 libr,      0,0 util. 490099,2 dispo Mem 
+
+      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+    65826 alice     20   0   20272   6896   3296 R  98,3   0,0   1:39.15 python
+    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+
 Le gestionnaire `htop` est une alternative à `top` offrant davantage de
 fonctionnalités et une interface plus sophistiquée.
 
