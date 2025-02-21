@@ -12,6 +12,7 @@ Ce matériel est en cours de rédaction pour les formations CIP201 en ligne du 5
 ```Bash
 pip install sphinx==8.1.3 sphinx-intl sphinx-book-theme==1.1.3
 
+cd doc
 ./build.sh
 ```
 

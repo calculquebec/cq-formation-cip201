@@ -18,18 +18,18 @@ jobs:
       run: pip install sphinx==8.1.3 sphinx-intl sphinx-book-theme==1.1.3
 
     - name: Compilation de la version française
-      run: sphinx-build ./fr _build/fr
+      run: sphinx-build doc/fr doc/_build/fr
 
     - name: Compilation de la version anglaise
-      run: sphinx-build ./en _build/en
+      run: sphinx-build doc/en doc/_build/en
 
     - name: Ajouter la redirection automatique
-      run: cp ./redirect.html _build/index.html
+      run: cp doc/redirect.html doc/_build/index.html
 
     - name: Déploiement
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: _build/
+        publish_dir: doc/_build/
         force_orphan: true
