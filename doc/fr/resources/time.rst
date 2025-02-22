@@ -72,3 +72,54 @@ Exercice
    voir le temps écoulé mesuré.
 #. Voir le temps écoulé avec la commande
    ``sacct -j <jobid> --format=JobID,JobName,Elapsed``.
+
+Estimer le temps requis d'un plus grand calcul
+----------------------------------------------
+
+L'algorithme principal de certains programmes sont d'ordre :
+
+- linéaire - :math:`O(n)`, ce qui veut dire qu'une quantité **2x** plus élevée
+  de données à traiter se traduit en un temps de calcul **2x** plus long.
+- quadratique - :math:`O(n^2)`, donc une dimension :math:`n` **2x** plus grande
+  cause un temps **4x** plus long.
+- cubique - :math:`O(n^3)`, donc une dimension :math:`n` **2x** plus grande
+  cause un temps **8x** plus long.
+- etc.
+
+Empiriquement, il est possible d'observer la tendance d'un programme traitant
+différentes quantités de données. Pour mesurer le temps de chaque exécution,
+on peut utiliser l'outil ``time -p`` au début de la ligne de commande. Par
+exemple :
+
+.. code-block::
+
+    time -p ./programme argument1 ...
+
+Une fois le programme terminé, ``time`` affiche trois sortes de temps en
+secondes :
+
+- ``real`` : temps perçu, **c'est le temps à considérer**.
+- ``user`` : temps total de calcul effectif sur les coeurs CPU.
+- ``sys`` : temps d'opérations système (accès à un fichier, par exemple)
+
+Pour cet atelier, on s'intéressera uniquement au temps ``real``.
+
+Exercice
+''''''''
+
+Parmi les
+`algorithmes de tri <https://fr.wikipedia.org/wiki/Algorithme_de_tri#Comparaison_des_algorithmes>`_
+de :math:`n` valeurs, certains algorithmes plus intuitifs, comme trier des
+cartes à jouer, sont d'ordre :math:`O(n^2)`, alors que les plus sophistiqués
+sont d'ordre :math:`O(n \log(n))`, et donc beaucoup plus rapides lorsque la
+quantité de données augmente.
+
+#. Allez dans le répertoire de l’exercice avec
+   ``cd ~/cq-formation-cip201-main/lab/sort``.
+#. Compilez les programmes ``bubble`` et ``quick`` avec la commande ``make``.
+#. Éditez le fichier ``test.sh`` de sorte à ajouter ``time -p`` au début des
+   commmandes ``./bubble`` et ``./quick``.
+#. Soumettez une tâche avec le script ``test.sh``.
+#. Une fois le calcul terminé, inspectez les temps ``real`` mesurés en fonction
+   de l'algorithme de tri et en fonction du nombre d'éléments en parenthèses.
+   Ces résultats se retrouvent dans un fichier ``slurm-<jobid>.out``.
