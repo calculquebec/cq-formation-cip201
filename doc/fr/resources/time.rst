@@ -67,10 +67,10 @@ Obtenir le temps de calcul sur la grappe
 Exercice
 ''''''''
 
-#. Afficher la liste des dernières tâches avec ``sacct -X``.
-#. Essayer la commande ``seff <jobid>`` pour l'une d'entre elles afin de
+#. Affichez la liste des dernières tâches avec ``sacct -X``.
+#. Essayez la commande ``seff <jobid>`` pour l'une d'entre elles afin de
    voir le temps écoulé mesuré.
-#. Voir le temps écoulé avec la commande
+#. Voyez le temps écoulé avec la commande
    ``sacct -j <jobid> --format=JobID,JobName,Elapsed``.
 
 Estimer le temps requis d'un plus grand calcul
