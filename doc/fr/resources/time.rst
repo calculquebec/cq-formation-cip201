@@ -7,7 +7,7 @@ Pourquoi se fixer une limite de temps?
 --------------------------------------
 
 - Pour des fins de maintenance, chaque grappe nationale impose une durée
-  maximale des tâches, typiquement de sept (7) jours, sauf exception.
+  maximale aux tâches, typiquement de sept (7) jours, sauf exception.
 - Cependant, plus les tâches sont longues, plus elles s'exposent à une
   défaillance matérielle.
 
@@ -18,14 +18,14 @@ Pourquoi se fixer une limite de temps?
 - En fait, la plupart des tâches se terminent en quelques heures.
 - Par conséquent,
   `la politique d'ordonnancement <https://docs.alliancecan.ca/wiki/Job_scheduling_policies/fr#Pourcentages_des_n%C5%93uds_disponibles>`_
-  implique davantage de noeuds disponibles pour les tâches courtes.
+  rend davantage de nœuds disponibles pour les tâches courtes.
 
 .. image:: ../../images/partitions_fr.svg
 
-- Selon le nombre de noeuds disponibles acceptant la durée de votre tâche,
-  cette dernière attendra en file plus ou moins longtemps.
+- Selon le nombre de nœuds disponibles acceptant la durée de votre tâche,
+  cette dernière attendra dans la file file plus ou moins longtemps.
 
-En somme, **vous avez tout intérêt à demander que le temps de calcul
+En somme, **vous avez tout intérêt à ne demander que le temps de calcul
 nécessaire**, avec bien sûr une certaine marge de sécurité (par exemple,
 ajouter 20% sur le temps prévu).
 
@@ -59,10 +59,10 @@ Obtenir le temps de calcul sur la grappe
 
   - Pour démarrer la recherche à partir d'une
     `date antérieure <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_
-    à aujoud'hui : ``-S AAAA-MM-JJ``
+    à aujoud'hui : ``-S AAAA-MM-JJ``.
   - Pour limiter la recherche jusqu'à une
     `certaine date <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_
-    : ``-E AAAA-MM-JJ``
+    : ``-E AAAA-MM-JJ``.
 
 Exercice
 ''''''''
@@ -73,8 +73,8 @@ Exercice
 #. Voyez le temps écoulé avec la commande
    ``sacct -j <jobid> --format=JobID,JobName,Elapsed``.
 
-Estimer le temps requis d'un plus grand calcul
-----------------------------------------------
+Estimer le temps requis pour un plus grand calcul
+-------------------------------------------------
 
 L'algorithme principal de certains programmes sont d'ordre :
 
@@ -95,12 +95,13 @@ exemple :
 
     time -p ./programme argument1 ...
 
-Une fois le programme terminé, ``time`` affiche trois sortes de temps en
+Une fois le programme terminé, ``time`` affiche trois valeurs de temps en
 secondes :
 
-- ``real`` : temps perçu, **c'est le temps à considérer**.
+- ``real`` : temps réel, **c'est le temps à considérer**.
 - ``user`` : temps total de calcul effectif sur les coeurs CPU.
-- ``sys`` : temps d'opérations système (accès à un fichier, par exemple)
+- ``sys`` : temps passé dans les opérations système (accès à un fichier, par
+  exemple)
 
 Pour cet atelier, on s'intéressera uniquement au temps ``real``.
 
@@ -121,5 +122,5 @@ quantité de données augmente.
    commmandes ``./bubble`` et ``./quick``.
 #. Soumettez une tâche avec le script ``test.sh``.
 #. Une fois le calcul terminé, inspectez les temps ``real`` mesurés en fonction
-   de l'algorithme de tri et en fonction du nombre d'éléments en parenthèses.
-   Ces résultats se retrouvent dans un fichier ``slurm-<jobid>.out``.
+   de l'algorithme de tri et en fonction du nombre d'éléments entre parenthèses.
+   Ces résultats se trouvent dans le fichier ``slurm-<jobid>.out``.
