@@ -141,6 +141,9 @@ l’ordonnanceur :
 
     ./openmp-prog
 
+La syntaxe ``:-1`` utilise la valeur ``1`` si ``SLURM_CPUS_PER_TASK`` est
+indéfini.
+
 Exercice
 ''''''''
 
