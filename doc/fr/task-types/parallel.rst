@@ -105,7 +105,7 @@ multi-fils :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-shared-mem-job
+    #SBATCH --job-name=my-multi-threaded-job
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=8
     #SBATCH --mem-per-cpu=1G
@@ -130,7 +130,7 @@ l’ordonnanceur :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-shared-mem-job
+    #SBATCH --job-name=my-multi-threaded-job
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=8
     #SBATCH --mem-per-cpu=1G
