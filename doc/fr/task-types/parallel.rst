@@ -222,21 +222,6 @@ alloués à la tâche. La commande ``mpirun`` accomplit le même rôle et peut �
 utilisée pour tester un programme MPI sur nœud de connexion.
 
 
-.. note::
-
-    Nous avons vu :doc:`précédemment <../slurm/commands>` que la commande
-    ``srun`` peut être utilisée sur un nœud de connexion pour lancer un
-    programme sur un ou plusieurs nœuds de calcul. Lorsqu’elle est utilisée dans
-    une tâche, ``srun`` a un comportement différent : elle n’alloue pas de
-    nouvelles ressources mais exécute plutôt un programme sur les ressources
-    déjà allouées.
-
-    Nous verrons :doc:`plus loin <../monitoring/interactive-sessions>` que
-    ``srun`` n’est pas spécifique aux programmes MPI : elle peut être utilisée
-    pour exécuter n’importe programme, parallèle ou sériel, et résulte en une
-    meilleur intégration avec l’ordonnanceur. Cette meilleure intégration est
-    pourquoi on préfère ``srun`` à ``mpirun`` pour les programmes MPI.
-
 Dans l’exemple ci-dessus, les 8 processus MPI peuvent être distribués sur un ou
 plusieurs nœuds de calcul, selon ce qui est disponible au moment où
 l’ordonnanceur alloue les ressources. Il est souvent préférable de regrouper les
