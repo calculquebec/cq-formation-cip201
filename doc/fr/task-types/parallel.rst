@@ -141,6 +141,60 @@ l’ordonnanceur :
 
     ./openmp-prog
 
+Exercice
+''''''''
+
+**Objectifs**
+
+- Déterminer les options nécessaires pour une tâche multi-fils.
+- Évaluer le comportement d’un programme multi-fils à l’aide de ``top``.
+
+**Instructions**
+
+#. Allez dans le répertoire de l’exercice avec ``cd
+   ~/cq-formation-cip201-main/lab/pi-multi-threaded``.
+#. Compilez le programme ``pi`` avec la commande ``make``.
+#. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
+   Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
+   tâche multi-fils et demandez 2 cœurs CPU.
+#. Exécutez le programme en arrière-plan avec ``./pi 10000000000 &`` (10
+   milliards de points, soit un suivi de 10 zéros).
+#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
+   $USER`` et ``top -u $USER -H``.
+
+.. note::
+
+    Le programme utilisé dans cet exercice calcule le nombre :math:`π` (pi), le
+    ratio de la circonférence d’un cercle sur son diamètre. Pour ce faire, on
+    génère un grand nombre de points au hasard dans un carré arbitraire. Pour
+    chaque point, on vérifie ensuite s’il est à l’intérieur d’un cercle inscrit.
+    
+    .. image:: ../../images/circle.svg
+        :align: center
+        :width: 94px
+
+    Le ratio du nombre de points dans le cercle inscrit (:math:`p`) sur le
+    nombre total de points (:math:`n`) est aussi le ratio de l’aire du cercle
+    sur celle du carré :
+
+    .. math::
+    
+        \frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}
+
+    Une estimation précise de :math:`π` par cette méthode, dite de Monte Carlo,
+    requiert un grand nombre de points aléatoires. Pour accélérer le calcul, on
+    le décompose : les points à générer sont distribués entre les cœurs CPU
+    alloués à la tâche. Avec 2 cœurs, chacun génère la moitié des points, ce qui
+    double la vitesse.
+
+    Cet algorithme est un exemple de parallélisme dit « trivial » puisqu’il ne
+    nécessite pratiqument aucune communication : chaque cœur CPU (:math:`i`)
+    génère des points aléatoires indépendamment et compte combien d’entre eux
+    sont dans le cercle inscrit (:math:`p_i`). Ces valeurs sont ensuite
+    additionnées pour donner :math:`p`.
+
+    Vous pouvez lire le code source du programme dans ``pi.c``.
+
 .. _para-mpi:
 
 Programmes MPI
@@ -274,71 +328,31 @@ processus nuit à la performance.
     traité dans cet atelier.
 
 Exercice
---------
+''''''''
 
 **Objectifs**
 
-- Déterminer les options nécessaires pour une tâche multi-fils et une tâche MPI.
-- Comparer le comportement d’un programme multi-fils et celui d’un programme
-  MPI à l’aide de ``top``.
+- Déterminer les options nécessaires pour une tâche MPI.
+- Évaluer le comportement d’un programme MPI à l’aide de ``top``.
 
 **Instructions**
 
-#. Tâche multi-fils
-
-   #. Allez dans le répertoire de l’exercice avec ``cd
-      ~/cq-formation-cip201-main/lab/multi-threaded-pi``.
-   #. Compilez le programme ``pi`` avec la commande ``make``.
-   #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
-      Remplacez ``[...]`` par les options de parallélisme nécessaires pour
-      une tâche multi-fils et demandez 2 cœurs CPU.
-   #. Exécutez le programme en arrière-plan avec ``./pi 10000000000 &``
-      (10 milliards de points, soit un suivi de 10 zéros).
-   #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top
-      -u $USER`` et ``top -u $USER -H``.
-
-#. Tâche MPI : Répétez les étapes ci-haut pour le programme MPI équivalent.
-   
-   #. Le programme est dans le répertoire
-      ``~/cq-formation-cip201-main/lab/mpi-pi``.
-   #. Utilisez les options de parallélisme nécessaires pour un programme MPI et
-      demandez 2 cœurs CPU.
-   #. Exécutez ``./pi 10000000000 &`` avec la commande de lancement des
-      programmes MPI.
+#. Allez dans le répertoire de l’exercice avec ``cd
+  ~/cq-formation-cip201-main/lab/pi-mpi``.
+#. Compilez le programme ``pi`` avec la commande ``make``.
+#. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
+   Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
+   tâche MPI et demandez 2 cœurs CPU.
+#. Exécutez le programme en arrière-plan avec ``srun ./pi 10000000000 &``
+  (10 milliards de points, soit un suivi de 10 zéros).
+#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top
+  -u $USER`` et ``top -u $USER -H``.
 
 .. note::
 
-    Les deux programmes utilisés dans cet exercice font exactement la même
-    chose : ils calculent le nombre :math:`π` (pi), le ratio de la circonférence
-    d’un cercle sur son diamètre. Pour ce faire, on génère un grand nombre de
-    points au hasard dans un carré arbitraire. Pour chaque point, on vérifie
-    ensuite s’il est à l’intérieur d’un cercle inscrit.
-    
-    .. image:: ../../images/circle.svg
-        :align: center
-        :width: 94px
-
-    Le ratio du nombre de points dans le cercle inscrit (:math:`p`) sur le
-    nombre total de points (:math:`n`) est aussi le ratio de l’aire du cercle
-    sur celle du carré :
-
-    .. math::
-    
-        \frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}
-
-    Une estimation précise de :math:`π` par cette méthode, dite de Monte Carlo,
-    requiert un grand nombre de points aléatoires. Pour accélérer le calcul, on
-    le décompose : les points à générer sont distribués entre les cœurs CPU
-    alloués à la tâche. Avec 2 cœurs, chacun génère la moitié des points, ce qui
-    double la vitesse du calcul. La première version du programme est
-    multi-fils, la seconde MPI. Les codes des deux programmes peuvent être
-    consultés dans ``pi.c`` dans chacun des répertoires.
-
-    Cet algorithme est un exemple de parallélisme dit « trivial » puisqu’il ne
-    nécessite pratiqument aucune communication : chaque cœur CPU (:math:`i`)
-    génère des points aléatoires indépendamment et compte combien d’entre eux
-    sont dans le cercle inscrit (:math:`p_i`). Ces valeurs sont ensuite
-    additionnées pour donner :math:`p`.
+    Ce programme est une version MPI de celui présenté lors de l’exercice sur
+    les programmes multi-fils : il calcule le nombre :math:`π` (pi) par une
+    méthode de Monte Carlo.
 
 .. _para-nested:
 
