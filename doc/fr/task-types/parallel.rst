@@ -341,15 +341,15 @@ Exercice
 **Instructions**
 
 #. Allez dans le répertoire de l’exercice avec ``cd
-  ~/cq-formation-cip201-main/lab/pi-mpi``.
+   ~/cq-formation-cip201-main/lab/pi-mpi``.
 #. Compilez le programme ``pi`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
    Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
    tâche MPI et demandez 2 cœurs CPU.
-#. Exécutez le programme en arrière-plan avec ``srun ./pi 10000000000 &``
-  (10 milliards de points, soit un suivi de 10 zéros).
-#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top
-  -u $USER`` et ``top -u $USER -H``.
+#. Exécutez le programme en arrière-plan avec ``srun ./pi 10000000000 &`` (10
+   milliards de points, soit un suivi de 10 zéros).
+#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
+   $USER`` et ``top -u $USER -H``.
 
 .. note::
 
