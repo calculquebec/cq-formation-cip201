@@ -161,8 +161,14 @@ valeurs par défaut des options pour le parallélisme :
 Exercice
 --------
 
-**Objectif :** Vérifiez que le programme ``fibo`` dans le répertoire des
-exercices est sériel.
+**Objectifs**
+
+- Vérifier que le programme ``fibo`` dans le répertoire des exercices est
+  sériel.
+- Utiliser le gestionnaire de tâches ``top``.
+- Gérer un programme en arrière-plan avec ``&`` et ``jobs``.
+
+**Instructions**
 
 #. Allez dans le répertoire de l’exercice avec
    ``cd ~/cq-formation-cip201-main/lab/fibonacci-serial``.
