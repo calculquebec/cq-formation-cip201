@@ -16,13 +16,7 @@ ligne de commandes et pour éviter le gaspillage de temps de calcul.
 
     sbatch [<options>] script.sh
 
-2. Via une commande bloquante :
-
-.. code-block:: bash
-
-    srun <options> ./application arg1 arg2 ...
-
-3. Via une tâche interactive sur le noeud de calcul :
+2. Via une tâche interactive sur le noeud de calcul :
 
 .. code-block:: bash
 
