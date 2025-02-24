@@ -324,12 +324,6 @@ processus nuit à la performance.
         #SBATCH --nodes=4
         #SBATCH --ntasks-per-node=4
 
-.. note::
-
-    Un programme MPI peut être compilé pour utiliser des fils d’exécution plutôt
-    que des processus multiples. Ce cas de figure est très rare et n’est pas
-    traité dans cet atelier.
-
 Exercice
 ''''''''
 
