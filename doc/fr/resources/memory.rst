@@ -21,17 +21,17 @@ Pourquoi se fixer une limite de mémoire?
 
 - Dans les
   `grappes nationales <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
-  la grande majorité des noeuds de calcul contiennent un peu moins de **4 Go
-  de mémoire vive par coeur CPU**.
+  la grande majorité des noeuds de calcul contiennent un peu moins de **4G de
+  mémoire vive utilisable par coeur CPU**.
 
-  - Une poignée de noeuds ont entre 16 Go et 32 Go par coeur, ce qui en fait
+  - Une poignée de noeuds ont entre 16G et 32G par coeur, ce qui en fait
     une ressource très limitée et peut causer un plus long temps d'attente
     pour y accéder.
 
 - Pour protéger le noeud de calcul de votre programme dans le cas d'une
   surutilisation de mémoire.
 
-- Enfin, pour remplacer la valeur par défaut de 256 Go par coeur CPU.
+- Enfin, pour remplacer la valeur par défaut de 256M par coeur CPU.
 
 En somme, **il est nécessaire de spécifier une quantité de mémoire**, avec
 bien sûr une certaine marge de sécurité (par exemple, ajouter 20% sur la
@@ -110,7 +110,7 @@ de mémoire :
 #. Au besoin, recompilez les programmes ``bubble`` et ``quick`` avec la
    commande ``make``.
 #. Éditez le fichier ``test.sh`` de sorte à configurer ``--mem=400M``
-   (seulement 400 Mo).
+   (seulement 400 mébioctets).
 #. Soumettez une tâche avec le script ``test.sh``.
 #. Une fois le calcul terminé :
 
