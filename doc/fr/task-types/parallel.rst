@@ -488,7 +488,7 @@ afin que les opérations les plus demandantes soient effectuées en parallèle
 (vectorisées) à l’aide d’instructions SIMD. (Voir la figure ci-dessous pour un
 exemple.)
 
-.. image:: ../../images/vectorization_en.svg
+.. image:: ../../images/vectorization_fr.svg
     :align: center
 
 Les logiciels disponibles sur nos grappes ont été optimisés pour utiliser les
