@@ -247,23 +247,25 @@ l’intérieur d’un nœud, augmentant la performance de certains programmes MP
 Plus la communication inter-processus est importante, plus la distance entre les
 processus nuit à la performance.
 
-Une tâche MPI qui demande plus d’un nœud de calcul devrait occuper tous les
-cœurs CPU de ces nœuds. Par exemple, sur une grappe de calcul dont les nœuds ont
-chacun 8 cœurs, ces options seraient appropriées :
+.. warning::
 
-.. code-block:: bash
+    Une tâche MPI qui demande plus d’un nœud de calcul devrait occuper tous les
+    cœurs CPU de ces nœuds. Par exemple, sur une grappe de calcul dont les nœuds
+    ont chacun 8 cœurs, ces options seraient appropriées :
 
-    #SBATCH --nodes=2
-    #SBATCH --ntasks-per-node=8
+    .. code-block:: bash
 
-À l’inverse, avec les options suivantes, l’ordonnanceur aurait plus de
-difficulté à allouer des ressources à la tâche et la performance pourrait être
-moindre :
+        #SBATCH --nodes=2
+        #SBATCH --ntasks-per-node=8
 
-.. code-block:: bash
+    À l’inverse, avec les options suivantes, l’ordonnanceur aurait plus de
+    difficulté à allouer des ressources à la tâche et la performance pourrait
+    être moindre :
 
-    #SBATCH --nodes=4
-    #SBATCH --ntasks-per-node=4
+    .. code-block:: bash
+
+        #SBATCH --nodes=4
+        #SBATCH --ntasks-per-node=4
 
 .. note::
 
