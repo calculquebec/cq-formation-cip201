@@ -23,7 +23,7 @@ Pourquoi se fixer une limite de temps?
 .. image:: ../../images/partitions_fr.svg
 
 - Selon le nombre de nœuds disponibles acceptant la durée de votre tâche,
-  cette dernière attendra dans la file file plus ou moins longtemps.
+  cette dernière attendra dans la file plus ou moins longtemps.
 
 En somme, **vous avez tout intérêt à ne demander que le temps de calcul
 nécessaire**, avec bien sûr une certaine marge de sécurité (par exemple,
