@@ -74,8 +74,8 @@ Exercice
 #. Voyez aussi cette quantité avec la commande
    ``sacct -j <jobid> --format=JobID,JobName,MaxRSS``.
 
-Estimer la mémoire requise d'un plus grand calcul
--------------------------------------------------
+Estimer la mémoire requise pour un plus grand calcul
+----------------------------------------------------
 
 Voici quelques facteurs à considérer pour caractériser l'utilisation de la
 mémoire :
