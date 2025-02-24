@@ -60,7 +60,7 @@ Cherchez les mots-clés suivants dans la documentation de votre programme :
   dans les programmes multi-fils
 
 Les programmes multi-fils peuvent aussi être identifiés par leur comportement
-dans le gestionnaire de tâches. Dans ``top -u $USER``, une entré pour un
+dans le gestionnaire de tâches. Dans ``top -u $USER``, une entrée pour un
 programme multi-fil intensif affichera une utilisation CPU de plus de 100 %
 (environ 100 % fois le nombre de cœurs utilisés) :
 
@@ -467,13 +467,13 @@ parallélisme.
 Autres types de parallélisme
 ----------------------------
 
-Le parallélisme de données consiste à répéter une tâche sérielle ou parallèle de
-multiples fois avec différentes données d’entrées, par exemple des images,
-molécules ou séquences d’ADN. Alors que l’objectif du parallélisme dans une
-tâche est de réduire le temps de calcul nécessaire à cette tâche, le
-parallélisme de données vise à augmenter le débit de calcul en exécutant de
-multiples tâches simultanément. Nous convrirons ce sujet en détails dans
-l’atelier *Parallélisme de données sur les grappes* (CIP202).
+Le parallélisme de données consiste à répéter une tâche sérielle ou parallèle
+avec différentes données d’entrées, par exemple des images, molécules ou
+séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
+réduire le temps de calcul nécessaire à cette tâche, le parallélisme de données
+vise à augmenter le débit de calcul en exécutant de multiples tâches
+simultanément. Nous convrirons ce sujet en détails dans l’atelier *Parallélisme
+de données sur les grappes* (CIP202).
 
 Les processeurs graphiques (GPU) permettent des calculs massivement parallèles.
 Les calculs sur GPU étant très différents de ceux sur CPU présentés ici, ce
