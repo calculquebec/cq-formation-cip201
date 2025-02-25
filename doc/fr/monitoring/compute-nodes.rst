@@ -3,7 +3,7 @@ Se connecter aux nœuds de calcul
 
 `English <../en/monitoring/compute-nodes.html>`_
 
-Bien que très utiles, les outils ``seff`` et ``sacct`` ne peuvent pas expliquer
+Bien que très utiles, les outils ``seff`` et ``sacct`` ne peuvent pas décrire
 tout le comportement d'un programme, à savoir son utilisation CPU sur chaque
 cœur réservé, s'il y a trop de fils d'exécution ou bien s'il y a soudainement
 une surutilisation de la mémoire qui n'est pas mesurée par Slurm.
@@ -13,7 +13,7 @@ tâches interactives, mais **les grappes nationales permettent aussi que vous
 vous connectiez par SSH aux nœuds où vous avez une tâche en cours**. Voici
 les étapes à suivre pour ce faire :
 
-#. S'assurer d'être sur un nœud de connexion de la grappe de calcul.
+#. S'assurer d'être connecté sur un nœud de connexion de la grappe de calcul.
 #. Identifier le ou les nœuds où se trouve la tâche en cours.
 
    - Obtenir le nom du nœud avec ``sq`` ou ``squeue -t running -u $USER``.
@@ -31,9 +31,10 @@ Cette méthode d'accès est pratique pour :
 
 .. warning::
 
-    Sur un nœud de calcul, s'il ne vous reste plus aucune tâche en cours,
-    votre session SSH sera interrompue. Votre invite de commande Bash sera
-    automatiquement de retour sur le nœud de connexion.
+    Sur un nœud de calcul, s'il ne vous reste plus aucune tâche en cours, la
+    connexion SSH entre le nœud de connexion et le nœud de calcul sera
+    interrompue. Votre invite de commande sera automatiquement de retour sur le
+    nœud de connexion.
 
 Exercice en groupe
 ------------------
