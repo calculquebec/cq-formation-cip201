@@ -27,8 +27,8 @@ exemple :
 .. code-block:: console
     :emphasize-lines: 1,6-10
 
-    [alice@narval3 ~]$ seff 39327
-    Job ID: 39327
+    [alice@narval3 ~]$ seff 39732872
+    Job ID: 39732872
     Cluster: narval
     User/Group: alice/alice
     State: COMPLETED (exit code 0)
@@ -55,7 +55,7 @@ avec ``sacct``. Par exemple :
 .. code-block:: console
     :emphasize-lines: 1,4
 
-    [alice@narval3 ~]$ sacct -j 39237 -o JobID%15,JobName,Elapsed,TotalCPU,NCPUs
+    [alice@narval3 ~]$ sacct -j 39732872 -o JobID%15,JobName,Elapsed,TotalCPU,NCPUs
               JobID    JobName    Elapsed   TotalCPU      NCPUS 
     --------------- ---------- ---------- ---------- ---------- 
            39732872     gmx-md   00:06:07  51:04.301         12 
@@ -95,7 +95,7 @@ Pourquoi optimiser le nombre de cœurs CPU ?
   sont alloués à la tâche.
 - La performance d’un programme n’augmente toutefois pas indéfiniment avec le
   nombre de cœurs.
-- En outre, les tâches qui demandent plus de cœurs attentent avantage dans la
+- En outre, les tâches qui demandent plus de cœurs attentent davantage dans la
   file et consomment plus de ressources, diminuant la priorité de vos tâches.
 - Un nombre optimal de cœurs CPU balance ces effets opposés, minimisant le temps
   total (attente et calcul) pour accomplir vos tâches et évitant le gaspillage
