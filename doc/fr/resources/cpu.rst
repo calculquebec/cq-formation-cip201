@@ -150,6 +150,11 @@ diminue rapidement passé ce point.
 .. image:: ../../images/gmx-scaling_fr.svg
     :align: center
 
+.. _scalability-exercise:
+
+Exercice
+''''''''
+
 Pourquoi l’efficacité n’est-elle pas linéaire ?
 '''''''''''''''''''''''''''''''''''''''''''''''
 
@@ -174,8 +179,9 @@ taille de vos données d’entrée.
 
 Pour toutes ces raisons, la seule manière de déterminer efficacement le nombre
 optimal de CPU pour une tâche parallèle est de faire une analyse de scalabilité
-et de la répéter chaque fois que les paramètres de votre tâche ou la taille de
-vos données d’entrée changent significativement.
+(voir l’:ref:`exercice <scalability-exercise>` ci-haut) et de la répéter chaque
+fois que les paramètres de votre tâche ou la taille de vos données d’entrée
+changent significativement.
 
 .. note::
 
