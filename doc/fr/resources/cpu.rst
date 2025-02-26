@@ -190,10 +190,11 @@ changent significativement.
     
     - La scalabilité forte est la variation du temps de calcul en fonction du
       nombre de cœurs CPU pour un problème dont la taille *totale* est
-      constante.
+      constante. Idéalement, le temps de calcul est inversement proportionnel au
+      nombre de cœurs CPU.
     - La scalabilité faible est la variation du temps de calcul en fonction du
       nombre de cœurs CPU pour un problème dont la taille *par cœur CPU* est
-      constante.
+      constante. Idéalement, le temps de calcul demeure constant.
 
 .. warning::
 
