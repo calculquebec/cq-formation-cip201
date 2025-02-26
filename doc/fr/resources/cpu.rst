@@ -154,8 +154,9 @@ Pourquoi l’efficacité n’est-elle pas linéaire ?
 '''''''''''''''''''''''''''''''''''''''''''''''
 
 La scalabilité est limitée par la fraction du programme qui calcule en parallèle
-(voir figure ci-dessous). C’est ce qu’on appelle la loi d’Amdahl. Un programme
-parallèle peut avoir une fraction sérielle pour une variété de raisons :
+(voir figure ci-dessous). C’est ce qu’on appelle la `loi d’Amdahl
+<https://fr.wikipedia.org/wiki/Loi_d%27Amdahl>`_. Un programme parallèle peut
+avoir une fraction sérielle pour une variété de raisons :
 
 - Lecture non parallèle d’un fichier d’entrée ou mise à jour d’un fichier de
   sortie
