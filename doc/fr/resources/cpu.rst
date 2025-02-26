@@ -159,10 +159,10 @@ La scalabilité est limitée par la fraction du programme qui calcule en parall�
 avoir une fraction sérielle pour une variété de raisons :
 
 - Lecture non parallèle d’un fichier d’entrée ou mise à jour d’un fichier de
-  sortie
+  sortie.
 - Pré- ou post-traitement des données avant ou après l’application d’un
-  algorithme parallèle
-- Une étape intermédiaire du calcul qui n’est pas parallélisée
+  algorithme parallèle.
+- Une étape intermédiaire du calcul qui n’est pas parallélisée.
 
 .. image:: ../../images/serial-vs-parallel_fr.svg
     :align: center
