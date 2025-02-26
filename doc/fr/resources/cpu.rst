@@ -138,10 +138,9 @@ nombre de cœurs CPU :
     E_n = \frac{S_n}{n}
 
 Poursuivant l’exemple ci-dessus, une accélération de 1,67 pour 2 cœurs CPU donne
-une efficacité de 0,835 (83,5 %). L’efficacité est donc une mesure de « quelle
-fraction du temps CPU est utilisée efficacement ». Une efficacité de 100 % est
-qualifiée de linéaire. Lorsque l’efficacité tombe sous 75 %, on devrait
-généralement diminuer le nombre de cœurs utilisés.
+une efficacité de 0,835 (83,5 %). Une efficacité de 100 % est qualifiée de
+linéaire. Lorsque l’efficacité tombe sous 75 %, on devrait généralement diminuer
+le nombre de cœurs utilisés.
 
 Dans cet exemple de scalabilité d’un programme parallèle (voir figure
 ci-dessous), on remarque un point d’inflection à 256 cœurs : l’efficacité
