@@ -106,10 +106,11 @@ Pourquoi optimiser le nombre de cœurs CPU ?
 Scalabilité
 -----------
 
-La scalabilité est la capacité d’un programme parallèle à réduire le temps de
-calcul à mesure qu’il utilise plus de cœurs CPU. Par exemple, idéalement,
-utiliser deux cœurs CPU plutôt qu’un seul réduirait de moitié le temps de calcul
-et en utiliser quatre réduirait ce temps à 1/4 du temps avec un seul cœur.
+La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
+capacité d’un programme parallèle à réduire le temps de calcul à mesure qu’il
+utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux cœurs CPU
+plutôt qu’un seul réduirait de moitié le temps de calcul et en utiliser quatre
+réduirait ce temps à 1/4 du temps avec un seul cœur.
 
 En réalité, toutefois, les programmes parallèles ont des limites. À mesure que
 l’on utilise plus de cœurs CPU, le gain de temps diminue et devient
