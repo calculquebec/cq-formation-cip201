@@ -194,8 +194,9 @@ Exercice
    nouveau les fichiers d’entrée.)
 #. Remplissez le tableau dans ``gmx-scaling.txt``.
 
-   #. Rapportez les performances obtenues dans la colonne correspondante.
-   #. Calculez l’accélération et l’efficacité pour 2, 4 et 8 cœurs.
+   #. Rapportez les performances obtenues dans la colonne :math:`P` (ns/day).
+   #. Calculez l’accélération :math:`S` et l’efficacité :math:`E` (%) pour 2, 4
+      et 8 cœurs.
    #. Combien de cœurs CPU utiliseriez-vous pour des tâches similaires ?
 
 .. note::
