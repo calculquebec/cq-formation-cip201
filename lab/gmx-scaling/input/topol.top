@@ -1,0 +1,10 @@
+#include "oplsaa.ff/forcefield.itp"
+#include "oplsaa.ff/spce.itp"
+
+[ system ]
+
+Water box
+
+[ molecules ]
+
+SOL 216

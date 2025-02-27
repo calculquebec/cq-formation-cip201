@@ -88,6 +88,15 @@ alloués à une tâche parallèle ? Pour le vérifier :
     parallèle, qui est une mesure de sa :ref:`scalabilité <scalability>`, tel
     que discuté dans les sections suivantes.
 
+Exercice
+''''''''
+
+#. Affichez la liste de vos tâches avec ``sacct -X``.
+#. Essayez la commande ``seff <jobid>`` pour l’une d'entre elles et vérifiez
+   l’utilisation CPU.
+#. Essayez ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` pour la
+   même tâche.
+
 Pourquoi optimiser le nombre de cœurs CPU ?
 -------------------------------------------
 
@@ -110,9 +119,9 @@ La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
 capacité d’un programme parallèle à réduire le temps de calcul à mesure qu’il
 utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux cœurs CPU
 plutôt qu’un seul réduirait de moitié le temps de calcul et en utiliser quatre
-réduirait ce temps à 1/4 du temps avec un seul cœur.
+réduirait ce temps à 1/4 du temps requis avec un seul cœur.
 
-En réalité, toutefois, les programmes parallèles ont des limites. À mesure que
+En réalité, toutefois, les programmes parallèles ont leurs limites. À mesure que
 l’on utilise plus de cœurs CPU, le gain de temps diminue et devient
 éventuellement négligeable. Certains programmes et algorithmes ont une meilleure
 scalabilité que d’autres. De plus, la scalabilité varie en fonction de certains
@@ -149,10 +158,64 @@ diminue rapidement passé ce point.
 .. image:: ../../images/gmx-scaling_fr.svg
     :align: center
 
+Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps de
+calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
+équivalentes, la performance ayant simplement une dimension inverse
+(:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
+problème : étapes de calcul par seconde, nombre d’images ou de molécules
+traitées par heure, durée de trajectoire simulée par jour, etc. L’accélération
+peut être calculée à partir de la performance plutôt que du temps de calcul :
+
+.. math::
+
+    S_n = \frac{P_{n}}{P_\text{sérielle}}
+
 .. _scalability-exercise:
 
 Exercice
 ''''''''
+
+**Objectifs**
+
+- Analyser la scalabilité d’une tâche parallèle.
+- Déterminer le nombre optimal de cœurs CPU à utiliser pour cette tâche.
+
+**Instructions**
+
+#. Allez dans le répertoire de l’exercice avec ``cd
+   ~/cq-formation-cip201-main/lab/gmx-scaling``.
+#. Préparer les fichiers d’entrée de la tâche avec ``bash gmx-prepare.sh``.
+#. Éditez le script de tâche avec ``nano gmx-job.sh``. Demandez 1, 2, 4 ou 8
+   cœurs CPU avec l’option ``--cpus-per-task``.
+#. Soumettez la tâche.
+#. Une fois la tâche terminée, obtenez la performance du programme avec ``grep
+   ^Performance slurm-<jobid>.out``.
+#. Changez le nombre de cœurs demandés et répétez la tâche. (Ne préparez pas à
+   nouveau les fichiers d’entrée.)
+#. Remplissez le tableau dans ``gmx-scaling.txt``.
+
+   #. Rapportez les performances obtenues dans la colonne correspondante.
+   #. Calculez l’accélération et l’efficacité pour 2, 4 et 8 cœurs.
+   #. Combien de cœurs CPU utiliseriez-vous pour des tâches similaires ?
+
+.. note::
+
+    Cette tâche calcule les interactions au sein d’une boîte périodique
+    contenant 216 molécules d’eau (648 atomes, voir figure ci-dessous) avec
+    GROMACS, un logiciel pour les simulations biomoléculaires.
+
+    .. figure:: ../../images/water-box.png
+        :width: 320px
+
+    Les auteurs du programme rapportent qu’il est scalable jusqu’à environ 50
+    atomes par cœur CPU. En deçà de cette valeur, la performance n’augmente plus
+    même si l’on utilise davantage de cœurs. L’efficacité diminue toutefois bien
+    avant d’atteindre cette limite !
+
+    En pratique, les simulations biomoléculaires traitent des systèmes beaucoup
+    plus gros, souvent de l’ordre de centaines de milliers d’atomes. Les
+    programmes parallèles qui simulent ces systèmes sont efficaces même avec des
+    centaines de cœurs CPU.
 
 Pourquoi l’efficacité n’est-elle pas linéaire ?
 '''''''''''''''''''''''''''''''''''''''''''''''
