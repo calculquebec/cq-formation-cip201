@@ -237,8 +237,7 @@ avoir une fraction sérielle pour une variété de raisons :
 
 De plus, le temps nécessaire à la communication entre les fils d’exécution
 diminue l’efficacité. Généralement, plus la taille d’un problème augmente, plus
-son traitement parallèle est efficace. L’efficacité dépend donc aussi de la
-taille de vos données d’entrée.
+son traitement parallèle est efficace.
 
 Pour toutes ces raisons, la seule manière de déterminer efficacement le nombre
 optimal de CPU pour une tâche parallèle est de faire une analyse de scalabilité
