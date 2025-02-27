@@ -91,11 +91,11 @@ Démonstration
     :emphasize-lines: 1,3,5,7,13-16
 
     [alice@nc31210 pi-multi-threaded]$ srun -J testB -n1 -c2 ./pi 10000000000
-    After 1000000000 points, pi estimate is 3.141621.
+    After 10000000000 points, pi estimate is 3.141621.
     [alice@nc30432 pi-multi-threaded]$ srun -J testC -n1 -c4 ./pi 10000000000
-    After 1000000000 points, pi estimate is 3.141631.
+    After 10000000000 points, pi estimate is 3.141631.
     [alice@nc30432 pi-multi-threaded]$ srun -J testD -n1 -c8 ./pi 10000000000
-    After 1000000000 points, pi estimate is 3.141630.
+    After 10000000000 points, pi estimate is 3.141630.
     [alice@nc30432 pi-multi-threaded]$ sacct -j 40716821 -o JobID%15,JobName,Elapsed,NCPUs
               JobID    JobName    Elapsed      NCPUS 
     --------------- ---------- ---------- ---------- 
@@ -116,7 +116,7 @@ Démonstration
 
     * - :math:`\pmb{n}`
       - :math:`\pmb{t}` (s)
-      - :math:`\pmb{P}` (10e6 points/s)
+      - :math:`\pmb{P}` (1e7 points/s)
       - :math:`\pmb{S}`
       - :math:`\pmb{E}` (%)
     * - 1
