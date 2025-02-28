@@ -149,9 +149,9 @@ Démonstration
 Remarques
 ---------
 
-- La même approche peut être utilisée pour analyser la consommation de mémoire
-  en fonction du nombre de cœurs CPU. On utiliserait alors ``sacct -j <jobid> -o
-  JobID%15,JobName,MaxRSS,NCPUs``.
 - Chaque test devrait durer au moins 5 minutes afin d’être fiable.
 - Chaque test devrait être répété 3 fois afin de s’assurer de la stabilité du
   résultat.
+- La même approche peut être utilisée pour analyser la consommation de mémoire
+  en fonction du nombre de cœurs CPU. On utiliserait alors ``sacct -j <jobid> -o
+  JobID%15,JobName,MaxRSS,NCPUs``.
