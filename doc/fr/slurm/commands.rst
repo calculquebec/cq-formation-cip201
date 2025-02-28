@@ -78,3 +78,11 @@ Suivi de tâches
 - ``seff <jobid>`` : résumé des ressources utilisées.
 - ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
   complétées depuis minuit.
+
+  - ``-j,--jobs=<jobid...>`` : Affiche l’information pour une ou plusieurs tâches
+    spécifiques.
+  - ``-o,--format=<field...>`` : Choisit les informations à afficher.
+  - ``-X,--allocations`` : Affiche seulement les allocations
+    de ressources, pas les étapes de la tâche.
+  - ``-S,--starttime=<YYYY-MM-DD>`` : Démarre la recherche à une date précise.
+  - ``-E,--endtime=<YYYY-MM-DD>`` : Termine la recherche à une date précise.
