@@ -57,12 +57,15 @@ Obtenir le temps de calcul sur la grappe
 - Si on ne connaît pas le numéro de tâche, on peut lister nos dernières tâches
   avec ``sacct -X``.
 
+  - L’option ``-X,--allocations`` filtre la liste pour n’afficher que les
+    allocations de ressources, pas les étapes (que nous verrons dans un chapitre
+    subséquent).
   - Pour démarrer la recherche à partir d'une
     `date antérieure <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_
-    à aujoud'hui : ``-S AAAA-MM-JJ``.
+    à aujoud'hui : ``-S AAAA-MM-JJ`` ou ``--starttime=AAAA-MM-JJ``.
   - Pour limiter la recherche jusqu'à une
     `certaine date <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_
-    : ``-E AAAA-MM-JJ``.
+    : ``-E AAAA-MM-JJ`` ou ``--endtime=AAAA-MM-JJ``.
 
 Exercice
 ''''''''
