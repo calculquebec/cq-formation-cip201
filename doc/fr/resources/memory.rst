@@ -45,7 +45,7 @@ En utilisant le gestionnaire de tâches (sur Windows), le moniteur d'activité
 mémoire de votre programme. À données égales, la consommation en mémoire
 devrait être très similaire sur la grappe de calcul.
 
-.. image:: ../../images/win-task-manager_fr.png
+.. figure:: ../../images/win-task-manager_fr.png
 
 .. note::
 

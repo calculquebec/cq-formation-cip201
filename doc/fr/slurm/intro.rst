@@ -24,7 +24,7 @@ Rappel de l'ordonnancement des tâches
     généralement plus courte que le temps demandé et que certains blocs de
     calcul parallèle peuvent être scindés en plusieurs morceaux.
 
-.. image:: ../../images/scheduling-tetris_fr.svg
+.. figure:: ../../images/scheduling-tetris_fr.svg
 
 En tant qu'utilisatrice ou utilisateur des grappes de calcul, votre travail
 consiste à soumettre des tâches au moyen de commandes, d'options et de

@@ -20,7 +20,7 @@ Pourquoi se fixer une limite de temps?
   `la politique d'ordonnancement <https://docs.alliancecan.ca/wiki/Job_scheduling_policies/fr#Pourcentages_des_n%C5%93uds_disponibles>`_
   rend davantage de nœuds disponibles pour les tâches courtes.
 
-.. image:: ../../images/partitions_fr.svg
+.. figure:: ../../images/partitions_fr.svg
 
 - Selon le nombre de nœuds disponibles acceptant la durée de votre tâche,
   cette dernière attendra dans la file plus ou moins longtemps.

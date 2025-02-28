@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="200mm"
-   height="80mm"
-   viewBox="0 0 200 80"
+   width="199.5mm"
+   height="73.971222mm"
+   viewBox="0 0 199.5 73.971222"
    version="1.1"
    id="svg5"
    xml:space="preserve"
@@ -36,7 +36,8 @@
      id="defs2" /><g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     id="layer1"><rect
+     id="layer1"
+     transform="translate(-0.24999997)"><rect
        style="fill:#999999;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
        id="rect234-36-7-5-5-6"
        width="12.5"

@@ -14,8 +14,7 @@ sérielle, les étapes du calcul sont toujours réalisées l’une après l’au
 que, dans une tâche parallèle, certaines étapes sont réalisées simultanément
 (voir figure ci-dessous). Les calculs sériels sont de loin les plus communs.
 
-.. image:: ../../images/task-types_fr.svg
-    :align: center
+.. figure:: ../../images/task-types_fr.svg
 
 Identifier une tâche sérielle
 -----------------------------
@@ -52,7 +51,7 @@ affiché de deux manières :
 - Cherchez *Gestionnaire des tâches* dans le menu *Démarrer*.
 - Utilisez le racourci clavier :kbd:`Ctrl+Alt+Suppr`.
 
-.. image:: ../../images/win-task-manager_fr.png
+.. figure:: ../../images/win-task-manager_fr.png
 
 .. note::
 
@@ -80,7 +79,7 @@ Le `Moniteur d’activité
   recherche, tapez les premières lettres de *Moniteur d’activité*, puis
   choisissez l’application lorsque son nom apparaît.
 
-.. image:: ../../images/mac-os-task-manager_fr.png
+.. figure:: ../../images/mac-os-task-manager_fr.png
 
 (Image tirée du soutien technique d’Apple)
 
@@ -99,7 +98,7 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
     ``top``, le racourci clavier :kbd:`Maj+h` alterne entre l’affichage
     individuel et collectif des fils d’exécution.
 
-.. image:: ../../images/linux-top.png
+.. figure:: ../../images/linux-top.png
 
 Dans ``top``, une utilisation CPU de 100 % correspond à un cœur CPU pleinement
 utilisé. Lors de l’exécution d’un programme sériel intensif, ``top -u $USER``
@@ -124,7 +123,7 @@ devrait afficher le processus et une utilisation CPU de près de 100% :
 Le gestionnaire `htop` est une alternative à `top` offrant davantage de
 fonctionnalités et une interface plus sophistiquée.
 
-.. image:: ../../images/linux-htop.png
+.. figure:: ../../images/linux-htop.png
 
 Demander les ressources appropriées
 -----------------------------------

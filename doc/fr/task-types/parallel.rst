@@ -9,8 +9,7 @@ programme parallèle doit décomposer le calcul à l’aide d’un algorithme
 parallèle, c’est-à-dire diviser la tâche en sous-tâches qui peuvent être
 accomplies simultanément (voir figure ci-dessous).
 
-.. image:: ../../images/task-types_fr.svg
-    :align: center
+.. figure:: ../../images/task-types_fr.svg
 
 La manière d’exécuter un programme parallèle sur une grappe de calcul varie. Les
 sections suivantes couvrent les :ref:`programmes multi-fils
@@ -36,8 +35,7 @@ Ces programmes créent de multiple fils d’exécution. Chaque fil (*thread*)
 utilise un cœur CPU. Les fils d’exécution existent à l’intérieur du processus et
 partagent le même emplacement mémoire qu’ils utilisent pour communiquer :
 
-.. image:: ../../images/multi-threaded-prog-vs-cpu_fr.svg
-    :align: center
+.. figure:: ../../images/multi-threaded-prog-vs-cpu_fr.svg
 
 Les tâches de calcul qui utilisent un programme multi-fils sont limitées à un
 seul nœud de calcul puisque tous les fils d’exécution existent à l’intérieur
@@ -172,8 +170,7 @@ Exercice
     génère un grand nombre de points au hasard dans un carré arbitraire. Pour
     chaque point, on vérifie ensuite s’il est à l’intérieur d’un cercle inscrit.
     
-    .. image:: ../../images/circle.svg
-        :align: center
+    .. figure:: ../../images/circle.svg
         :width: 94px
 
     Le ratio du nombre de points dans le cercle inscrit (:math:`p`) sur le
@@ -208,8 +205,7 @@ Les programmes MPI (*Message Passing Interface*) créent de multiples processus
 CPU. Chaque processus a son propre espace mémoire et communique avec les autres
 processus en échangeant des messages :
 
-.. image:: ../../images/mpi-prog-vs-cpu_fr.svg
-    :align: center
+.. figure:: ../../images/mpi-prog-vs-cpu_fr.svg
 
 Les tâches de calcul qui exécutent un programme MPI peuvent utiliser plusieurs
 nœuds de calcul puisque les processus peuvent échanger des messages via le
@@ -486,8 +482,7 @@ afin que les opérations les plus demandantes soient effectuées en parallèle
 (vectorisées) à l’aide d’instructions SIMD. (Voir la figure ci-dessous pour un
 exemple.)
 
-.. image:: ../../images/vectorization_fr.svg
-    :align: center
+.. figure:: ../../images/vectorization_fr.svg
 
 Les logiciels disponibles sur nos grappes ont été optimisés pour utiliser les
 instructions SIMD des CPU. Vous n’avez donc typiquement rien à faire pour

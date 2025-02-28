@@ -155,8 +155,7 @@ Dans cet exemple de scalabilité d’un programme parallèle (voir figure
 ci-dessous), on remarque un point d’inflection à 256 cœurs : l’efficacité
 diminue rapidement passé ce point.
 
-.. image:: ../../images/gmx-scaling_fr.svg
-    :align: center
+.. figure:: ../../images/gmx-scaling_fr.svg
 
 Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps de
 calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
@@ -232,8 +231,7 @@ avoir une fraction sérielle pour une variété de raisons :
   algorithme parallèle.
 - Une étape intermédiaire du calcul qui n’est pas parallélisée.
 
-.. image:: ../../images/serial-vs-parallel_fr.svg
-    :align: center
+.. figure:: ../../images/serial-vs-parallel_fr.svg
 
 De plus, le temps nécessaire à la communication entre les fils d’exécution
 diminue l’efficacité. Généralement, plus la taille d’un problème augmente, plus
