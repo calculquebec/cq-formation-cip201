@@ -57,7 +57,7 @@ Obtenir la quantité de mémoire utilisée sur la grappe
 
 Avec l'identifiant d'une tâche terminée, on peut utiliser la commande
 ``seff <jobid>`` ou encore
-``sacct -j <jobid> --format=JobID,JobName,MaxRSS``.
+``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
 
 - ``Memory Utilized`` : quantité mesurée maximale de mémoire utilisée.
 - ``MaxRSS`` : même chose. "RSS" veut dire *Resident set size*.
@@ -68,11 +68,11 @@ Exercice
 ''''''''
 
 #. Affichez la liste des dernières tâches avec
-   ``sacct -X --format=JobID,JobName``.
+   ``sacct -X -o JobID,JobName``.
 #. Essayez la commande ``seff <jobid>`` pour la tâche ayant testé les deux
    programmes de tri. Quelle est la quantité maximale de mémoire utilisée?
 #. Voyez aussi cette quantité avec la commande
-   ``sacct -j <jobid> --format=JobID,JobName,MaxRSS``.
+   ``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
 
 Estimer la mémoire requise pour un plus grand calcul
 ----------------------------------------------------

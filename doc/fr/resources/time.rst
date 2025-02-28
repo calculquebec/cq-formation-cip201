@@ -48,7 +48,7 @@ Obtenir le temps de calcul sur la grappe
 
 - Si on connaît le numéro de la tâche terminée, on peut utiliser la commande
   ``seff <jobid>`` ou encore
-  ``sacct -j <jobid> --format=JobID,JobName,Elapsed``.
+  ``sacct -j <jobid> -o JobID,JobName,Elapsed``.
 
   - ``Elapsed`` : temps écoulé entre le début et la fin de la tâche.
   - Voir la
@@ -71,7 +71,7 @@ Exercice
 #. Essayez la commande ``seff <jobid>`` pour l'une d'entre elles afin de
    voir le temps écoulé mesuré.
 #. Voyez le temps écoulé avec la commande
-   ``sacct -j <jobid> --format=JobID,JobName,Elapsed``.
+   ``sacct -j <jobid> -o JobID,JobName,Elapsed``.
 
 Estimer le temps requis pour un plus grand calcul
 -------------------------------------------------
