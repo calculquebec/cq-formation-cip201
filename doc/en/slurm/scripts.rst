@@ -1,7 +1,7 @@
 Scripts de tâches
 =================
 
-`English <../../en/slurm/scripts.html>`_
+`Français <../../fr/slurm/scripts.html>`_
 
 Un script de tâche est communément un script Bash destiné à l'ordonnanceur
 Slurm. On y retrouve :

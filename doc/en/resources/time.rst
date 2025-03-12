@@ -1,7 +1,7 @@
 Temps
 =====
 
-`English <../../en/resources/time.html>`_
+`Français <../../fr/resources/time.html>`_
 
 Pourquoi se fixer une limite de temps?
 --------------------------------------

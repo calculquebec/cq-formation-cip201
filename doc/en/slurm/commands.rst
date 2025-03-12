@@ -1,7 +1,7 @@
 Commandes
 =========
 
-`English <../../en/slurm/commands.html>`_
+`Français <../../fr/slurm/commands.html>`_
 
 Soumission de tâches
 --------------------

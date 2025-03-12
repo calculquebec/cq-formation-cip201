@@ -1,7 +1,7 @@
 Se connecter aux nœuds de calcul
 ================================
 
-`English <../../en/monitoring/compute-nodes.html>`_
+`Français <../../fr/monitoring/compute-nodes.html>`_
 
 Bien que très utiles, les outils ``seff`` et ``sacct`` ne peuvent pas décrire
 tout le comportement d'un programme, à savoir son utilisation CPU sur chaque

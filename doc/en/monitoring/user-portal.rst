@@ -1,7 +1,7 @@
 Portails des utilisateurs
 =========================
 
-`English <../../en/monitoring/user-portal.html>`_
+`Français <../../fr/monitoring/user-portal.html>`_
 
 Certaines grappes de calcul offrent un portail permettant de monitorer vos
 tâches en cours et même vos tâches récemment terminées. Les voici :

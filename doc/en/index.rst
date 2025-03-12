@@ -1,56 +1,97 @@
-Workshop material using Sphinx
-==============================
+Tâches de calcul : ressources et suivi
+======================================
 
 `Français <../fr/index.html>`_
 
-Welcome to this example of workshop material made with
-`Sphinx <https://www.sphinx-doc.org/en/master/index.html>`_.
+Cet atelier de niveau intermédiaire (CIP201) est la suite de *Premiers pas sur
+les grappes de calcul* (CIP101). Nous y explorons plus en profondeur certains
+aspects clés du calcul informatique de pointe.
 
-Here are some examples of special boxes:
+L’atelier débute par un rappel sur **l’ordonnanceur de tâches**. :doc:`À quoi
+sert-il ? <slurm/intro>` Quelles sont les principales :doc:`commandes
+<slurm/commands>` pour soumettre, afficher, annuler et analyser les tâches de
+calcul ? Comment rédige-t-on les :doc:`scripts de tâches <slurm/scripts>` qui
+exécutent ces calculs ? En plus de rafraîchir vos connaissances acquises au
+cours de l’atelier précédent, cette section vous servira de référence pendant
+les exercices.
 
-.. important::
+La section suivante présente les deux **types de tâches de calcul**. Les
+:doc:`tâches sérielles <task-types/serial>` sont les plus simples. Les
+:doc:`tâches parallèles <task-types/parallel>`, pour leur part, méritent une
+discussion plus approfondie, incluant la différence entre les programmes
+parallèles multi-fils et MPI. Le parallélisme de données est mentionné
+brièvement et fait l’objet d’un atelier subséquent, *Parallélisme de données sur
+les grappes* (CIP202).
 
-    The :code:`*.rst` files do not contain Markdown code, but
-    `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/>`_.
-    There are some advantages, like including the contents of another
-    :code:`*.rst` file, which avoids duplicating some written information.
+**Estimer les ressources requises** pour une tâche de calcul peut être un défi !
+Cette section discute du :doc:`temps <resources/time>` de calcul, de la
+:doc:`mémoire <resources/memory>` et du nombre de :doc:`cœurs CPU
+<resources/cpu>`. Comment déterminer les quantités minimales nécessaires et les
+quantités optimales? Quel est l’impact des ressources demandées sur la priorité
+de vos tâches ? Que faire si les ressources disponibles ne semblent pas
+suffisantes ? Les ressources GPU sont couvertes dans un atelier séparé (à
+venir).
+
+Le **suivi des tâches** permet de s’assurer qu’une tâche utilise correctement
+les ressources qui lui ont été allouées. Pour se faire, il est nécessaire de
+:doc:`se connecter aux nœuds de calcul <monitoring/compute-nodes>` pour examiner
+les programmes qui s’y exécutent. Pour déboguer une tâche qui ne s’exécute pas
+correctement ou pour optimiser les ressources demandées, les :doc:`sessions
+interactives <monitoring/interactive-sessions>` sont particulièrement
+indiquées. Finalement, certaines grappes offrent un :doc:`portail des
+utilisateurs <monitoring/user-portal>` qui facilite le suivi des tâches.
 
 .. note::
 
-    - We
+    Cet atelier a été conçu pour être guidé par un formateur ou une formatrice
+    de Calcul Québec sur notre plateforme infonuagique. Les fichiers nécessaires
+    pour les exercices sont dans votre répertoire personnel sur la plateforme.
 
-        - can
-        - make
-
-    - nested
-
-        - lists.
-
-    #. Quite
-    #. useful!
-
-See the documentation about the
-`reStructuredText basics <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_.
-
-Finally, the :code:`index.rst` files contain the necessary
-informations to build the table of contents in the left pane.
+    Si vous suivez cet atelier par vous-même, vous pouvez télécharger `les
+    fichiers nécessaires <https://github.com/calculquebec/cq-formation-cip201>`_
+    et réaliser les exercices sur n’importe quelle grappe de Calcul Québec ou de
+    l’Alliance de recherche numérique du Canada. Le temps d’attente pour
+    l’exécution des tâches sera toutefois plus long que sur la plateforme
+    infonuagique.
 
 .. toctree::
+    :caption: L’ordonnanceur de tâches
     :maxdepth: 2
     :titlesonly:
     :hidden:
 
-    01-subjectA
-    02-subjectB
-    extra/index
+    slurm/intro
+    slurm/commands
+    slurm/scripts
 
 .. toctree::
-    :caption: Help
+    :caption: Types de tâches de calcul
     :maxdepth: 2
     :titlesonly:
     :hidden:
 
-    references
+    task-types/serial
+    task-types/parallel
+
+.. toctree::
+    :caption: Estimer les ressources requises
+    :maxdepth: 2
+    :titlesonly:
+    :hidden:
+
+    resources/time
+    resources/memory
+    resources/cpu
+
+.. toctree::
+    :caption: Suivi des tâches
+    :maxdepth: 2
+    :titlesonly:
+    :hidden:
+
+    monitoring/compute-nodes
+    monitoring/interactive-sessions
+    monitoring/user-portal
 
 .. toctree::
     :caption: External links
@@ -58,4 +99,3 @@ informations to build the table of contents in the left pane.
 
     Alliance Technical Documentation <https://docs.alliancecan.ca/wiki/Technical_documentation/en>
     Calcul Québec Training <https://www.calculquebec.ca/en/academic-research-services/training/>
-    CCDB Portal <https://ccdb.alliancecan.ca/>

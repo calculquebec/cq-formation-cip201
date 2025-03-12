@@ -20,7 +20,7 @@
 
 import datetime
 
-project = 'CQ - Sphinx Template'
+project = 'CIP201'
 copyright = f'{datetime.date.today().year}, Calcul Québec'
 author = 'Calcul Québec'
 
@@ -52,7 +52,12 @@ exclude_patterns = []
 # a list of builtin themes.
 
 html_theme = 'sphinx_book_theme'
-html_theme_options = {}
+html_theme_options = {
+    'logo': {
+        'text': 'Running jobs: resources and monitoring (CIP201)',
+        'image_light': '../images/logo.png'
+    }
+}
 
 html_favicon = '../images/logo.png'
 html_logo = '../images/logo.png'
