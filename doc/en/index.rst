@@ -9,7 +9,7 @@ high-performance computing.
 
 The workshop begins with a review of the **task scheduler**. :doc:`What is it
 for <slurm/intro>`? What are the main :doc:`commands <slurm/commands>` to
-submit, show, cancel and analyse compute jobs? How do we write the :doc:`job
+submit, show, cancel, and analyse compute jobs? How do we write the :doc:`job
 scripts <slurm/scripts>` that drive these computations? In addition to
 refreshing your knowledge from the previous workshop, this section will serve as
 a reference during the exercises.
