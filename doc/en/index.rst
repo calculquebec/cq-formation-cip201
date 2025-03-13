@@ -41,7 +41,7 @@ facilitates job monitoring.
 
     This workshop was designed for guided sessions with a Calcul Québec
     instructor on our cloud computing platform. The files necessary for the
-    exercices are in your home directory on the platform.
+    exercises are in your home directory on the platform.
 
     If you follow this workshop on your own, you can download the `the
     necessary files <https://github.com/calculquebec/cq-formation-cip201>`_ and
