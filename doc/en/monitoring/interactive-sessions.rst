@@ -1,5 +1,5 @@
-Sessions interactives
-=====================
+Interactive sessions
+====================
 
 `Français <../../fr/monitoring/interactive-sessions.html>`_
 

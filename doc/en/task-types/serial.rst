@@ -1,5 +1,5 @@
-Tâches sérielles
-================
+Serial jobs
+===========
 
 `Français <../../fr/task-types/serial.html>`_
 
