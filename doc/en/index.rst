@@ -4,7 +4,7 @@ Running jobs: resources and monitoring
 `Français <../fr/index.html>`_
 
 This intermediate-level workshop (CIP201) is the continuation of *First steps on
-compute clusters* (CIP101). We explore in details certain key aspects of
+compute clusters* (CIP101); we explore in details certain key aspects of
 high-performance computing.
 
 The workshop begins with a review of the **job scheduler**. :doc:`What is it
