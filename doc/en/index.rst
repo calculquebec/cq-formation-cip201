@@ -25,8 +25,8 @@ clusters* (CIP202).
 section covers compute :doc:`time <resources/time>`, :doc:`memory
 <resources/memory>`, and number of :doc:`CPU cores <resources/cpu>`. How do we
 determine the minimal amounts required and the optimal quantities? What is the
-impact of requested resources on your jobs’ priority? What should you do if the
-available resources seem insufficient? GPU resources will be discussed in a
+impact of the requested resources on your jobs’ priority? What should you do if
+the available resources seem insufficient? GPU resources will be discussed in a
 separate workshop (to be announced).
 
 **Monitoring** ensures that a job is making proper use of the resources it was
