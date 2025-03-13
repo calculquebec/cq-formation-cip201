@@ -1,5 +1,5 @@
-Mémoire
-=======
+Memory
+======
 
 `Français <../../fr/resources/memory.html>`_
 

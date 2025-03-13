@@ -1,4 +1,4 @@
-Cœurs CPU
+CPU cores
 =========
 
 `Français <../../fr/resources/cpu.html>`_

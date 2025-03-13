@@ -1,5 +1,5 @@
-Scripts de tâches
-=================
+Job scripts
+===========
 
 `Français <../../fr/slurm/scripts.html>`_
 

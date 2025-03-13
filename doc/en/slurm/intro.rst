@@ -1,5 +1,5 @@
-Généralités
-===========
+General information
+===================
 
 `Français <../../fr/slurm/intro.html>`_
 

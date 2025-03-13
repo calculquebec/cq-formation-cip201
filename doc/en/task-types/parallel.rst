@@ -1,5 +1,5 @@
-Tâches parallèles
-=================
+Parallel tasks
+==============
 
 `Français <../../fr/task-types/parallel.html>`_
 

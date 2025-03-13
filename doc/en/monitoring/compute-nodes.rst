@@ -1,5 +1,5 @@
-Se connecter aux nœuds de calcul
-================================
+Connecting to compute nodes
+===========================
 
 `Français <../../fr/monitoring/compute-nodes.html>`_
 

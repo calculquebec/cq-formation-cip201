@@ -1,5 +1,5 @@
-Commandes
-=========
+Commands
+========
 
 `Français <../../fr/slurm/commands.html>`_
 

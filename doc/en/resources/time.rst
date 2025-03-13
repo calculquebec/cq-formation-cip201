@@ -1,5 +1,5 @@
-Temps
-=====
+Time
+====
 
 `Français <../../fr/resources/time.html>`_
 
