@@ -1,7 +1,7 @@
 Mémoire
 =======
 
-`English <../../en/resources/memory.html>`_
+`Français <../../fr/resources/memory.html>`_
 
 L'analyse des besoins en mémoire vive est similaire à celle pour les besoins en
 temps, excepté que les métriques sont différentes.

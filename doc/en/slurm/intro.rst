@@ -1,7 +1,7 @@
 Généralités
 ===========
 
-`English <../../en/slurm/intro.html>`_
+`Français <../../fr/slurm/intro.html>`_
 
 Rappel de l'ordonnancement des tâches
 -------------------------------------
