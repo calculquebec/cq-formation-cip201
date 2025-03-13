@@ -7,7 +7,7 @@ This intermediate-level workshop (CIP201) is the continuation of *First steps on
 compute clusters* (CIP101). We explore in details certain key aspects of
 high-performance computing.
 
-The workshop begins with a review of the **task scheduler**. :doc:`What is it
+The workshop begins with a review of the **job scheduler**. :doc:`What is it
 for <slurm/intro>`? What are the main :doc:`commands <slurm/commands>` to
 submit, show, cancel, and analyse compute jobs? How do we write the :doc:`job
 scripts <slurm/scripts>` that drive these computations? In addition to
