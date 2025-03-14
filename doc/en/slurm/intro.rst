@@ -3,30 +3,28 @@ General information
 
 `Français <../../fr/slurm/intro.html>`_
 
-Rappel de l'ordonnancement des tâches
--------------------------------------
+Reminder of job scheduling
+--------------------------
 
-* Le lancement de tâches de calcul n'est pas immédiat comme sur un ordinateur
-  local.
+* Starting compute tasks on a cluster is not immediate as it is on a local
+  computer.
 
-  * Les tâches sont mises en file d'attente et sont constamment triées par
-    ordre de priorité en attendant que les ressources demandées soient
-    disponibles.
-  * Tout cela est dû à la grande demande pour les ressources de calcul.
+  * The compute tasks, encapsulated in *jobs*, are queued. These pending jobs
+    are constantly sorted by priority until the requested resources are
+    available.
+  * This is all due to the high demand for computing resources.
 
-* Selon la priorité de chaque tâche et selon les ressources qui se libèrent,
-  l'ordonnanceur Slurm joue à un genre de
-  `Tetris <https://fr.wikipedia.org/wiki/Tetris>`_ où la largeur des blocs
-  correspond à une quantité de ressource demandée et où la hauteur d'un bloc
-  est le temps demandé pour la tâche.
+* Depending on the priority of each job and the resources that become
+  available, the Slurm scheduler plays a kind of `Tetris
+  <https://en.wikipedia.org/wiki/Tetris>`_ where the width of the blocks
+  corresponds to a quantity of resource requested and where the height of a
+  block is the time requested for the job.
 
-  * Ce qui est particulier, c'est que la durée réelle du calcul est
-    généralement plus courte que le temps demandé et que certains blocs de
-    calcul parallèle peuvent être scindés en plusieurs morceaux.
+  * What is special is that the actual computation time is usually shorter than
+    the requested time and some parallel computation blocks can be split into
+    several pieces.
 
-.. figure:: ../../images/scheduling-tetris_fr.svg
+.. figure:: ../../images/scheduling-tetris_en.svg
 
-En tant qu'utilisatrice ou utilisateur des grappes de calcul, votre travail
-consiste à soumettre des tâches au moyen de commandes, d'options et de
-scripts de tâches.
-Ces tâches seront éventuellement exécutées automatiquement.
+As a cluster user, you will therefore have to submit jobs using commands,
+options and job scripts. The jobs will eventually be executed automatically.
