@@ -48,7 +48,7 @@ ways:
 - Look for *Task Manager* in the *Start* Menu.
 - Use the :kbd:`Ctrl+Alt+Del` shortcut.
 
-.. figure:: ../../images/win-task-manager_fr.png
+.. figure:: ../../images/win-task-manager_en.png
 
 .. note::
 
