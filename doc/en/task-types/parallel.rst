@@ -3,64 +3,58 @@ Parallel jobs
 
 `Français <../../fr/task-types/parallel.html>`_
 
-Les tâches parallèles sont celles qui utilisent plus d’un cœur CPU. Leur
-objectif est de réduire le temps de calcul nécessaire. Pour ce faire, un
-programme parallèle doit décomposer le calcul à l’aide d’un algorithme
-parallèle, c’est-à-dire diviser la tâche en sous-tâches qui peuvent être
-accomplies simultanément (voir figure ci-dessous).
+Parallel jobs are those that use more than one CPU core. Their purpose is to
+reduce computing time. To do so, a parallel program decomposes calculations
+using a parallel algorithm, that is to say it breaks down the computation into
+sub-computations that can be performed simultaneously (see figure below).
 
-.. figure:: ../../images/task-types_fr.svg
+.. figure:: ../../images/task-types_en.svg
 
-La manière d’exécuter un programme parallèle sur une grappe de calcul varie. Les
-sections suivantes couvrent les :ref:`programmes multi-fils
-<para-multi-threading>` et les :ref:`programmes MPI <para-mpi>`, deux approches
-fréquemment utilisées. Le cas plus complexe du :ref:`parallélisme imbriqué
-<para-nested>` est ensuite présenté, avant une brève discussion des :ref:`autres
-types de parallélisme <para-others>`.
+Parallel programs are run on clusters in different ways. The following sections
+cover :ref:`multi-threaded programs <para-multi-threading>` and :ref:`MPI
+programs<para-mpi>`, two frequently used schemes. A more complex case,
+:ref:`nested parallelism <para-nested>`, is then presented, before a short
+discussion of :ref:`other parallelism types <para-others>`.
 
-Lorsque vous utilisez un programme parallèle sur nos grappes pour la première
-fois, consultez avant tout la `documentation technique de l’Alliance
-<https://docs.alliancecan.ca/wiki/Technical_documentation/fr>`_. Nous y
-expliquons comment exécuter une variété de programmes scientifiques, incluant
-des exemples de scripts de tâches. N’hésitez pas non plus à contacter notre
-`soutien technique <https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ si
-vous avez des questions.
+When you use a parallel program for the first time on our clusters, check the
+`Alliance Technical Documentation
+<https://docs.alliancecan.ca/wiki/Technical_documentation/en>`_ before anything
+else. We explain how to run a variety of scientific programs, including job
+script examples. Do not hesitate to contact our `technical support
+<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ if you have any
+questions.
 
 .. _para-multi-threading:
 
-Programmes multi-fils
----------------------
+Multi-threaded programs
+-----------------------
 
-Ces programmes créent de multiple fils d’exécution. Chaque fil (*thread*)
-utilise un cœur CPU. Les fils d’exécution existent à l’intérieur du processus et
-partagent le même emplacement mémoire qu’ils utilisent pour communiquer :
+These programs use multiple threads of execution. Each thread uses one CPU core.
+Threads of execution exist inside the process and share the same memory space,
+which they use to communicate:
 
-.. figure:: ../../images/multi-threaded-prog-vs-cpu_fr.svg
+.. figure:: ../../images/multi-threaded-prog-vs-cpu_en.svg
 
-Les tâches de calcul qui utilisent un programme multi-fils sont limitées à un
-seul nœud de calcul puisque tous les fils d’exécution existent à l’intérieur
-d’un seul processus. (Nous verrons plus loin que les :ref:`programmes MPI
-<para-mpi>` peuvent utiliser plus d’un nœud de calcul.)
+Compute jobs that use a multi-threaded program are limited to a single compute
+node since all threads of execution exist inside a single process. (We will see
+later that :ref:`MPI programs <para-mpi>` can use more than one compute node.)
 
-Identifier un programme multi-fil
-'''''''''''''''''''''''''''''''''
+Identifying a multi-threaded program
+''''''''''''''''''''''''''''''''''''
 
-Cherchez les mots-clés suivants dans la documentation de votre programme :
+Look for these keywords in your program’s documentation:
 
-- *Multi-threading*
-- OpenMP : un standard pour la programmation multi-fils
-- Intel MKL threads : une bibliothèque numérique supportant le parallélisme
-  multi-fils
-- Intel Thread Building Blocks (TBB) : une bibliothèque pour la programmation
-  multi-fils
-- pthreads : une bibliothèque pour la programmation multi-fils
-- *Shared memory* : réfère à la stratégie de communication utilisée
-  dans les programmes multi-fils
+- Multi-threading
+- OpenMP: a standard for multi-threaded programming
+- Intel MKL threads: a numerical library with support for multi-threading
+- Intel Thread Building Blocks (TBB): a library for multi-threaded programming
+- pthreads: a library for multi-threaded programming
+- Shared memory: refers to the communication strategy used by multi-threaded
+  programs
 
-Les programmes multi-fils peuvent aussi être identifiés par leur comportement
-dans le gestionnaire de tâches. Dans ``top -u $USER``, une entrée pour un
-programme multi-fil intensif affichera une utilisation CPU de plus de 100 %
-(environ 100 % fois le nombre de cœurs utilisés) :
+Multi-threaded programs can also be identified by their behaviour in the task
+manager. In ``top -u $USER``, an entry for an intensive multi-threaded program
+shows a CPU usage over 100 % (around 100 % times the number of cores used):
 
 .. code-block:: console
     :emphasize-lines: 2
@@ -72,8 +66,8 @@ programme multi-fil intensif affichera une utilisation CPU de plus de 100 %
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Avec ``top -u $USER -H`` (ou le racourci clavier :kbd:`Maj+h`), il y aura une
-entrée pour chaque fil d’exécution :
+With ``top -u $USER -H`` (or the :kbd:`Shift+h` keyboard shortcut), there is one
+entry for each thread of execution:
 
 .. code-block:: console
     :emphasize-lines: 2-9
@@ -92,11 +86,10 @@ entrée pour chaque fil d’exécution :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Demander les ressources appropriées
-'''''''''''''''''''''''''''''''''''
+Requesting appropriate resources
+''''''''''''''''''''''''''''''''
 
-Voici un script minimal pour une tâche parallèle utilisant un programme
-multi-fils :
+Here is a minimal script for a parallel job that uses a multi-threaded program:
 
 .. code-block:: bash
     :emphasize-lines: 4-6
@@ -112,16 +105,15 @@ multi-fils :
 
     ./multi-threaded-prog
 
-Dans ce contexte, ``--ntasks`` réfère non pas à une tâche de calcul mais plutôt
-au nombre de processus à exécuter. Les programmes multi-fils utilisent un seul
-processus. L’option ``--cpus-per-task`` réfère au nombre de cœurs CPU que le
-processus utilisera, ce qui correspond au nombre de fils d’exécution.
+In this context, ``--ntasks`` is to the number of processes to start.
+Multi-threaded programs use a single process. The ``--cpus-per-task`` option is
+the number of CPU cores that the process uses, which corresponds to the number
+of threads of execution.
 
-Les différents outils pour la programmation multi-fils n’utilisent pas les mêmes
-options pour contrôler le nombre de fils d’exécution. Par exemple, les
-programmes OpenMP utilisent la variable d’environement ``OMP_NUM_THREADS``. Dans
-un script de tâche, on assigne à cette variable le nombre de CPU demandés à
-l’ordonnanceur :
+Programming tools for multi-threading use different options to control the
+number of threads of execution. For instance, OpenMP programs use the
+``OMP_NUM_THREADS`` environment variable. In a job script, this variable is set
+to the number of CPU cores requested from the scheduler:
 
 .. code-block:: bash
     :emphasize-lines: 5,10
@@ -139,96 +131,89 @@ l’ordonnanceur :
 
     ./openmp-prog
 
-La syntaxe ``:-1`` utilise la valeur ``1`` si ``SLURM_CPUS_PER_TASK`` est
-indéfini.
+The ``:-1`` syntax uses the value ``1`` if ``SLURM_CPUS_PER_TASK`` is unset.
 
-Exercice
+Exercise
 ''''''''
 
-**Objectifs**
+**Objectives**
 
-- Déterminer les options nécessaires pour une tâche multi-fils.
-- Évaluer le comportement d’un programme multi-fils à l’aide de ``top``.
+- Determine the necessary options for a multi-threaded job.
+- Check the behaviour of a multi-threaded program with ``top``.
 
 **Instructions**
 
-#. Allez dans le répertoire de l’exercice avec ``cd
+#. Go to the exercise directory with ``cd
    ~/cq-formation-cip201-main/lab/pi-multi-threaded``.
-#. Compilez le programme ``pi`` avec la commande ``make``.
-#. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
-   Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
-   tâche multi-fils et demandez 2 cœurs CPU.
-#. Exécutez le programme en arrière-plan avec ``./pi 10000000000 &`` (10
-   milliards de points, soit un suivi de 10 zéros).
-#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
-   $USER`` et ``top -u $USER -H``.
+#. Compile the ``pi`` program with the ``make`` command.
+#. Start an interactive job with ``salloc [...] --time=00:10:00``. Remplace
+   ``[...]`` by the parallelism options necessary for a multi-threaded job and
+   ask for 2 CPU cores.
+#. Run the program in the background with ``./pi 10000000000 &`` (10
+   billion points, that is one followed by 10 zeros).
+#. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
+   $USER -H``.
 
 .. note::
 
-    Le programme utilisé dans cet exercice calcule le nombre :math:`π` (pi), le
-    ratio de la circonférence d’un cercle sur son diamètre. Pour ce faire, on
-    génère un grand nombre de points au hasard dans un carré arbitraire. Pour
-    chaque point, on vérifie ensuite s’il est à l’intérieur d’un cercle inscrit.
+    The program used in this exercise computes the number :math:`π` (pi), the
+    ratio of a circle’s circumference to its diameter. To do so, we generate a
+    large number of points at random in an arbitrary square. For
+    each point, we then check if it is inside an inscribed circle.
     
     .. figure:: ../../images/circle.svg
         :width: 94px
 
-    Le ratio du nombre de points dans le cercle inscrit (:math:`p`) sur le
-    nombre total de points (:math:`n`) est aussi le ratio de l’aire du cercle
-    sur celle du carré :
+    The ratio of the number of points inside the inscribed circle (:math:`p`) to
+    the total number of points (:math:`n`) is also the ratio of the circle’s
+    surface to the square’s:
 
     .. math::
     
         \frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}
 
-    Une estimation précise de :math:`π` par cette méthode, dite de Monte Carlo,
-    requiert un grand nombre de points aléatoires. Pour accélérer le calcul, on
-    le décompose : les points à générer sont distribués entre les cœurs CPU
-    alloués à la tâche. Avec 2 cœurs, chacun génère la moitié des points, ce qui
-    double la vitesse.
+    Precisely estimating :math:`π` using this so-called Monte Carlo method
+    requires a great number of random points. To accelerate the calculation, we
+    decompose it: the points to generate are distributed among the CPU cores
+    allocated to the job. With 2 cores, each one generates half the points,
+    which doubles the speed.
 
-    Cet algorithme est un exemple de parallélisme dit « trivial » puisqu’il ne
-    nécessite pratiqument aucune communication : chaque cœur CPU (:math:`i`)
-    génère des points aléatoires indépendamment et compte combien d’entre eux
-    sont dans le cercle inscrit (:math:`p_i`). Ces valeurs sont ensuite
-    additionnées pour donner :math:`p`.
+    This algorithm is an example of so-called “trivial” parallelism since it
+    requires almost no communication: each CPU core (:math:`i`) generates random
+    points independently and counts how many are inside the inscribed circle
+    (:math:`p_i`). These values are then added to give :math:`p`.
 
-    Vous pouvez lire le code source du programme dans ``pi.c``.
+    You can read the program’s source code in ``pi.c``.
 
 .. _para-mpi:
 
-Programmes MPI
---------------
+MPI programs
+------------
 
-Les programmes MPI (*Message Passing Interface*) créent de multiples processus
-(*processes*). Chaque processus contient un fil d’exécution et utilise un cœur
-CPU. Chaque processus a son propre espace mémoire et communique avec les autres
-processus en échangeant des messages :
+MPI (Message Passing Interface) programs create multiple processes. Each process
+has one thread of execution and uses one CPU core. Each process has its own
+memory space and communicates with the others by exchanging messages:
 
-.. figure:: ../../images/mpi-prog-vs-cpu_fr.svg
+.. figure:: ../../images/mpi-prog-vs-cpu_en.svg
 
-Les tâches de calcul qui exécutent un programme MPI peuvent utiliser plusieurs
-nœuds de calcul puisque les processus peuvent échanger des messages via le
-réseau qui connecte les nœuds.
+Compute jobs that run an MPI program can use multiple compute nodes since the
+processes can exchange messages through the network interconnecting the nodes.
 
-Identifier un programme MPI
-'''''''''''''''''''''''''''
+Identifying an MPI program
+''''''''''''''''''''''''''
 
-Cherchez les mots-clés suivants dans la documentation de votre programme :
+Look for these keywords in your program’s documentation:
 
 - Message Passing Interface (MPI)
-- *Distributed memory* : réfère à la stratégie de communication utilisée par les
-  programmes MPI
+- Distributed memory: refers to the communication strategy used by MPI programs
 
-Les programmes MPI peuvent aussi être identifiés grâce aux instructions données
-pour les exécuter. Ces programmes sont lancés avec les commandes ``mpirun``,
-``mpiexec`` ou ``srun``. Par exemple, ``mpirun -n 8 prog`` exécutera 8 processus
-du programme MPI ``prog``.
+MPI programs can also be identified by the instructions given to run them. They
+are launched with the ``mpirun``, ``mpiexec``, or ``srun`` commands. For
+instance, ``mpirun -n 8 prog`` runs 8 processes of the ``prog`` MPI program.
 
-Finalement, les programmes MPI peuvent aussi être identifiés par leur
-comportement dans le gestionnaire de tâches. Dans ``top -u $USER``, un programme
-MPI intensif aura de multiples entrées, chacune avec une utilisation CPU de près
-de 100 % (une entrée pour chaque processus) :
+Finally, MPI programs can also be identified by their behaviour in the task
+manager. In ``top -u $USER``, an intensive MPI program has multiple entries,
+each with a CPU usage close to 100 % (one entry for each process):
 
 .. code-block:: console
     :emphasize-lines: 2-9
@@ -247,10 +232,10 @@ de 100 % (une entrée pour chaque processus) :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Demander les ressources appropriées
-'''''''''''''''''''''''''''''''''''
+Requesting appropriate resources
+''''''''''''''''''''''''''''''''
 
-Voici un script minimal pour une tâche parallèle utilisant un programme MPI :
+Here is a minimal script for a parallel job that uses an MPI program:
 
 .. code-block:: bash
     :emphasize-lines: 4-5,9
@@ -265,20 +250,17 @@ Voici un script minimal pour une tâche parallèle utilisant un programme MPI :
 
     srun ./mpi-prog
 
-Dans ce contexte, ``--ntasks`` réfère non pas à une tâche de calcul mais plutôt
-au nombre de processus à exécuter. Les programmes MPI utilisent de multiples
-processus.
+In this context, ``--ntasks`` is the number of processes to run. MPI programs
+use multiple processes.
 
-Les programmes MPI devraient être exécutés via la commande ``srun``. Cette
-dernière exécute le nombre de processus spécifié sur le ou les nœuds de calcul
-alloués à la tâche. La commande ``mpirun`` accomplit le même rôle et peut être
-utilisée pour tester un programme MPI sur nœud de connexion.
+MPI programs should be run via ``srun``. This command runs the specified number
+of processes on the compute node(s) allocated to the job. The ``mpirun`` command
+serves the same role and can be used to test an MPI program on a login node.
 
-
-Dans l’exemple ci-dessus, les 8 processus MPI peuvent être distribués sur un ou
-plusieurs nœuds de calcul, selon ce qui est disponible au moment où
-l’ordonnanceur alloue les ressources. Il est souvent préférable de regrouper les
-processus sur le plus petit nombre de nœuds possible :
+In the above example, the 8 MPI processes can be distributed on one or several
+compute nodes, depending on what is available when the scheduler allocates
+resources. It is often preferable to gather the processes on the smallest
+possible number of nodes:
 
 .. code-block:: bash
     :emphasize-lines: 4-5
@@ -294,70 +276,70 @@ processus sur le plus petit nombre de nœuds possible :
 
     srun ./mpi-prog
 
-Dans ce nouvel exemple, les 8 processus s’exécutent sur le même nœud de calcul.
-Cela évite la communication entre les nœuds, qui est plus lente que celle à
-l’intérieur d’un nœud, augmentant la performance de certains programmes MPI.
-Plus la communication inter-processus est importante, plus la distance entre les
-processus nuit à la performance.
+In this new example, the 8 processes run on the same compute node. This avoids
+inter-node communication, which is slower than intra-node, and thus increases
+the performance of some MPI programs. The more a program uses inter-process
+communication, the more its performance decreases as the distance between the
+processes increases.
 
 .. warning::
 
-    Une tâche MPI qui demande plus d’un nœud de calcul devrait occuper tous les
-    cœurs CPU de ces nœuds. Par exemple, sur une grappe de calcul dont les nœuds
-    ont chacun 8 cœurs, ces options seraient appropriées :
+    An MPI job that requests more than one compute node should use all the CPU
+    cores on these nodes. For instance, on a compute cluster where all nodes
+    have 8 cores, these options would be appropriate:
 
     .. code-block:: bash
 
         #SBATCH --nodes=2
         #SBATCH --ntasks-per-node=8
 
-    À l’inverse, avec les options suivantes, l’ordonnanceur aurait plus de
-    difficulté à allouer des ressources à la tâche et la performance pourrait
-    être moindre :
+    Conversely, the following options would make it more difficult for the
+    scheduler to allocate resources, and might also decrease performance:
 
     .. code-block:: bash
 
         #SBATCH --nodes=4
         #SBATCH --ntasks-per-node=4
 
-Exercice
+Exercise
 ''''''''
 
-**Objectifs**
+**Objectives**
 
-- Déterminer les options nécessaires pour une tâche MPI.
-- Évaluer le comportement d’un programme MPI à l’aide de ``top``.
+- Determine the necessary options for an MPI job.
+- Check the behaviour of an MPI program with ``top``.
 
 **Instructions**
 
-#. Allez dans le répertoire de l’exercice avec ``cd
+#. Go to the exercise directory with ``cd
    ~/cq-formation-cip201-main/lab/pi-mpi``.
-#. Compilez le programme ``pi`` avec la commande ``make``.
-#. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
-   Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
-   tâche MPI et demandez 2 cœurs CPU.
-#. Exécutez le programme en arrière-plan avec ``srun ./pi 10000000000 &`` (10
-   milliards de points, soit un suivi de 10 zéros).
-#. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
-   $USER`` et ``top -u $USER -H``.
+#. Compile the ``pi`` program with the ``make`` command.
+#. Start an interactive job with ``salloc [...] --time=00:10:00``.
+   Remplace ``[...]`` by the parallelism options necessary for an MPI program
+   and ask for 2 CPU cores.
+#. Run the program in the background with ``srun ./pi 10000000000 &`` (10
+   billion points, that is one followed by 10 zeros).
+#. While ``pi`` runs, check its CPU usage with ``top -u $USER`` et ``top -u
+   $USER -H``.
 
 .. note::
 
-    Ce programme est une version MPI de celui présenté lors de l’exercice sur
-    les programmes multi-fils : il calcule le nombre :math:`π` (pi) par une
-    méthode de Monte Carlo.
+    This is an MPI version of the program used in the exercise about
+    multi-threaded programs: it computes the number :math:`π` (pi) using a Monte
+    Carlo method.
 
 .. _para-nested:
 
-Parallélisme imbriqué
----------------------
+Nested parallelism
+------------------
 
-Certains programmes ont plusieurs niveaux de parallélisme imbriqués. Par
-exemple, un programme MPI peut créer de multiples fils d’exécution dans chacun
-de ses processus. Cette stratégie, dite hybride, nécessite de combiner les
-options de parallélisme MPI et multi-fils.
+Some programs have nested levels of parallelism. For instance, an MPI program
+can create multiple threads of execution inside each of its processes. This
+so-called hybrid strategy requires combining the parallelism options for MPI and
+multi-threading.
 
-Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
+Here is a minimal job script for a program that uses MPI and multi-threading via
+OpenMP:
 
 .. code-block:: bash
     :emphasize-lines: 4-6,10,12
@@ -375,9 +357,9 @@ Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
 
     srun ./mpi-prog
 
-Tel que discuté précédemment, il est souvent préférable de rassembler les
-processus MPI sur le plus petit nombre de nœuds possible. Avec un programme
-hybride MPI/multi-fils, cela peut être fait avec :
+As previously discussed, it is often preferable to gather the MPI processes on
+the smallest possible number of nodes. With a hybrid MPI/multi-threaded program,
+this can be done with:
 
 .. code-block:: bash
     :emphasize-lines: 4-5
@@ -396,8 +378,8 @@ hybride MPI/multi-fils, cela peut être fait avec :
 
     srun ./mpi-prog
 
-Dans ``top -u $USER``, un programme hybride MPI/multi-fils aura de multiples
-entrées, chacune avec une utilisation CPU de plus de 100 % :
+In ``top -u $USER``, a hybrid MPI/multi-threaded program has several entries,
+each with a CPU usage over 100 %:
 
 .. code-block:: console
     :emphasize-lines: 2-5
@@ -412,16 +394,15 @@ entrées, chacune avec une utilisation CPU de plus de 100 % :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Le parallélisme imbriqué n’est pas limité à la stratégie hybride MPI/multi-fils.
-Un autre cas commun est celui d’un programme multi-fils où chaque fil
-d’exécution crée lui-même d’autres fils. Cette stratégie nécessite de régler
-adéquatement le nombre de fils créés par chaque niveau de parallélisme. Par
-exemple, si 8 cœurs CPU sont alloués à une tâche qui utilise deux niveaux de
-parallélisme multi-fils imbriqués, le premier niveau pourrait créer 4 fils
-d’exécution et le second 2, pour un total qui correspond au nombre de cœurs
-(4 × 2 = 8). Par contre, si les deux niveaux créaient 4 fils, il y aurait plus
-de fils (4 × 4 = 16) que de cœurs, ce qui peut ralentir la tâche. Une telle
-situation peut être repérée avec ``top -u $USER -H`` :
+Nested parallelism is not limited to the MPI/multi-threading hybrid strategy.
+Another common case is that of a multi-threaded program where each thread of
+execution itself creates more threads. This strategy requires adequately setting
+the number of threads at each level of parallelism. For instance, if 8 CPU cores
+are allocated to a job that uses two levels of multi-threading parallelism, the
+first level could create 4 threads of execution and the second 2, for a total
+that matches the number of cores (4 × 2 = 8). However, if both levels created 4
+threads, there would be more threads (4 × 4 = 16) than cores, which could slow
+the job down. Such a situation can be spotted with ``top -u $USER -H``:
 
 .. code-block:: console
     :emphasize-lines: 2-17
@@ -448,47 +429,41 @@ situation peut être repérée avec ``top -u $USER -H`` :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Lorsque le nombre de fils d’exécution est supérieur au nombre de cœurs alloués à
-la tâche, chaque fil n’a pas nécessairement accès à la même quantité de temps
-CPU : certains fils progresseront plus rapidement, d’autres plus lentement, ce
-qui nuira à leur synchronisation. Puisque chaque cœur ne peut exécuter qu’un fil
-à la fois, il y aura alternance entre les fils : les cœurs sont surchargés. La
-solution la plus simple à ce problème est de désactiver un des niveaux de
-parallélisme.
+When the number of threads of execution is greater than the number of cores
+allocated to the job, the threads are not guaranteed access to the same amount
+of CPU time: some threads may progress faster than others, which impairs their
+synchronisation. In addition, since each core can only run a single thread at a
+time, threads will alternate: the cores are overloaded. The simplest solution to
+this problem is to disable one of the levels of parallelism.
 
 .. _para-others:
 
-Autres types de parallélisme
-----------------------------
+Other types of parallelism
+--------------------------
 
-Le parallélisme de données consiste à répéter une tâche sérielle ou parallèle
-avec différentes données d’entrées, par exemple des images, molécules ou
-séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
-réduire le temps de calcul nécessaire à cette tâche, le parallélisme de données
-vise à augmenter le débit de calcul en exécutant de multiples tâches
-simultanément. Nous convrirons ce sujet en détails dans l’atelier *Parallélisme
-de données sur les grappes* (CIP202).
+Data parallelism is repeating a serial or parallel job with different input
+data, such as images, molecules, or DNA sequences. While parallelism in a job
+aims to decrease that job’s computation time, data parallelism aims to increase
+computing throughput by running multiple jobs simultaneously. We cover this
+topic in details in another workshop, *Data parallelism on the clusters*
+(CIP202).
 
-Les processeurs graphiques (GPU) permettent des calculs massivement parallèles.
-Les calculs sur GPU étant très différents de ceux sur CPU présentés ici, ce
-sujet fera également l’objet d’un atelier séparé (à venir).
+Graphical processing units (GPU) enable massively parallel computations. Since
+GPU computing is very different from the CPU-based computing presented here, it
+will be the topic of a separate workshop (to be announced).
 
-La vectorisation est une technique de calcul parallèle qui utilise des
-instructions spécialisées du CPU pour répéter une opération mathématique sur de
-multiples données d’entrées en même temps (*single instruction, multiple data*,
-SIMD). Ce parallélisme n’implique pas de fils d’exécution ou de processus
-multiples. À la place, le programmeur ou le compilateur optimise le programme
-afin que les opérations les plus demandantes soient effectuées en parallèle
-(vectorisées) à l’aide d’instructions SIMD. (Voir la figure ci-dessous pour un
-exemple.)
+Vectorization is a parallel computing technique that uses specialised CPU
+instructions to repeat a mathematical operation on multiple input data at the
+same time (single instruction, multiple data, SIMD). This parallelism does not
+involve multiple processes or threads of execution. Instead, the programmer or
+the compiler optimises the program so that intensive operations are performed in
+parallel (vectorized) using SIMD. (See the figure below for an example.)
 
-.. figure:: ../../images/vectorization_fr.svg
+.. figure:: ../../images/vectorization_en.svg
 
-Les logiciels disponibles sur nos grappes ont été optimisés pour utiliser les
-instructions SIMD des CPU. Vous n’avez donc typiquement rien à faire pour
-bénéficier de ce parallélisme. Si vous compilez vous-même un programme,
-toutefois, il est possible d’ativer le support pour ces jeux d’instructions
-spécialisés et ainsi obtenir de meilleures performances. Nous vous suggérons de
-contacter notre `soutien technique
-<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ pour obtenir de
-l’aide.
+Software available on our clusters has been optimised to use SIMD. You therefore
+typically have nothing to do to take advantage of this parallelism. However, if
+you compile a program yourself, it is possible to optimise it with these
+specialised instruction sets to increase performance. We suggest to get in
+touch with our `technical support
+<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ for help.
