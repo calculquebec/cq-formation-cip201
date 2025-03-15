@@ -66,7 +66,7 @@ Monitoring jobs
 ---------------
 
 - ``squeue``: `to display jobs <https://slurm.schedmd.com/squeue.html>`_
-  actually managed by Slurm.
+  currently managed by Slurm.
 
   - ``-t pending``: only display pending jobs.
   - ``-t running``: only display active jobs.
