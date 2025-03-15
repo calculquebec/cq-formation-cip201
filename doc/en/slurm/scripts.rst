@@ -3,41 +3,39 @@ Job scripts
 
 `Français <../../fr/slurm/scripts.html>`_
 
-Un script de tâche est communément un script Bash destiné à l'ordonnanceur
-Slurm. On y retrouve :
+A job script is commonly a Bash script intended for the Slurm scheduler.
+It includes:
 
-#. Le `shebang <https://fr.wikipedia.org/wiki/Shebang>`_ en toute première
-   ligne. Par exemple : ``#!/bin/bash``.
-#. Les options ``#SBATCH`` en entête pour les besoins de la tâche. Ces
-   options seront lues par la commande de soumission de tâche
-   `sbatch <https://slurm.schedmd.com/sbatch.html>`_.
-#. `Chargement des modules <https://docs.alliancecan.ca/wiki/Utiliser_des_modules>`_
-   requis.
-#. Les commandes Bash qui seront exécutées automatiquement sur des processeurs
-   réservés pour la tâche.
+#. The `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`__ on the very
+   first line. For example: ``#!/bin/bash``.
+#. The ``#SBATCH`` options for the job. These options will be read by the
+   `sbatch <https://slurm.schedmd.com/sbatch.html>`__ job submission command.
+#. Loading required `modules
+   <https://docs.alliancecan.ca/wiki/Utiliser_des_modules/en>`__.
+#. Bash commands that will be executed automatically on CPU cores reserved for
+   the job.
 
-Voir les exemples de la documentation de l'Alliance :
+See examples from the Alliance documentation:
 
-- `Script simple <https://docs.alliancecan.ca/wiki/Running_jobs/fr#Soumettre_des_t%C3%A2ches_avec_sbatch>`_
-- `Tâche Python <https://docs.alliancecan.ca/wiki/Python/fr#Cr%C3%A9er_un_environnement_virtuel_dans_vos_t%C3%A2ches>`_
-- `Tâche R <https://docs.alliancecan.ca/wiki/R/fr#Interpr%C3%A9teur>`_
+- `Simple script <https://docs.alliancecan.ca/wiki/Running_jobs#Use_sbatch_to_submit_jobs>`__
+- `Python job <https://docs.alliancecan.ca/wiki/Python#Creating_virtual_environments_inside_of_your_jobs>`__
+- `R job <https://docs.alliancecan.ca/wiki/R#The_R_interpreter>`__
 
-Exercice en groupe
-------------------
+Exercise - Simple script
+------------------------
 
-#. Allez dans le répertoire de l’exercice avec
+#. Go to the exercise directory with
    ``cd ~/cq-formation-cip201-main/lab/script``.
-#. Dans le fichier ``simple.sh``, éditez l'entête d'options
-   ``#SBATCH`` selon les instructions qui s'y trouvent :
+#. In the ``simple.sh`` file, edit the ``#SBATCH`` options according to the
+   instructions there:
 
-   #. Demandez une quantité de mémoire.
-   #. Fixez un temps limite d'exécution.
+   #. Request an amount of memory.
+   #. Set a time limit for execution.
 
-   Note : l'ordonnanceur déterminera automatiquement le compte de calcul
-   ``def-sponsor00``.
+   Note: The scheduler will automatically select the ``def-sponsor00`` compute
+   account.
 
-#. Soumettez ce script de tâche au moyen de la commande ``sbatch``.
-#. Visualisez l'état de la tâches avec la commande ``sq``.
-#. Une fois la tâche terminée, voyez le contenu du fichier de sortie
-   (``slurm-<jobid>.out``) avec ``less`` (appuyez sur la touche
-   :kbd:`q` pour sortir).
+#. Submit this job script using the ``sbatch`` command.
+#. Monitor the job status with the ``sq`` command.
+#. Once the job is completed, see the contents of the output file
+   (``slurm-<jobid>.out``) with ``less`` (press :kbd:`q` to exit).

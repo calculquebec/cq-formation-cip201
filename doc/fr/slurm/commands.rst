@@ -10,19 +10,19 @@ Il existe plusieurs possibilités pour soumettre une tâche de calcul, mais la
 première méthode ci-dessous est à privilégier afin d'éviter d'attendre sur la
 ligne de commandes et pour éviter le gaspillage de temps de calcul.
 
-1. Via un script de tâche :
+#. Via un script de tâche :
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    sbatch [<options>] script.sh
+      sbatch [<options>] script.sh
 
-2. Via une tâche interactive sur le noeud de calcul :
+#. Via une tâche interactive sur le nœud de calcul :
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    salloc <options>
-    ./application arg1 arg2 ...
-    exit
+      salloc <options>
+      ./application arg1 arg2 ...
+      exit
 
 .. warning::
 
@@ -53,7 +53,7 @@ Principales options
   - Par défaut : ``1:0:0``, soit une heure.
 
 - ``--mem=<quantité>``, quantité de mémoire
-  `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+  `par nœud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
 
   - Unités :
 
@@ -66,23 +66,23 @@ Suivi de tâches
 ---------------
 
 - ``squeue`` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
-  actuellement gérées par slurm.
+  actuellement gérées par Slurm.
 
   - ``-t pending`` : afficher les tâches en attente.
   - ``-t running`` : afficher les tâches en cours.
   - ``-u $USER`` : afficher uniquement vos tâches.
 
 - ``sq`` : alias de ``squeue -u $USER``.
-- ``scontrol show job <jobid>`` : afficher le détail d'une tâche gérée
+- ``scontrol show job <jobid>`` : afficher les propriétés d'une tâche gérée
   par Slurm.
 - ``seff <jobid>`` : résumé des ressources utilisées.
 - ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
   complétées depuis minuit.
 
-  - ``-j,--jobs=<jobid...>`` : Affiche l’information pour une ou plusieurs tâches
+  - ``-j,--jobs=<jobid...>`` : affiche l’information pour une ou plusieurs tâches
     spécifiques.
-  - ``-o,--format=<field...>`` : Choisit les informations à afficher.
-  - ``-X,--allocations`` : Affiche seulement les allocations
+  - ``-o,--format=<field...>`` : choisit les informations à afficher.
+  - ``-X,--allocations`` : affiche seulement les allocations
     de ressources, pas les étapes de la tâche.
-  - ``-S,--starttime=<YYYY-MM-DD>`` : Démarre la recherche à une date précise.
-  - ``-E,--endtime=<YYYY-MM-DD>`` : Termine la recherche à une date précise.
+  - ``-S,--starttime=<YYYY-MM-DD>`` : démarre la recherche à une date précise.
+  - ``-E,--endtime=<YYYY-MM-DD>`` : termine la recherche à une date précise.

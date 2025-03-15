@@ -3,86 +3,86 @@ Commands
 
 `Français <../../fr/slurm/commands.html>`_
 
-Soumission de tâches
---------------------
+Submitting jobs
+---------------
 
-Il existe plusieurs possibilités pour soumettre une tâche de calcul, mais la
-première méthode ci-dessous est à privilégier afin d'éviter d'attendre sur la
-ligne de commandes et pour éviter le gaspillage de temps de calcul.
+There are several options for submitting a computational job, but the first
+method below is preferred to avoid waiting on the command line and to avoid
+wasting computation time.
 
-1. Via un script de tâche :
+#. Via a job script:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    sbatch [<options>] script.sh
+      sbatch [<options>] script.sh
 
-2. Via une tâche interactive sur le noeud de calcul :
+#. Via an interactive job on the compute node:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    salloc <options>
-    ./application arg1 arg2 ...
-    exit
+      salloc <options>
+      ./application arg1 arg2 ...
+      exit
 
 .. warning::
 
-    En mode interactif, les tâches sont limitées à un maximum de trois (3) à
-    huit (8) heures, selon la grappe.
+    In interactive mode, jobs are limited to a maximum of three (3) to eight
+    (8) hours, depending on the cluster.
 
-Principales options
-'''''''''''''''''''
+Main options
+''''''''''''
 
-- ``--account=<compte>`` :
-  `compte de calcul <https://slurm.schedmd.com/sbatch.html#OPT_account>`_.
+- ``--account=<account>``:
+  `compute account <https://slurm.schedmd.com/sbatch.html#OPT_account>`_.
 
-  - Sur les grappes nationales, les comptes ont la forme ``def-*``,
-    ``rrg-*``, ``rpp-*`` ou ``ctb-*``.
-  - Pour l'atelier, le compte sera ``def-sponsor00``.
+  - On the national clusters, the accounts have the form ``def-*``,
+    ``rrg-*``, ``rpp-*`` or ``ctb-*``.
+  - For the workshop, the account will be ``def-sponsor00``.
 
-- ``--job-name=<nom>`` :
-  `nom au choix <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`_
-  de la tâche de calcul. C'est très utile pour différencier vos différents
-  types de tâches.
+- ``--job-name=<name>``:
+  `name of your choice <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`_
+  for the job. This is very useful to differentiate your different types of
+  jobs.
 
-- ``--time=J-HH:MM`` ou ``--time=HH:MM:SS`` :
-  `limite de temps <https://slurm.schedmd.com/sbatch.html#OPT_time>`_
-  pour l'exécution de la tâche de calcul.
+- ``--time=D-HH:MM`` or ``--time=HH:MM:SS``:
+  `limit on the total run time
+  <https://slurm.schedmd.com/sbatch.html#OPT_time>`_ of the job.
 
-  - On peut spécifier des jours (``J``), des heures (``HH``), des
-    minutes (``MM``) et des secondes (``SS``).
-  - Par défaut : ``1:0:0``, soit une heure.
+  - You can specify days (``D``), hours (``HH``), minutes (``MM``) and seconds
+    (``SS``).
+  - By default: ``1:0:0``, or one hour.
 
-- ``--mem=<quantité>``, quantité de mémoire
-  `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+- ``--mem=<size>``, memory required `per node
+  <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
 
-  - Unités :
+  - Units:
 
-    - ``M`` (mébioctet = 1024K, unité par défaut)
-    - ``G`` (gibioctet = 1024M)
+    - ``M`` (mebibyte = 1024K, this is the default unit)
+    - ``G`` (gibibyte = 1024M)
 
-  - Par défaut : ``256M``
+  - By default: ``256M``
 
-Suivi de tâches
+Monitoring jobs
 ---------------
 
-- ``squeue`` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
-  actuellement gérées par slurm.
+- ``squeue``: `to display jobs <https://slurm.schedmd.com/squeue.html>`_
+  currently managed by Slurm.
 
-  - ``-t pending`` : afficher les tâches en attente.
-  - ``-t running`` : afficher les tâches en cours.
-  - ``-u $USER`` : afficher uniquement vos tâches.
+  - ``-t pending``: only display pending jobs.
+  - ``-t running``: only display active jobs.
+  - ``-u $USER``: only display your jobs.
 
-- ``sq`` : alias de ``squeue -u $USER``.
-- ``scontrol show job <jobid>`` : afficher le détail d'une tâche gérée
-  par Slurm.
-- ``seff <jobid>`` : résumé des ressources utilisées.
-- ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
-  complétées depuis minuit.
+- ``sq``: alias of ``squeue -u $USER``.
+- ``scontrol show job <jobid>``: display the properties of a job managed by
+  Slurm.
+- ``seff <jobid>``: summary of resources used.
+- ``sacct``: `the details of jobs <https://slurm.schedmd.com/sacct.html>`_
+  completed since midnight.
 
-  - ``-j,--jobs=<jobid...>`` : Affiche l’information pour une ou plusieurs tâches
-    spécifiques.
-  - ``-o,--format=<field...>`` : Choisit les informations à afficher.
-  - ``-X,--allocations`` : Affiche seulement les allocations
-    de ressources, pas les étapes de la tâche.
-  - ``-S,--starttime=<YYYY-MM-DD>`` : Démarre la recherche à une date précise.
-  - ``-E,--endtime=<YYYY-MM-DD>`` : Termine la recherche à une date précise.
+  - ``-j,--jobs=<jobid...>``: display the information for one or more specific
+    jobs.
+  - ``-o,--format=<field...>``: only display specific fields of information.
+  - ``-X,--allocations``: only display statistics relevant to the job
+    allocation itself, not job steps.
+  - ``-S,--starttime=<YYYY-MM-DD>``: search jobs from a precise date.
+  - ``-E,--endtime=<YYYY-MM-DD>``: search jobs until a precise date.
