@@ -7,12 +7,6 @@ CPU cores are a resource very different from time or memory. For parallel
 jobs, one must of course choose a number of cores. However, for both serial and
 parallel tasks, it is important to verify that the CPU is properly utilised.
 
-..
-    Les cœurs CPU sont une ressource analysée diféremment du temps ou de la
-    mémoire. Pour les tâches parallèles, il faut bien sûr choisir un nombre de
-    cœurs. Toutefois, aussi bien pour les tâches sérielles que parallèles, il
-    importe de vérifier que le CPU est bien utilisé.
-
 Why check CPU usage?
 --------------------
 
@@ -22,14 +16,6 @@ Why check CPU usage?
 - If this wait time is important, the CPU cores are underused.
 - Fixing this problem accelerates your program and avoids wasting resources,
   increasing your tasks’ priority.
-
-..
-    - Les cœurs CPU alloués à une tâche ne sont pas constamment en train de
-      calculer : ils attendent parfois d’obtenir les données d’un fichier, une
-      réponse à une communication réseau, etc.
-    - Si ce temps d’attente est important, les cœurs CPU sont sous-utilisés.
-    - Régler ce problème accélère votre programme et évite le gaspillage de
-      ressources, augmentant la priorité de vos tâches.
 
 Checking CPU usage
 ------------------
@@ -57,23 +43,12 @@ time* is the real elapsed time. This job’s CPU usage is 70.71 %. This means t
 close to 30 % of the available CPU time was unused! ``seff`` computes the usage
 (:math:`U`) for :math:`n` cores as:
 
-..
-    Où *CPU Utilized* est le temps CPU total utilisé par tous les cœurs et *Job
-    Wall-clock time* le temps réel. L’utilisation CPU de cette tâche est de
-    70,71 %. Cela signifie que près de 30 % du temps CPU potentiel a été
-    inutilisé ! ``seff`` calcule l’utilisation (:math:`U`) pour :math:`n` cœurs
-    CPU ainsi :
-
 .. math::
 
     U = \frac{t_\text{CPU}}{t_\text{real}\;n}
 
 The raw values needed for this calculation can be queried with ``sacct``.
 For instance:
-
-..
-    Les valeurs brutes nécessaires à ce calcul peuvent aussi être affichés
-    avec ``sacct``. Par exemple :
 
 .. code-block:: console
     :emphasize-lines: 1,4
@@ -94,26 +69,11 @@ A CPU usage lower than 90 % is a red flag. Does your program spend a lot of tim
 reading files rather than computing? Is there inefficient communication between
 the CPU cores allocated to a parallel job? To investigate:
 
-..
-    Si l’utilisation CPU est inférieure à 90 %, il convient de se poser des
-    questions. Votre programme passe-t-il beaucoup de temps à lire des fichiers
-    plutôt qu’à calculer ? Y a-t-il une communication inefficace entre les cœurs
-    CPU alloués à une tâche parallèle ? Pour le vérifier :
-
 * Reduce the number of CPU cores if the job is parallel.
 * Optimise storage access by reading files from `node-local storage
   <https://docs.alliancecan.ca/wiki/Using_node-local_storage/en>`_ rather than
   a network filesystem (``/home``, ``/project``, ``/scratch``). Your jobs
   have access to a temporary local directory in ``$SLURM_TMPDIR``.
-
-..
-    * Réduisez le nombre de cœurs CPU s’il s’agit d’une tâche parallèle.
-    * Optimisez les accès au stockage en lisant les fichiers à partir du
-      `stockage local sur les nœuds de calcul
-      <https://docs.alliancecan.ca/wiki/Using_node-local_storage/fr>`_ plutôt
-      qu’à partir d’un système de fichiers réseau (``/home``, ``/project``,
-      ``/scratch``). Vos tâches ont accès à un répertoire temporaire local dans
-      ``$SLURM_TMPDIR``.
 
 .. warning::
 
@@ -121,12 +81,6 @@ the CPU cores allocated to a parallel job? To investigate:
     measure has nothing to do with a parallel program’s *efficiency*, which
     relates to its :ref:`scalability <scalability>`, as discussed in later
     sections.
-
-    ..
-        Dans la sortie de ``seff``, l’utilisation CPU est appelée *CPU
-        Efficiency*. Toutefois, cette mesure est distincte de l’*efficacité*
-        d’un programme parallèle, qui est une mesure de sa :ref:`scalabilité
-        <scalability>`, tel que discuté dans les sections suivantes.
 
 Exercise
 ''''''''
@@ -160,33 +114,14 @@ using two CPU cores rather than one should, ideally, halve the computing time,
 while using four should reduce that time to 1/4 of that required with a single
 core.
 
-..
-    La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
-    capacité d’un programme parallèle à réduire le temps de calcul à mesure
-    qu’il utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux
-    cœurs CPU plutôt qu’un seul réduirait de moitié le temps de calcul et en
-    utiliser quatre réduirait ce temps à 1/4 du temps requis avec un seul cœur.
-
 In reality, however, parallel programs have limitations. As they use more cores,
 the gain in time diminishes and, eventually, becomes negligible. Some programs
 and algorithms are more scalable than others. In addition, scalability varies as
 a function of certain parameters, such as input data size.
 
-..
-    En réalité, toutefois, les programmes parallèles ont leurs limites. À mesure
-    que l’on utilise plus de cœurs CPU, le gain de temps diminue et devient
-    éventuellement négligeable. Certains programmes et algorithmes ont une
-    meilleure scalabilité que d’autres. De plus, la scalabilité varie en
-    fonction de certains paramètres tels que la taille des données d’entrée.
-
 Scalability is quantified with two quantities: speedup and efficiency. For
 :math:`n` CPU cores, speedup (:math:`S`) is the ratio of serial computing time
 to parallel computing time:
-
-..
-    On quantifie la scalabilité avec deux grandeurs : l’accélération et
-    l’efficacité. Pour :math:`n` cœurs CPU, l’accélération (*speedup*, :math:`S`)
-    est le ratio du temps d’exécution sériel sur le temps d’exécution parallèle :
 
 .. math::
 
@@ -196,16 +131,7 @@ For instance, if a calculation requires 10 minutes with 1 CPU cores and 6
 minutes with 2, acceleration is 1.67. It is a measure of “how many times faster
 the program is”.
 
-..
-    Par exemple, si un calcul requiert 10 minutes avec 1 cœur CPU et 6 minutes
-    avec 2, l’accélaration est de 1,67. C’est donc une mesure de « combien de
-    fois plus rapide est le programme ».
-
 Efficiency (:math:`E`) is the ratio of speedup to number of CPU cores:
-
-..
-    L’efficacité (*efficiency*, :math:`E`) est le ratio de l’accélération sur le
-    nombre de cœurs CPU :
 
 .. math::
 
@@ -216,19 +142,8 @@ efficiency (83.5 %). An efficiency of 100 % is called linear scaling. When the
 efficiency drops under 75 %, the number of CPU cores should typically be
 reduced.
 
-..
-    Poursuivant l’exemple ci-dessus, une accélération de 1,67 pour 2 cœurs CPU
-    donne une efficacité de 0,835 (83,5 %). Une efficacité de 100 % est
-    qualifiée de linéaire. Lorsque l’efficacité tombe sous 75 %, on devrait
-    généralement diminuer le nombre de cœurs utilisés.
-
 In the following example of a program’s scalability (see figure below), there is
 an inflection point at 256 cores: efficiency drops rapidly past this point.
-
-..
-    Dans cet exemple de scalabilité d’un programme parallèle (voir figure
-    ci-dessous), on remarque un point d’inflection à 256 cœurs : l’efficacité
-    diminue rapidement passé ce point.
 
 .. figure:: ../../images/gmx-scaling_en.svg
 
@@ -238,16 +153,6 @@ performance simply having the inverse dimension (:math:`t^{-1}`). Performance
 is expressed in a problem-specific unit: steps per second, number of images or
 molecules processed per hour, simulated trajectory length per day, etc. Speedup
 can be calculated from performance rather than computing time:
-
-..
-    Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps
-    de calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
-    équivalentes, la performance ayant simplement une dimension inverse
-    (:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
-    problème : étapes de calcul par seconde, nombre d’images ou de molécules
-    traitées par heure, durée de trajectoire simulée par jour, etc.
-    L’accélération peut être calculée à partir de la performance plutôt que du
-    temps de calcul :
 
 .. math::
 
