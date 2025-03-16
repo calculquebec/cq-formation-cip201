@@ -51,8 +51,8 @@ Cherchez les mots-clés suivants dans la documentation de votre programme :
 - OpenMP : un standard pour la programmation multi-fils
 - Intel MKL threads : une bibliothèque numérique supportant le parallélisme
   multi-fils
-- Intel Thread Building Blocks (TBB) : une bibliothèque pour la programmation
-  multi-fils
+- Intel Threading Building Blocks (TBB) : une bibliothèque pour la
+  programmation multi-fils
 - pthreads : une bibliothèque pour la programmation multi-fils
 - *Shared memory* : réfère à la stratégie de communication utilisée
   dans les programmes multi-fils
