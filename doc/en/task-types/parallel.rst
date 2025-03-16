@@ -21,7 +21,7 @@ When you use a parallel program for the first time on our clusters, check the
 <https://docs.alliancecan.ca/wiki/Technical_documentation/en>`_ before anything
 else. We explain how to run a variety of scientific programs, including job
 script examples. Do not hesitate to contact our `technical support
-<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ if you have any
+<https://docs.alliancecan.ca/wiki/Technical_support>`__ if you have any
 questions.
 
 .. _para-multi-threading:
@@ -47,7 +47,8 @@ Look for these keywords in your program’s documentation:
 - Multi-threading
 - OpenMP: a standard for multi-threaded programming
 - Intel MKL threads: a numerical library with support for multi-threading
-- Intel Thread Building Blocks (TBB): a library for multi-threaded programming
+- Intel Threading Building Blocks (TBB): a library for multi-threaded
+  programming
 - pthreads: a library for multi-threaded programming
 - Shared memory: refers to the communication strategy used by multi-threaded
   programs
@@ -59,7 +60,7 @@ shows a CPU usage over 100 % (around 100 % times the number of cores used):
 .. code-block:: console
     :emphasize-lines: 2
 
-      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
     65829 alice     20   0   20272   6896   3296 R 796,1   0,0   1:39.15 mt-prog
     66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
     64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
@@ -72,7 +73,7 @@ entry for each thread of execution:
 .. code-block:: console
     :emphasize-lines: 2-9
 
-      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
     65829 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
     65830 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
     65831 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
@@ -146,7 +147,7 @@ Exercise
 #. Go to the exercise directory with ``cd
    ~/cq-formation-cip201-main/lab/pi-multi-threaded``.
 #. Compile the ``pi`` program with the ``make`` command.
-#. Start an interactive job with ``salloc [...] --time=00:10:00``. Remplace
+#. Start an interactive job with ``salloc [...] --time=00:10:00``. Replace
    ``[...]`` by the parallelism options necessary for a multi-threaded job and
    ask for 2 CPU cores.
 #. Run the program in the background with ``./pi 10000000000 &`` (10
@@ -218,7 +219,7 @@ each with a CPU usage close to 100 % (one entry for each process):
 .. code-block:: console
     :emphasize-lines: 2-9
 
-      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
     65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
     65025 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
     65027 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
@@ -315,11 +316,11 @@ Exercise
    ~/cq-formation-cip201-main/lab/pi-mpi``.
 #. Compile the ``pi`` program with the ``make`` command.
 #. Start an interactive job with ``salloc [...] --time=00:10:00``.
-   Remplace ``[...]`` by the parallelism options necessary for an MPI program
+   Replace ``[...]`` by the parallelism options necessary for an MPI program
    and ask for 2 CPU cores.
 #. Run the program in the background with ``srun ./pi 10000000000 &`` (10
    billion points, that is one followed by 10 zeros).
-#. While ``pi`` runs, check its CPU usage with ``top -u $USER`` et ``top -u
+#. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
 
 .. note::
@@ -384,7 +385,7 @@ each with a CPU usage over 100 %:
 .. code-block:: console
     :emphasize-lines: 2-5
 
-      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
     65021 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog
     65025 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog
     65027 alice     20   0   20272   6896   3296 R 199,9   0,0   1:39.15 hyb-prog
@@ -407,7 +408,7 @@ the job down. Such a situation can be spotted with ``top -u $USER -H``:
 .. code-block:: console
     :emphasize-lines: 2-17
 
-      PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
     65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
     65022 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
     65023 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
@@ -466,4 +467,4 @@ typically have nothing to do to take advantage of this parallelism. However, if
 you compile a program yourself, it is possible to optimise it with these
 specialised instruction sets to increase performance. We suggest to get in
 touch with our `technical support
-<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ for help.
+<https://docs.alliancecan.ca/wiki/Technical_support>`__ for help.
