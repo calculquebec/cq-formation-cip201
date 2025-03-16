@@ -3,127 +3,119 @@ Time
 
 `Français <../../fr/resources/time.html>`_
 
-Pourquoi se fixer une limite de temps?
---------------------------------------
+Why set a time limit?
+---------------------
 
-- Pour des fins de maintenance, chaque grappe nationale impose une durée
-  maximale aux tâches, typiquement de sept (7) jours, sauf exception.
-- Cependant, plus les tâches sont longues, plus elles s'exposent à une
-  défaillance matérielle.
+- To facilitate their maintenance, all the national clusters set a maximum time
+  limit for jobs, typically seven days (with exceptions).
+- The longer a job runs, the more likely it is to be interrupted, such as by a
+  hardware failure.
 
-  - `Les points de contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`_
-    permettent de s'en protéger et même de découper le travail en plusieurs
-    tâches de calcul successives.
+  - `Checkpoints <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`_
+    protect against this issue and also allow splitting a large job over many
+    smaller, successive ones.
 
-- En fait, la plupart des tâches se terminent en quelques heures.
-- Par conséquent,
-  `la politique d'ordonnancement <https://docs.alliancecan.ca/wiki/Job_scheduling_policies/fr#Pourcentages_des_n%C5%93uds_disponibles>`_
-  rend davantage de nœuds disponibles pour les tâches courtes.
+- Most jobs finish in a matter of hours.
+- Consequently, our `scheduling policies
+  <https://docs.alliancecan.ca/wiki/Job_scheduling_policies#Percentage_of_the_nodes_you_have_access_to>`_
+  make more nodes available for short jobs.
+  
+.. figure:: ../../images/partitions_en.svg
 
-.. figure:: ../../images/partitions_fr.svg
+- Your jobs’ wait time depends on how many nodes are eligible to serve them
+  according to the time you requested.
 
-- Selon le nombre de nœuds disponibles acceptant la durée de votre tâche,
-  cette dernière attendra dans la file plus ou moins longtemps.
+In conclusion, **it is in your best interest to ask only for the computing time
+you actually need**, with of course a safety margin (such as 20 % of the
+expected time).
 
-En somme, **vous avez tout intérêt à ne demander que le temps de calcul
-nécessaire**, avec bien sûr une certaine marge de sécurité (par exemple,
-ajouter 20% sur le temps prévu).
+Assessing computing time using your computer
+--------------------------------------------
 
-Déterminer le temps de calcul à partir de votre ordinateur
-----------------------------------------------------------
+When you guess a time based on your experience with a software on your
+personal computer, you need to take these factors into account:
 
-Si vous vous basez sur votre expérience avec le logiciel sur votre ordinateur
-personnel, il y a différents facteurs à considérer :
+#. Your **processor**’s speed: the CPU cores on the compute cluster are not
+   necessarily faster than those on your computer.
+#. Your computer’s **memory** speed.
+#. Your computer’s **storage** speed when reading and writing data.
 
-#. La vitesse de votre **processeur** : les coeurs CPU de la grappe de calcul
-   ne sont pas nécessairement plus rapides que ceux de votre ordinateur.
-#. La vitesse de la **mémoire** de votre ordinateur.
-#. La vitesse du **stockage** pour la lecture et l'écriture des données.
+For a similar calculation on the cluster, a good strategy is to **ask for twice
+the time measured on your computer, then adjust as needed**.
 
-À problème égal, il vaut mieux **demander initialement à Slurm le double du
-temps mesuré localement et ajuster par la suite**.
+Checking the computing time on the cluster
+------------------------------------------
 
-Obtenir le temps de calcul sur la grappe
-----------------------------------------
+- If you know the id of the completed job, use ``seff <jobid>`` or ``sacct -j
+  <jobid> -o JobID,JobName,Elapsed``.
 
-- Si on connaît le numéro de la tâche terminée, on peut utiliser la commande
-  ``seff <jobid>`` ou encore
-  ``sacct -j <jobid> -o JobID,JobName,Elapsed``.
+  - ``Elapsed`` : elapsed time between the start and the end of the job.
+  - See
+    `our documentation <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`_.
 
-  - ``Elapsed`` : temps écoulé entre le début et la fin de la tâche.
-  - Voir la
-    `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`_.
+- If you do not know the job id, list your recent jobs with ``sacct -X``.
 
-- Si on ne connaît pas le numéro de tâche, on peut lister nos dernières tâches
-  avec ``sacct -X``.
+  - Option ``-X,--allocations`` filters the list to show only resource
+    allocations as opposed to job steps (which we will see in a later chapter).
+  - To start the search from an `earlier date
+    <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_: ``-S <YYYY-MM-DD>``
+    or ``--starttime=<YYYY-MM-DD>``.
+  - To end the search after a `specific date
+    <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_: ``-E <YYYY-MM-DD>`` or
+    ``--endtime=<YYYY-MM-DD>``.
 
-  - L’option ``-X,--allocations`` filtre la liste pour n’afficher que les
-    allocations de ressources, pas les étapes (que nous verrons dans un chapitre
-    subséquent).
-  - Pour démarrer la recherche à partir d'une
-    `date antérieure <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_
-    à aujoud'hui : ``-S <YYYY-MM-DD>`` ou ``--starttime=<YYYY-MM-DD>``.
-  - Pour limiter la recherche jusqu'à une
-    `certaine date <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_
-    : ``-E <YYYY-MM-DD>`` ou ``--endtime=<YYYY-MM-DD>``.
-
-Exercice
+Exercise
 ''''''''
 
-#. Affichez la liste des dernières tâches avec ``sacct -X``.
-#. Essayez la commande ``seff <jobid>`` pour l'une d'entre elles afin de
-   voir le temps écoulé mesuré.
-#. Voyez le temps écoulé avec la commande
+#. List your recent jobs with ``sacct -X``.
+#. Try ``seff <jobid>`` for one of these jobs to check the elapsed time.
+#. Check the elapsed time with
    ``sacct -j <jobid> -o JobID,JobName,Elapsed``.
 
-Estimer le temps requis pour un plus grand calcul
--------------------------------------------------
+Estimating the time required for a larger calculation
+-----------------------------------------------------
 
-L'algorithme principal de certains programmes sont d'ordre :
+A program’s main algorithm has a certain complexity order:
 
-- linéaire - :math:`O(n)`, ce qui veut dire qu'une quantité **2x** plus élevée
-  de données à traiter se traduit en un temps de calcul **2x** plus long.
-- quadratique - :math:`O(n^2)`, donc une dimension :math:`n` **2x** plus grande
-  cause un temps **4x** plus long.
-- cubique - :math:`O(n^3)`, donc une dimension :math:`n` **2x** plus grande
-  cause un temps **8x** plus long.
-- etc.
+- Linear, :math:`O(n)`, meaning that processing **2x** the amount of data
+  (:math:`n`) requires **2x** the time.
+- Quadratic, :math:`O(n^2)`, meaning that processing **2x** :math:`n` requires
+  **4x** the time.
+- Cubic, :math:`O(n^3)`, meaning that processing **2x** :math:`n` requires
+  **8x** the time.
+- Etc.
 
-Empiriquement, il est possible d'observer la tendance d'un programme traitant
-différentes quantités de données. Pour mesurer le temps de chaque exécution,
-on peut utiliser l'outil ``time -p`` au début de la ligne de commande. Par
-exemple :
+A program’s trend with regards to processing different amounts data can be
+verified empirically. To measure execution time, a command can be prefixed
+with ``time -p``:
 
 .. code-block::
 
-    time -p ./programme argument1 ...
+    time -p ./prog arg1 ...
 
-Une fois le programme terminé, ``time`` affiche trois valeurs de temps en
-secondes :
+Once ``prog`` has finished, ``time`` displays three time values in seconds:
 
-- ``real`` : temps réel, **c'est le temps à considérer**.
-- ``user`` : temps total de calcul effectif sur les coeurs CPU.
-- ``sys`` : temps passé dans les opérations système (accès à un fichier, par
-  exemple)
+- ``real``: the actual elapsed time, **this is the one to consider**.
+- ``user``: the effective time ``prog`` used the CPU cores.
+- ``sys``: the time spent in operating system calls (such as accessing a file).
 
-Pour cet atelier, on s'intéressera uniquement au temps ``real``.
+In this workshop, we will only use the ``real`` time.
 
 Exercice
 ''''''''
 
-Parmi les
-`algorithmes de tri <https://fr.wikipedia.org/wiki/Algorithme_de_tri#Comparaison_des_algorithmes>`_
-de :math:`n` valeurs, certains algorithmes plus intuitifs, comme trier des
-cartes à jouer, sont d'ordre :math:`O(n^2)`, alors que les plus sophistiqués
-sont d'ordre :math:`O(n \log(n))`, et donc beaucoup plus rapides lorsque la
-quantité de données augmente.
+`Sorting algorithms <https://en.wikipedia.org/wiki/Sorting_algorithm>`_ have
+different complexity orders. If :math:`n` is the number of values to sort, some
+algorithms, such as how we intuitively sort playing cards, have an
+:math:`O(n^2)` order, while others have an :math:`O(n\log(n))` order and are
+thus much faster as the amount of data increases.
 
-#. Allez dans le répertoire de l’exercice avec
+#. Go to the exercise directory with
    ``cd ~/cq-formation-cip201-main/lab/sort``.
-#. Compilez les programmes ``bubble`` et ``quick`` avec la commande ``make``.
-#. Éditez le fichier ``test.sh`` de sorte à ajouter ``time -p`` au début des
-   commmandes ``./bubble`` et ``./quick``.
-#. Soumettez une tâche avec le script ``test.sh``.
-#. Une fois le calcul terminé, inspectez les temps ``real`` mesurés en fonction
-   de l'algorithme de tri et en fonction du nombre d'éléments entre parenthèses.
-   Ces résultats se trouvent dans le fichier ``slurm-<jobid>.out``.
+#. Compile the ``bubble`` and ``quick`` programs with the ``make`` command.
+#. Edit ``test.sh`` to add ``time -p`` before the ``./bubble`` and ``./quick``
+   commands.
+#. Submit ``test.sh`` as a job.
+#. Once the job has completed, inspect the ``real`` time values measured for
+   both sorting algorithms and different amounts of data (in parenthesis). These
+   results with be in the output file ``slurm-<jobid>.out``.

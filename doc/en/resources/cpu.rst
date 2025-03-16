@@ -3,26 +3,38 @@ CPU cores
 
 `Français <../../fr/resources/cpu.html>`_
 
-Les cœurs CPU sont une ressource analysée diféremment du temps ou de la mémoire.
-Pour les tâches parallèles, il faut bien sûr choisir un nombre de cœurs.
-Toutefois, aussi bien pour les tâches sérielles que parallèles, il importe de
-vérifier que le CPU est bien utilisé.
+CPU cores are a resource very different from time or memory. For parallel
+jobs, one must of course choose a number of cores. However, for both serial and
+parallel tasks, it is important to verify that the CPU is properly utilised.
 
-Pourquoi vérifier l’utilisation du CPU ?
-----------------------------------------
+..
+    Les cœurs CPU sont une ressource analysée diféremment du temps ou de la
+    mémoire. Pour les tâches parallèles, il faut bien sûr choisir un nombre de
+    cœurs. Toutefois, aussi bien pour les tâches sérielles que parallèles, il
+    importe de vérifier que le CPU est bien utilisé.
 
-- Les cœurs CPU alloués à une tâche ne sont pas constamment en train de
-  calculer : ils attendent parfois d’obtenir les données d’un fichier, une
-  réponse à une communication réseau, etc.
-- Si ce temps d’attente est important, les cœurs CPU sont sous-utilisés.
-- Régler ce problème accélère votre programme et évite le gaspillage de
-  ressources, augmentant la priorité de vos tâches.
+Why check CPU usage?
+--------------------
 
-Vérifier l’utilisation du CPU
------------------------------
+- The CPU cores allocated to a job are not constantly performing computations:
+  they are sometimes waiting for data from a file, for a reply to a network
+  communication, etc.
+- If this wait time is important, the CPU cores are underused.
+- Fixing this problem accelerates your program and avoids wasting resources,
+  increasing your tasks’ priority.
 
-L’utilisation CPU d’une tâche terminée peut être affichée avec ``seff``. Par
-exemple :
+..
+    - Les cœurs CPU alloués à une tâche ne sont pas constamment en train de
+      calculer : ils attendent parfois d’obtenir les données d’un fichier, une
+      réponse à une communication réseau, etc.
+    - Si ce temps d’attente est important, les cœurs CPU sont sous-utilisés.
+    - Régler ce problème accélère votre programme et évite le gaspillage de
+      ressources, augmentant la priorité de vos tâches.
+
+Checking CPU usage
+------------------
+
+The CPU usage in a completed job can be checked with ``seff``. For instance:
 
 .. code-block:: console
     :emphasize-lines: 1,6-10
@@ -40,17 +52,28 @@ exemple :
     Memory Utilized: 270.59 MB
     Memory Efficiency: 8.81% of 3.00 GB
 
-Où *CPU Utilized* est le temps CPU total utilisé par tous les cœurs et *Job
-Wall-clock time* le temps réel. L’utilisation CPU de cette tâche est de 70,71 %.
-Cela signifie que près de 30 % du temps CPU potentiel a été inutilisé ! ``seff``
-calcule l’utilisation (:math:`U`) pour :math:`n` cœurs CPU ainsi :
+Where *CPU Utilized* is the total CPU time used by all cores and *Job Wall-clock
+time* is the real elapsed time. This job’s CPU usage is 70.71 %. This means that
+close to 30 % of the available CPU time was unused! ``seff`` computes the usage
+(:math:`U`) for :math:`n` cores as:
+
+..
+    Où *CPU Utilized* est le temps CPU total utilisé par tous les cœurs et *Job
+    Wall-clock time* le temps réel. L’utilisation CPU de cette tâche est de
+    70,71 %. Cela signifie que près de 30 % du temps CPU potentiel a été
+    inutilisé ! ``seff`` calcule l’utilisation (:math:`U`) pour :math:`n` cœurs
+    CPU ainsi :
 
 .. math::
 
-    U = \frac{t_\text{CPU}}{t_\text{réel}\;n}
+    U = \frac{t_\text{CPU}}{t_\text{real}\;n}
 
-Les valeurs brutes nécessaires à ce calcul peuvent aussi être affichés
-avec ``sacct``. Par exemple :
+The raw values needed for this calculation can be queried with ``sacct``.
+For instance:
+
+..
+    Les valeurs brutes nécessaires à ce calcul peuvent aussi être affichés
+    avec ``sacct``. Par exemple :
 
 .. code-block:: console
     :emphasize-lines: 1,4
@@ -65,201 +88,255 @@ avec ``sacct``. Par exemple :
 
 .. note::
 
-    Les caractères ``%15`` sont utilisés pour contrôler la largeur de la
-    colonne.
+    The ``%15`` characters set the column’s width.
 
-Si l’utilisation CPU est inférieure à 90 %, il convient de se poser des
-questions. Votre programme passe-t-il beaucoup de temps à lire des fichiers
-plutôt qu’à calculer ? Y a-t-il une communication inefficace entre les cœurs CPU
-alloués à une tâche parallèle ? Pour le vérifier :
+A CPU usage lower than 90 % is a red flag. Does your program spend a lot of time
+reading files rather than computing? Is there inefficient communication between
+the CPU cores allocated to a parallel job? To investigate:
 
-* Réduisez le nombre de cœurs CPU s’il s’agit d’une tâche parallèle.
-* Optimisez les accès au stockage en lisant les fichiers à partir du `stockage
-  local sur les nœuds de calcul
-  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/fr>`_ plutôt qu’à
-  partir d’un système de fichiers réseau (``/home``, ``/project``,
-  ``/scratch``). Vos tâches ont accès à un répertoire temporaire local dans
-  ``$SLURM_TMPDIR``.
+..
+    Si l’utilisation CPU est inférieure à 90 %, il convient de se poser des
+    questions. Votre programme passe-t-il beaucoup de temps à lire des fichiers
+    plutôt qu’à calculer ? Y a-t-il une communication inefficace entre les cœurs
+    CPU alloués à une tâche parallèle ? Pour le vérifier :
+
+* Reduce the number of CPU cores if the job is parallel.
+* Optimise storage access by reading files from `node-local storage
+  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/en>`_ rather than
+  a network filesystem (``/home``, ``/project``, ``/scratch``). Your jobs
+  have access to a temporary local directory in ``$SLURM_TMPDIR``.
+
+..
+    * Réduisez le nombre de cœurs CPU s’il s’agit d’une tâche parallèle.
+    * Optimisez les accès au stockage en lisant les fichiers à partir du
+      `stockage local sur les nœuds de calcul
+      <https://docs.alliancecan.ca/wiki/Using_node-local_storage/fr>`_ plutôt
+      qu’à partir d’un système de fichiers réseau (``/home``, ``/project``,
+      ``/scratch``). Vos tâches ont accès à un répertoire temporaire local dans
+      ``$SLURM_TMPDIR``.
 
 .. warning::
 
-    Dans la sortie de ``seff``, l’utilisation CPU est appelée *CPU Efficiency*.
-    Toutefois, cette mesure est distincte de l’*efficacité* d’un programme
-    parallèle, qui est une mesure de sa :ref:`scalabilité <scalability>`, tel
-    que discuté dans les sections suivantes.
+    In ``seff``’s output, CPU usage is called *CPU Efficiency*. However, this
+    measure has nothing to do with a parallel program’s *efficiency*, which
+    relates to its :ref:`scalability <scalability>`, as discussed in later
+    sections.
 
-Exercice
+    ..
+        Dans la sortie de ``seff``, l’utilisation CPU est appelée *CPU
+        Efficiency*. Toutefois, cette mesure est distincte de l’*efficacité*
+        d’un programme parallèle, qui est une mesure de sa :ref:`scalabilité
+        <scalability>`, tel que discuté dans les sections suivantes.
+
+Exercise
 ''''''''
 
-#. Affichez la liste de vos tâches avec ``sacct -X``.
-#. Essayez la commande ``seff <jobid>`` pour l’une d'entre elles et vérifiez
-   l’utilisation CPU.
-#. Essayez ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` pour la
-   même tâche.
+#. List your recent jobs with ``sacct -X``.
+#. Try ``seff <jobid>`` for one of these jobs and check its CPU usage.
+#. Try ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` for the same
+   task.
 
-Pourquoi optimiser le nombre de cœurs CPU ?
--------------------------------------------
+Why optimise the number of CPU cores?
+-------------------------------------
 
-- Votre programme parallèle se terminera plus rapidement si plus de cœurs CPU
-  sont alloués à la tâche.
-- La performance d’un programme n’augmente toutefois pas indéfiniment avec le
-  nombre de cœurs.
-- En outre, les tâches qui demandent plus de cœurs attentent davantage dans la
-  file et consomment plus de ressources, diminuant la priorité de vos tâches.
-- Un nombre optimal de cœurs CPU balance ces effets opposés, minimisant le temps
-  total (attente et calcul) pour accomplir vos tâches et évitant le gaspillage
-  de ressources.
+- Your parallel program will compute faster if more CPU cores are allocated to
+  the job.
+- However, the performance of a parallel program does not increase indefinitely
+  as more cores are added.
+- In addition, jobs that require more cores wait longer in the queue and
+  consume more resources, lowering your jobs’ priority.
+- An optimal number of CPU cores balances these opposite effects. It minimises
+  the total time (wait and calculation) needed for your jobs and avoids wasting
+  resources.
 
 .. _scalability:
 
-Scalabilité
+Scalability
 -----------
 
-La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
-capacité d’un programme parallèle à réduire le temps de calcul à mesure qu’il
-utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux cœurs CPU
-plutôt qu’un seul réduirait de moitié le temps de calcul et en utiliser quatre
-réduirait ce temps à 1/4 du temps requis avec un seul cœur.
+A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`_ is
+its capacity to reduce computing time as it uses more CPU cores. For instance,
+using two CPU cores rather than one should, ideally, halve the computing time,
+while using four should reduce that time to 1/4 of that required with a single
+core.
 
-En réalité, toutefois, les programmes parallèles ont leurs limites. À mesure que
-l’on utilise plus de cœurs CPU, le gain de temps diminue et devient
-éventuellement négligeable. Certains programmes et algorithmes ont une meilleure
-scalabilité que d’autres. De plus, la scalabilité varie en fonction de certains
-paramètres tels que la taille des données d’entrée.
+..
+    La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
+    capacité d’un programme parallèle à réduire le temps de calcul à mesure
+    qu’il utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux
+    cœurs CPU plutôt qu’un seul réduirait de moitié le temps de calcul et en
+    utiliser quatre réduirait ce temps à 1/4 du temps requis avec un seul cœur.
 
-On quantifie la scalabilité avec deux grandeurs : l’accélération et
-l’efficacité. Pour :math:`n` cœurs CPU, l’accélération (*speedup*, :math:`S`)
-est le ratio du temps d’exécution sériel sur le temps d’exécution parallèle :
+In reality, however, parallel programs have limitations. As they use more cores,
+the gain in time diminishes and, eventually, becomes negligible. Some programs
+and algorithms are more scalable than others. In addition, scalability varies as
+a function of certain parameters, such as input data size.
+
+..
+    En réalité, toutefois, les programmes parallèles ont leurs limites. À mesure
+    que l’on utilise plus de cœurs CPU, le gain de temps diminue et devient
+    éventuellement négligeable. Certains programmes et algorithmes ont une
+    meilleure scalabilité que d’autres. De plus, la scalabilité varie en
+    fonction de certains paramètres tels que la taille des données d’entrée.
+
+Scalability is quantified with two quantities: speedup and efficiency. For
+:math:`n` CPU cores, speedup (:math:`S`) is the ratio of serial computing time
+to parallel computing time:
+
+..
+    On quantifie la scalabilité avec deux grandeurs : l’accélération et
+    l’efficacité. Pour :math:`n` cœurs CPU, l’accélération (*speedup*, :math:`S`)
+    est le ratio du temps d’exécution sériel sur le temps d’exécution parallèle :
 
 .. math::
 
-    S_n = \frac{t_\text{sériel}}{t_n}
+    S_n = \frac{t_\text{serial}}{t_n}
 
-Par exemple, si un calcul requiert 10 minutes avec 1 cœur CPU et 6 minutes avec
-2, l’accélaration est de 1,67. C’est donc une mesure de « combien de fois plus
-rapide est le programme ».
+For instance, if a calculation requires 10 minutes with 1 CPU cores and 6
+minutes with 2, acceleration is 1.67. It is a measure of “how many times faster
+the program is”.
 
-L’efficacité (*efficiency*, :math:`E`) est le ratio de l’accélération sur le
-nombre de cœurs CPU :
+..
+    Par exemple, si un calcul requiert 10 minutes avec 1 cœur CPU et 6 minutes
+    avec 2, l’accélaration est de 1,67. C’est donc une mesure de « combien de
+    fois plus rapide est le programme ».
+
+Efficiency (:math:`E`) is the ratio of speedup to number of CPU cores:
+
+..
+    L’efficacité (*efficiency*, :math:`E`) est le ratio de l’accélération sur le
+    nombre de cœurs CPU :
 
 .. math::
 
     E_n = \frac{S_n}{n}
 
-Poursuivant l’exemple ci-dessus, une accélération de 1,67 pour 2 cœurs CPU donne
-une efficacité de 0,835 (83,5 %). Une efficacité de 100 % est qualifiée de
-linéaire. Lorsque l’efficacité tombe sous 75 %, on devrait généralement diminuer
-le nombre de cœurs utilisés.
+Continuing the above example, a speedup of 1.67 for 2 CPU cores gives a 0.835
+efficiency (83.5 %). An efficiency of 100 % is called linear scaling. When the
+efficiency drops under 75 %, the number of CPU cores should typically be
+reduced.
 
-Dans cet exemple de scalabilité d’un programme parallèle (voir figure
-ci-dessous), on remarque un point d’inflection à 256 cœurs : l’efficacité
-diminue rapidement passé ce point.
+..
+    Poursuivant l’exemple ci-dessus, une accélération de 1,67 pour 2 cœurs CPU
+    donne une efficacité de 0,835 (83,5 %). Une efficacité de 100 % est
+    qualifiée de linéaire. Lorsque l’efficacité tombe sous 75 %, on devrait
+    généralement diminuer le nombre de cœurs utilisés.
 
-.. figure:: ../../images/gmx-scaling_fr.svg
+In the following example of a program’s scalability (see figure below), there is
+an inflection point at 256 cores: efficiency drops rapidly past this point.
 
-Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps de
-calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
-équivalentes, la performance ayant simplement une dimension inverse
-(:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
-problème : étapes de calcul par seconde, nombre d’images ou de molécules
-traitées par heure, durée de trajectoire simulée par jour, etc. L’accélération
-peut être calculée à partir de la performance plutôt que du temps de calcul :
+..
+    Dans cet exemple de scalabilité d’un programme parallèle (voir figure
+    ci-dessous), on remarque un point d’inflection à 256 cœurs : l’efficacité
+    diminue rapidement passé ce point.
+
+.. figure:: ../../images/gmx-scaling_en.svg
+
+In this example, performance (:math:`P`) is used rather than computing time
+(:math:`t`) to show scalability. The two approaches are equivalent, with
+performance simply having the inverse dimension (:math:`t^{-1}`). Performance
+is expressed in a problem-specific unit: steps per second, number of images or
+molecules processed per hour, simulated trajectory length per day, etc. Speedup
+can be calculated from performance rather than computing time:
+
+..
+    Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps
+    de calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
+    équivalentes, la performance ayant simplement une dimension inverse
+    (:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
+    problème : étapes de calcul par seconde, nombre d’images ou de molécules
+    traitées par heure, durée de trajectoire simulée par jour, etc.
+    L’accélération peut être calculée à partir de la performance plutôt que du
+    temps de calcul :
 
 .. math::
 
-    S_n = \frac{P_{n}}{P_\text{sérielle}}
+    S_n = \frac{P_{n}}{P_\text{serial}}
 
 .. _scalability-exercise:
 
-Exercice
+Exercise
 ''''''''
 
-**Objectifs**
+**Objectives**
 
-- Analyser la scalabilité d’une tâche parallèle.
-- Déterminer le nombre optimal de cœurs CPU à utiliser pour cette tâche.
+- Analyse a parallel job’s scalability.
+- Determine the optimal number of CPU cores to use for this job.
 
 **Instructions**
 
-#. Allez dans le répertoire de l’exercice avec ``cd
+#. Go to the exercise directory with ``cd
    ~/cq-formation-cip201-main/lab/gmx-scaling``.
-#. Préparer les fichiers d’entrée de la tâche avec ``bash gmx-prepare.sh``.
-#. Éditez le script de tâche avec ``nano gmx-job.sh``. Demandez 1, 2, 4 ou 8
-   cœurs CPU avec l’option ``--cpus-per-task``.
-#. Soumettez la tâche.
-#. Une fois la tâche terminée, obtenez la performance du programme avec ``grep
+#. Prepare the input files with ``bash gmx-prepare.sh``.
+#. Edit the job script with ``nano gmx-job.sh``. Ask for 1, 2, 4, or 8 CPU cores
+   with the ``--cpus-per-task`` option.
+#. Submit the job.
+#. Once the job has completed, get the program’s performance with ``grep
    ^Performance slurm-<jobid>.out``.
-#. Changez le nombre de cœurs demandés et répétez la tâche. (Ne préparez pas à
-   nouveau les fichiers d’entrée.)
-#. Remplissez le tableau dans ``gmx-scaling.txt``.
+#. Change the number of requested CPU cores and repeat the job. (Do not prepare
+   the input files again.)
+#. Fill the table in ``gmx-scaling.txt``.
 
-   #. Rapportez les performances obtenues dans la colonne :math:`P` (ns/day).
-   #. Calculez l’accélération :math:`S` et l’efficacité :math:`E` (%) pour 2, 4
-      et 8 cœurs.
-   #. Combien de cœurs CPU utiliseriez-vous pour des tâches similaires ?
+   #. Note the measured performance in the :math:`P` (ns/day) column.
+   #. Calculate speedup :math:`S` and efficiency :math:`E` (%) for 2, 4, and 8
+      cores.
+   #. How many CPU cores would you use for similar jobs?
 
 .. note::
 
-    Cette tâche calcule les interactions au sein d’une boîte périodique
-    contenant 216 molécules d’eau (648 atomes, voir figure ci-dessous) avec
-    GROMACS, un logiciel pour les simulations biomoléculaires.
+    This job computes the interactions in a periodic box containing 216 water
+    molecules (648 atoms, see figure below) with GROMACS, a software for
+    biomolecular simulations.
 
     .. figure:: ../../images/water-box.png
         :width: 320px
 
-    Les auteurs du programme rapportent qu’il est scalable jusqu’à environ 50
-    atomes par cœur CPU. En deçà de cette valeur, la performance n’augmente plus
-    même si l’on utilise davantage de cœurs. L’efficacité diminue toutefois bien
-    avant d’atteindre cette limite !
+    The program’s authors report that it is scalable until around 50 atoms per
+    CPU core. Below this value, performance no longer increases even if more
+    cores are used. However, efficiency decreases long before reaching this
+    limit!
 
-    En pratique, les simulations biomoléculaires traitent des systèmes beaucoup
-    plus gros, souvent de l’ordre de centaines de milliers d’atomes. Les
-    programmes parallèles qui simulent ces systèmes sont efficaces même avec des
-    centaines de cœurs CPU.
+    In practice, biomolecular simulations process much bigger systems, often in
+    the order of hundreds of thousands of atoms. The parallel programs that
+    simulate these systems are efficient even with hundreds of CPU cores.
 
-Pourquoi l’efficacité n’est-elle pas linéaire ?
-'''''''''''''''''''''''''''''''''''''''''''''''
+Why isn’t scaling linear?
+'''''''''''''''''''''''''
 
-La scalabilité est limitée par la fraction du programme qui calcule en parallèle
-(voir figure ci-dessous). C’est ce qu’on appelle la `loi d’Amdahl
-<https://fr.wikipedia.org/wiki/Loi_d%27Amdahl>`_. Un programme parallèle peut
-avoir une fraction sérielle pour une variété de raisons :
+Scalability is limited by the fraction of the program that computes in parallel
+(see figure below). This is referred to as
+`Amdahl’s law <https://en.wikipedia.org/wiki/Amdahl%27s_law>`_. A parallel
+program can have a serial fraction for a variety of reasons:
 
-- Lecture non parallèle d’un fichier d’entrée ou mise à jour d’un fichier de
-  sortie.
-- Pré- ou post-traitement des données avant ou après l’application d’un
-  algorithme parallèle.
-- Une étape intermédiaire du calcul qui n’est pas parallélisée.
+- Reading an input file or updating an output file in a non-parallel manner.
+- Pre- or post-processing data before or after applying a parallel algorithm.
+- A non-parallel intermediate calculation step.
 
-.. figure:: ../../images/serial-vs-parallel_fr.svg
+.. figure:: ../../images/serial-vs-parallel_en.svg
 
-De plus, le temps nécessaire à la communication entre les fils d’exécution
-diminue l’efficacité. Généralement, plus la taille d’un problème augmente, plus
-son traitement parallèle est efficace.
+In addition, the time required for the threads of execution to communicate
+lowers efficiency. In general, the larger a problem is, the better it scales.
 
-Pour toutes ces raisons, la seule manière de déterminer efficacement le nombre
-optimal de CPU pour une tâche parallèle est de faire une analyse de scalabilité
-(voir l’:ref:`exercice <scalability-exercise>` ci-haut) et de la répéter chaque
-fois que les paramètres de votre tâche ou la taille de vos données d’entrée
-changent significativement.
+For all these reasons, the only way to accurately determine the optimal number
+of CPU cores for a parallel job is to perform a scalability analysis (see the
+above :ref:`exercise <scalability-exercise>`) and to repeat it every time your
+job’s parameters or the size of your input data change significantly.
 
 .. note::
 
-    On distingue la scalabilité forte (*strong scaling*) de la
-    scalabilité faible (*week scaling*).
-    
-    - La scalabilité forte est la variation du temps de calcul en fonction du
-      nombre de cœurs CPU pour un problème dont la taille *totale* est
-      constante. Idéalement, le temps de calcul est inversement proportionnel au
-      nombre de cœurs CPU.
-    - La scalabilité faible est la variation du temps de calcul en fonction du
-      nombre de cœurs CPU pour un problème dont la taille *par cœur CPU* est
-      constante. Idéalement, le temps de calcul demeure constant.
+    A distinction is made between strong scaling and week scaling.
 
+    - Strong scaling is how computing time varies as a function of the number of
+      CPU cores for a problem whose *total* size is constant. Ideally, computing
+      time is inversely proportional to the number of CPU cores.
+    - Weak scaling is how computing time varies as a funcion of the number of
+      CPU cores for a problem whose size *per CPU core* is constant. Ideally,
+      computing time stays constant.
+    
 .. warning::
 
-    À nouveau, l’*efficacité* d’un programme parallèle n’est pas la même mesure
-    que son utilisation du CPU. La mesure dénommée *CPU Efficiency* dans la
-    sortie de la commande ``seff`` est en fait l’utilisation CPU et n’est pas
-    une mesure de la scalabilité d’un programme : ``seff`` ne peut pas deviner
-    et analyser automatiquement la performance d’un programme parallèle !
+    Again, a parallel program’s efficiency is not the same measure as its CPU
+    usage. The measure called *CPU efficiency* in the output of the ``seff``
+    command is actually CPU usage and is not a measure of a program’s
+    scalability: ``seff`` cannot guess the performance of a parallel program and
+    analyse it automatically!
