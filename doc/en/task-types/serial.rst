@@ -66,7 +66,7 @@ MacOS
 '''''
 
 The `Activity Monitor
-<https://support.apple.com/fr-ca/guide/activity-monitor/actmntr1001/mac>`_ can
+<https://support.apple.com/en-ca/guide/activity-monitor/actmntr1001/mac>`_ can
 be started in two ways:
 
 - Look for *Activity Monitor* in *Applications* → *Utilities*.
@@ -123,8 +123,8 @@ Requesting appropriate resources
 
 Since a serial job can use only a single CPU core, it should not include any
 parallelism options, such as ``--cpus-per-task``, ``--ntasks``,
-``--ntasks-per-node`` ou ``--nodes``. Here is a minimal job script example for a
-serial program:
+``--ntasks-per-node`` or ``--nodes``. Here is a minimal job script example for
+a serial program:
 
 .. code-block:: bash
 
