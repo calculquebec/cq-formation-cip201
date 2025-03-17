@@ -59,37 +59,35 @@ For more images and more information, see the `documentation section here
 <https://docs.alliancecan.ca/wiki/Portail#Statistiques_des_t%C3%A2ches>`__
 (at the time of writing, the wiki page is only available in French).
 
-Statistiques des tâches sur Niagara
------------------------------------
+Niagara job statistics
+----------------------
 
-Dans le portail de Niagara, un tableau listant vos
-dernières tâches se trouve dans la page
-`Tâches -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`_.
+In the Niagara portal, a table listing your latest jobs can be found on the
+`Jobs -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`__ page.
 
 .. figure:: ../../images/portal-tasks-table-niagara_en.png
 
-En cliquant sur l'un des numéros de tâche, on accède à une page affichant
-toutes les informations disponibles au sujet de la tâche :
+Clicking on one of the job identifiers takes you to a page displaying all
+available information about the job:
 
-- L'historique de la tâche.
-- Une analyse complète des ressources utilisées (si mesurées) selon le temps :
+- The job history.
+- A complete analysis of resources used (if measured) over time:
 
-  - Utilisation moyenne des processeurs par nœud. Dans la figure ci-dessous,
-    chaque point de couleur correspond à l'un des 14 nœuds réservés pour la
-    tâche.
+  - Average CPU utilization per node. In the figure below, each colored dot
+    corresponds to one of the 14 nodes reserved for the job.
 
     .. figure:: ../../images/portal-niagara-node-usage_en.png
 
-  - Mémoire disponible.
-  - Débit en lecture des données.
-  - Débit en écriture des données. Dans la figure ci-dessous, on remarque les
-    sauvegardes effectuées régulièrement. Ce sont possiblement des
-    `points de contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`_.
+  - Available memory.
+  - Data read throughput.
+  - Data write throughput. In the figure below, we can see write operations at
+    regular intervals. These are possibly `checkpoints
+    <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`__.
 
     .. figure:: ../../images/portal-niagara-write-bw_en.png
 
-  - Opérations sur les fichiers.
+  - File operations.
   - etc.
 
-- Le script de tâche.
-- Les variables d'environnement de la tâche en cours.
+- The job script.
+- The environment variables of the running job.
