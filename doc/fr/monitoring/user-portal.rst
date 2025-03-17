@@ -39,7 +39,7 @@ toutes les `informations disponibles au sujet de la tâche
   - Utilisation CPU. Dans la figure ci-dessous, 8 des 12 cœurs demandés pour la
     tâche sont utilisés à 100%.
 
-    .. figure:: ../../images/portal-cpu-core-usage.png
+    .. figure:: ../../images/portal-cpu-core-usage_fr.png
 
   - Utilisation de la mémoire.
   - Nombre de processus et de fils d'exécution. Dans la figure ci-dessous, on y

@@ -21,7 +21,7 @@ dernières tâches se trouve dans la page
 `Statistiques des tâches <https://portail.narval.calculquebec.ca/secure/jobstats/>`_,
 à la section *Vos tâches*.
 
-.. figure:: ../../images/portal-tasks-table-narval_fr.png
+.. figure:: ../../images/portal-tasks-table-narval_en.png
 
 En cliquant sur l'un des numéros de tâche, on accède à une page affichant
 toutes les `informations disponibles au sujet de la tâche
@@ -39,7 +39,7 @@ toutes les `informations disponibles au sujet de la tâche
   - Utilisation CPU. Dans la figure ci-dessous, 8 des 12 cœurs demandés pour la
     tâche sont utilisés à 100%.
 
-    .. figure:: ../../images/portal-cpu-core-usage.png
+    .. figure:: ../../images/portal-cpu-core-usage_en.png
 
   - Utilisation de la mémoire.
   - Nombre de processus et de fils d'exécution. Dans la figure ci-dessous, on y
@@ -66,7 +66,7 @@ Dans le portail de Niagara, un tableau listant vos
 dernières tâches se trouve dans la page
 `Tâches -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`_.
 
-.. figure:: ../../images/portal-tasks-table-niagara_fr.png
+.. figure:: ../../images/portal-tasks-table-niagara_en.png
 
 En cliquant sur l'un des numéros de tâche, on accède à une page affichant
 toutes les informations disponibles au sujet de la tâche :
@@ -78,7 +78,7 @@ toutes les informations disponibles au sujet de la tâche :
     chaque point de couleur correspond à l'un des 14 nœuds réservés pour la
     tâche.
 
-    .. figure:: ../../images/portal-niagara-node-usage_fr.png
+    .. figure:: ../../images/portal-niagara-node-usage_en.png
 
   - Mémoire disponible.
   - Débit en lecture des données.
@@ -86,7 +86,7 @@ toutes les informations disponibles au sujet de la tâche :
     sauvegardes effectuées régulièrement. Ce sont possiblement des
     `points de contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`_.
 
-    .. figure:: ../../images/portal-niagara-write-bw_fr.png
+    .. figure:: ../../images/portal-niagara-write-bw_en.png
 
   - Opérations sur les fichiers.
   - etc.
