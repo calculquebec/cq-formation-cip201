@@ -3,117 +3,106 @@ Memory
 
 `Français <../../fr/resources/memory.html>`_
 
-L'analyse des besoins en mémoire vive est similaire à celle pour les besoins en
-temps, excepté que les métriques sont différentes.
+The analysis of memory requirements is similar to that done for time
+requirements, but with different metrics.
 
-Pour rappel, voici les deux principales options de l'ordonnanceur Slurm pour
-demander de la mémoire :
+Recall the two Slurm options to request memory:
 
-- ``--mem=<quantité>``, quantité de mémoire
-  `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
-- ``--mem-per-cpu=<quantité>``, quantité de mémoire
-  `par coeur CPU <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`_.
+- ``--mem=<amount>``, memory
+  `per compute node <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+- ``--mem-per-cpu=<amount>``, memory
+  `per CPU core <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`_.
 
-  - Par défaut : ``256M``
+  - Default: ``256M``
 
-Pourquoi se fixer une limite de mémoire?
-----------------------------------------
+Why set a memory limit?
+-----------------------
 
-- Dans les
-  `grappes nationales <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
-  la grande majorité des noeuds de calcul contiennent un peu moins de **4G de
-  mémoire vive utilisable par coeur CPU**.
+- On the `national clusters
+  <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
+  the vast majority of compute nodes have a little less than **4G of usable
+  memory per CPU core**.
 
-  - Une poignée de noeuds ont entre 16G et 32G par coeur, ce qui en fait
-    une ressource très limitée et peut causer un plus long temps d'attente
-    pour y accéder.
+  - A handful of nodes have between 16G and 32G per core. Since there are few of
+    them, asking for that much memory can lead to a longer wait time.
 
-- Pour protéger le noeud de calcul de votre programme dans le cas d'une
-  surutilisation de mémoire.
+- A limit protects the compute node in case your program tries to use too much
+  memory.
+- In any case, you probably need to change the default value of 256M per CPU
+  core.
 
-- Enfin, pour remplacer la valeur par défaut de 256M par coeur CPU.
+In conclusion, **it is necessary to specify an amount of memory**, with of
+course a safety margin (such as 20 % more than you expect to need).
 
-En somme, **il est nécessaire de spécifier une quantité de mémoire**, avec
-bien sûr une certaine marge de sécurité (par exemple, ajouter 20% sur la
-quantité prévue).
+Assessing memory using your computer
+------------------------------------
 
-Déterminer le besoin en mémoire à partir de votre ordinateur
-------------------------------------------------------------
+Using the Task Manager (Windows), the Activity Monitor (Mac OS),
+or the ``top`` command, you can check your program’s memory usage. For a similar
+calculation on the cluster, a similar amount of memory should be needed.
 
-En utilisant le gestionnaire de tâches (sur Windows), le moniteur d'activité
-(sur Mac OS) ou la commande ``top``, vous pouvez déjà voir la consommation en
-mémoire de votre programme. À données égales, la consommation en mémoire
-devrait être très similaire sur la grappe de calcul.
-
-.. figure:: ../../images/win-task-manager_fr.png
+.. figure:: ../../images/win-task-manager_en.png
 
 .. note::
 
-    Avec ``top`` et ``htop``, c'est la colonne ``RES`` qu'il faut regarder. Il
-    s'agit de la quantité de mémoire occupée ou *résidente* par le processus.
+    With ``top`` and ``htop``, the ``RES`` column is the one you should
+    consider. It is the *resident set size* of the process, that is the amount
+    of memory it currently occupies.
 
-Obtenir la quantité de mémoire utilisée sur la grappe
------------------------------------------------------
+Checking the memory used on the cluster
+---------------------------------------
 
-Avec l'identifiant d'une tâche terminée, on peut utiliser la commande
-``seff <jobid>`` ou encore
-``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+With the id of a completed job, use ``seff <jobid>`` or ``sacct -j <jobid> -o
+JobID,JobName,MaxRSS``.
 
-- ``Memory Utilized`` : quantité mesurée maximale de mémoire utilisée.
-- ``MaxRSS`` : même chose. "RSS" veut dire *Resident set size*.
-- Voir la
-  `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`_.
+- ``Memory Utilized``: the maximum amount of memory used during the job.
+- ``MaxRSS``: the same thing, where RSS stands for *resident set size*.
+- See our `documentation
+  <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`_.
 
-Exercice
+Exercise
 ''''''''
 
-#. Affichez la liste des dernières tâches avec
-   ``sacct -X -o JobID,JobName``.
-#. Essayez la commande ``seff <jobid>`` pour la tâche ayant testé les deux
-   programmes de tri. Quelle est la quantité maximale de mémoire utilisée?
-#. Voyez aussi cette quantité avec la commande
+#. List your recent jobs with ``sacct -X -o JobID,JobName``.
+#. Try ``seff <jobid>`` for the job that compared sorting algorithms. How much
+   memory was used?
+#. Check again how much memory was used by that job with
    ``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
 
-Estimer la mémoire requise pour un plus grand calcul
-----------------------------------------------------
+Estimating the memory required for a larger calculation
+-------------------------------------------------------
 
-Voici quelques facteurs à considérer pour caractériser l'utilisation de la
-mémoire :
+Several factors influence memory usage:
 
-- Le nombre de fichiers à traiter **en simultané**.
-- La taille moyenne des fichiers en entrée.
+- Number of files to process **simultaneously**
+- Input data file size
 
-  - Si les données sont stockées avec de la compression, il faut considérer
-    un certain facteur de décompression.
+  - Data compressed in storage will take up more memory after decompression.
 
-- Les paramètres du programme et donc de l'algorithme.
-- Les données qui seront ensuite générées en mémoire.
+- Program parameters, including those that control the algorithm
+- Data subsequently generated in memory
 
-En faisant varier l'un ou l'autre de ces facteurs, et ce, en prévision d'un
-très grand calcul, il devient possible de voir la tendance d'utilisation de la
-mémoire. Quelques détails à considérer :
+By varying these parameters, it is possible to empirically verify the memory
+usage trend of a program in preparation for a larger calculation. Some things to
+consider:
 
-- La mesure sur la grappe doit se faire une tâche à la fois.
-- Pour que la mesure soit fiable, il faut que l'utilisation maximale soit
-  maintenue pendant environ 30 secondes.
-- Autrement, il faudra utiliser des techniques de
-  `suivi des tâches en temps réel <../monitoring/compute-nodes.html>`_.
+- Memory measurements must be done one calculation at a time.
+- For the measure to be reliable, maximum memory usage should be sustained for
+  around 30 seconds.
+- Otherwise, `real-time job monitoring <../monitoring/compute-nodes.html>`_ must
+  be performed.
 
-Exercice
+Exercise
 ''''''''
 
-**Objectif :** dans cet exercice, nous allons provoquer une surutilisation
-de mémoire :
+**Objective:** cause an out-of-memory situation in a job.
 
-#. Allez dans le répertoire de l’exercice avec
-   ``cd ~/cq-formation-cip201-main/lab/sort``.
-#. Au besoin, recompilez les programmes ``bubble`` et ``quick`` avec la
-   commande ``make``.
-#. Éditez le fichier ``test.sh`` de sorte à configurer ``--mem=400M``
-   (seulement 400 mébioctets).
-#. Soumettez une tâche avec le script ``test.sh``.
-#. Une fois le calcul terminé :
+#. Go to the exercise directory with ``cd ~/cq-formation-cip201-main/lab/sort``.
+#. If need be, (re)compile the ``bubble`` and ``quick`` programs with the
+   ``make`` command.
+#. Edit ``test.sh`` to request ``--mem=400M`` (only 400 mebibytes).
+#. Submit ``test.sh`` as a job.
+#. Once the job has completed:
 
-   #. Voir le message d'erreur dans le fichier ``slurm-<jobid>.out``.
-   #. Voir l'état (*State*) ``OUT_OF_MEMORY`` dans la sortie de
-      ``sacct -j <jobid>``
+   #. Check the error message in the output file ``slurm-<jobid>.out``.
+   #. Check the ``OUT_OF_MEMORY`` job state with ``sacct -j <jobid>``.
