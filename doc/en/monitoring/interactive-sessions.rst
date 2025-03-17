@@ -79,7 +79,7 @@ Demonstration
 .. note::
 
     Previously, we saw that the ``srun`` command is necessary to run MPI
-    program. ``srun`` can also be used with any other program, serial or
+    programs. ``srun`` can also be used with any other program, serial or
     parallel, multi-threaded or MPI.
 
 3. Test different numbers of CPU cores
