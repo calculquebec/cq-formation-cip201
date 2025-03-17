@@ -12,8 +12,8 @@ Why set a time limit?
   hardware failure.
 
   - `Checkpoints <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`_
-    protect against this issue and also allow splitting a large job over many
-    smaller, successive ones.
+    protect against this issue and also allow splitting a long job into many
+    shorter, successive ones.
 
 - Most jobs finish in a matter of hours.
 - Consequently, our `scheduling policies
