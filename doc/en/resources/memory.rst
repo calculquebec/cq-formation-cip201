@@ -82,7 +82,7 @@ Several factors influence memory usage:
 - Program parameters, including those that control the algorithm
 - Data subsequently generated in memory
 
-By varying these parameters, it is possible to empirically verify the memory
+By varying the above factors, it is possible to empirically verify the memory
 usage trend of a program in preparation for a larger calculation. Some things to
 consider:
 
