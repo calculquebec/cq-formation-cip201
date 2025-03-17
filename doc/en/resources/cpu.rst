@@ -111,8 +111,7 @@ Scalability
 A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`__ is
 its capacity to reduce computing time as it uses more CPU cores. For instance,
 using two CPU cores rather than one should, ideally, halve the computing time,
-while using four should reduce that time to 1/4 of that required with a single
-core.
+while using four should reduce that time to 1/4.
 
 In reality, however, parallel programs have limitations. As they use more cores,
 the gain in time diminishes and, eventually, becomes negligible. Some programs
