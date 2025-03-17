@@ -108,7 +108,7 @@ Why optimise the number of CPU cores?
 Scalability
 -----------
 
-A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`_ is
+A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`__ is
 its capacity to reduce computing time as it uses more CPU cores. For instance,
 using two CPU cores rather than one should, ideally, halve the computing time,
 while using four should reduce that time to 1/4 of that required with a single
