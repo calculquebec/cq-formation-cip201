@@ -85,9 +85,9 @@ A program’s main algorithm has a certain complexity order:
   **8x** the time.
 - Etc.
 
-A program’s trend with regards to processing different amounts data can be
-verified empirically. To measure execution time, a command can be prefixed
-with ``time -p``:
+A program’s trend with regards to processing different amounts of data can be
+verified empirically. To measure execution time, a command can be prefixed with
+``time -p``:
 
 .. code-block::
 
