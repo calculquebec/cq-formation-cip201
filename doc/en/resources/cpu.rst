@@ -233,7 +233,7 @@ job’s parameters or the size of your input data change significantly.
     - Strong scaling is how computing time varies as a function of the number of
       CPU cores for a problem whose *total* size is constant. Ideally, computing
       time is inversely proportional to the number of CPU cores.
-    - Weak scaling is how computing time varies as a funcion of the number of
+    - Weak scaling is how computing time varies as a function of the number of
       CPU cores for a problem whose size *per CPU core* is constant. Ideally,
       computing time stays constant.
     
