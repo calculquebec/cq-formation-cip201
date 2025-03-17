@@ -5,7 +5,7 @@ CPU cores
 
 CPU cores are a resource very different from time or memory. For parallel
 jobs, one must of course choose a number of cores. However, for both serial and
-parallel tasks, it is important to verify that the CPU is properly utilised.
+parallel jobs, it is important to verify that the CPU is properly utilised.
 
 Why check CPU usage?
 --------------------
@@ -15,7 +15,7 @@ Why check CPU usage?
   communication, etc.
 - If this wait time is important, the CPU cores are underused.
 - Fixing this problem accelerates your program and avoids wasting resources,
-  increasing your tasks’ priority.
+  increasing your jobs’ priority.
 
 Checking CPU usage
 ------------------
@@ -88,7 +88,7 @@ Exercise
 #. List your recent jobs with ``sacct -X``.
 #. Try ``seff <jobid>`` for one of these jobs and check its CPU usage.
 #. Try ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` for the same
-   task.
+   job.
 
 Why optimise the number of CPU cores?
 -------------------------------------
