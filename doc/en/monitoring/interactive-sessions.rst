@@ -3,31 +3,28 @@ Interactive sessions
 
 `Français <../../fr/monitoring/interactive-sessions.html>`_
 
-Nous avons présenté plusieurs outils pour analyser les tâches de calcul. Les
-commandes de l’ordonnanceur ``seff`` et ``sacct`` affichent de l’information sur
-les tâches complétées. Pour le suivi des tâches actives, nous avons vu comment
-se connecter à un nœud de calcul avec ``ssh`` et y utiliser le gestionnaire de
-tâches ``top``.
+We have already presented several tools to analyse compute jobs. Scheduler
+commands ``seff`` and ``sacct`` show information about completed jobs. To
+monitor running jobs, we have seen how to connect to a compute node with
+``ssh``, and there use the ``top`` task manager.
 
-Les sessions interactives sont un autre outil, particulièrement approprié pour
-des séries de courts tests. Par exemple, si vous analysez la scalabilité d’un
-programme, vous souhaiterez sans doute répéter une courte tâche avec différents
-nombres de cœurs CPU. Plutôt que de soumettre avec ``sbatch`` de multiples
-tâches qui ne durent que quelques minutes puis colliger leurs résultats, vous
-pouvez démarrer une tâche interactive et y exécuter rapidement tous vos tests.
+Interactive sessions are yet another tool, which is especially well-suited for
+series of short tests. For instance, when analysing a program’s scalability, you
+often need to repeat a short job with different numbers of CPU cores. Rather
+than submit multiple minute-length jobs with ``sbatch`` and then collect their
+results, you can start an interactive job and quickly run all your tests there.
 
-Démonstration
+Demonstration
 -------------
 
-**Objectif**
+**Objectives**
 
-- Analyser la scalabilité d’un programme parallèle dans une tâche interactive.
-- Utiliser ``srun`` interactivement pour ajouter des étapes à une tâche.
-- Utiliser ``sacct`` dans une tâche active pour obtenir de l’information sur les
-  étapes terminées.
+- Analyse a parallel program’s scalability in an interactive job.
+- Use ``srun`` interactively to add steps to a job.
+- Use ``sacct`` in an interactive job to get information about completed steps.
 
-1. Démarrer une tâche interactive
-'''''''''''''''''''''''''''''''''
+1. Start an interactive job
+'''''''''''''''''''''''''''
 
 .. code-block:: console
     :emphasize-lines: 4
@@ -44,14 +41,14 @@ Démonstration
     salloc: Nodes nc30432 are ready for job
     [alice@nc30432 pi-multi-threaded]$
 
-- L’option ``--exclusive`` demande tous les cœurs CPU du nœud de calcul. Cela
-  garantit qu’aucune autre tâche ne peut être exécutée sur ce nœud et influencer
-  les résultats des tests.
-- L’option ``--mem=0`` demande toute la mémoire du nœud et ne devrait être
-  utilisée que lorsque l’on demande un nœud complet.
+- The ``--exclusive`` option requests all CPU cores on the compute node. This
+  ensures that no other job can be run on the node and influence the tests’
+  results.
+- The ``--mem=0`` option requests all the node’s memory and should only be used
+  when requesting a full node.
 
-2. Tester le programme en mode sériel
-'''''''''''''''''''''''''''''''''''''
+2. Test the program in serial mode
+''''''''''''''''''''''''''''''''''
 
 .. code-block:: console
     :emphasize-lines: 1,3,9
@@ -66,26 +63,26 @@ Démonstration
     40716821.extern     extern   00:04:01         64 
          40716821.0      testA   00:03:05          1 
 
-- La commande ``srun`` ajoute une étape à la tâche. Les options utilisées sont :
+- The ``srun`` command adds a step to the job. The options used here are:
 
   - ``-J,--job-name``
   - ``-n,--ntasks``
   - ``-c,--cpus-per-task``
 
-- ``srun`` contrôle les ressources allouées à la nouvelle étape. Ici, nous
-  n’utilisons qu’un seul des 64 cœurs alloués à la tâche.
-- Lorsqu’une étape est terminée, elle peut être analysée avec ``sacct`` même si
-  la tâche est encore active. Les ressources consommées par chaque étape sont
-  comptabilisées séparément.
+- ``srun`` controls the resources allocated to the new step. Here, we use only
+  one of the 64 cores allocated to the job.
+- When a step has completed, it can be analysed with ``sacct`` even if the job
+  is still running. The resources consumed by each step are accounted for
+  separately.
 
 .. note::
 
-    Précédemment, nous avons vu que la commande ``srun`` est nécessaire pour
-    lancer des programmes MPI. ``srun`` peut aussi être utilisée avec n’importe
-    quel autre programme, sériel ou parallèle, multi-fils ou MPI.
+    Previously, we saw that the ``srun`` command is necessary to run MPI
+    program. ``srun`` can also be used with any other program, serial or
+    parallel, multi-threaded or MPI.
 
-3. Tester différents nombres de cœurs CPU
-'''''''''''''''''''''''''''''''''''''''''
+3. Test different numbers of CPU cores
+''''''''''''''''''''''''''''''''''''''
 
 .. code-block:: console
     :emphasize-lines: 1,3,5,7,13-16
@@ -108,10 +105,10 @@ Démonstration
          40716821.3      testD   00:00:23          8
     [alice@nc30432 pi-multi-threaded]$ exit
 
-4. Calculer l’accélération et l’efficacité
-''''''''''''''''''''''''''''''''''''''''''
+4. Calculate speedup and efficiency
+'''''''''''''''''''''''''''''''''''
 
-.. list-table:: Scalabilité de ``pi`` multi-fils
+.. list-table:: Multi-threaded ``pi`` scalability
     :header-rows: 1
 
     * - :math:`\pmb{n}`
@@ -140,18 +137,17 @@ Démonstration
       - 8,0
       - 100
 
-- Nombre de cœurs CPU : :math:`n`
-- Temps : :math:`t`
+- Number of CPU cores: :math:`n`
+- Time : :math:`t`
 - Performance : :math:`P_n = \text{points} / t`
-- Accélération : :math:`S_n = t_\text{sériel} / t_n`
-- Efficacité : :math:`E_n = S_n / n`
+- Speedup : :math:`S_n = t_\text{serial} / t_n`
+- Efficiency : :math:`E_n = S_n / n`
 
-Remarques
----------
+Remarks
+-------
 
-- Chaque test devrait durer au moins 5 minutes afin d’être fiable.
-- Chaque test devrait être répété 3 fois afin de s’assurer de la stabilité du
-  résultat.
-- La même approche peut être utilisée pour analyser la consommation de mémoire
-  en fonction du nombre de cœurs CPU. On utiliserait alors ``sacct -j <jobid> -o
+- Each test should last at least 5 minutes to be reliable.
+- Each test should be repeated 3 times to ensure the result is stable.
+- The same approach can be used to analyse memory usage as a function of the
+  number of CPU cores. One would use ``sacct -j <jobid> -o
   JobID%15,JobName,MaxRSS,NCPUs``.
