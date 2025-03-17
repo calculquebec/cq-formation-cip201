@@ -19,7 +19,7 @@ Why set a memory limit?
 -----------------------
 
 - On the `national clusters
-  <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
+  <https://docs.alliancecan.ca/wiki/National_systems#List_of_compute_clusters>`_,
   the vast majority of compute nodes have a little less than **4G of usable
   memory per CPU core**.
 
