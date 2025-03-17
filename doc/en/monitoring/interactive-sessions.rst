@@ -11,8 +11,9 @@ monitor running jobs, we have seen how to connect to a compute node with
 Interactive sessions are yet another tool, which is especially well-suited for
 series of short tests. For instance, when analysing a program’s scalability, you
 often need to repeat a short job with different numbers of CPU cores. Rather
-than submit multiple minute-length jobs with ``sbatch`` and then collect their
-results, you can start an interactive job and quickly run all your tests there.
+than submitting multiple minute-length jobs with ``sbatch`` and then collecting
+their results, you can start an interactive job and quickly run all your tests
+there.
 
 Demonstration
 -------------
