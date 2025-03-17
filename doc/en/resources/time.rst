@@ -101,7 +101,7 @@ Once ``prog`` has finished, ``time`` displays three time values in seconds:
 
 In this workshop, we will only use the ``real`` time.
 
-Exercice
+Exercise
 ''''''''
 
 `Sorting algorithms <https://en.wikipedia.org/wiki/Sorting_algorithm>`_ have
@@ -118,4 +118,4 @@ thus much faster as the amount of data increases.
 #. Submit ``test.sh`` as a job.
 #. Once the job has completed, inspect the ``real`` time values measured for
    both sorting algorithms and different amounts of data (in parenthesis). These
-   results with be in the output file ``slurm-<jobid>.out``.
+   results will be in the output file ``slurm-<jobid>.out``.
