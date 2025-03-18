@@ -26,7 +26,7 @@ jobs can be found on the `Job stats
 Clicking on one of the job identifiers takes you to a page displaying all
 `available information about the job
 <https://docs.alliancecan.ca/wiki/Portail#Page_d'une_t%C3%A2che_CPU>`__
-(at the time of writing, the wiki page is only available in French):
+(at the time of writing, that wiki page is only available in French):
 
 - The loaded modules, if any.
 - If applicable, one or more diagnostic messages giving suggestions for
@@ -34,7 +34,7 @@ Clicking on one of the job identifiers takes you to a page displaying all
 - A button to view the job script.
 - A button to view the job submission command.
 - The job history.
-- A summary table of the resources requested.
+- A summary table of the requested resources.
 - A complete analysis of resources used (if measured) over time:
 
   - CPU usage. In the figure below, 8 of the 12 cores requested for the job are
@@ -49,15 +49,15 @@ Clicking on one of the job identifiers takes you to a page displaying all
     .. figure:: ../../images/portal-processes-and-threads.png
 
   - The network file system usage.
-  - Shared resources of the compute node:
+  - The compute node’s shared resources:
 
     - Ethernet and Infiniband bandwidth.
     - Local storage usage (number of operations, bandwidth, total usage).
     - Electrical power used.
 
-For more images and more information, see the `documentation section here
+For more images and information, see the `documentation section here
 <https://docs.alliancecan.ca/wiki/Portail#Statistiques_des_t%C3%A2ches>`__
-(at the time of writing, the wiki page is only available in French).
+(at the time of writing, that wiki page is only available in French).
 
 Niagara job statistics
 ----------------------
