@@ -5,7 +5,7 @@ CPU cores
 
 CPU cores are a resource very different from time or memory. For parallel
 jobs, one must of course choose a number of cores. However, for both serial and
-parallel tasks, it is important to verify that the CPU is properly utilised.
+parallel jobs, it is important to verify that the CPU is properly utilised.
 
 Why check CPU usage?
 --------------------
@@ -15,7 +15,7 @@ Why check CPU usage?
   communication, etc.
 - If this wait time is important, the CPU cores are underused.
 - Fixing this problem accelerates your program and avoids wasting resources,
-  increasing your tasks’ priority.
+  increasing your jobs’ priority.
 
 Checking CPU usage
 ------------------
@@ -88,7 +88,7 @@ Exercise
 #. List your recent jobs with ``sacct -X``.
 #. Try ``seff <jobid>`` for one of these jobs and check its CPU usage.
 #. Try ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` for the same
-   task.
+   job.
 
 Why optimise the number of CPU cores?
 -------------------------------------
@@ -108,11 +108,10 @@ Why optimise the number of CPU cores?
 Scalability
 -----------
 
-A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`_ is
+A program’s `scalability <https://docs.alliancecan.ca/wiki/Scalability/en>`__ is
 its capacity to reduce computing time as it uses more CPU cores. For instance,
 using two CPU cores rather than one should, ideally, halve the computing time,
-while using four should reduce that time to 1/4 of that required with a single
-core.
+while using four should reduce that time to 1/4.
 
 In reality, however, parallel programs have limitations. As they use more cores,
 the gain in time diminishes and, eventually, becomes negligible. Some programs
@@ -234,7 +233,7 @@ job’s parameters or the size of your input data change significantly.
     - Strong scaling is how computing time varies as a function of the number of
       CPU cores for a problem whose *total* size is constant. Ideally, computing
       time is inversely proportional to the number of CPU cores.
-    - Weak scaling is how computing time varies as a funcion of the number of
+    - Weak scaling is how computing time varies as a function of the number of
       CPU cores for a problem whose size *per CPU core* is constant. Ideally,
       computing time stays constant.
     

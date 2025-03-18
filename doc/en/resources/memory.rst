@@ -19,7 +19,7 @@ Why set a memory limit?
 -----------------------
 
 - On the `national clusters
-  <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
+  <https://docs.alliancecan.ca/wiki/National_systems#List_of_compute_clusters>`_,
   the vast majority of compute nodes have a little less than **4G of usable
   memory per CPU core**.
 
@@ -82,7 +82,7 @@ Several factors influence memory usage:
 - Program parameters, including those that control the algorithm
 - Data subsequently generated in memory
 
-By varying these parameters, it is possible to empirically verify the memory
+By varying the above factors, it is possible to empirically verify the memory
 usage trend of a program in preparation for a larger calculation. Some things to
 consider:
 

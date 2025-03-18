@@ -12,8 +12,8 @@ Why set a time limit?
   hardware failure.
 
   - `Checkpoints <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`_
-    protect against this issue and also allow splitting a large job over many
-    smaller, successive ones.
+    protect against this issue and also allow splitting a long job into many
+    shorter, successive ones.
 
 - Most jobs finish in a matter of hours.
 - Consequently, our `scheduling policies
@@ -85,9 +85,9 @@ A program’s main algorithm has a certain complexity order:
   **8x** the time.
 - Etc.
 
-A program’s trend with regards to processing different amounts data can be
-verified empirically. To measure execution time, a command can be prefixed
-with ``time -p``:
+A program’s trend with regards to processing different amounts of data can be
+verified empirically. To measure execution time, a command can be prefixed with
+``time -p``:
 
 .. code-block::
 
@@ -101,7 +101,7 @@ Once ``prog`` has finished, ``time`` displays three time values in seconds:
 
 In this workshop, we will only use the ``real`` time.
 
-Exercice
+Exercise
 ''''''''
 
 `Sorting algorithms <https://en.wikipedia.org/wiki/Sorting_algorithm>`_ have
@@ -118,4 +118,4 @@ thus much faster as the amount of data increases.
 #. Submit ``test.sh`` as a job.
 #. Once the job has completed, inspect the ``real`` time values measured for
    both sorting algorithms and different amounts of data (in parenthesis). These
-   results with be in the output file ``slurm-<jobid>.out``.
+   results will be in the output file ``slurm-<jobid>.out``.
