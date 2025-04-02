@@ -50,17 +50,15 @@ ways:
 
 .. figure:: ../../images/win-task-manager_en.png
 
-.. note::
+In the Windows Task Manager, 100 % CPU usage means that all CPU cores are
+fully used. If your computer has *n* CPU cores (this information is in the
+*Performance* panel), an intensive serial program should show 100 % / *n*
+CPU usage in the *Processes* panel. For example, that would be 100 % / 4 =
+25 % on a 4-core computer.
 
-    In the Windows Task Manager, 100 % CPU usage means that all CPU cores are
-    fully used. If your computer has *n* CPU cores (this information is in the
-    *Performance* panel), an intensive serial program should show 100 % / *n*
-    CPU usage in the *Processes* panel. For example, that would be 100 % / 4 =
-    25 % on a 4-core computer.
-
-    In the above figure, the *Python* process uses more than one CPU core since
-    its usage is above 50 % on a 10-core computer. If this program had been
-    serial, usage would have been around 10 %, or 100 % / 10 cores.
+In the above figure, the *Python* process uses more than one CPU core since
+its usage is above 50 % on a 10-core computer. If this program had been
+serial, usage would have been around 10 %, or 100 % / 10 cores.
 
 MacOS
 '''''
@@ -78,6 +76,10 @@ be started in two ways:
 
 (Image from Apple technical support)
 
+In the MacOS task manager, 100 % CPU usage means one fully used CPU core. When
+an intensive serial program is running, the task manager should show the process
+along with a CPU usage close to 100 %.
+
 Linux
 '''''
 
@@ -93,9 +95,9 @@ The ``top`` task manager is used in a terminal.
 
 .. figure:: ../../images/linux-top.png
 
-In ``top``, 100 % CPU usage means one fully used CPU core. When an intensive
-serial program is running, ``top -u $USER`` should show the process along with a
-CPU usage close to 100 % :
+In ``top`` (and other Linux task managers), 100 % CPU usage means one fully used
+CPU core. When an intensive serial program is running, ``top -u $USER`` should
+show the process along with a CPU usage close to 100 % :
 
 .. code-block:: console
     :emphasize-lines: 8
