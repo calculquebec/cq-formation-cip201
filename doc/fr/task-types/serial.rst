@@ -178,7 +178,7 @@ Exercice
 #. Compilez le programme ``fibo`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc --cpus-per-task=2
    --time=00:10:00``.
-#. Exécutez le programme avec ``./fibo 50 &``.
+#. Exécutez le programme avec ``./fibo &``.
 
    #. Le caractère final ``&`` exécute un programme en arrière-plan. Vous pouvez
       alors taper de nouvelles commandes pendant que le programme s’exécute.
@@ -210,8 +210,9 @@ Exercice
 
 .. note::
 
-    Le programme ``fibo <n>`` calcule le nième nombre dans la suite de
-    Fibonacci, où chaque nombre est la somme des deux précédents :
+    Le programme ``fibo [n]`` calcule le nième nombre (par défaut le
+    cinquantième) dans la suite de Fibonacci, où chaque nombre est la somme des
+    deux précédents :
 
         0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …
     
