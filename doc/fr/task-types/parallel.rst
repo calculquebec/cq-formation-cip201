@@ -364,7 +364,7 @@ Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
@@ -384,7 +384,7 @@ hybride MPI/multi-fils, cela peut être fait avec :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2

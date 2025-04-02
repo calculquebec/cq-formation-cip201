@@ -347,7 +347,7 @@ OpenMP:
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
@@ -367,7 +367,7 @@ this can be done with:
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2
