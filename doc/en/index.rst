@@ -48,7 +48,7 @@ facilitates job monitoring.
     files <https://github.com/calculquebec/cq-formation-cip201>`__ and do the
     exercises on any Calcul Québec or Digital Research Alliance of Canada
     cluster. Your jobs’ wait time, however, will be longer than on the cloud
-    computing platform.
+    platform.
 
 .. toctree::
     :caption: The job scheduler
