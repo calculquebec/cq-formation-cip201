@@ -53,19 +53,17 @@ Le `Gestionnaire des tâches Windows
 
 .. figure:: ../../images/win-task-manager_fr.png
 
-.. note::
+Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique
+que tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a *n*
+cœurs CPU (cette information est dans le panneau *Performance*), un
+programme sériel intensif devrait avoir une consommation de 100 % / *n* dans
+le panneau *Processus*. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant
+4 cœurs.
 
-    Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique
-    que tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a *n*
-    cœurs CPU (cette information est dans le panneau *Performance*), un
-    programme sériel intensif devrait avoir une consommation de 100 % / *n* dans
-    le panneau *Processus*. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant
-    4 cœurs.
-
-    Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
-    puisque l’utilisation dépasse 50 % sur un ordinateur ayant 10 cœurs. Si le
-    programme avait été sériel, l’utilisation aurait été d’environ 10 %, soit
-    100 % / 10 cœurs.
+Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
+puisque l’utilisation dépasse 50 % sur un ordinateur ayant 10 cœurs. Si le
+programme avait été sériel, l’utilisation aurait été d’environ 10 %, soit
+100 % / 10 cœurs.
 
 MacOS
 '''''
@@ -82,6 +80,11 @@ Le `Moniteur d’activité
 .. figure:: ../../images/mac-os-task-manager_fr.png
 
 (Image tirée du soutien technique d’Apple)
+
+Dans le gestionnaire des tâches MacOS, une utilisation CPU de 100 % correspond à
+un cœur CPU pleinement utilisé. Lors de l’exécution d’un programme sériel
+intensif, le gestionnaire devrait afficher le processus et une utilisation CPU
+de près de 100 %.
 
 Linux
 '''''
@@ -100,9 +103,10 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
 
 .. figure:: ../../images/linux-top.png
 
-Dans ``top``, une utilisation CPU de 100 % correspond à un cœur CPU pleinement
-utilisé. Lors de l’exécution d’un programme sériel intensif, ``top -u $USER``
-devrait afficher le processus et une utilisation CPU de près de 100% :
+Dans ``top`` (et les autres gestionnaires de tâches Linux), une utilisation CPU
+de 100 % correspond à un cœur CPU pleinement utilisé. Lors de l’exécution d’un
+programme sériel intensif, ``top -u $USER`` devrait afficher le processus et une
+utilisation CPU de près de 100 % :
 
 .. code-block:: console
     :emphasize-lines: 8
