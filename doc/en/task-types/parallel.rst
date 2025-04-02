@@ -317,7 +317,7 @@ Exercise
 #. Start an interactive job with ``salloc [...] --time=00:10:00``.
    Replace ``[...]`` by the parallelism options necessary for an MPI program
    and ask for 2 CPU cores.
-#. Run the program in the background with ``srun ./pi &``.
+#. Run the program in the background with ``mpirun ./pi &``.
 #. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
 
