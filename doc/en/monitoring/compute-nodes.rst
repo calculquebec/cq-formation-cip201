@@ -18,7 +18,7 @@ you have running jobs**. To do so, follow these steps:
    - Get the node’s name with ``sq`` or ``squeue -t running -u $USER``.
    - If the ``NODELIST`` field is too narrow to get a full list of the nodes,
      you can also find the full list with ``scontrol show job <jobid> | grep
-     'NodeList'``.
+     NodeList``.
 
 #. Connect to one node at a time. For instance: ``ssh compute-node1``.
 
@@ -47,4 +47,4 @@ Group exercise
 #. Submit a short job: ``sbatch --wrap='sleep 120'``.
 #. Check the node list with ``squeue -t running -u $USER``.
 #. Check again the full node list with ``scontrol show job <jobid> | grep
-   'NodeList'``.
+   NodeList``.

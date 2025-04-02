@@ -19,7 +19,7 @@ les étapes à suivre pour ce faire :
    - Obtenir le nom du nœud avec ``sq`` ou ``squeue -t running -u $USER``.
    - Si le champ ``NODELIST`` est trop étroit pour obtenir la liste complète
      des nœuds, la liste complète se trouve dans la sortie de la commande
-     ``scontrol show job <jobid> | grep 'NodeList'``.
+     ``scontrol show job <jobid> | grep NodeList``.
 
 #. Se connecter à un nœud à la fois. Par exemple : ``ssh compute-node1``.
 
@@ -48,4 +48,4 @@ Exercice en groupe
 #. Soumettez une courte tâche : ``sbatch --wrap='sleep 120'``.
 #. Voyez la liste de nœuds dans la sortie de : ``squeue -t running -u $USER``.
 #. Obtenez la liste de nœuds avec la commande :
-   ``scontrol show job <jobid> | grep 'NodeList'``.
+   ``scontrol show job <jobid> | grep NodeList``.
