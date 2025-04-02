@@ -76,7 +76,7 @@ alloués à une tâche parallèle ? Pour le vérifier :
 * Réduisez le nombre de cœurs CPU s’il s’agit d’une tâche parallèle.
 * Optimisez les accès au stockage en lisant les fichiers à partir du `stockage
   local sur les nœuds de calcul
-  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/fr>`_ plutôt qu’à
+  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/fr>`__ plutôt qu’à
   partir d’un système de fichiers réseau (``/home``, ``/project``,
   ``/scratch``). Vos tâches ont accès à un répertoire temporaire local dans
   ``$SLURM_TMPDIR``.
@@ -95,7 +95,7 @@ Exercice
 #. Essayez la commande ``seff <jobid>`` pour l’une d'entre elles et vérifiez
    l’utilisation CPU.
 #. Essayez ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` pour la
-   même tâche.
+   même tâche. Calculez l’utilisation CPU.
 
 Pourquoi optimiser le nombre de cœurs CPU ?
 -------------------------------------------
@@ -115,7 +115,7 @@ Pourquoi optimiser le nombre de cœurs CPU ?
 Scalabilité
 -----------
 
-La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`_ est la
+La `scalabilité <https://docs.alliancecan.ca/wiki/Scalability/fr>`__ est la
 capacité d’un programme parallèle à réduire le temps de calcul à mesure qu’il
 utilise plus de cœurs CPU. Par exemple, idéalement, utiliser deux cœurs CPU
 plutôt qu’un seul réduirait de moitié le temps de calcul et en utiliser quatre
@@ -160,7 +160,7 @@ diminue rapidement passé ce point.
 Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps de
 calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
 équivalentes, la performance ayant simplement une dimension inverse
-(:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
+(:math:`t^{-1}`). La performance est exprimée dans une unité qui sied au
 problème : étapes de calcul par seconde, nombre d’images ou de molécules
 traitées par heure, durée de trajectoire simulée par jour, etc. L’accélération
 peut être calculée à partir de la performance plutôt que du temps de calcul :
@@ -222,7 +222,7 @@ Pourquoi l’efficacité n’est-elle pas linéaire ?
 
 La scalabilité est limitée par la fraction du programme qui calcule en parallèle
 (voir figure ci-dessous). C’est ce qu’on appelle la `loi d’Amdahl
-<https://fr.wikipedia.org/wiki/Loi_d%27Amdahl>`_. Un programme parallèle peut
+<https://fr.wikipedia.org/wiki/Loi_d%27Amdahl>`__. Un programme parallèle peut
 avoir une fraction sérielle pour une variété de raisons :
 
 - Lecture non parallèle d’un fichier d’entrée ou mise à jour d’un fichier de

@@ -18,8 +18,9 @@ The next section introduces the two **types of compute jobs**. :doc:`Serial jobs
 <task-types/serial>` are the simplest. :doc:`Parallel jobs
 <task-types/parallel>` deserve a more in-depth presentation, including the
 differences between multi-threaded and MPI programs. Data parallelism is briefly
-discussed and is the topic of a subsequent workshop, *Data parallelism on the
-clusters* (CIP202).
+discussed and is the topic of a subsequent workshop, `Data parallelism on the
+clusters <https://calculquebec.github.io/cq-formation-cip202/en/index.html>`__
+(CIP202).
 
 **Estimating the resources required** for a compute job can be challenging! This
 section covers compute :doc:`time <resources/time>`, :doc:`memory
@@ -43,11 +44,11 @@ facilitates job monitoring.
     instructor on our cloud computing platform. The files necessary for the
     exercises are in your home directory on the platform.
 
-    If you follow this workshop on your own, you can download the `the
-    necessary files <https://github.com/calculquebec/cq-formation-cip201>`_ and
-    do the exercises on any Calcul Québec or Digital Research Alliance of Canada
+    If you follow this workshop on your own, you can download the `the necessary
+    files <https://github.com/calculquebec/cq-formation-cip201>`__ and do the
+    exercises on any Calcul Québec or Digital Research Alliance of Canada
     cluster. Your jobs’ wait time, however, will be longer than on the cloud
-    computing platform.
+    platform.
 
 .. toctree::
     :caption: The job scheduler

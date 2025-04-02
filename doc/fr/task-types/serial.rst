@@ -45,8 +45,8 @@ Windows
 '''''''
 
 Le `Gestionnaire des tâches Windows
-<https://fr.wikipedia.org/wiki/Gestionnaire_des_t%C3%A2ches_Windows>`_ peut être
-affiché de deux manières :
+<https://fr.wikipedia.org/wiki/Gestionnaire_des_t%C3%A2ches_Windows>`__ peut
+être affiché de deux manières :
 
 - Cherchez *Gestionnaire des tâches* dans le menu *Démarrer*.
 - Utilisez le racourci clavier :kbd:`Ctrl+Alt+Suppr`.
@@ -71,10 +71,10 @@ MacOS
 '''''
 
 Le `Moniteur d’activité
-<https://support.apple.com/fr-ca/guide/activity-monitor/actmntr1001/mac>`_ peut
+<https://support.apple.com/fr-ca/guide/activity-monitor/actmntr1001/mac>`__ peut
 être affiché de deux manières :
 
-- Cherchez *Moniteur d’activité* dans les *Applications et Utilitaires*.
+- Cherchez *Moniteur d’activité* dans *Applications* → *Utilitaires*.
 - Utilisez le raccourci clavier :kbd:`⌘+Espace` pour afficher le champ de
   recherche, tapez les premières lettres de *Moniteur d’activité*, puis
   choisissez l’application lorsque son nom apparaît.

@@ -16,7 +16,7 @@ Rappel de l'ordonnancement des tâches
 
 * Selon la priorité de chaque tâche et selon les ressources qui se libèrent,
   l'ordonnanceur Slurm joue à un genre de
-  `Tetris <https://fr.wikipedia.org/wiki/Tetris>`_ où la largeur des blocs
+  `Tetris <https://fr.wikipedia.org/wiki/Tetris>`__ où la largeur des blocs
   correspond à une quantité de ressource demandée et où la hauteur d'un bloc
   est le temps demandé pour la tâche.
 

@@ -18,7 +18,7 @@ discussion of :ref:`other parallelism types <para-others>`.
 
 When you use a parallel program for the first time on our clusters, check the
 `Alliance Technical Documentation
-<https://docs.alliancecan.ca/wiki/Technical_documentation/en>`_ before anything
+<https://docs.alliancecan.ca/wiki/Technical_documentation/en>`__ before anything
 else. We explain how to run a variety of scientific programs, including job
 script examples. Do not hesitate to contact our `technical support
 <https://docs.alliancecan.ca/wiki/Technical_support>`__ if you have any
@@ -347,7 +347,7 @@ OpenMP:
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
@@ -367,7 +367,7 @@ this can be done with:
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2

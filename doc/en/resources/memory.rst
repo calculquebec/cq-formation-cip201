@@ -9,9 +9,9 @@ requirements, but with different metrics.
 Recall the two Slurm options to request memory:
 
 - ``--mem=<amount>``, memory
-  `per compute node <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+  `per compute node <https://slurm.schedmd.com/sbatch.html#OPT_mem>`__.
 - ``--mem-per-cpu=<amount>``, memory
-  `per CPU core <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`_.
+  `per CPU core <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`__.
 
   - Default: ``256M``
 
@@ -19,7 +19,7 @@ Why set a memory limit?
 -----------------------
 
 - On the `national clusters
-  <https://docs.alliancecan.ca/wiki/National_systems#List_of_compute_clusters>`_,
+  <https://docs.alliancecan.ca/wiki/National_systems#List_of_compute_clusters>`__,
   the vast majority of compute nodes have a little less than **4G of usable
   memory per CPU core**.
 
@@ -58,7 +58,7 @@ JobID,JobName,MaxRSS``.
 - ``Memory Utilized``: the maximum amount of memory used during the job.
 - ``MaxRSS``: the same thing, where RSS stands for *resident set size*.
 - See our `documentation
-  <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`_.
+  <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`__.
 
 Exercise
 ''''''''
@@ -89,7 +89,7 @@ consider:
 - Memory measurements must be done one calculation at a time.
 - For the measure to be reliable, maximum memory usage should be sustained for
   around 30 seconds.
-- Otherwise, `real-time job monitoring <../monitoring/compute-nodes.html>`_ must
+- Otherwise, :doc:`real-time job monitoring <../monitoring/compute-nodes>` must
   be performed.
 
 Exercise

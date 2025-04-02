@@ -20,10 +20,10 @@ types de parallélisme <para-others>`.
 
 Lorsque vous utilisez un programme parallèle sur nos grappes pour la première
 fois, consultez avant tout la `documentation technique de l’Alliance
-<https://docs.alliancecan.ca/wiki/Technical_documentation/fr>`_. Nous y
+<https://docs.alliancecan.ca/wiki/Technical_documentation/fr>`__. Nous y
 expliquons comment exécuter une variété de programmes scientifiques, incluant
 des exemples de scripts de tâches. N’hésitez pas non plus à contacter notre
-`soutien technique <https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ si
+`soutien technique <https://docs.alliancecan.ca/wiki/Technical_support/fr>`__ si
 vous avez des questions.
 
 .. _para-multi-threading:
@@ -120,8 +120,8 @@ processus utilisera, ce qui correspond au nombre de fils d’exécution.
 Les différents outils pour la programmation multi-fils n’utilisent pas les mêmes
 options pour contrôler le nombre de fils d’exécution. Par exemple, les
 programmes OpenMP utilisent la variable d’environement ``OMP_NUM_THREADS``. Dans
-un script de tâche, on assigne à cette variable le nombre de CPU demandés à
-l’ordonnanceur :
+un script de tâche, on assigne à cette variable le nombre de cœurs CPU demandés
+à l’ordonnanceur :
 
 .. code-block:: bash
     :emphasize-lines: 5,10
@@ -364,7 +364,7 @@ Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
@@ -384,7 +384,7 @@ hybride MPI/multi-fils, cela peut être fait avec :
 
     #!/bin/bash
 
-    #SBATCH --job-name=my-mpi-job
+    #SBATCH --job-name=my-hybrid-job
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2
@@ -490,5 +490,5 @@ bénéficier de ce parallélisme. Si vous compilez vous-même un programme,
 toutefois, il est possible d’ativer le support pour ces jeux d’instructions
 spécialisés et ainsi obtenir de meilleures performances. Nous vous suggérons de
 contacter notre `soutien technique
-<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ pour obtenir de
+<https://docs.alliancecan.ca/wiki/Technical_support/fr>`__ pour obtenir de
 l’aide.
