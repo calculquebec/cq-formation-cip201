@@ -168,7 +168,7 @@ Exercise
 #. Compile the ``fibo`` program with the ``make`` command.
 #. Start an interactive job with ``salloc --cpus-per-task=2
    --time=00:10:00``.
-#. Run the program with ``./fibo 50 &``.
+#. Run the program with ``./fibo &``.
 
    #. Used as a final character, ``&`` runs a program in the background. You can
       then continue typing commands while the program runs.
@@ -197,8 +197,8 @@ Exercise
 
 .. note::
 
-    ``fibo <n>`` computes the nth number in the Fibonacci sequence, where each
-    number is the sum of the previous two:
+    ``fibo [n]`` computes the nth number (by default the fiftieth) in the
+    Fibonacci sequence, where each number is the sum of the previous two:
 
         0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …
 
