@@ -18,7 +18,7 @@ discussion of :ref:`other parallelism types <para-others>`.
 
 When you use a parallel program for the first time on our clusters, check the
 `Alliance Technical Documentation
-<https://docs.alliancecan.ca/wiki/Technical_documentation/en>`_ before anything
+<https://docs.alliancecan.ca/wiki/Technical_documentation/en>`__ before anything
 else. We explain how to run a variety of scientific programs, including job
 script examples. Do not hesitate to contact our `technical support
 <https://docs.alliancecan.ca/wiki/Technical_support>`__ if you have any

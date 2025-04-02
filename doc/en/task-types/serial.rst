@@ -42,7 +42,7 @@ Windows
 '''''''
 
 The `Windows Task Manager
-<https://en.wikipedia.org/wiki/Task_Manager_(Windows)>`_ can be started in two
+<https://en.wikipedia.org/wiki/Task_Manager_(Windows)>`__ can be started in two
 ways:
 
 - Look for *Task Manager* in the *Start* Menu.
@@ -66,7 +66,7 @@ MacOS
 '''''
 
 The `Activity Monitor
-<https://support.apple.com/en-ca/guide/activity-monitor/actmntr1001/mac>`_ can
+<https://support.apple.com/en-ca/guide/activity-monitor/actmntr1001/mac>`__ can
 be started in two ways:
 
 - Look for *Activity Monitor* in *Applications* → *Utilities*.

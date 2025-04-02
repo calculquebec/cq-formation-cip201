@@ -33,19 +33,19 @@ Principales options
 '''''''''''''''''''
 
 - ``--account=<compte>`` :
-  `compte de calcul <https://slurm.schedmd.com/sbatch.html#OPT_account>`_.
+  `compte de calcul <https://slurm.schedmd.com/sbatch.html#OPT_account>`__.
 
   - Sur les grappes nationales, les comptes ont la forme ``def-*``,
     ``rrg-*``, ``rpp-*`` ou ``ctb-*``.
   - Pour l'atelier, le compte sera ``def-sponsor00``.
 
 - ``--job-name=<nom>`` :
-  `nom au choix <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`_
+  `nom au choix <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`__
   de la tâche de calcul. C'est très utile pour différencier vos différents
   types de tâches.
 
 - ``--time=J-HH:MM`` ou ``--time=HH:MM:SS`` :
-  `limite de temps <https://slurm.schedmd.com/sbatch.html#OPT_time>`_
+  `limite de temps <https://slurm.schedmd.com/sbatch.html#OPT_time>`__
   pour l'exécution de la tâche de calcul.
 
   - On peut spécifier des jours (``J``), des heures (``HH``), des
@@ -53,7 +53,7 @@ Principales options
   - Par défaut : ``1:0:0``, soit une heure.
 
 - ``--mem=<quantité>``, quantité de mémoire
-  `par nœud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+  `par nœud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`__.
 
   - Unités :
 
@@ -65,7 +65,7 @@ Principales options
 Suivi de tâches
 ---------------
 
-- ``squeue`` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`_
+- ``squeue`` : `afficher les tâches <https://slurm.schedmd.com/squeue.html>`__
   actuellement gérées par Slurm.
 
   - ``-t pending`` : afficher les tâches en attente.
@@ -76,7 +76,7 @@ Suivi de tâches
 - ``scontrol show job <jobid>`` : afficher les propriétés d'une tâche gérée
   par Slurm.
 - ``seff <jobid>`` : résumé des ressources utilisées.
-- ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`_
+- ``sacct`` : `détail des tâches <https://slurm.schedmd.com/sacct.html>`__
   complétées depuis minuit.
 
   - ``-j,--jobs=<jobid...>`` : affiche l’information pour une ou plusieurs tâches

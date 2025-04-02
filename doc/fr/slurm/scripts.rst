@@ -6,21 +6,21 @@ Scripts de tâches
 Un script de tâche est communément un script Bash destiné à l'ordonnanceur
 Slurm. On y retrouve :
 
-#. Le `shebang <https://fr.wikipedia.org/wiki/Shebang>`_ en toute première
+#. Le `shebang <https://fr.wikipedia.org/wiki/Shebang>`__ en toute première
    ligne. Par exemple : ``#!/bin/bash``.
 #. Les options ``#SBATCH`` en entête pour les besoins de la tâche. Ces
    options seront lues par la commande de soumission de tâche
-   `sbatch <https://slurm.schedmd.com/sbatch.html>`_.
-#. `Chargement des modules <https://docs.alliancecan.ca/wiki/Utiliser_des_modules>`_
+   `sbatch <https://slurm.schedmd.com/sbatch.html>`__.
+#. `Chargement des modules <https://docs.alliancecan.ca/wiki/Utiliser_des_modules>`__
    requis.
 #. Les commandes Bash qui seront exécutées automatiquement sur des processeurs
    réservés pour la tâche.
 
 Voir les exemples de la documentation de l'Alliance :
 
-- `Script simple <https://docs.alliancecan.ca/wiki/Running_jobs/fr#Soumettre_des_t%C3%A2ches_avec_sbatch>`_
-- `Tâche Python <https://docs.alliancecan.ca/wiki/Python/fr#Cr%C3%A9er_un_environnement_virtuel_dans_vos_t%C3%A2ches>`_
-- `Tâche R <https://docs.alliancecan.ca/wiki/R/fr#Interpr%C3%A9teur>`_
+- `Script simple <https://docs.alliancecan.ca/wiki/Running_jobs/fr#Soumettre_des_t%C3%A2ches_avec_sbatch>`__
+- `Tâche Python <https://docs.alliancecan.ca/wiki/Python/fr#Cr%C3%A9er_un_environnement_virtuel_dans_vos_t%C3%A2ches>`__
+- `Tâche R <https://docs.alliancecan.ca/wiki/R/fr#Interpr%C3%A9teur>`__
 
 Exercice en groupe
 ------------------

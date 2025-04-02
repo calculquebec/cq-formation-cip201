@@ -33,27 +33,27 @@ Main options
 ''''''''''''
 
 - ``--account=<account>``:
-  `compute account <https://slurm.schedmd.com/sbatch.html#OPT_account>`_.
+  `compute account <https://slurm.schedmd.com/sbatch.html#OPT_account>`__.
 
   - On the national clusters, the accounts have the form ``def-*``,
     ``rrg-*``, ``rpp-*`` or ``ctb-*``.
   - For the workshop, the account will be ``def-sponsor00``.
 
 - ``--job-name=<name>``:
-  `name of your choice <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`_
+  `name of your choice <https://slurm.schedmd.com/sbatch.html#OPT_job-name>`__
   for the job. This is very useful to differentiate your different types of
   jobs.
 
 - ``--time=D-HH:MM`` or ``--time=HH:MM:SS``:
   `limit on the total run time
-  <https://slurm.schedmd.com/sbatch.html#OPT_time>`_ of the job.
+  <https://slurm.schedmd.com/sbatch.html#OPT_time>`__ of the job.
 
   - You can specify days (``D``), hours (``HH``), minutes (``MM``) and seconds
     (``SS``).
   - By default: ``1:0:0``, or one hour.
 
 - ``--mem=<size>``, memory required `per node
-  <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+  <https://slurm.schedmd.com/sbatch.html#OPT_mem>`__.
 
   - Units:
 
@@ -65,7 +65,7 @@ Main options
 Monitoring jobs
 ---------------
 
-- ``squeue``: `to display jobs <https://slurm.schedmd.com/squeue.html>`_
+- ``squeue``: `to display jobs <https://slurm.schedmd.com/squeue.html>`__
   currently managed by Slurm.
 
   - ``-t pending``: only display pending jobs.
@@ -76,7 +76,7 @@ Monitoring jobs
 - ``scontrol show job <jobid>``: display the properties of a job managed by
   Slurm.
 - ``seff <jobid>``: summary of resources used.
-- ``sacct``: `the details of jobs <https://slurm.schedmd.com/sacct.html>`_
+- ``sacct``: `the details of jobs <https://slurm.schedmd.com/sacct.html>`__
   completed since midnight.
 
   - ``-j,--jobs=<jobid...>``: display the information for one or more specific

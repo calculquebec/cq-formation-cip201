@@ -10,9 +10,9 @@ Pour rappel, voici les deux principales options de l'ordonnanceur Slurm pour
 demander de la mémoire :
 
 - ``--mem=<quantité>``, quantité de mémoire
-  `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`_.
+  `par noeud de calcul <https://slurm.schedmd.com/sbatch.html#OPT_mem>`__.
 - ``--mem-per-cpu=<quantité>``, quantité de mémoire
-  `par coeur CPU <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`_.
+  `par coeur CPU <https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu>`__.
 
   - Par défaut : ``256M``
 
@@ -20,7 +20,7 @@ Pourquoi se fixer une limite de mémoire?
 ----------------------------------------
 
 - Dans les
-  `grappes nationales <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`_,
+  `grappes nationales <https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul>`__,
   la grande majorité des noeuds de calcul contiennent un peu moins de **4G de
   mémoire vive utilisable par coeur CPU**.
 
@@ -62,7 +62,7 @@ Avec l'identifiant d'une tâche terminée, on peut utiliser la commande
 - ``Memory Utilized`` : quantité mesurée maximale de mémoire utilisée.
 - ``MaxRSS`` : même chose. "RSS" veut dire *Resident set size*.
 - Voir la
-  `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`_.
+  `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
 
 Exercice
 ''''''''
@@ -96,8 +96,8 @@ mémoire. Quelques détails à considérer :
 - La mesure sur la grappe doit se faire une tâche à la fois.
 - Pour que la mesure soit fiable, il faut que l'utilisation maximale soit
   maintenue pendant environ 30 secondes.
-- Autrement, il faudra utiliser des techniques de
-  `suivi des tâches en temps réel <../monitoring/compute-nodes.html>`_.
+- Autrement, il faudra utiliser des techniques de :doc:`suivi des tâches en
+  temps réel <../monitoring/compute-nodes>`.
 
 Exercice
 ''''''''

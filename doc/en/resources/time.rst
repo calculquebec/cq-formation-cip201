@@ -11,13 +11,14 @@ Why set a time limit?
 - The longer a job runs, the more likely it is to be interrupted, such as by a
   hardware failure.
 
-  - `Checkpoints <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`_
-    protect against this issue and also allow splitting a long job into many
-    shorter, successive ones.
+  - `Checkpoints
+    <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`__ protect
+    against this issue and also allow splitting a long job into many shorter,
+    successive ones.
 
 - Most jobs finish in a matter of hours.
 - Consequently, our `scheduling policies
-  <https://docs.alliancecan.ca/wiki/Job_scheduling_policies#Percentage_of_the_nodes_you_have_access_to>`_
+  <https://docs.alliancecan.ca/wiki/Job_scheduling_policies#Percentage_of_the_nodes_you_have_access_to>`__
   make more nodes available for short jobs.
   
 .. figure:: ../../images/partitions_en.svg
@@ -50,19 +51,19 @@ Checking the computing time on the cluster
   <jobid> -o JobID,JobName,Elapsed``.
 
   - ``Elapsed`` : elapsed time between the start and the end of the job.
-  - See
-    `our documentation <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`_.
+  - See `our documentation
+    <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`__.
 
 - If you do not know the job id, list your recent jobs with ``sacct -X``.
 
   - Option ``-X,--allocations`` filters the list to show only resource
     allocations as opposed to job steps (which we will see in a later chapter).
   - To start the search from an `earlier date
-    <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_: ``-S <YYYY-MM-DD>``
+    <https://slurm.schedmd.com/sacct.html#OPT_starttime>`__: ``-S <YYYY-MM-DD>``
     or ``--starttime=<YYYY-MM-DD>``.
   - To end the search after a `specific date
-    <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_: ``-E <YYYY-MM-DD>`` or
-    ``--endtime=<YYYY-MM-DD>``.
+    <https://slurm.schedmd.com/sacct.html#OPT_endtime>`__: ``-E <YYYY-MM-DD>``
+    or ``--endtime=<YYYY-MM-DD>``.
 
 Exercise
 ''''''''
@@ -104,7 +105,7 @@ In this workshop, we will only use the ``real`` time.
 Exercise
 ''''''''
 
-`Sorting algorithms <https://en.wikipedia.org/wiki/Sorting_algorithm>`_ have
+`Sorting algorithms <https://en.wikipedia.org/wiki/Sorting_algorithm>`__ have
 different complexity orders. If :math:`n` is the number of values to sort, some
 algorithms, such as how we intuitively sort playing cards, have an
 :math:`O(n^2)` order, while others have an :math:`O(n\log(n))` order and are

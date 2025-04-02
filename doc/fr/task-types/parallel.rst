@@ -20,10 +20,10 @@ types de parallélisme <para-others>`.
 
 Lorsque vous utilisez un programme parallèle sur nos grappes pour la première
 fois, consultez avant tout la `documentation technique de l’Alliance
-<https://docs.alliancecan.ca/wiki/Technical_documentation/fr>`_. Nous y
+<https://docs.alliancecan.ca/wiki/Technical_documentation/fr>`__. Nous y
 expliquons comment exécuter une variété de programmes scientifiques, incluant
 des exemples de scripts de tâches. N’hésitez pas non plus à contacter notre
-`soutien technique <https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ si
+`soutien technique <https://docs.alliancecan.ca/wiki/Technical_support/fr>`__ si
 vous avez des questions.
 
 .. _para-multi-threading:
@@ -490,5 +490,5 @@ bénéficier de ce parallélisme. Si vous compilez vous-même un programme,
 toutefois, il est possible d’ativer le support pour ces jeux d’instructions
 spécialisés et ainsi obtenir de meilleures performances. Nous vous suggérons de
 contacter notre `soutien technique
-<https://docs.alliancecan.ca/wiki/Technical_support/fr>`_ pour obtenir de
+<https://docs.alliancecan.ca/wiki/Technical_support/fr>`__ pour obtenir de
 l’aide.

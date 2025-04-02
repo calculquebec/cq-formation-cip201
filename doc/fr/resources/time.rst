@@ -11,13 +11,13 @@ Pourquoi se fixer une limite de temps?
 - Cependant, plus les tâches sont longues, plus elles s'exposent à une
   défaillance matérielle.
 
-  - `Les points de contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`_
+  - `Les points de contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`__
     permettent de s'en protéger et même de découper le travail en plusieurs
     tâches de calcul successives.
 
 - En fait, la plupart des tâches se terminent en quelques heures.
 - Par conséquent,
-  `la politique d'ordonnancement <https://docs.alliancecan.ca/wiki/Job_scheduling_policies/fr#Pourcentages_des_n%C5%93uds_disponibles>`_
+  `la politique d'ordonnancement <https://docs.alliancecan.ca/wiki/Job_scheduling_policies/fr#Pourcentages_des_n%C5%93uds_disponibles>`__
   rend davantage de nœuds disponibles pour les tâches courtes.
 
 .. figure:: ../../images/partitions_fr.svg
@@ -52,7 +52,7 @@ Obtenir le temps de calcul sur la grappe
 
   - ``Elapsed`` : temps écoulé entre le début et la fin de la tâche.
   - Voir la
-    `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`_.
+    `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
 
 - Si on ne connaît pas le numéro de tâche, on peut lister nos dernières tâches
   avec ``sacct -X``.
@@ -61,10 +61,10 @@ Obtenir le temps de calcul sur la grappe
     allocations de ressources, pas les étapes (que nous verrons dans un chapitre
     subséquent).
   - Pour démarrer la recherche à partir d'une
-    `date antérieure <https://slurm.schedmd.com/sacct.html#OPT_starttime>`_
+    `date antérieure <https://slurm.schedmd.com/sacct.html#OPT_starttime>`__
     à aujoud'hui : ``-S <YYYY-MM-DD>`` ou ``--starttime=<YYYY-MM-DD>``.
   - Pour limiter la recherche jusqu'à une
-    `certaine date <https://slurm.schedmd.com/sacct.html#OPT_endtime>`_
+    `certaine date <https://slurm.schedmd.com/sacct.html#OPT_endtime>`__
     : ``-E <YYYY-MM-DD>`` ou ``--endtime=<YYYY-MM-DD>``.
 
 Exercice
@@ -112,7 +112,7 @@ Exercice
 ''''''''
 
 Parmi les
-`algorithmes de tri <https://fr.wikipedia.org/wiki/Algorithme_de_tri#Comparaison_des_algorithmes>`_
+`algorithmes de tri <https://fr.wikipedia.org/wiki/Algorithme_de_tri#Comparaison_des_algorithmes>`__
 de :math:`n` valeurs, certains algorithmes plus intuitifs, comme trier des
 cartes à jouer, sont d'ordre :math:`O(n^2)`, alors que les plus sophistiqués
 sont d'ordre :math:`O(n \log(n))`, et donc beaucoup plus rapides lorsque la

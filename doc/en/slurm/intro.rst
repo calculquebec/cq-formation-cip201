@@ -16,7 +16,7 @@ Reminder of job scheduling
 
 * Depending on the priority of each job and the resources that become
   available, the Slurm scheduler plays a kind of `Tetris
-  <https://en.wikipedia.org/wiki/Tetris>`_ where the width of the blocks
+  <https://en.wikipedia.org/wiki/Tetris>`__ where the width of the blocks
   corresponds to a quantity of resource requested and where the height of a
   block is the time requested for the job.
 

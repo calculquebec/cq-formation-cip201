@@ -44,9 +44,9 @@ facilitates job monitoring.
     instructor on our cloud computing platform. The files necessary for the
     exercises are in your home directory on the platform.
 
-    If you follow this workshop on your own, you can download the `the
-    necessary files <https://github.com/calculquebec/cq-formation-cip201>`_ and
-    do the exercises on any Calcul Québec or Digital Research Alliance of Canada
+    If you follow this workshop on your own, you can download the `the necessary
+    files <https://github.com/calculquebec/cq-formation-cip201>`__ and do the
+    exercises on any Calcul Québec or Digital Research Alliance of Canada
     cluster. Your jobs’ wait time, however, will be longer than on the cloud
     computing platform.
 

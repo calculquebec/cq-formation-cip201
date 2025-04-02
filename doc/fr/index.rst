@@ -49,11 +49,11 @@ utilisateurs <monitoring/user-portal>` qui facilite le suivi des tâches.
     pour les exercices sont dans votre répertoire personnel sur la plateforme.
 
     Si vous suivez cet atelier par vous-même, vous pouvez télécharger `les
-    fichiers nécessaires <https://github.com/calculquebec/cq-formation-cip201>`_
-    et réaliser les exercices sur n’importe quelle grappe de Calcul Québec ou de
-    l’Alliance de recherche numérique du Canada. Le temps d’attente pour
-    l’exécution des tâches sera toutefois plus long que sur la plateforme
-    infonuagique.
+    fichiers nécessaires
+    <https://github.com/calculquebec/cq-formation-cip201>`__ et réaliser les
+    exercices sur n’importe quelle grappe de Calcul Québec ou de l’Alliance de
+    recherche numérique du Canada. Le temps d’attente pour l’exécution des
+    tâches sera toutefois plus long que sur la plateforme infonuagique.
 
 .. toctree::
     :caption: L’ordonnanceur de tâches

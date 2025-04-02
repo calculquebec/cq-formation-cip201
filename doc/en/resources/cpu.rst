@@ -71,7 +71,7 @@ the CPU cores allocated to a parallel job? To investigate:
 
 * Reduce the number of CPU cores if the job is parallel.
 * Optimise storage access by reading files from `node-local storage
-  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/en>`_ rather than
+  <https://docs.alliancecan.ca/wiki/Using_node-local_storage/en>`__ rather than
   a network filesystem (``/home``, ``/project``, ``/scratch``). Your jobs
   have access to a temporary local directory in ``$SLURM_TMPDIR``.
 
@@ -209,7 +209,7 @@ Why isn’t scaling linear?
 
 Scalability is limited by the fraction of the program that computes in parallel
 (see figure below). This is referred to as
-`Amdahl’s law <https://en.wikipedia.org/wiki/Amdahl%27s_law>`_. A parallel
+`Amdahl’s law <https://en.wikipedia.org/wiki/Amdahl%27s_law>`__. A parallel
 program can have a serial fraction for a variety of reasons:
 
 - Reading an input file or updating an output file in a non-parallel manner.
