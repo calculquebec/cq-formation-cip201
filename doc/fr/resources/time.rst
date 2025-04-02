@@ -81,13 +81,13 @@ Estimer le temps requis pour un plus grand calcul
 
 L'algorithme principal de certains programmes sont d'ordre :
 
-- linéaire - :math:`O(n)`, ce qui veut dire qu'une quantité **2x** plus élevée
+- Linéaire, :math:`O(n)`, ce qui veut dire qu'une quantité **2x** plus élevée
   de données à traiter se traduit en un temps de calcul **2x** plus long.
-- quadratique - :math:`O(n^2)`, donc une dimension :math:`n` **2x** plus grande
+- Quadratique, :math:`O(n^2)`, donc une dimension :math:`n` **2x** plus grande
   cause un temps **4x** plus long.
-- cubique - :math:`O(n^3)`, donc une dimension :math:`n` **2x** plus grande
+- Cubique, :math:`O(n^3)`, donc une dimension :math:`n` **2x** plus grande
   cause un temps **8x** plus long.
-- etc.
+- Etc.
 
 Empiriquement, il est possible d'observer la tendance d'un programme traitant
 différentes quantités de données. Pour mesurer le temps de chaque exécution,
