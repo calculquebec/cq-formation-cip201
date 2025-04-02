@@ -160,7 +160,7 @@ diminue rapidement passé ce point.
 Dans cet exemple, on utilise la performance (:math:`P`) plutôt que le temps de
 calcul (:math:`t`) pour illustrer la scalabilité. Les deux approches sont
 équivalentes, la performance ayant simplement une dimension inverse
-(:math:`t^{-1}`). La performance est exprimée avec une unité qui sied au
+(:math:`t^{-1}`). La performance est exprimée dans une unité qui sied au
 problème : étapes de calcul par seconde, nombre d’images ou de molécules
 traitées par heure, durée de trajectoire simulée par jour, etc. L’accélération
 peut être calculée à partir de la performance plutôt que du temps de calcul :
