@@ -120,8 +120,8 @@ processus utilisera, ce qui correspond au nombre de fils d’exécution.
 Les différents outils pour la programmation multi-fils n’utilisent pas les mêmes
 options pour contrôler le nombre de fils d’exécution. Par exemple, les
 programmes OpenMP utilisent la variable d’environement ``OMP_NUM_THREADS``. Dans
-un script de tâche, on assigne à cette variable le nombre de CPU demandés à
-l’ordonnanceur :
+un script de tâche, on assigne à cette variable le nombre de cœurs CPU demandés
+à l’ordonnanceur :
 
 .. code-block:: bash
     :emphasize-lines: 5,10
