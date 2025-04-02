@@ -20,8 +20,9 @@ La section suivante présente les deux **types de tâches de calcul**. Les
 :doc:`tâches parallèles <task-types/parallel>`, pour leur part, méritent une
 discussion plus approfondie, incluant la différence entre les programmes
 parallèles multi-fils et MPI. Le parallélisme de données est mentionné
-brièvement et fait l’objet d’un atelier subséquent, *Parallélisme de données sur
-les grappes* (CIP202).
+brièvement et fait l’objet d’un atelier subséquent, `Parallélisme de données sur
+les grappes
+<https://calculquebec.github.io/cq-formation-cip202/fr/index.html>`__ (CIP202).
 
 **Estimer les ressources requises** pour une tâche de calcul peut être un défi !
 Cette section discute du :doc:`temps <resources/time>` de calcul, de la
