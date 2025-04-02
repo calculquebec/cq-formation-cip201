@@ -88,7 +88,7 @@ Exercise
 #. List your recent jobs with ``sacct -X``.
 #. Try ``seff <jobid>`` for one of these jobs and check its CPU usage.
 #. Try ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` for the same
-   job.
+   job. Compute CPU usage.
 
 Why optimise the number of CPU cores?
 -------------------------------------

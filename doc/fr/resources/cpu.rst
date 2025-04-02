@@ -95,7 +95,7 @@ Exercice
 #. Essayez la commande ``seff <jobid>`` pour l’une d'entre elles et vérifiez
    l’utilisation CPU.
 #. Essayez ``sacct -j <jobid> -o JobID,JobName,Elapsed,TotalCPU,NCPUs`` pour la
-   même tâche.
+   même tâche. Calculez l’utilisation CPU.
 
 Pourquoi optimiser le nombre de cœurs CPU ?
 -------------------------------------------
