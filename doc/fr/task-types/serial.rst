@@ -74,7 +74,7 @@ Le `Moniteur d’activité
 <https://support.apple.com/fr-ca/guide/activity-monitor/actmntr1001/mac>`_ peut
 être affiché de deux manières :
 
-- Cherchez *Moniteur d’activité* dans les *Applications et Utilitaires*.
+- Cherchez *Moniteur d’activité* dans *Applications* → *Utilitaires*.
 - Utilisez le raccourci clavier :kbd:`⌘+Espace` pour afficher le champ de
   recherche, tapez les premières lettres de *Moniteur d’activité*, puis
   choisissez l’application lorsque son nom apparaît.
