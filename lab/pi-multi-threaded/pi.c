@@ -35,17 +35,26 @@ double monte_carlo_pi(unsigned long long n)
 
 int main(int argc, char* argv[])
 {
-	if (argc == 2)
-	{
-		char* endptr;
-		unsigned long long n = strtoll(argv[1], &endptr, 10);
-		double pi = monte_carlo_pi(n);
-		printf("After %llu points, pi estimate is %f.\n", n, pi);
-		return 0;
-	}
-	else
+	if (argc > 2)
 	{
 		printf("usage: pi <n-points>\n");
 		return 1;
+	}
+	else
+	{
+		unsigned long long n;
+		if (argc == 2)
+		{
+			char* endptr;
+			n = strtoll(argv[1], &endptr, 10);
+		}
+		else
+		{
+			n = 10000000000;
+		}
+		printf("Estimating pi with %llu random points.\n", n);
+		double pi = monte_carlo_pi(n);
+		printf("Pi estimate is %f.\n", pi);
+		return 0;
 	}
 }

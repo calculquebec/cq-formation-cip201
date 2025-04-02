@@ -158,8 +158,7 @@ Exercice
 #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
    Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
    tâche multi-fils et demandez 2 cœurs CPU.
-#. Exécutez le programme en arrière-plan avec ``./pi 10000000000 &`` (10
-   milliards de points, soit un suivi de 10 zéros).
+#. Exécutez le programme en arrière-plan avec ``./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
 
@@ -182,10 +181,10 @@ Exercice
         \frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}
 
     Une estimation précise de :math:`π` par cette méthode, dite de Monte Carlo,
-    requiert un grand nombre de points aléatoires. Pour accélérer le calcul, on
-    le décompose : les points à générer sont distribués entre les cœurs CPU
-    alloués à la tâche. Avec 2 cœurs, chacun génère la moitié des points, ce qui
-    double la vitesse.
+    requiert un grand nombre de points aléatoires (ici 10 milliards par défaut).
+    Pour accélérer le calcul, on le décompose : les points à générer sont
+    distribués entre les cœurs CPU alloués à la tâche. Avec 2 cœurs, chacun
+    génère la moitié des points, ce qui double la vitesse.
 
     Cet algorithme est un exemple de parallélisme dit « trivial » puisqu’il ne
     nécessite pratiqument aucune communication : chaque cœur CPU (:math:`i`)
@@ -336,8 +335,7 @@ Exercice
 #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
    Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
    tâche MPI et demandez 2 cœurs CPU.
-#. Exécutez le programme en arrière-plan avec ``srun ./pi 10000000000 &`` (10
-   milliards de points, soit un suivi de 10 zéros).
+#. Exécutez le programme en arrière-plan avec ``srun ./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
 
