@@ -4,8 +4,8 @@
 
 ## État
 
-Ce matériel est en cours de rédaction pour les formations CIP201 en ligne du 5
-(français) et 19 (anglais) mars 2025.
+Ce matériel est complet et a été utilisé pour la première fois lors des
+formations CIP201 en ligne du 5 (français) et 19 (anglais) mars 2025.
 
 ## Installation locale et compilation
 
