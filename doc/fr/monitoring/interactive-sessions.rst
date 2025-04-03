@@ -56,7 +56,7 @@ Démonstration
 .. code-block:: console
     :emphasize-lines: 1,4,10
 
-    [alice@nc31210 pi-multi-threaded]$ srun -J testA -n 1 -c 1 ./pi
+    [alice@nc30432 pi-multi-threaded]$ srun -J testA -n 1 -c 1 ./pi
     Estimating pi with 10000000000 random points.
     Pi estimate is 3.141590.
     [alice@nc30432 pi-multi-threaded]$ sacct -j 40716821 -o JobID%15,JobName,Elapsed,NCPUs
@@ -91,7 +91,7 @@ Démonstration
 .. code-block:: console
     :emphasize-lines: 1,4,7,10,16-19
 
-    [alice@nc31210 pi-multi-threaded]$ srun -J testB -n1 -c2 ./pi
+    [alice@nc30432 pi-multi-threaded]$ srun -J testB -n1 -c2 ./pi
     Estimating pi with 10000000000 random points.
     Pi estimate is 3.141621.
     [alice@nc30432 pi-multi-threaded]$ srun -J testC -n1 -c4 ./pi
