@@ -37,25 +37,37 @@ int main(int argc, char* argv[])
 	MPI_Init(&argc, &argv);
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-	if (argc == 2)
-	{
-		char* endptr;
-		unsigned long long n = strtoll(argv[1], &endptr, 10);
-		double pi = monte_carlo_pi(n, MPI_COMM_WORLD);
-		if (rank == 0)
-		{
-			printf("After %llu points, pi estimate is %f.\n", n, pi);
-		}
-		MPI_Finalize();
-		return 0;
-	}
-	else
+	if (argc > 2)
 	{
 		if (rank == 0)
 		{
-			printf("usage: pi <n-points>\n");
+			printf("usage: pi [n-points]\n");
 		}
 		MPI_Finalize();
 		return 1;
+	}
+	else
+	{
+		unsigned long long n;
+		if (argc == 2)
+		{
+			char* endptr;
+			n = strtoll(argv[1], &endptr, 10);
+		}
+		else
+		{
+			n = 10000000000;
+		}
+		if (rank == 0)
+		{
+			printf("Estimating pi with %llu random points.\n", n);
+		}
+		double pi = monte_carlo_pi(n, MPI_COMM_WORLD);
+		if (rank == 0)
+		{
+			printf("Pi estimate is %f.\n", pi);
+		}
+		MPI_Finalize();
+		return 0;
 	}
 }

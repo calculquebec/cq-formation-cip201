@@ -54,10 +54,11 @@ Démonstration
 '''''''''''''''''''''''''''''''''''''
 
 .. code-block:: console
-    :emphasize-lines: 1,3,9
+    :emphasize-lines: 1,4,10
 
-    [alice@nc31210 pi-multi-threaded]$ srun -J testA -n 1 -c 1 ./pi 10000000000
-    After 10000000000 points, pi estimate is 3.141594.
+    [alice@nc30432 pi-multi-threaded]$ srun -J testA -n 1 -c 1 ./pi
+    Estimating pi with 10000000000 random points.
+    Pi estimate is 3.141590.
     [alice@nc30432 pi-multi-threaded]$ sacct -j 40716821 -o JobID%15,JobName,Elapsed,NCPUs
               JobID    JobName    Elapsed      NCPUS 
     --------------- ---------- ---------- ---------- 
@@ -88,14 +89,17 @@ Démonstration
 '''''''''''''''''''''''''''''''''''''''''
 
 .. code-block:: console
-    :emphasize-lines: 1,3,5,7,13-16
+    :emphasize-lines: 1,4,7,10,16-19
 
-    [alice@nc31210 pi-multi-threaded]$ srun -J testB -n1 -c2 ./pi 10000000000
-    After 10000000000 points, pi estimate is 3.141621.
-    [alice@nc30432 pi-multi-threaded]$ srun -J testC -n1 -c4 ./pi 10000000000
-    After 10000000000 points, pi estimate is 3.141631.
-    [alice@nc30432 pi-multi-threaded]$ srun -J testD -n1 -c8 ./pi 10000000000
-    After 10000000000 points, pi estimate is 3.141630.
+    [alice@nc30432 pi-multi-threaded]$ srun -J testB -n1 -c2 ./pi
+    Estimating pi with 10000000000 random points.
+    Pi estimate is 3.141621.
+    [alice@nc30432 pi-multi-threaded]$ srun -J testC -n1 -c4 ./pi
+    Estimating pi with 10000000000 random points.
+    Pi estimate is 3.141631.
+    [alice@nc30432 pi-multi-threaded]$ srun -J testD -n1 -c8 ./pi
+    Estimating pi with 10000000000 random points.
+    Pi estimate is 3.141630.
     [alice@nc30432 pi-multi-threaded]$ sacct -j 40716821 -o JobID%15,JobName,Elapsed,NCPUs
               JobID    JobName    Elapsed      NCPUS 
     --------------- ---------- ---------- ---------- 

@@ -150,8 +150,7 @@ Exercise
 #. Start an interactive job with ``salloc [...] --time=00:10:00``. Replace
    ``[...]`` by the parallelism options necessary for a multi-threaded job and
    ask for 2 CPU cores.
-#. Run the program in the background with ``./pi 10000000000 &`` (10
-   billion points, that is one followed by 10 zeros).
+#. Run the program in the background with ``./pi &``.
 #. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
 
@@ -174,10 +173,10 @@ Exercise
         \frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}
 
     Precisely estimating :math:`π` using this so-called Monte Carlo method
-    requires a great number of random points. To accelerate the calculation, we
-    decompose it: the points to generate are distributed among the CPU cores
-    allocated to the job. With 2 cores, each one generates half the points,
-    which doubles the speed.
+    requires a great number of random points (here 10 billions by default). To
+    accelerate the calculation, we decompose it: the points to generate are
+    distributed among the CPU cores allocated to the job. With 2 cores, each one
+    generates half the points, which doubles the speed.
 
     This algorithm is an example of so-called “trivial” parallelism since it
     requires almost no communication: each CPU core (:math:`i`) generates random
@@ -318,8 +317,7 @@ Exercise
 #. Start an interactive job with ``salloc [...] --time=00:10:00``.
    Replace ``[...]`` by the parallelism options necessary for an MPI program
    and ask for 2 CPU cores.
-#. Run the program in the background with ``srun ./pi 10000000000 &`` (10
-   billion points, that is one followed by 10 zeros).
+#. Run the program in the background with ``mpirun ./pi &``.
 #. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
 
