@@ -252,35 +252,7 @@ Demander les ressources appropriées
 Voici un script minimal pour une tâche parallèle utilisant un programme MPI :
 
 .. code-block:: bash
-    :emphasize-lines: 4-5,9
-
-    #!/bin/bash
-
-    #SBATCH --job-name=my-mpi-job
-    #SBATCH --ntasks=8
-    #SBATCH --mem-per-cpu=1G
-    #SBATCH --time=4:00:00
-    #SBATCH --account=def-sponsor
-
-    srun ./mpi-prog
-
-Dans ce contexte, ``--ntasks`` réfère non pas à une tâche de calcul mais plutôt
-au nombre de processus à exécuter. Les programmes MPI utilisent de multiples
-processus.
-
-Les programmes MPI devraient être exécutés via la commande ``srun``. Cette
-dernière exécute le nombre de processus spécifié sur le ou les nœuds de calcul
-alloués à la tâche. La commande ``mpirun`` accomplit le même rôle et peut être
-utilisée pour tester un programme MPI sur nœud de connexion.
-
-
-Dans l’exemple ci-dessus, les 8 processus MPI peuvent être distribués sur un ou
-plusieurs nœuds de calcul, selon ce qui est disponible au moment où
-l’ordonnanceur alloue les ressources. Il est souvent préférable de regrouper les
-processus sur le plus petit nombre de nœuds possible :
-
-.. code-block:: bash
-    :emphasize-lines: 4-5
+    :emphasize-lines: 4-6,10
 
     #!/bin/bash
 
@@ -293,11 +265,41 @@ processus sur le plus petit nombre de nœuds possible :
 
     srun ./mpi-prog
 
-Dans ce nouvel exemple, les 8 processus s’exécutent sur le même nœud de calcul.
-Cela évite la communication entre les nœuds, qui est plus lente que celle à
-l’intérieur d’un nœud, augmentant la performance de certains programmes MPI.
-Plus la communication inter-processus est importante, plus la distance entre les
-processus nuit à la performance.
+Dans ce contexte, ``--ntasks-per-node`` réfère non pas à une tâche de calcul
+mais plutôt au nombre de processus à exécuter. Les programmes MPI utilisent de
+multiples processus.
+
+Les programmes MPI devraient être exécutés via la commande ``srun``. Cette
+dernière exécute le nombre de processus spécifié sur le ou les nœuds de calcul
+alloués à la tâche. La commande ``mpirun`` accomplit le même rôle et peut être
+utilisée pour tester un programme MPI sur nœud de connexion.
+
+Dans l’exemple ci-dessus, les 8 processus MPI sont lancés sur le même nœud de
+calcul. Il est aussi possible de spécifier uniquement le nombre de processus à
+lancer. Les processus seront alors distribués sur un ou plusieurs nœuds selon
+ce qui est disponible au moment où l’ordonnanceur alloue les ressources.
+
+.. code-block:: bash
+    :emphasize-lines: 4
+
+    #!/bin/bash
+
+    #SBATCH --job-name=my-mpi-job
+    #SBATCH --ntasks=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --time=4:00:00
+    #SBATCH --account=def-sponsor
+
+    srun ./mpi-prog
+
+Il est habituellement préférable de regrouper les processus sur le plus petit
+nombre de nœuds possible avec ``--nodes`` et ``--ntasks-per-node``. Cela
+améliore la performance en réduisant la communication entre les nœuds, qui est
+plus lente que celle à l’intérieur d’un nœud. Plus la communication
+inter-processus est importante, plus la distance entre les processus nuit à la
+performance. Lorsque la communication inter-processus est peu fréquente,
+l’utilisation de ``--ntasks`` est avantageuse car l’ordonnanceur peut allouer
+les ressources plus facilement.
 
 .. warning::
 
@@ -358,12 +360,13 @@ options de parallélisme MPI et multi-fils.
 Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
 
 .. code-block:: bash
-    :emphasize-lines: 4-6,10,12
+    :emphasize-lines: 4-7,11,13
 
     #!/bin/bash
 
     #SBATCH --job-name=my-hybrid-job
-    #SBATCH --ntasks=4
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
     #SBATCH --time=4:00:00
@@ -373,18 +376,18 @@ Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :
 
     srun ./mpi-prog
 
-Tel que discuté précédemment, il est souvent préférable de rassembler les
-processus MPI sur le plus petit nombre de nœuds possible. Avec un programme
-hybride MPI/multi-fils, cela peut être fait avec :
+Tel que discuté précédemment, il est habituellement préférable de rassembler les
+processus MPI sur le plus petit nombre de nœuds de calcul possible. Toutefois,
+il est aussi possible d’utiliser un programme hybride MPI/multi-fils en
+spécifiant uniquement le nombre de processus :
 
 .. code-block:: bash
-    :emphasize-lines: 4-5
+    :emphasize-lines: 4
 
     #!/bin/bash
 
     #SBATCH --job-name=my-hybrid-job
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=4
+    #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
     #SBATCH --time=4:00:00
