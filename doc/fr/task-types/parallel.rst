@@ -293,12 +293,12 @@ l’ordonnanceur alloue les ressources.
 
     srun ./mpi-prog
 
-En général, il préférable de regrouper les processus sur le plus petit nombre de
-nœuds possible avec ``--nodes`` et ``--ntasks-per-node`` car cela améliore la
-performance en réduisant la communication entre les nœuds, qui est plus lente
-que celle à l’intérieur d’un nœud. Par contre, lorsque la communication
-inter-processus est peu fréquente, l’utilisation de ``--ntasks`` est avantageuse
-car l’ordonnanceur peut allouer les ressources plus facilement.
+En général, il est préférable de regrouper les processus sur le plus petit
+nombre de nœuds possible avec ``--nodes`` et ``--ntasks-per-node`` car cela
+améliore la performance en réduisant la communication entre les nœuds, qui est
+plus lente que celle à l’intérieur d’un nœud. Par contre, lorsque la
+communication inter-processus est peu fréquente, l’utilisation de ``--ntasks``
+est avantageuse car l’ordonnanceur peut allouer les ressources plus facilement.
 
 .. warning::
 
