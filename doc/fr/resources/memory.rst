@@ -55,14 +55,28 @@ devrait être très similaire sur la grappe de calcul.
 Obtenir la quantité de mémoire utilisée sur la grappe
 -----------------------------------------------------
 
-Avec l'identifiant d'une tâche terminée, on peut utiliser la commande
-``seff <jobid>`` ou encore
-``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+Avec l'identifiant d'une tâche terminée, on peut utiliser la commande ``seff
+<jobid>``. Le champ ``Memory Utilized`` est la quantité maximale de mémoire
+utilisée. Voir la `documentation ici
+<https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
 
-- ``Memory Utilized`` : quantité mesurée maximale de mémoire utilisée.
-- ``MaxRSS`` : même chose. "RSS" veut dire *Resident set size*.
-- Voir la
-  `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
+Le même calcul peut être fait avec ``sacct -j <jobid> -o
+JobID,JobName,NTasks,AveRSS,MaxRSS``.
+
+- ``NTasks`` : le nombre de tâches parallèles.
+- ``AveRSS`` : la quantité moyenne de mémoire utilisée par chaque tâche. « RSS »
+  signifie *Resident set size*.
+- ``MaxRSS`` : la quantité de mémoire utilisée par la tâche qui en a utilisé le
+  plus.
+
+Pour les tâches sérielles et multi-fils, ``AveRSS`` et ``MaxRSS`` sont
+identiques et correspondent à la quantité de mémoire maximale utilisée.
+
+Pour les tâches MPI, la quantité de mémoire maximale utilisée peut être estimée
+par ``NTasks`` × ``MaxRSS``. C’est ainsi que ``seff`` calcule la valeur ``Memory
+Utilized``. Si les valeurs ``AveRSS`` et ``MaxRSS`` sont très différentes, la
+consommation de mémoire du programme n’est pas balancée, ce qui peut causer des
+problèmes de performance ou d’allocation de mémoire.
 
 Exercice
 ''''''''
@@ -72,7 +86,7 @@ Exercice
 #. Essayez la commande ``seff <jobid>`` pour la tâche ayant testé les deux
    programmes de tri. Quelle est la quantité maximale de mémoire utilisée?
 #. Voyez aussi cette quantité avec la commande
-   ``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+   ``sacct -j <jobid> -o JobID,JobName,NTasks,AveRSS,MaxRSS``.
 
 Estimer la mémoire requise pour un plus grand calcul
 ----------------------------------------------------
