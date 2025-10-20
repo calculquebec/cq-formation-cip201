@@ -272,12 +272,13 @@ multiples processus.
 Les programmes MPI devraient être exécutés via la commande ``srun``. Cette
 dernière exécute le nombre de processus spécifié sur le ou les nœuds de calcul
 alloués à la tâche. La commande ``mpirun`` accomplit le même rôle et peut être
-utilisée pour tester un programme MPI sur nœud de connexion.
+utilisée pour tester un programme MPI sur un nœud de connexion.
 
 Dans l’exemple ci-dessus, les 8 processus MPI sont lancés sur le même nœud de
-calcul. Il est aussi possible de spécifier uniquement le nombre de processus à
-lancer. Les processus seront alors distribués sur un ou plusieurs nœuds selon
-ce qui est disponible au moment où l’ordonnanceur alloue les ressources.
+calcul. Pour permettre davantage de flexibilité, il est aussi possible de
+spécifier uniquement le nombre de processus à lancer. Les processus seront alors
+distribués sur un ou plusieurs nœuds selon ce qui est disponible au moment où
+l’ordonnanceur alloue les ressources.
 
 .. code-block:: bash
     :emphasize-lines: 4
@@ -292,14 +293,12 @@ ce qui est disponible au moment où l’ordonnanceur alloue les ressources.
 
     srun ./mpi-prog
 
-Il est habituellement préférable de regrouper les processus sur le plus petit
-nombre de nœuds possible avec ``--nodes`` et ``--ntasks-per-node``. Cela
-améliore la performance en réduisant la communication entre les nœuds, qui est
-plus lente que celle à l’intérieur d’un nœud. Plus la communication
-inter-processus est importante, plus la distance entre les processus nuit à la
-performance. Lorsque la communication inter-processus est peu fréquente,
-l’utilisation de ``--ntasks`` est avantageuse car l’ordonnanceur peut allouer
-les ressources plus facilement.
+En général, il préférable de regrouper les processus sur le plus petit nombre de
+nœuds possible avec ``--nodes`` et ``--ntasks-per-node`` car cela améliore la
+performance en réduisant la communication entre les nœuds, qui est plus lente
+que celle à l’intérieur d’un nœud. Par contre, lorsque la communication
+inter-processus est peu fréquente, l’utilisation de ``--ntasks`` est avantageuse
+car l’ordonnanceur peut allouer les ressources plus facilement.
 
 .. warning::
 
