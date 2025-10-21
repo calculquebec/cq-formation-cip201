@@ -276,9 +276,9 @@ utilisée pour tester un programme MPI sur un nœud de connexion.
 
 Dans l’exemple ci-dessus, les 8 processus MPI sont lancés sur le même nœud de
 calcul. Pour permettre davantage de flexibilité, il est aussi possible de
-spécifier uniquement le nombre de processus à lancer. Les processus seront alors
-distribués sur un ou plusieurs nœuds selon ce qui est disponible au moment où
-l’ordonnanceur alloue les ressources.
+spécifier uniquement le nombre de processus à lancer, comme dans l’exemple
+suivant. Les processus sont alors distribués sur un ou plusieurs nœuds selon ce
+qui est disponible au moment où l’ordonnanceur alloue les ressources.
 
 .. code-block:: bash
     :emphasize-lines: 4
