@@ -55,14 +55,29 @@ devrait être très similaire sur la grappe de calcul.
 Obtenir la quantité de mémoire utilisée sur la grappe
 -----------------------------------------------------
 
-Avec l'identifiant d'une tâche terminée, on peut utiliser la commande
-``seff <jobid>`` ou encore
-``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+Avec l'identifiant d'une tâche terminée, on peut utiliser la commande ``seff
+<jobid>``. Le champ ``Memory Utilized`` est le pic mesuré d’utilisation mémoire.
+Voir la `documentation ici
+<https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
 
-- ``Memory Utilized`` : quantité mesurée maximale de mémoire utilisée.
-- ``MaxRSS`` : même chose. "RSS" veut dire *Resident set size*.
-- Voir la
-  `documentation ici <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es>`__.
+Le même calcul peut être fait avec ``sacct -j <jobid> -o
+JobID,JobName,NTasks,AveRSS,MaxRSS``.
+
+- ``NTasks`` : le nombre de processus parallèles.
+- ``AveRSS`` : la moyenne des pics d’utilisation mémoire de tous les processus.
+  « RSS » signifie *Resident set size*.
+- ``MaxRSS`` : le pic d’utilisation mémoire du processus qui en a utilisé
+  le plus.
+
+Pour les tâches sérielles et multi-fils, ``AveRSS`` et ``MaxRSS`` sont
+identiques et correspondent au pic d’utilisation mémoire mesuré.
+
+Pour les tâches MPI, le pic d’utilisation mémoire peut être estimé par
+``NTasks`` × ``AveRSS``. Cela correspond à la valeur ``Memory Utilized``
+rapportée par ``seff``. Si les valeurs ``AveRSS`` et ``MaxRSS`` sont très
+différentes, la consommation de mémoire du programme n’est pas balancée, ce qui
+peut causer des problèmes de performance ou d’allocation de mémoire. Lorsque
+c’est le cas, ``seff`` affiche un avertissement.
 
 Exercice
 ''''''''
@@ -70,9 +85,9 @@ Exercice
 #. Affichez la liste des dernières tâches avec
    ``sacct -X -o JobID,JobName``.
 #. Essayez la commande ``seff <jobid>`` pour la tâche ayant testé les deux
-   programmes de tri. Quelle est la quantité maximale de mémoire utilisée?
+   programmes de tri. Quel est le pic de mémoire utilisée?
 #. Voyez aussi cette quantité avec la commande
-   ``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+   ``sacct -j <jobid> -o JobID,JobName,NTasks,AveRSS,MaxRSS``.
 
 Estimer la mémoire requise pour un plus grand calcul
 ----------------------------------------------------
@@ -94,8 +109,8 @@ très grand calcul, il devient possible de voir la tendance d'utilisation de la
 mémoire. Quelques détails à considérer :
 
 - La mesure sur la grappe doit se faire une tâche à la fois.
-- Pour que la mesure soit fiable, il faut que l'utilisation maximale soit
-  maintenue pendant environ 30 secondes.
+- Pour que la mesure soit fiable, il faut que le pic d’utilisation soit maintenu
+  pendant environ 30 secondes.
 - Autrement, il faudra utiliser des techniques de :doc:`suivi des tâches en
   temps réel <../monitoring/compute-nodes>`.
 
