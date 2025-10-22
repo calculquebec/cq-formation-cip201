@@ -238,32 +238,7 @@ Requesting appropriate resources
 Here is a minimal script for a parallel job that uses an MPI program:
 
 .. code-block:: bash
-    :emphasize-lines: 4-5,9
-
-    #!/bin/bash
-
-    #SBATCH --job-name=my-mpi-job
-    #SBATCH --ntasks=8
-    #SBATCH --mem-per-cpu=1G
-    #SBATCH --time=4:00:00
-    #SBATCH --account=def-sponsor
-
-    srun ./mpi-prog
-
-In this context, ``--ntasks`` is the number of processes to run. MPI programs
-use multiple processes.
-
-MPI programs should be run via ``srun``. This command runs the specified number
-of processes on the compute node(s) allocated to the job. The ``mpirun`` command
-serves the same role and can be used to test an MPI program on a login node.
-
-In the above example, the 8 MPI processes can be distributed on one or several
-compute nodes, depending on what is available when the scheduler allocates
-resources. It is often preferable to gather the processes on the smallest
-possible number of nodes:
-
-.. code-block:: bash
-    :emphasize-lines: 4-5
+    :emphasize-lines: 4-6,10
 
     #!/bin/bash
 
@@ -276,11 +251,38 @@ possible number of nodes:
 
     srun ./mpi-prog
 
-In this new example, the 8 processes run on the same compute node. This avoids
-inter-node communication, which is slower than intra-node, and thus increases
-the performance of some MPI programs. The more a program uses inter-process
-communication, the more its performance decreases as the distance between the
-processes increases.
+In this context, ``--ntasks-per-node`` is the number of processes to run. MPI
+programs use multiple processes.
+
+MPI programs should be run via ``srun``. This command runs the specified number
+of processes on the compute node(s) allocated to the job. The ``mpirun`` command
+serves the same role and can be used to test an MPI program on a login node.
+
+In the above example, the 8 MPI processes run on the same compute node. For more
+flexibility, it is also possible to specify only the number of processes to run,
+as in the next example. The processes are then distributed on one or several
+compute nodes depending on what is available when the scheduler allocates
+resources.
+
+.. code-block:: bash
+    :emphasize-lines: 4
+
+    #!/bin/bash
+
+    #SBATCH --job-name=my-mpi-job
+    #SBATCH --ntasks=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --time=4:00:00
+    #SBATCH --account=def-sponsor
+
+    srun ./mpi-prog
+
+Generally, it is preferable to gather the processes on the smallest possible
+number of nodes with ``--nodes`` and ``--ntasks-per-node`` since it improves
+performance by reducing inter-node communication, which is slower than
+intra-node communication. However, when inter-process communication is
+infrequent, using ``--ntasks`` is advantageous since it is easier for the
+scheduler to allocate resources.
 
 .. warning::
 
@@ -337,16 +339,17 @@ can create multiple threads of execution inside each of its processes. This
 so-called hybrid strategy requires combining the parallelism options for MPI and
 multi-threading.
 
-Here is a minimal job script for a program that uses MPI and multi-threading via
+Here is a typical job script for a program that uses MPI and multi-threading via
 OpenMP:
 
 .. code-block:: bash
-    :emphasize-lines: 4-6,10,12
+    :emphasize-lines: 4-7,11,13
 
     #!/bin/bash
 
     #SBATCH --job-name=my-hybrid-job
-    #SBATCH --ntasks=4
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
     #SBATCH --time=4:00:00
@@ -356,18 +359,17 @@ OpenMP:
 
     srun ./mpi-prog
 
-As previously discussed, it is often preferable to gather the MPI processes on
-the smallest possible number of nodes. With a hybrid MPI/multi-threaded program,
-this can be done with:
+As previously discussed, it is usually preferable to gather the MPI processes on
+the smallest possible number of nodes. However, it is also possible to run a
+hybrid MPI/multi-threaded program by specifying only the number of processes:
 
 .. code-block:: bash
-    :emphasize-lines: 4-5
+    :emphasize-lines: 4
 
     #!/bin/bash
 
     #SBATCH --job-name=my-hybrid-job
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=4
+    #SBATCH --ntasks=4
     #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=1G
     #SBATCH --time=4:00:00
