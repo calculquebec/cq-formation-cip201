@@ -9,18 +9,22 @@ too many threads of execution, or if there is a memory overuse that has not been
 measured by Slurm.
 
 As we have already seen, ``top`` and ``htop`` can be used in interactive jobs,
-but **the national clusters also allow you to connect by SSH to the nodes where
-you have running jobs**. To do so, follow these steps:
+but **you can also connect to the nodes where you have running jobs**. To do so,
+follow these steps:
 
 #. Ensure you are connected to a cluster login node.
-#. Identify the node(s) allocated to your running job.
+#. Get the id of the job you are interested in with ``sq`` or ``squeue -t
+   running -u $USER``.
+#. Connect to the job with ``srun --jobid=<id> --pty $SHELL``.
 
-   - Get the node’s name with ``sq`` or ``squeue -t running -u $USER``.
-   - If the ``NODELIST`` field is too narrow to get a full list of the nodes,
-     you can also find the full list with ``scontrol show job <jobid> | grep
-     NodeList``.
+For multi-node jobs, you can connect to a specific node with ``srun --jobid=<id>
+--nodelist=<node> --pty $SHELL``. The nodes allocated to a job are shown in the
+output of ``sq``. If the ``NODELIST`` field is too narrow to see the full list,
+use ``squeue -j <id> -o %.40N``, where 40 is the number of characters to use for
+the field width.
 
-#. Connect to one node at a time. For instance: ``ssh compute-node1``.
+You can also use SSH to connect to a node allocated to one of your jobs. For
+instance: ``ssh compute-node1``.
 
 This is a practical method for:
 
@@ -31,7 +35,7 @@ This is a practical method for:
 .. warning::
 
     If you are connected to a compute node where you no longer have any running
-    jobs, the SSH connection between the login and compute nodes will be
+    jobs, your connection between the login node and the compute node will be
     terminated. Your command prompt will automatically go back to the login
     node.
 
@@ -45,6 +49,5 @@ Group exercise
 **Instructions**
 
 #. Submit a short job: ``sbatch --wrap='sleep 120'``.
-#. Check the node list with ``squeue -t running -u $USER``.
-#. Check again the full node list with ``scontrol show job <jobid> | grep
-   NodeList``.
+#. Check the id and node list with ``squeue -t running -u $USER``.
+#. Also try:  ``squeue -j <id> -o %.40N``.
