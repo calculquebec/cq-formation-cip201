@@ -9,19 +9,22 @@ cœur réservé, s'il y a trop de fils d'exécution ou bien s'il y a soudainemen
 une surutilisation de la mémoire qui n'est pas mesurée par Slurm.
 
 Comme on l'a déjà vu, c'est possible d'utiliser ``top`` et ``htop`` via des
-tâches interactives, mais **les grappes nationales permettent aussi que vous
-vous connectiez par SSH aux nœuds où vous avez une tâche en cours**. Voici
-les étapes à suivre pour ce faire :
+tâches interactives, mais **vous pouvez aussi vous connectez aux nœuds où vous
+avez une tâche en cours**. Voici les étapes à suivre pour ce faire :
 
 #. S'assurer d'être connecté sur un nœud de connexion de la grappe de calcul.
-#. Identifier le ou les nœuds où se trouve la tâche en cours.
+#. Obtenir l’identifiant de la tâche d’intérêt avec ``sq`` ou ``squeue -t
+   running -u $USER``.
+#. Se connecter à la tâche avec ``srun --jobid=<id> --pty $SHELL``.
 
-   - Obtenir le nom du nœud avec ``sq`` ou ``squeue -t running -u $USER``.
-   - Si le champ ``NODELIST`` est trop étroit pour obtenir la liste complète
-     des nœuds, la liste complète se trouve dans la sortie de la commande
-     ``scontrol show job <jobid> | grep NodeList``.
+Dans le cas d’une tâche multi-nœuds, vous pouvez vous connecter à un nœud
+spécifique avec ``srun --jobid=<id> --nodelist=<node> --pty $SHELL``. Les nœuds
+alloués à une tâche sont affichés dans la sortie de ``sq``. Si le champ
+``NODELIST`` est trop étroit pour voir la liste complète, utilisez ``squeue -j
+<id> -o %.40N``, où 40 est la largeur du champ en nombre de caractères.
 
-#. Se connecter à un nœud à la fois. Par exemple : ``ssh compute-node1``.
+Vous pouvez aussi vous connecter par SSH à un nœud alloué à une de vos tâches.
+Par exemple : ``ssh compute-node1``.
 
 Cette méthode d'accès est pratique pour :
 
@@ -31,10 +34,10 @@ Cette méthode d'accès est pratique pour :
 
 .. warning::
 
-    Sur un nœud de calcul, s'il ne vous reste plus aucune tâche en cours, la
-    connexion SSH entre le nœud de connexion et le nœud de calcul sera
-    interrompue. Votre invite de commande sera automatiquement de retour sur le
-    nœud de connexion.
+    Sur un nœud de calcul, s'il ne vous reste plus aucune tâche en cours, votre
+    connexion entre le nœud de connexion et le nœud de calcul sera interrompue.
+    Votre invite de commande sera automatiquement de retour sur le nœud de
+    connexion.
 
 Exercice en groupe
 ------------------
@@ -46,6 +49,6 @@ Exercice en groupe
 **Instructions**
 
 #. Soumettez une courte tâche : ``sbatch --wrap='sleep 120'``.
-#. Voyez la liste de nœuds dans la sortie de : ``squeue -t running -u $USER``.
-#. Obtenez la liste de nœuds avec la commande :
-   ``scontrol show job <jobid> | grep NodeList``.
+#. Voyez l’identifiant et la liste de nœuds dans la sortie de : ``squeue -t
+   running -u $USER``.
+#. Essayez aussi : ``squeue -j <id> -o %.40N``.
