@@ -52,22 +52,35 @@ calculation on the cluster, a similar amount of memory should be needed.
 Checking the memory used on the cluster
 ---------------------------------------
 
-With the id of a completed job, use ``seff <jobid>`` or ``sacct -j <jobid> -o
-JobID,JobName,MaxRSS``.
+With the id of a completed job, use ``seff <jobid>``. The ``Memory Utilized``
+field is the measured peak memory usage.  See our `documentation
+<https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`__.
 
-- ``Memory Utilized``: the maximum amount of memory used during the job.
-- ``MaxRSS``: the same thing, where RSS stands for *resident set size*.
-- See our `documentation
-  <https://docs.alliancecan.ca/wiki/Running_jobs#Completed_jobs>`__.
+This value can also be computed with ``sacct -j <jobid> -o
+JobID,JobName,NTasks,AveRSS,MaxRSS``.
+
+- ``NTasks``: number of parallel processes.
+- ``AveRSS``: average of peak memory usage of all processes. RSS stands for
+  resident set size.
+- ``MaxRSS``: peak memory usage of the process that used the most memory.
+
+For serial and multi-threaded jobs, ``AveRSS`` and ``MaxRSS`` are identical and
+correspond to the measured peak memory usage.
+
+For MPI jobs, the peak memory usage can be estimated as ``NTasks`` ×
+``AveRSS``. This corresponds to the ``Memory Utilized`` value reported by
+``seff``. If ``AveRSS`` and ``MaxRSS`` are very different, the program’s memory
+usage is not balanced, which can cause performance or memory allocation issues.
+When this is the case, ``seff`` displays a warning.
 
 Exercise
 ''''''''
 
 #. List your recent jobs with ``sacct -X -o JobID,JobName``.
-#. Try ``seff <jobid>`` for the job that compared sorting algorithms. How much
-   memory was used?
-#. Check again how much memory was used by that job with
-   ``sacct -j <jobid> -o JobID,JobName,MaxRSS``.
+#. Try ``seff <jobid>`` for the job that compared sorting algorithms. What was
+   the peak memory usage?
+#. Check again with
+   ``sacct -j <jobid> -o JobID,JobName,NTasks,AveRSS,MaxRSS``.
 
 Estimating the memory required for a larger calculation
 -------------------------------------------------------
@@ -87,7 +100,7 @@ usage trend of a program in preparation for a larger calculation. Some things to
 consider:
 
 - Memory measurements must be done one calculation at a time.
-- For the measure to be reliable, maximum memory usage should be sustained for
+- For the measure to be reliable, peak memory usage must be sustained for
   around 30 seconds.
 - Otherwise, :doc:`real-time job monitoring <../monitoring/compute-nodes>` must
   be performed.
