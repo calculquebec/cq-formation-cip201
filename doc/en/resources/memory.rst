@@ -60,7 +60,7 @@ This value can also be computed with ``sacct -j <jobid> -o
 JobID,JobName,NTasks,AveRSS,MaxRSS``.
 
 - ``NTasks``: number of parallel processes.
-- ``AveRSS``: average of peak memory usage for all processes.
+- ``AveRSS``: average of peak memory usage of all processes.
 - ``MaxRSS``: peak memory usage of the process that used the most memory.
 
 For serial and multi-threaded jobs, ``AveRSS`` and ``MaxRSS`` are identical and
