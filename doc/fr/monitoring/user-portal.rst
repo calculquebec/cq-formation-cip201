@@ -60,13 +60,15 @@ Pour d'autres images et davantage d'information, voir la `section de
 documentation ici
 <https://docs.alliancecan.ca/wiki/Metrix#Statistiques_des_t%C3%A2ches>`__.
 
-Statistiques des tâches sur Niagara
------------------------------------
+Statistiques des tâches sur Trillium
+------------------------------------
 
-Dans le portail de Niagara, un tableau listant vos dernières tâches se trouve
-dans la page `Tâches -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`__.
+Dans le portail de SciNet, vos tâches récentes sont classées par grappe :
 
-.. figure:: ../../images/portal-tasks-table-niagara_fr.png
+- Trillium (CPU) : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium
+- Trillium GPU : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium-gpu
+
+.. figure:: ../../images/portal-tasks-table-trillium_fr.png
 
 En cliquant sur l'un des numéros de tâche, on accède à une page affichant
 toutes les informations disponibles au sujet de la tâche :

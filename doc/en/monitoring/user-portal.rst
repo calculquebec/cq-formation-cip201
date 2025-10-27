@@ -57,13 +57,15 @@ Clicking on one of the job identifiers takes you to a page displaying all
 For more images and information, see the `documentation section here
 <https://docs.alliancecan.ca/wiki/Metrix/en#Task_statistics>`__.
 
-Niagara job statistics
-----------------------
+Trillium job statistics
+-----------------------
 
-In the Niagara portal, a table listing your latest jobs can be found on the
-`Jobs -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`__ page.
+In the SciNet portal, your latest jobs are categorized by cluster:
 
-.. figure:: ../../images/portal-tasks-table-niagara_en.png
+- Trillium (CPU) : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium
+- Trillium GPU : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium-gpu
+
+.. figure:: ../../images/portal-tasks-table-trillium_en.png
 
 Clicking on one of the job identifiers takes you to a page displaying all
 available information about the job:
