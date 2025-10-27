@@ -6,9 +6,9 @@ Portails des utilisateurs
 Certaines grappes de calcul offrent un portail permettant de monitorer vos
 tâches en cours et même vos tâches récemment terminées. Les voici :
 
-- **Béluga** : https://portail.beluga.calculquebec.ca
 - **Narval** : https://portail.narval.calculquebec.ca
-- **Niagara** : https://my.scinet.utoronto.ca
+- **Rorqual** : https://metrix.rorqual.calculquebec.ca
+- **Trillium et Trillium GPU** : https://my.scinet.utoronto.ca
 
 Dans tous les cas, il faut s'y authentifier avec nos identifiants du portail
 `CCDB <https://ccdb.alliancecan.ca>`__.
@@ -16,8 +16,8 @@ Dans tous les cas, il faut s'y authentifier avec nos identifiants du portail
 Statistiques des tâches sur Narval
 ----------------------------------
 
-Dans le portail de Narval (ou celui de Béluga), un tableau listant vos dernières
-tâches se trouve dans la page `Statistiques des tâches
+Dans le portail de Narval (ou celui de Rorqual), un tableau listant vos
+dernières tâches se trouve dans la page `Statistiques des tâches
 <https://portail.narval.calculquebec.ca/secure/jobstats/>`__, à la section *Vos
 tâches*.
 
@@ -25,7 +25,7 @@ tâches*.
 
 En cliquant sur l'un des numéros de tâche, on accède à une page affichant
 toutes les `informations disponibles au sujet de la tâche
-<https://docs.alliancecan.ca/wiki/Portail#Page_d'une_t%C3%A2che_CPU>`__ :
+<https://docs.alliancecan.ca/wiki/Metrix#Page_d'une_t%C3%A2che_CPU>`__ :
 
 - S'il y a lieu, les modules chargés.
 - S'il y a lieu, un ou des messages diagnostiques donnant des suggestions pour
@@ -58,7 +58,7 @@ toutes les `informations disponibles au sujet de la tâche
 
 Pour d'autres images et davantage d'information, voir la `section de
 documentation ici
-<https://docs.alliancecan.ca/wiki/Portail#Statistiques_des_t%C3%A2ches>`__.
+<https://docs.alliancecan.ca/wiki/Metrix#Statistiques_des_t%C3%A2ches>`__.
 
 Statistiques des tâches sur Niagara
 -----------------------------------

@@ -6,9 +6,9 @@ User portals
 Some clusters offer a portal to monitor your current jobs and even your
 recently completed jobs. Here they are:
 
-- **Béluga** : https://portail.beluga.calculquebec.ca
-- **Narval** : https://portail.narval.calculquebec.ca
-- **Niagara** : https://my.scinet.utoronto.ca
+- **Narval**: https://portail.narval.calculquebec.ca
+- **Rorqual**: https://metrix.rorqual.calculquebec.ca
+- **Trillium and Trillium GPU**: https://my.scinet.utoronto.ca
 
 In all cases, you must log in with your `CCDB <https://ccdb.alliancecan.ca>`__
 portal credentials.
@@ -16,7 +16,7 @@ portal credentials.
 Narval job statistics
 ---------------------
 
-In the Narval portal (or the Béluga portal), a table listing your most recent
+In the Narval portal (or the Rorqual portal), a table listing your most recent
 jobs can be found on the `Job stats
 <https://portail.narval.calculquebec.ca/secure/jobstats/>`__ page, in the
 *Your jobs* section.
@@ -25,8 +25,7 @@ jobs can be found on the `Job stats
 
 Clicking on one of the job identifiers takes you to a page displaying all
 `available information about the job
-<https://docs.alliancecan.ca/wiki/Portail#Page_d'une_t%C3%A2che_CPU>`__
-(at the time of writing, that wiki page is only available in French):
+<https://docs.alliancecan.ca/wiki/Metrix/en#CPU_task_page>`__:
 
 - The loaded modules, if any.
 - If applicable, one or more diagnostic messages giving suggestions for
@@ -56,8 +55,7 @@ Clicking on one of the job identifiers takes you to a page displaying all
     - Electrical power used.
 
 For more images and information, see the `documentation section here
-<https://docs.alliancecan.ca/wiki/Portail#Statistiques_des_t%C3%A2ches>`__
-(at the time of writing, that wiki page is only available in French).
+<https://docs.alliancecan.ca/wiki/Metrix/en#Task_statistics>`__.
 
 Niagara job statistics
 ----------------------
