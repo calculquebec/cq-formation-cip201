@@ -74,19 +74,14 @@ available information about the job:
 - A complete analysis of resources used (if measured) over time:
 
   - Average CPU utilization per node. In the figure below, each colored dot
-    corresponds to one of the 14 nodes reserved for the job.
+    corresponds to one of the 8 nodes reserved for the job.
 
-    .. figure:: ../../images/portal-niagara-node-usage_en.png
+    .. figure:: ../../images/portal-trillium-node-usage_en.png
 
   - Available memory.
-  - Data read throughput.
-  - Data write throughput. In the figure below, we can see write operations at
-    regular intervals. These are possibly `checkpoints
-    <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`__.
-
-    .. figure:: ../../images/portal-niagara-write-bw_en.png
-
-  - File operations.
+  - Floating point operations per second.
+  - Data throughput in memory.
+  - Data transmitted via Infiniband.
   - etc.
 
 - The job script.

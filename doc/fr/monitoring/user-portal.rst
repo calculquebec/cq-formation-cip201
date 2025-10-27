@@ -77,20 +77,15 @@ toutes les informations disponibles au sujet de la tâche :
 - Une analyse complète des ressources utilisées (si mesurées) selon le temps :
 
   - Utilisation moyenne des processeurs par nœud. Dans la figure ci-dessous,
-    chaque point de couleur correspond à l'un des 14 nœuds réservés pour la
+    chaque point de couleur correspond à l'un des 8 nœuds réservés pour la
     tâche.
 
-    .. figure:: ../../images/portal-niagara-node-usage_fr.png
+    .. figure:: ../../images/portal-trillium-node-usage_fr.png
 
   - Mémoire disponible.
-  - Débit en lecture des données.
-  - Débit en écriture des données. Dans la figure ci-dessous, on remarque les
-    sauvegardes effectuées régulièrement. Ce sont possiblement des `points de
-    contrôle <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/fr>`__.
-
-    .. figure:: ../../images/portal-niagara-write-bw_fr.png
-
-  - Opérations sur les fichiers.
+  - Opérations en virgule flottante par seconde.
+  - Débit des données en mémoire.
+  - Débit de transfert des données via Infiniband.
   - etc.
 
 - Le script de tâche.
