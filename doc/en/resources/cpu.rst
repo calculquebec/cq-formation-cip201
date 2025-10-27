@@ -184,7 +184,7 @@ Exercise
 
 #. Change the number of requested CPU cores and repeat the job. (Do not prepare
    the input files again.)
-#. Fill and analyze the table in ``gmx-scaling.txt``.
+#. Fill and analyze the rest of the table in ``gmx-scaling.txt``.
 
    #. Calculate speedup :math:`S` and efficiency :math:`E` (%) for 2, 4, and 8
       cores.
