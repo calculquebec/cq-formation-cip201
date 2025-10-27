@@ -173,6 +173,8 @@ Exercice
 
 **Instructions**
 
+#. Si vous n’êtes pas déjà sur le nœud de connexion ``login1``, connectez-vous
+   avec ``ssh login1``.
 #. Allez dans le répertoire de l’exercice avec
    ``cd ~/cq-formation-cip201-main/lab/fibonacci-serial``.
 #. Compilez le programme ``fibo`` avec la commande ``make``.

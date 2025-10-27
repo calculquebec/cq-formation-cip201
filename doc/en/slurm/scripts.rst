@@ -24,6 +24,7 @@ See examples from the Alliance documentation:
 Exercise - Simple script
 ------------------------
 
+#. Log in to the virtual cluster with ``ssh login1``.
 #. Go to the exercise directory with
    ``cd ~/cq-formation-cip201-main/lab/script``.
 #. In the ``simple.sh`` file, edit the ``#SBATCH`` options according to the

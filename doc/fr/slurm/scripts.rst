@@ -25,6 +25,7 @@ Voir les exemples de la documentation de l'Alliance :
 Exercice en groupe
 ------------------
 
+#. Connectez-vous à la grappe virtuelle avec ``ssh login1``.
 #. Allez dans le répertoire de l’exercice avec
    ``cd ~/cq-formation-cip201-main/lab/script``.
 #. Dans le fichier ``simple.sh``, éditez l'entête d'options
