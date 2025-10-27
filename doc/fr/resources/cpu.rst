@@ -190,9 +190,9 @@ Exercice
 #. Une fois la tâche terminée, obtenez la performance du programme avec ``grep
    ^Performance slurm-<jobid>.out``.
 
-   #. Notez la première des deux valeurs obtenues et inscrivez-la dans
-      ``gmx-scaling.txt`` dans la colonne :math:`P` (ns/day) sur la ligne où
-      la valeur de :math:`n` correspond au nombre de cœurs CPU utilisés.
+   - Notez la première des deux valeurs obtenues et inscrivez-la dans
+     ``gmx-scaling.txt`` dans la colonne :math:`P` (ns/day) sur la ligne où
+     la valeur de :math:`n` correspond au nombre de cœurs CPU utilisés.
 
 #. Changez le nombre de cœurs demandés et répétez la tâche. (Ne préparez pas à
    nouveau les fichiers d’entrée.)

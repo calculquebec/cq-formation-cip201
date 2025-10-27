@@ -178,9 +178,9 @@ Exercise
 #. Once the job has completed, get the program’s performance with ``grep
    ^Performance slurm-<jobid>.out``.
 
-   #. Note the first of the two values obtained and enter it in
-      ``gmx-scaling.txt`` in the :math:`P` (ns/day) column on the row where
-      :math:`n` corresponds to the number of CPU cores used.
+   - Note the first of the two values obtained and enter it in
+     ``gmx-scaling.txt`` in the :math:`P` (ns/day) column on the row where
+     :math:`n` corresponds to the number of CPU cores used.
 
 #. Change the number of requested CPU cores and repeat the job. (Do not prepare
    the input files again.)
