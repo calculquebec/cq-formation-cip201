@@ -161,6 +161,8 @@ Exercice
 #. Exécutez le programme en arrière-plan avec ``./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
+#. Si vous n’êtes pas déjà de retour sur ``login1``, terminez votre tâche
+   interactive avec ``exit``.
 
 .. note::
 
@@ -339,6 +341,8 @@ Exercice
 #. Exécutez le programme en arrière-plan avec ``mpirun ./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
+#. Si vous n’êtes pas déjà de retour sur ``login1``, terminez votre tâche
+   interactive avec ``exit``.
 
 .. note::
 

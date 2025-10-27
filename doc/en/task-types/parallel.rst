@@ -153,6 +153,8 @@ Exercise
 #. Run the program in the background with ``./pi &``.
 #. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
+#. If you are not already back on ``login1``, end your interactive job with
+   ``exit``.
 
 .. note::
 
@@ -322,6 +324,8 @@ Exercise
 #. Run the program in the background with ``mpirun ./pi &``.
 #. While ``pi`` runs, check its CPU usage with ``top -u $USER`` and ``top -u
    $USER -H``.
+#. If you are not already back on ``login1``, end your interactive job with
+   ``exit``.
 
 .. note::
 
