@@ -172,16 +172,20 @@ Exercise
 #. Go to the exercise directory with ``cd
    ~/cq-formation-cip201-main/lab/gmx-scaling``.
 #. Prepare the input files with ``bash gmx-prepare.sh``.
-#. Edit the job script with ``nano gmx-job.sh``. Ask for 1, 2, 4, or 8 CPU cores
-   with the ``--cpus-per-task`` option.
+#. Edit the job script with ``nano gmx-job.sh``. Ask for 1, 2, 4, or 8 CPU
+   cores with the ``--cpus-per-task`` option.
 #. Submit the job.
 #. Once the job has completed, get the program’s performance with ``grep
    ^Performance slurm-<jobid>.out``.
+
+   #. Note the first of the two values obtained and enter it in
+      ``gmx-scaling.txt`` in the :math:`P` (ns/day) column on the row where
+      :math:`n` corresponds to the number of CPU cores used.
+
 #. Change the number of requested CPU cores and repeat the job. (Do not prepare
    the input files again.)
-#. Fill the table in ``gmx-scaling.txt``.
+#. Fill and analyze the table in ``gmx-scaling.txt``.
 
-   #. Note the measured performance in the :math:`P` (ns/day) column.
    #. Calculate speedup :math:`S` and efficiency :math:`E` (%) for 2, 4, and 8
       cores.
    #. How many CPU cores would you use for similar jobs?
