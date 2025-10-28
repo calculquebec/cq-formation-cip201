@@ -6,27 +6,34 @@ User portals
 Some clusters offer a portal to monitor your current jobs and even your
 recently completed jobs. Here they are:
 
-- **Béluga** : https://portail.beluga.calculquebec.ca
-- **Narval** : https://portail.narval.calculquebec.ca
-- **Niagara** : https://my.scinet.utoronto.ca
+- **Narval**: https://portail.narval.calculquebec.ca
+- **Rorqual**: https://metrix.rorqual.calculquebec.ca
+- **Trillium and Trillium GPU**: https://my.scinet.utoronto.ca
 
 In all cases, you must log in with your `CCDB <https://ccdb.alliancecan.ca>`__
 portal credentials.
 
-Narval job statistics
----------------------
+.. note::
 
-In the Narval portal (or the Béluga portal), a table listing your most recent
-jobs can be found on the `Job stats
-<https://portail.narval.calculquebec.ca/secure/jobstats/>`__ page, in the
-*Your jobs* section.
+    Following the `2025 infrastructure renewal
+    <https://docs.alliancecan.ca/wiki/Infrastructure_renewal>`__, not all
+    clusters have a user portal already. New portals and functionalities will
+    be added progressively.
+
+Narval and Rorqual job statistics
+---------------------------------
+
+In the cluster portal, a table listing your most recent jobs can be found in
+the *Your jobs* section of the *Job stats* page from the side menu.
+
+- https://portail.narval.calculquebec.ca/secure/jobstats/
+- https://metrix.rorqual.calculquebec.ca/secure/jobstats/
 
 .. figure:: ../../images/portal-tasks-table-narval_en.png
 
 Clicking on one of the job identifiers takes you to a page displaying all
 `available information about the job
-<https://docs.alliancecan.ca/wiki/Portail#Page_d'une_t%C3%A2che_CPU>`__
-(at the time of writing, that wiki page is only available in French):
+<https://docs.alliancecan.ca/wiki/Metrix/en#CPU_task_page>`__:
 
 - The loaded modules, if any.
 - If applicable, one or more diagnostic messages giving suggestions for
@@ -56,16 +63,17 @@ Clicking on one of the job identifiers takes you to a page displaying all
     - Electrical power used.
 
 For more images and information, see the `documentation section here
-<https://docs.alliancecan.ca/wiki/Portail#Statistiques_des_t%C3%A2ches>`__
-(at the time of writing, that wiki page is only available in French).
+<https://docs.alliancecan.ca/wiki/Metrix/en#Task_statistics>`__.
 
-Niagara job statistics
-----------------------
+Trillium job statistics
+-----------------------
 
-In the Niagara portal, a table listing your latest jobs can be found on the
-`Jobs -> Niagara <https://my.scinet.utoronto.ca/jobs/niagara>`__ page.
+In the SciNet portal, your latest jobs are categorized by cluster:
 
-.. figure:: ../../images/portal-tasks-table-niagara_en.png
+- Trillium (CPU) : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium
+- Trillium GPU : https://my.scinet.utoronto.ca/jobs/?q=cluster:trillium-gpu
+
+.. figure:: ../../images/portal-tasks-table-trillium_en.png
 
 Clicking on one of the job identifiers takes you to a page displaying all
 available information about the job:
@@ -74,19 +82,14 @@ available information about the job:
 - A complete analysis of resources used (if measured) over time:
 
   - Average CPU utilization per node. In the figure below, each colored dot
-    corresponds to one of the 14 nodes reserved for the job.
+    corresponds to one of the 8 nodes reserved for the job.
 
-    .. figure:: ../../images/portal-niagara-node-usage_en.png
+    .. figure:: ../../images/portal-trillium-node-usage_en.png
 
   - Available memory.
-  - Data read throughput.
-  - Data write throughput. In the figure below, we can see write operations at
-    regular intervals. These are possibly `checkpoints
-    <https://docs.alliancecan.ca/wiki/Points_de_contr%C3%B4le/en>`__.
-
-    .. figure:: ../../images/portal-niagara-write-bw_en.png
-
-  - File operations.
+  - Floating point operations per second.
+  - Data throughput in memory.
+  - Data transmitted via Infiniband.
   - etc.
 
 - The job script.
