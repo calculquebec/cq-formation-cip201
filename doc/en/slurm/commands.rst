@@ -6,9 +6,10 @@ Commands
 Submitting jobs
 ---------------
 
-There are several options for submitting a computational job, but the first
-method below is preferred to avoid waiting on the command line and to avoid
-wasting computation time.
+There are several options for `submitting a computational job
+<https://docs.alliancecan.ca/wiki/Running_jobs>`__, but the first method below
+is preferred to avoid waiting on the command line and to avoid wasting
+computation time.
 
 #. Via a job script:
 

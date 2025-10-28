@@ -6,9 +6,10 @@ Commandes
 Soumission de tâches
 --------------------
 
-Il existe plusieurs possibilités pour soumettre une tâche de calcul, mais la
-première méthode ci-dessous est à privilégier afin d'éviter d'attendre sur la
-ligne de commandes et pour éviter le gaspillage de temps de calcul.
+Il existe plusieurs possibilités pour `soumettre une tâche de calcul
+<https://docs.alliancecan.ca/wiki/Running_jobs/fr>`__, mais la première méthode
+ci-dessous est à privilégier afin d'éviter d'attendre sur la ligne de commandes
+et pour éviter le gaspillage de temps de calcul.
 
 #. Via un script de tâche :
 
