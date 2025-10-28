@@ -20,13 +20,14 @@ portal credentials.
     clusters have a user portal already. New portals and functionalities will
     be added progressively.
 
-Narval job statistics
----------------------
+Narval and Rorqual job statistics
+---------------------------------
 
-In the Narval portal (or the Rorqual portal), a table listing your most recent
-jobs can be found on the `Job stats
-<https://portail.narval.calculquebec.ca/secure/jobstats/>`__ page, in the
-*Your jobs* section.
+In the cluster portal, a table listing your most recent jobs can be found in
+the *Your jobs* section of the *Job stats* page from the side menu.
+
+- https://portail.narval.calculquebec.ca/secure/jobstats/
+- https://metrix.rorqual.calculquebec.ca/secure/jobstats/
 
 .. figure:: ../../images/portal-tasks-table-narval_en.png
 

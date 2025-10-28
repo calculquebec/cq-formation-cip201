@@ -20,13 +20,14 @@ Dans tous les cas, il faut s'y authentifier avec nos identifiants du portail
     grappes n’ont pas déjà un portail utilisateur. De nouveaux portails et
     fonctionnalités seront ajoutés progressivement.
 
-Statistiques des tâches sur Narval
-----------------------------------
+Statistiques des tâches sur Narval et Rorqual
+---------------------------------------------
 
-Dans le portail de Narval (ou celui de Rorqual), un tableau listant vos
-dernières tâches se trouve dans la page `Statistiques des tâches
-<https://portail.narval.calculquebec.ca/secure/jobstats/>`__, à la section *Vos
-tâches*.
+Dans le portail de la grappe, un tableau listant vos dernières tâches se trouve
+à la section *Vos tâches* de la page *Statistiques des tâches* du menu latéral.
+
+- https://portail.narval.calculquebec.ca/secure/jobstats/
+- https://metrix.rorqual.calculquebec.ca/secure/jobstats/
 
 .. figure:: ../../images/portal-tasks-table-narval_fr.png
 
