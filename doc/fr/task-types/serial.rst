@@ -115,7 +115,7 @@ utilisation CPU de près de 100 % :
     Tâches: 1153 total,   2 en cours, 1151 en veille,   0 arrêté,   0 zombie
     %Cpu(s):  0,9 ut,  0,1 sy,  0,0 ni, 98,9 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
     MiB Mem : 515670,6 total, 366210,5 libr,  20660,2 util, 128799,9 tamp/cache
-    MiB Éch :      0,0 total,      0,0 libr,      0,0 util. 490099,2 dispo Mem 
+    MiB Éch :      0,0 total,      0,0 libr,      0,0 util. 490099,2 dispo Mem
 
       PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.
     65826 alice     20   0   20272   6896   3296 R  98,3   0,0   1:39.15 python

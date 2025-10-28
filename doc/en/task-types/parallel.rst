@@ -61,11 +61,11 @@ shows a CPU usage over 100 % (around 100 % times the number of cores used):
     :emphasize-lines: 2
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
-    65829 alice     20   0   20272   6896   3296 R 796,1   0,0   1:39.15 mt-prog
-    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
-    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
-    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
-    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+    65829 alice     20   0   20272   6896   3296 R 796.1   0.0   1:39.15 mt-prog
+    66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash
 
 With ``top -u $USER -H`` (or the :kbd:`Shift+h` keyboard shortcut), there is one
 entry for each thread of execution:
@@ -74,18 +74,18 @@ entry for each thread of execution:
     :emphasize-lines: 2-9
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
-    65829 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
-    65830 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
-    65831 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
-    65832 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog
-    65833 alice     20   0   20272   6896   3296 R  99,1   0,0   1:39.15 mt-prog
-    65834 alice     20   0   20272   6896   3296 R  99,1   0,0   1:39.15 mt-prog
-    65835 alice     20   0   20272   6896   3296 R  95,0   0,0   1:39.15 mt-prog
-    65836 alice     20   0   20272   6896   3296 R  95,0   0,0   1:39.15 mt-prog
-    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
-    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
-    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
-    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+    65829 alice     20   0   20272   6896   3296 R  99.9   0.0   1:39.15 mt-prog
+    65830 alice     20   0   20272   6896   3296 R  99.9   0.0   1:39.15 mt-prog
+    65831 alice     20   0   20272   6896   3296 R  99.9   0.0   1:39.15 mt-prog
+    65832 alice     20   0   20272   6896   3296 R  99.9   0.0   1:39.15 mt-prog
+    65833 alice     20   0   20272   6896   3296 R  99.1   0.0   1:39.15 mt-prog
+    65834 alice     20   0   20272   6896   3296 R  99.1   0.0   1:39.15 mt-prog
+    65835 alice     20   0   20272   6896   3296 R  95.0   0.0   1:39.15 mt-prog
+    65836 alice     20   0   20272   6896   3296 R  95.0   0.0   1:39.15 mt-prog
+    66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash
 
 Requesting appropriate resources
 ''''''''''''''''''''''''''''''''
@@ -221,18 +221,18 @@ each with a CPU usage close to 100 % (one entry for each process):
     :emphasize-lines: 2-9
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
-    65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
-    65025 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
-    65027 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
-    65028 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
-    65033 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog
-    65022 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog
-    65023 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog
-    65020 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog
-    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
-    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
-    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
-    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+    65021 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 mpi-prog
+    65025 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 mpi-prog
+    65027 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 mpi-prog
+    65028 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 mpi-prog
+    65033 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 mpi-prog
+    65022 alice     20   0   20272   6896   3296 R  99.7   0.0   1:39.15 mpi-prog
+    65023 alice     20   0   20272   6896   3296 R  99.7   0.0   1:39.15 mpi-prog
+    65020 alice     20   0   20272   6896   3296 R  99.7   0.0   1:39.15 mpi-prog
+    66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash
 
 Requesting appropriate resources
 ''''''''''''''''''''''''''''''''
@@ -390,14 +390,14 @@ each with a CPU usage over 100 %:
     :emphasize-lines: 2-5
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
-    65021 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog
-    65025 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog
-    65027 alice     20   0   20272   6896   3296 R 199,9   0,0   1:39.15 hyb-prog
-    65028 alice     20   0   20272   6896   3296 R 199,7   0,0   1:39.15 hyb-prog
-    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
-    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
-    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
-    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+    65021 alice     20   0   20272   6896   3296 R 200.0   0.0   1:39.15 hyb-prog
+    65025 alice     20   0   20272   6896   3296 R 200.0   0.0   1:39.15 hyb-prog
+    65027 alice     20   0   20272   6896   3296 R 199.9   0.0   1:39.15 hyb-prog
+    65028 alice     20   0   20272   6896   3296 R 199.7   0.0   1:39.15 hyb-prog
+    66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash
 
 Nested parallelism is not limited to the MPI/multi-threading hybrid strategy.
 Another common case is that of a multi-threaded program where each thread of
@@ -413,26 +413,26 @@ the job down. Such a situation can be spotted with ``top -u $USER -H``:
     :emphasize-lines: 2-17
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.
-    65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
-    65022 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
-    65023 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog
-    65024 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 nst-prog
-    65025 alice     20   0   20272   6896   3296 R  80,0   0,0   1:39.15 nst-prog
-    65026 alice     20   0   20272   6896   3296 R  59,0   0,0   1:39.15 nst-prog
-    65027 alice     20   0   20272   6896   3296 R  49,7   0,0   1:39.15 nst-prog
-    65028 alice     20   0   20272   6896   3296 R  49,0   0,0   1:39.15 nst-prog
-    65029 alice     20   0   20272   6896   3296 R  40,1   0,0   1:39.15 nst-prog
-    65030 alice     20   0   20272   6896   3296 R  30,0   0,0   1:39.15 nst-prog
-    65031 alice     20   0   20272   6896   3296 R  17,5   0,0   1:39.15 nst-prog
-    65032 alice     20   0   20272   6896   3296 R  16,0   0,0   1:39.15 nst-prog
-    65033 alice     20   0   20272   6896   3296 R  15,2   0,0   1:39.15 nst-prog
-    65034 alice     20   0   20272   6896   3296 R  14,5   0,0   1:39.15 nst-prog
-    65035 alice     20   0   20272   6896   3296 R  14,5   0,0   1:39.15 nst-prog
-    65036 alice     20   0   20272   6896   3296 R  10,9   0,0   1:39.15 nst-prog
-    66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top
-    64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash
-    65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
-    65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
+    65021 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 nst-prog
+    65022 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 nst-prog
+    65023 alice     20   0   20272   6896   3296 R 100.0   0.0   1:39.15 nst-prog
+    65024 alice     20   0   20272   6896   3296 R  99.9   0.0   1:39.15 nst-prog
+    65025 alice     20   0   20272   6896   3296 R  80.0   0.0   1:39.15 nst-prog
+    65026 alice     20   0   20272   6896   3296 R  59.0   0.0   1:39.15 nst-prog
+    65027 alice     20   0   20272   6896   3296 R  49.7   0.0   1:39.15 nst-prog
+    65028 alice     20   0   20272   6896   3296 R  49.0   0.0   1:39.15 nst-prog
+    65029 alice     20   0   20272   6896   3296 R  40.1   0.0   1:39.15 nst-prog
+    65030 alice     20   0   20272   6896   3296 R  30.0   0.0   1:39.15 nst-prog
+    65031 alice     20   0   20272   6896   3296 R  17.5   0.0   1:39.15 nst-prog
+    65032 alice     20   0   20272   6896   3296 R  16.0   0.0   1:39.15 nst-prog
+    65033 alice     20   0   20272   6896   3296 R  15.2   0.0   1:39.15 nst-prog
+    65034 alice     20   0   20272   6896   3296 R  14.5   0.0   1:39.15 nst-prog
+    65035 alice     20   0   20272   6896   3296 R  14.5   0.0   1:39.15 nst-prog
+    65036 alice     20   0   20272   6896   3296 R  10.9   0.0   1:39.15 nst-prog
+    66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top
+    64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash
+    65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd
+    65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash
 
 When the number of threads of execution is greater than the number of cores
 allocated to the job, the threads are not guaranteed access to the same amount
