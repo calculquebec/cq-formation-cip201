@@ -13,6 +13,13 @@ tâches en cours et même vos tâches récemment terminées. Les voici :
 Dans tous les cas, il faut s'y authentifier avec nos identifiants du portail
 `CCDB <https://ccdb.alliancecan.ca>`__.
 
+.. note::
+
+    Suite au `renouvellement de l’infrastructure de 2025
+    <https://docs.alliancecan.ca/wiki/Infrastructure_renewal/fr>`__, toutes les
+    grappes n’ont pas déjà un portail utilisateur. De nouveaux portails et
+    fonctionnalités seront ajoutés progressivement.
+
 Statistiques des tâches sur Narval
 ----------------------------------
 

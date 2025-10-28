@@ -13,6 +13,13 @@ recently completed jobs. Here they are:
 In all cases, you must log in with your `CCDB <https://ccdb.alliancecan.ca>`__
 portal credentials.
 
+.. note::
+
+    Following the `2025 infrastructure renewal
+    <https://docs.alliancecan.ca/wiki/Infrastructure_renewal>`__, not all
+    clusters have a user portal already. New portals and functionalities will
+    be added progressively.
+
 Narval job statistics
 ---------------------
 
