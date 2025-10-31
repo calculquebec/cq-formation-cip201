@@ -104,7 +104,7 @@ Pourquoi optimiser le nombre de cœurs CPU ?
   sont alloués à la tâche.
 - La performance d’un programme n’augmente toutefois pas indéfiniment avec le
   nombre de cœurs.
-- En outre, les tâches qui demandent plus de cœurs attentent davantage dans la
+- En outre, les tâches qui demandent plus de cœurs attendent davantage dans la
   file et consomment plus de ressources, diminuant la priorité de vos tâches.
 - Un nombre optimal de cœurs CPU balance ces effets opposés, minimisant le temps
   total (attente et calcul) pour accomplir vos tâches et évitant le gaspillage
