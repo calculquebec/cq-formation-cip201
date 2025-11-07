@@ -157,5 +157,8 @@ Remarques
 - Chaque test devrait être répété 3 fois afin de s’assurer de la stabilité du
   résultat.
 - La même approche peut être utilisée pour analyser la consommation de mémoire
-  en fonction du nombre de cœurs CPU. On utiliserait alors ``sacct -j <jobid> -o
-  JobID%15,JobName,MaxRSS,NCPUs``.
+  en fonction du nombre de cœurs CPU. Pour un programme multi-fils, on
+  utiliserait ``sacct -j <jobid> -o JobID%15,JobName,AveRSS,NCPUs``. Pour un
+  programme MPI, on utiliserait ``sacct -j <jobid> -o
+  JobID%15,JobName,AveRSS,NTasks`` et le pic d’utilisation mémoire serait
+  calculé avec ``NTasks`` × ``AveRSS``.
