@@ -154,5 +154,7 @@ Remarks
 - Each test should last at least 5 minutes to be reliable.
 - Each test should be repeated 3 times to ensure the result is stable.
 - The same approach can be used to analyse memory usage as a function of the
-  number of CPU cores. One would use ``sacct -j <jobid> -o
-  JobID%15,JobName,MaxRSS,NCPUs``.
+  number of CPU cores. For a multi-threaded program, use ``sacct -j <jobid> -o
+  JobID%15,JobName,AveRSS,NCPUs``. For an MPI program, use ``sacct -j <jobid> -o
+  JobID%15,JobName,AveRSS,NTasks`` and compute peak memory usage with ``NTasks``
+  × ``AveRSS``.
