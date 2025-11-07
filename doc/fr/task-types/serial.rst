@@ -49,7 +49,7 @@ Le `Gestionnaire des tâches Windows
 être affiché de deux manières :
 
 - Cherchez *Gestionnaire des tâches* dans le menu *Démarrer*.
-- Utilisez le racourci clavier :kbd:`Ctrl+Alt+Suppr`.
+- Utilisez le raccourci clavier :kbd:`Ctrl+Alt+Suppr`.
 
 .. figure:: ../../images/win-task-manager_fr.png
 
@@ -98,7 +98,7 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
   - ``-u <username>`` : Afficher uniquement les tâches d’un utilisateur
     spécifique.
   - ``-H`` : Afficher séparément les fils d’exécution de chaque programme. Dans
-    ``top``, le racourci clavier :kbd:`Maj+h` alterne entre l’affichage
+    ``top``, le raccourci clavier :kbd:`Maj+h` alterne entre l’affichage
     individuel et collectif des fils d’exécution.
 
 .. figure:: ../../images/linux-top.png
