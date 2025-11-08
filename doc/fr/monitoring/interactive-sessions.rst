@@ -6,8 +6,8 @@ Sessions interactives
 Nous avons présenté plusieurs outils pour analyser les tâches de calcul. Les
 commandes de l’ordonnanceur ``seff`` et ``sacct`` affichent de l’information sur
 les tâches complétées. Pour le suivi des tâches actives, nous avons vu comment
-se connecter à un nœud de calcul avec ``ssh`` et y utiliser le gestionnaire de
-tâches ``top``.
+se connecter à un nœud de calcul avec ``srun`` ou ``ssh`` et y utiliser le
+gestionnaire de tâches ``top``.
 
 Les sessions interactives sont un autre outil, particulièrement approprié pour
 des séries de courts tests. Par exemple, si vous analysez la scalabilité d’un
