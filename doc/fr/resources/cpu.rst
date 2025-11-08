@@ -5,8 +5,8 @@ Cœurs CPU
 
 Les cœurs CPU sont une ressource analysée diféremment du temps ou de la mémoire.
 Pour les tâches parallèles, il faut bien sûr choisir un nombre de cœurs.
-Toutefois, aussi bien pour les tâches sérielles que parallèles, il importe de
-vérifier que le CPU est bien utilisé.
+Toutefois, aussi bien pour les tâches séquentielles que parallèles, il importe
+de vérifier que le CPU est bien utilisé.
 
 Pourquoi vérifier l’utilisation du CPU ?
 ----------------------------------------
@@ -129,11 +129,12 @@ paramètres tels que la taille des données d’entrée.
 
 On quantifie la scalabilité avec deux grandeurs : l’accélération et
 l’efficacité. Pour :math:`n` cœurs CPU, l’accélération (*speedup*, :math:`S`)
-est le ratio du temps d’exécution sériel sur le temps d’exécution parallèle :
+est le ratio du temps d’exécution séquentiel sur le temps d’exécution
+parallèle :
 
 .. math::
 
-    S_n = \frac{t_\text{sériel}}{t_n}
+    S_n = \frac{t_\text{séquentiel}}{t_n}
 
 Par exemple, si un calcul requiert 10 minutes avec 1 cœur CPU et 6 minutes avec
 2, l’accélaration est de 1,67. C’est donc une mesure de « combien de fois plus
@@ -167,7 +168,7 @@ peut être calculée à partir de la performance plutôt que du temps de calcul�
 
 .. math::
 
-    S_n = \frac{P_{n}}{P_\text{sérielle}}
+    S_n = \frac{P_{n}}{P_\text{séquentielle}}
 
 .. _scalability-exercise:
 
@@ -227,7 +228,7 @@ Pourquoi l’efficacité n’est-elle pas linéaire ?
 La scalabilité est limitée par la fraction du programme qui calcule en parallèle
 (voir figure ci-dessous). C’est ce qu’on appelle la `loi d’Amdahl
 <https://fr.wikipedia.org/wiki/Loi_d%27Amdahl>`__. Un programme parallèle peut
-avoir une fraction sérielle pour une variété de raisons :
+avoir une fraction séquentielle pour une variété de raisons :
 
 - Lecture non parallèle d’un fichier d’entrée ou mise à jour d’un fichier de
   sortie.

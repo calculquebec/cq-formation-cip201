@@ -16,7 +16,7 @@ cours de l’atelier précédent, cette section vous servira de référence pend
 les exercices.
 
 La section suivante présente les deux **types de tâches de calcul**. Les
-:doc:`tâches sérielles <task-types/serial>` sont les plus simples. Les
+:doc:`tâches séquentielles <task-types/serial>` sont les plus simples. Les
 :doc:`tâches parallèles <task-types/parallel>`, pour leur part, méritent une
 discussion plus approfondie, incluant la différence entre les programmes
 parallèles multi-fils et MPI. Le parallélisme de données est mentionné

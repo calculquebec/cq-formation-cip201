@@ -465,9 +465,9 @@ parallélisme.
 Autres types de parallélisme
 ----------------------------
 
-Le parallélisme de données consiste à répéter une tâche sérielle ou parallèle
-avec différentes données d’entrées, par exemple des images, molécules ou
-séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
+Le parallélisme de données consiste à répéter une tâche séquentielle ou
+parallèle avec différentes données d’entrées, par exemple des images, molécules
+ou séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
 réduire le temps de calcul nécessaire à cette tâche, le parallélisme de données
 vise à augmenter le débit de calcul en exécutant de multiples tâches
 simultanément. Nous convrirons ce sujet en détails dans l’atelier *Parallélisme
