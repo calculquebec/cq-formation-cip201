@@ -337,7 +337,7 @@ Exercice
 #. Compilez le programme ``pi`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
    Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
-   tâche MPI et demandez 2 cœurs CPU.
+   tâche MPI et demandez 1 nœud et 2 cœurs CPU.
 #. Exécutez le programme en arrière-plan avec ``mpirun ./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
