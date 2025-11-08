@@ -124,7 +124,7 @@ une utilisation CPU de près de 100 % :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Le gestionnaire `htop` est une alternative à `top` offrant davantage de
+Le gestionnaire ``htop`` est une alternative à ``top`` offrant davantage de
 fonctionnalités et une interface plus sophistiquée.
 
 .. figure:: ../../images/linux-htop.png
