@@ -54,7 +54,7 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'logo': {
-        'text': 'Suivi des tâches de calcul et estimation des ressources (CPI201)',
+        'text': 'Suivi des tâches de calcul et estimation des ressources (CIP201)',
         'image_light': '../images/logo.png'
     }
 }
