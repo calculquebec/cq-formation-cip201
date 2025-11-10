@@ -6,7 +6,7 @@ Interactive sessions
 We have already presented several tools to analyse compute jobs. Scheduler
 commands ``seff`` and ``sacct`` show information about completed jobs. To
 monitor running jobs, we have seen how to connect to a compute node with
-``ssh``, and there use the ``top`` task manager.
+``srun`` or ``ssh``, and there use the ``top`` task manager.
 
 Interactive sessions are yet another tool, which is especially well-suited for
 series of short tests. For instance, when analysing a program’s scalability, you

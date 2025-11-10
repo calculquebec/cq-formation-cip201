@@ -6,8 +6,8 @@ Sessions interactives
 Nous avons présenté plusieurs outils pour analyser les tâches de calcul. Les
 commandes de l’ordonnanceur ``seff`` et ``sacct`` affichent de l’information sur
 les tâches complétées. Pour le suivi des tâches actives, nous avons vu comment
-se connecter à un nœud de calcul avec ``ssh`` et y utiliser le gestionnaire de
-tâches ``top``.
+se connecter à un nœud de calcul avec ``srun`` ou ``ssh`` et y utiliser le
+gestionnaire de tâches ``top``.
 
 Les sessions interactives sont un autre outil, particulièrement approprié pour
 des séries de courts tests. Par exemple, si vous analysez la scalabilité d’un
@@ -50,8 +50,8 @@ Démonstration
 - L’option ``--mem=0`` demande toute la mémoire du nœud et ne devrait être
   utilisée que lorsque l’on demande un nœud complet.
 
-2. Tester le programme en mode sériel
-'''''''''''''''''''''''''''''''''''''
+2. Tester le programme en mode séquentiel
+'''''''''''''''''''''''''''''''''''''''''
 
 .. code-block:: console
     :emphasize-lines: 1,4,10
@@ -83,7 +83,7 @@ Démonstration
 
     Précédemment, nous avons vu que la commande ``srun`` est nécessaire pour
     lancer des programmes MPI. ``srun`` peut aussi être utilisée avec n’importe
-    quel autre programme, sériel ou parallèle, multi-fils ou MPI.
+    quel autre programme, séquentiel ou parallèle, multi-fils ou MPI.
 
 3. Tester différents nombres de cœurs CPU
 '''''''''''''''''''''''''''''''''''''''''
@@ -147,7 +147,7 @@ Démonstration
 - Nombre de cœurs CPU : :math:`n`
 - Temps : :math:`t`
 - Performance : :math:`P_n = \text{points} / t`
-- Accélération : :math:`S_n = t_\text{sériel} / t_n`
+- Accélération : :math:`S_n = t_\text{séquentiel} / t_n`
 - Efficacité : :math:`E_n = S_n / n`
 
 Remarques

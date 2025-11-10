@@ -1,28 +1,29 @@
-Tâches sérielles
-================
+Tâches séquentielles
+====================
 
 `English <../../en/task-types/serial.html>`_
 
-Il existe deux types de tâches de calcul : sérielles et parallèles. Distinguer
-les deux types est crucial pour déterminer les ressources de calcul nécessaires
-à chaque tâche.
+Il existe deux types de tâches de calcul : séquentielles et parallèles.
+Distinguer les deux types est crucial pour déterminer les ressources de calcul
+nécessaires à chaque tâche.
 
-Les tâches sérielles sont celles qui n’utilisent qu’un seul cœur CPU. À
+Les tâches séquentielles sont celles qui n’utilisent qu’un seul cœur CPU. À
 l’inverse, les tâches parallèles sont capables d’utiliser simultanément
 plusieurs cœurs. Une autre manière de voir les choses est que, dans une tâche
-sérielle, les étapes du calcul sont toujours réalisées l’une après l’autre alors
-que, dans une tâche parallèle, certaines étapes sont réalisées simultanément
-(voir figure ci-dessous). Les calculs sériels sont de loin les plus communs.
+séquentielle, les étapes du calcul sont toujours réalisées l’une après l’autre
+alors que, dans une tâche parallèle, certaines étapes sont réalisées
+simultanément (voir figure ci-dessous). Les calculs séquentiels sont de loin les
+plus communs.
 
 .. figure:: ../../images/task-types_fr.svg
 
-Identifier une tâche sérielle
------------------------------
+Identifier une tâche séquentielle
+---------------------------------
 
-Comment déterminer si votre tâche est sérielle ou parallèle ?
+Comment déterminer si votre tâche est séquentielle ou parallèle ?
 
 - Consultez la documentation de votre programme. S’il n’y a aucune mention de
-  calcul parallèle, il s’agit probablement d’un programme sériel.
+  calcul parallèle, il s’agit probablement d’un programme séquentiel.
 - Si le programme fonctionne sur votre ordinateur personnel, faites un test :
   lancez le programme et vérifiez combien de cœurs CPU il utilise à l’aide d’un
   :ref:`gestionnaire de tâches <task-manager>`.
@@ -53,16 +54,15 @@ Le `Gestionnaire des tâches Windows
 
 .. figure:: ../../images/win-task-manager_fr.png
 
-Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique
-que tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a *n*
-cœurs CPU (cette information est dans le panneau *Performance*), un
-programme sériel intensif devrait avoir une consommation de 100 % / *n* dans
-le panneau *Processus*. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant
-4 cœurs.
+Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique que
+tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a *n* cœurs CPU
+(cette information est dans le panneau *Performance*), un programme séquentiel
+intensif devrait avoir une consommation de 100 % / *n* dans le panneau
+*Processus*. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant 4 cœurs.
 
 Dans la figure ci-dessus, le processus *Python* utilise plus d’un cœur CPU
 puisque l’utilisation dépasse 50 % sur un ordinateur ayant 10 cœurs. Si le
-programme avait été sériel, l’utilisation aurait été d’environ 10 %, soit
+programme avait été séquentiel, l’utilisation aurait été d’environ 10 %, soit
 100 % / 10 cœurs.
 
 MacOS
@@ -82,7 +82,7 @@ Le `Moniteur d’activité
 (Image tirée du soutien technique d’Apple)
 
 Dans le gestionnaire des tâches MacOS, une utilisation CPU de 100 % correspond à
-un cœur CPU pleinement utilisé. Lors de l’exécution d’un programme sériel
+un cœur CPU pleinement utilisé. Lors de l’exécution d’un programme séquentiel
 intensif, le gestionnaire devrait afficher le processus et une utilisation CPU
 de près de 100 %.
 
@@ -105,8 +105,8 @@ Le gestionnaire de tâche ``top`` peut être affiché dans un terminal.
 
 Dans ``top`` (et les autres gestionnaires de tâches Linux), une utilisation CPU
 de 100 % correspond à un cœur CPU pleinement utilisé. Lors de l’exécution d’un
-programme sériel intensif, ``top -u $USER`` devrait afficher le processus et une
-utilisation CPU de près de 100 % :
+programme séquentiel intensif, ``top -u $USER`` devrait afficher le processus et
+une utilisation CPU de près de 100 % :
 
 .. code-block:: console
     :emphasize-lines: 8
@@ -124,7 +124,7 @@ utilisation CPU de près de 100 % :
     65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd
     65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash
 
-Le gestionnaire `htop` est une alternative à `top` offrant davantage de
+Le gestionnaire ``htop`` est une alternative à ``top`` offrant davantage de
 fonctionnalités et une interface plus sophistiquée.
 
 .. figure:: ../../images/linux-htop.png
@@ -132,10 +132,10 @@ fonctionnalités et une interface plus sophistiquée.
 Demander les ressources appropriées
 -----------------------------------
 
-Puisque une tâche sérielle ne peut utiliser qu’un seul cœur CPU, elle ne devrait
-inclure aucune des options relatives au parallélisme que sont
+Puisque une tâche séquentielle ne peut utiliser qu’un seul cœur CPU, elle ne
+devrait inclure aucune des options relatives au parallélisme que sont
 ``--cpus-per-task``, ``--ntasks``, ``--ntasks-per-node`` ou ``--nodes``. Voici
-un script de tâche minimal pour un programme sériel :
+un script de tâche minimal pour un programme séquentiel :
 
 .. code-block:: bash
 
@@ -148,7 +148,7 @@ un script de tâche minimal pour un programme sériel :
 
     ./serial-prog
 
-Pour expliciter la nature sérielle d’une tâche, son script peut inclure les
+Pour expliciter la nature séquentielle d’une tâche, son script peut inclure les
 valeurs par défaut des options pour le parallélisme :
 
 .. code-block:: bash
@@ -167,7 +167,7 @@ Exercice
 **Objectifs**
 
 - Vérifier que le programme ``fibo`` dans le répertoire des exercices est
-  sériel.
+  séquentiel.
 - Utiliser le gestionnaire de tâches ``top``.
 - Gérer un programme en arrière-plan avec ``&`` et ``jobs``.
 
@@ -218,8 +218,8 @@ Exercice
 
         0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …
     
-    C’est un exemple d’un problème mathématique intrinsèquement sériel. Puisque
-    chaque étape du calcul dépend entièrement du résultat des étapes
+    C’est un exemple d’un problème mathématique intrinsèquement séquentiel.
+    Puisque chaque étape du calcul dépend entièrement du résultat des étapes
     précédentes, les étapes ne peuvent s’exécuter qu’une après l’autre. Aucun
     algorithme ne permet de calculer le nième nombre de Fibonacci en parallèle.
 

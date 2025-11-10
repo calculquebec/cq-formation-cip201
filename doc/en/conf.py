@@ -54,7 +54,7 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'logo': {
-        'text': 'Running jobs: resources and monitoring (CIP201)',
+        'text': 'Job monitoring and resource estimation (CIP201)',
         'image_light': '../images/logo.png'
     }
 }

@@ -1,10 +1,10 @@
-Running jobs: resources and monitoring
+Job monitoring and resource estimation
 ======================================
 
 `Français <../fr/index.html>`_
 
 This intermediate-level workshop (CIP201) is the continuation of *First steps on
-compute clusters* (CIP101); we explore in details certain key aspects of
+supercomputers* (CIP101); we explore in details certain key aspects of
 high-performance computing.
 
 The workshop begins with a review of the **job scheduler**. :doc:`What is it
@@ -18,8 +18,8 @@ The next section introduces the two **types of compute jobs**. :doc:`Serial jobs
 <task-types/serial>` are the simplest. :doc:`Parallel jobs
 <task-types/parallel>` deserve a more in-depth presentation, including the
 differences between multi-threaded and MPI programs. Data parallelism is briefly
-discussed and is the topic of a subsequent workshop, `Data parallelism on the
-clusters <https://calculquebec.github.io/cq-formation-cip202/en/index.html>`__
+discussed and is the topic of a subsequent workshop, `Managing large batches of
+jobs <https://calculquebec.github.io/cq-formation-cip202/en/index.html>`__
 (CIP202).
 
 **Estimating the resources required** for a compute job can be challenging! This

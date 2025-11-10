@@ -337,7 +337,7 @@ Exercice
 #. Compilez le programme ``pi`` avec la commande ``make``.
 #. Démarrez une tâche interactive avec ``salloc [...] --time=00:10:00``.
    Remplacez ``[...]`` par les options de parallélisme nécessaires pour une
-   tâche MPI et demandez 2 cœurs CPU.
+   tâche MPI et demandez 1 nœud et 2 cœurs CPU.
 #. Exécutez le programme en arrière-plan avec ``mpirun ./pi &``.
 #. Pendant que ``pi`` s’exécute, observez sa consommation CPU avec ``top -u
    $USER`` et ``top -u $USER -H``.
@@ -465,9 +465,9 @@ parallélisme.
 Autres types de parallélisme
 ----------------------------
 
-Le parallélisme de données consiste à répéter une tâche sérielle ou parallèle
-avec différentes données d’entrées, par exemple des images, molécules ou
-séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
+Le parallélisme de données consiste à répéter une tâche séquentielle ou
+parallèle avec différentes données d’entrées, par exemple des images, molécules
+ou séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
 réduire le temps de calcul nécessaire à cette tâche, le parallélisme de données
 vise à augmenter le débit de calcul en exécutant de multiples tâches
 simultanément. Nous convrirons ce sujet en détails dans l’atelier *Parallélisme
