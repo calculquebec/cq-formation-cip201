@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sessions interactives &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'monitoring/interactive-sessions';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Portails des utilisateurs" href="user-portal.html" />
+    <link rel="prev" title="Se connecter aux nœuds de calcul" href="compute-nodes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Suivi des tâches de calcul et estimation des ressources (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">L’ordonnanceur de tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commandes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Scripts de tâches</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Types de tâches de calcul</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../task-types/serial.html">Tâches séquentielles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../task-types/parallel.html">Tâches parallèles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimer les ressources requises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/time.html">Temps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/memory.html">Mémoire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cpu.html">Cœurs CPU</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Suivi des tâches</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="compute-nodes.html">Se connecter aux nœuds de calcul</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sessions interactives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-portal.html">Portails des utilisateurs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/monitoring/interactive-sessions.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sessions interactives</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Démonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demarrer-une-tache-interactive">1. Démarrer une tâche interactive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tester-le-programme-en-mode-sequentiel">2. Tester le programme en mode séquentiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tester-differents-nombres-de-coeurs-cpu">3. Tester différents nombres de cœurs CPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculer-lacceleration-et-lefficacite">4. Calculer l’accélération et l’efficacité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarques">Remarques</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sessions-interactives">
+<h1>Sessions interactives<a class="headerlink" href="#sessions-interactives" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../../en/monitoring/interactive-sessions.html">English</a></p>
+<p>Nous avons présenté plusieurs outils pour analyser les tâches de calcul. Les
+commandes de l’ordonnanceur <code class="docutils literal notranslate"><span class="pre">seff</span></code> et <code class="docutils literal notranslate"><span class="pre">sacct</span></code> affichent de l’information sur
+les tâches complétées. Pour le suivi des tâches actives, nous avons vu comment
+se connecter à un nœud de calcul avec <code class="docutils literal notranslate"><span class="pre">srun</span></code> ou <code class="docutils literal notranslate"><span class="pre">ssh</span></code> et y utiliser le
+gestionnaire de tâches <code class="docutils literal notranslate"><span class="pre">top</span></code>.</p>
+<p>Les sessions interactives sont un autre outil, particulièrement approprié pour
+des séries de courts tests. Par exemple, si vous analysez la scalabilité d’un
+programme, vous souhaiterez sans doute répéter une courte tâche avec différents
+nombres de cœurs CPU. Plutôt que de soumettre avec <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> de multiples
+tâches qui ne durent que quelques minutes puis colliger leurs résultats, vous
+pouvez démarrer une tâche interactive et y exécuter rapidement tous vos tests.</p>
+<section id="demonstration">
+<h2>Démonstration<a class="headerlink" href="#demonstration" title="Lien vers cette rubrique">#</a></h2>
+<p><strong>Objectif</strong></p>
+<ul class="simple">
+<li><p>Analyser la scalabilité d’un programme parallèle dans une tâche interactive.</p></li>
+<li><p>Utiliser <code class="docutils literal notranslate"><span class="pre">srun</span></code> interactivement pour ajouter des étapes à une tâche.</p></li>
+<li><p>Utiliser <code class="docutils literal notranslate"><span class="pre">sacct</span></code> dans une tâche active pour obtenir de l’information sur les
+étapes terminées.</p></li>
+</ul>
+<section id="demarrer-une-tache-interactive">
+<h3>1. Démarrer une tâche interactive<a class="headerlink" href="#demarrer-une-tache-interactive" title="Lien vers cette rubrique">#</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span><span class="nb">cd</span><span class="w"> </span>~/cq-formation-cip201/lab/pi-multi-threaded
+<span class="gp">[alice@narval1 ~]$ </span>make
+<span class="go">make: Nothing to be done for &#39;default&#39;.</span>
+<span class="hll"><span class="gp">[alice@narval1 pi-multi-threaded]$ </span>salloc<span class="w"> </span>--nodes<span class="o">=</span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>--mem<span class="o">=</span><span class="m">0</span><span class="w"> </span>--time<span class="o">=</span><span class="m">3</span>:00:00
+</span><span class="go">salloc: Pending job allocation 40716821</span>
+<span class="go">salloc: job 40716821 queued and waiting for resources</span>
+<span class="go">salloc: job 40716821 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 40716821</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes nc30432 are ready for job</span>
+<span class="gp">[alice@nc30432 pi-multi-threaded]$</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>L’option <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> demande tous les cœurs CPU du nœud de calcul. Cela
+garantit qu’aucune autre tâche ne peut être exécutée sur ce nœud et influencer
+les résultats des tests.</p></li>
+<li><p>L’option <code class="docutils literal notranslate"><span class="pre">--mem=0</span></code> demande toute la mémoire du nœud et ne devrait être
+utilisée que lorsque l’on demande un nœud complet.</p></li>
+</ul>
+</section>
+<section id="tester-le-programme-en-mode-sequentiel">
+<h3>2. Tester le programme en mode séquentiel<a class="headerlink" href="#tester-le-programme-en-mode-sequentiel" title="Lien vers cette rubrique">#</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>srun<span class="w"> </span>-J<span class="w"> </span>testA<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>./pi
+</span><span class="go">Estimating pi with 10000000000 random points.</span>
+<span class="go">Pi estimate is 3.141590.</span>
+<span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">40716821</span><span class="w"> </span>-o<span class="w"> </span>JobID%15,JobName,Elapsed,NCPUs
+</span><span class="go">          JobID    JobName    Elapsed      NCPUS</span>
+<span class="go">--------------- ---------- ---------- ----------</span>
+<span class="go">       40716821 interacti+   00:04:01         64</span>
+<span class="go">40716821.inter+ interacti+   00:04:01         64</span>
+<span class="go">40716821.extern     extern   00:04:01         64</span>
+<span class="hll"><span class="go">     40716821.0      testA   00:03:05          1</span>
+</span></pre></div>
+</div>
+<ul class="simple">
+<li><p>La commande <code class="docutils literal notranslate"><span class="pre">srun</span></code> ajoute une étape à la tâche. Les options utilisées sont :</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-J,--job-name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n,--ntasks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c,--cpus-per-task</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">srun</span></code> contrôle les ressources allouées à la nouvelle étape. Ici, nous
+n’utilisons qu’un seul des 64 cœurs alloués à la tâche.</p></li>
+<li><p>Lorsqu’une étape est terminée, elle peut être analysée avec <code class="docutils literal notranslate"><span class="pre">sacct</span></code> même si
+la tâche est encore active. Les ressources consommées par chaque étape sont
+comptabilisées séparément.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Précédemment, nous avons vu que la commande <code class="docutils literal notranslate"><span class="pre">srun</span></code> est nécessaire pour
+lancer des programmes MPI. <code class="docutils literal notranslate"><span class="pre">srun</span></code> peut aussi être utilisée avec n’importe
+quel autre programme, séquentiel ou parallèle, multi-fils ou MPI.</p>
+</div>
+</section>
+<section id="tester-differents-nombres-de-coeurs-cpu">
+<h3>3. Tester différents nombres de cœurs CPU<a class="headerlink" href="#tester-differents-nombres-de-coeurs-cpu" title="Lien vers cette rubrique">#</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>srun<span class="w"> </span>-J<span class="w"> </span>testB<span class="w"> </span>-n1<span class="w"> </span>-c2<span class="w"> </span>./pi
+</span><span class="go">Estimating pi with 10000000000 random points.</span>
+<span class="go">Pi estimate is 3.141621.</span>
+<span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>srun<span class="w"> </span>-J<span class="w"> </span>testC<span class="w"> </span>-n1<span class="w"> </span>-c4<span class="w"> </span>./pi
+</span><span class="go">Estimating pi with 10000000000 random points.</span>
+<span class="go">Pi estimate is 3.141631.</span>
+<span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>srun<span class="w"> </span>-J<span class="w"> </span>testD<span class="w"> </span>-n1<span class="w"> </span>-c8<span class="w"> </span>./pi
+</span><span class="go">Estimating pi with 10000000000 random points.</span>
+<span class="go">Pi estimate is 3.141630.</span>
+<span class="hll"><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">40716821</span><span class="w"> </span>-o<span class="w"> </span>JobID%15,JobName,Elapsed,NCPUs
+</span><span class="go">          JobID    JobName    Elapsed      NCPUS</span>
+<span class="go">--------------- ---------- ---------- ----------</span>
+<span class="go">       40716821 interacti+   00:07:21         64</span>
+<span class="go">40716821.inter+ interacti+   00:07:21         64</span>
+<span class="go">40716821.extern     extern   00:07:21         64</span>
+<span class="hll"><span class="go">     40716821.0      testA   00:03:05          1</span>
+</span><span class="hll"><span class="go">     40716821.1      testB   00:01:35          2</span>
+</span><span class="hll"><span class="go">     40716821.2      testC   00:00:46          4</span>
+</span><span class="hll"><span class="go">     40716821.3      testD   00:00:23          8</span>
+</span><span class="gp">[alice@nc30432 pi-multi-threaded]$ </span><span class="nb">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="calculer-lacceleration-et-lefficacite">
+<h3>4. Calculer l’accélération et l’efficacité<a class="headerlink" href="#calculer-lacceleration-et-lefficacite" title="Lien vers cette rubrique">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Scalabilité de <code class="docutils literal notranslate"><span class="pre">pi</span></code> multi-fils</span><a class="headerlink" href="#id1" title="Lien vers ce tableau">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\pmb{n}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\pmb{t}\)</span> (s)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\pmb{P}\)</span> (1e7 points/s)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\pmb{S}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\pmb{E}\)</span> (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>185</p></td>
+<td><p>5,3</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>95</p></td>
+<td><p>10,5</p></td>
+<td><p>1,95</p></td>
+<td><p>97</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>46</p></td>
+<td><p>21,7</p></td>
+<td><p>4,0</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>23</p></td>
+<td><p>43,5</p></td>
+<td><p>8,0</p></td>
+<td><p>100</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Nombre de cœurs CPU : <span class="math notranslate nohighlight">\(n\)</span></p></li>
+<li><p>Temps : <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>Performance : <span class="math notranslate nohighlight">\(P_n = \text{points} / t\)</span></p></li>
+<li><p>Accélération : <span class="math notranslate nohighlight">\(S_n = t_\text{séquentiel} / t_n\)</span></p></li>
+<li><p>Efficacité : <span class="math notranslate nohighlight">\(E_n = S_n / n\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="remarques">
+<h2>Remarques<a class="headerlink" href="#remarques" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>Chaque test devrait durer au moins 5 minutes afin d’être fiable.</p></li>
+<li><p>Chaque test devrait être répété 3 fois afin de s’assurer de la stabilité du
+résultat.</p></li>
+<li><p>La même approche peut être utilisée pour analyser la consommation de mémoire
+en fonction du nombre de cœurs CPU. Pour un programme multi-fils, on
+utiliserait <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span> <span class="pre">-o</span> <span class="pre">JobID%15,JobName,AveRSS,NCPUs</span></code>. Pour un
+programme MPI, on utiliserait <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span> <span class="pre">-o</span>
+<span class="pre">JobID%15,JobName,AveRSS,NTasks</span></code> et le pic d’utilisation mémoire serait
+calculé avec <code class="docutils literal notranslate"><span class="pre">NTasks</span></code> × <code class="docutils literal notranslate"><span class="pre">AveRSS</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="compute-nodes.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Se connecter aux nœuds de calcul</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="user-portal.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Portails des utilisateurs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Démonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demarrer-une-tache-interactive">1. Démarrer une tâche interactive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tester-le-programme-en-mode-sequentiel">2. Tester le programme en mode séquentiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tester-differents-nombres-de-coeurs-cpu">3. Tester différents nombres de cœurs CPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculer-lacceleration-et-lefficacite">4. Calculer l’accélération et l’efficacité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarques">Remarques</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

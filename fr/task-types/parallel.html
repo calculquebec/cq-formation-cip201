@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tâches parallèles &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'task-types/parallel';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Temps" href="../resources/time.html" />
+    <link rel="prev" title="Tâches séquentielles" href="serial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Suivi des tâches de calcul et estimation des ressources (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">L’ordonnanceur de tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commandes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Scripts de tâches</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Types de tâches de calcul</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="serial.html">Tâches séquentielles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tâches parallèles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimer les ressources requises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/time.html">Temps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/memory.html">Mémoire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cpu.html">Cœurs CPU</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Suivi des tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/compute-nodes.html">Se connecter aux nœuds de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/interactive-sessions.html">Sessions interactives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/user-portal.html">Portails des utilisateurs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/task-types/parallel.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tâches parallèles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmes-multi-fils">Programmes multi-fils</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-un-programme-multi-fil">Identifier un programme multi-fil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demander-les-ressources-appropriees">Demander les ressources appropriées</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmes-mpi">Programmes MPI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-un-programme-mpi">Identifier un programme MPI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Demander les ressources appropriées</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelisme-imbrique">Parallélisme imbriqué</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-types-de-parallelisme">Autres types de parallélisme</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="taches-paralleles">
+<h1>Tâches parallèles<a class="headerlink" href="#taches-paralleles" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../../en/task-types/parallel.html">English</a></p>
+<p>Les tâches parallèles sont celles qui utilisent plus d’un cœur CPU. Leur
+objectif est de réduire le temps de calcul nécessaire. Pour ce faire, un
+programme parallèle doit décomposer le calcul à l’aide d’un algorithme
+parallèle, c’est-à-dire diviser la tâche en sous-tâches qui peuvent être
+accomplies simultanément (voir figure ci-dessous).</p>
+<figure class="align-default">
+<img alt="../_images/task-types_fr.svg" src="../_images/task-types_fr.svg" />
+</figure>
+<p>La manière d’exécuter un programme parallèle sur une grappe de calcul varie. Les
+sections suivantes couvrent les <a class="reference internal" href="#para-multi-threading"><span class="std std-ref">programmes multi-fils</span></a> et les <a class="reference internal" href="#para-mpi"><span class="std std-ref">programmes MPI</span></a>, deux approches
+fréquemment utilisées. Le cas plus complexe du <a class="reference internal" href="#para-nested"><span class="std std-ref">parallélisme imbriqué</span></a> est ensuite présenté, avant une brève discussion des <a class="reference internal" href="#para-others"><span class="std std-ref">autres
+types de parallélisme</span></a>.</p>
+<p>Lorsque vous utilisez un programme parallèle sur nos grappes pour la première
+fois, consultez avant tout la <a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">documentation technique de l’Alliance</a>. Nous y
+expliquons comment exécuter une variété de programmes scientifiques, incluant
+des exemples de scripts de tâches. N’hésitez pas non plus à contacter notre
+<a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_support/fr">soutien technique</a> si
+vous avez des questions.</p>
+<section id="programmes-multi-fils">
+<span id="para-multi-threading"></span><h2>Programmes multi-fils<a class="headerlink" href="#programmes-multi-fils" title="Lien vers cette rubrique">#</a></h2>
+<p>Ces programmes créent de multiple fils d’exécution. Chaque fil (<em>thread</em>)
+utilise un cœur CPU. Les fils d’exécution existent à l’intérieur du processus et
+partagent le même emplacement mémoire qu’ils utilisent pour communiquer :</p>
+<figure class="align-default">
+<img alt="../_images/multi-threaded-prog-vs-cpu_fr.svg" src="../_images/multi-threaded-prog-vs-cpu_fr.svg" />
+</figure>
+<p>Les tâches de calcul qui utilisent un programme multi-fils sont limitées à un
+seul nœud de calcul puisque tous les fils d’exécution existent à l’intérieur
+d’un seul processus. (Nous verrons plus loin que les <a class="reference internal" href="#para-mpi"><span class="std std-ref">programmes MPI</span></a> peuvent utiliser plus d’un nœud de calcul.)</p>
+<section id="identifier-un-programme-multi-fil">
+<h3>Identifier un programme multi-fil<a class="headerlink" href="#identifier-un-programme-multi-fil" title="Lien vers cette rubrique">#</a></h3>
+<p>Cherchez les mots-clés suivants dans la documentation de votre programme :</p>
+<ul class="simple">
+<li><p><em>Multi-threading</em></p></li>
+<li><p>OpenMP : un standard pour la programmation multi-fils</p></li>
+<li><p>Intel MKL threads : une bibliothèque numérique supportant le parallélisme
+multi-fils</p></li>
+<li><p>Intel Threading Building Blocks (TBB) : une bibliothèque pour la
+programmation multi-fils</p></li>
+<li><p>pthreads : une bibliothèque pour la programmation multi-fils</p></li>
+<li><p><em>Shared memory</em> : réfère à la stratégie de communication utilisée
+dans les programmes multi-fils</p></li>
+</ul>
+<p>Les programmes multi-fils peuvent aussi être identifiés par leur comportement
+dans le gestionnaire de tâches. Dans <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code>, une entrée pour un
+programme multi-fil intensif affichera une utilisation CPU de plus de 100 %
+(environ 100 % fois le nombre de cœurs utilisés) :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65829 alice     20   0   20272   6896   3296 R 796,1   0,0   1:39.15 mt-prog</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+<p>Avec <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code> (ou le raccourci clavier <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Maj</kbd>+<kbd class="kbd docutils literal notranslate">h</kbd></kbd>), il y aura une
+entrée pour chaque fil d’exécution :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65829 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65830 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65831 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65832 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65833 alice     20   0   20272   6896   3296 R  99,1   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65834 alice     20   0   20272   6896   3296 R  99,1   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65835 alice     20   0   20272   6896   3296 R  95,0   0,0   1:39.15 mt-prog</span>
+</span><span class="hll"><span class="go">65836 alice     20   0   20272   6896   3296 R  95,0   0,0   1:39.15 mt-prog</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+</section>
+<section id="demander-les-ressources-appropriees">
+<h3>Demander les ressources appropriées<a class="headerlink" href="#demander-les-ressources-appropriees" title="Lien vers cette rubrique">#</a></h3>
+<p>Voici un script minimal pour une tâche parallèle utilisant un programme
+multi-fils :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-multi-threaded-job</span>
+<span class="hll"><span class="c1">#SBATCH --ntasks=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span><span class="hll"><span class="c1">#SBATCH --mem-per-cpu=1G</span>
+</span><span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+./multi-threaded-prog
+</pre></div>
+</div>
+<p>Dans ce contexte, <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> réfère non pas à une tâche de calcul mais plutôt
+au nombre de processus à exécuter. Les programmes multi-fils utilisent un seul
+processus. L’option <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> réfère au nombre de cœurs CPU que le
+processus utilisera, ce qui correspond au nombre de fils d’exécution.</p>
+<p>Les différents outils pour la programmation multi-fils n’utilisent pas les mêmes
+options pour contrôler le nombre de fils d’exécution. Par exemple, les
+programmes OpenMP utilisent la variable d’environement <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code>. Dans
+un script de tâche, on assigne à cette variable le nombre de cœurs CPU demandés
+à l’ordonnanceur :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-multi-threaded-job</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="hll"><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span><span class="c1">#SBATCH --mem-per-cpu=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+<span class="hll"><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+</span>
+./openmp-prog
+</pre></div>
+</div>
+<p>La syntaxe <code class="docutils literal notranslate"><span class="pre">:-1</span></code> utilise la valeur <code class="docutils literal notranslate"><span class="pre">1</span></code> si <code class="docutils literal notranslate"><span class="pre">SLURM_CPUS_PER_TASK</span></code> est
+indéfini.</p>
+</section>
+<section id="exercice">
+<h3>Exercice<a class="headerlink" href="#exercice" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Objectifs</strong></p>
+<ul class="simple">
+<li><p>Déterminer les options nécessaires pour une tâche multi-fils.</p></li>
+<li><p>Évaluer le comportement d’un programme multi-fils à l’aide de <code class="docutils literal notranslate"><span class="pre">top</span></code>.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip201-main/lab/pi-multi-threaded</span></code>.</p></li>
+<li><p>Compilez le programme <code class="docutils literal notranslate"><span class="pre">pi</span></code> avec la commande <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
+<li><p>Démarrez une tâche interactive avec <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">[...]</span> <span class="pre">--time=00:10:00</span></code>.
+Remplacez <code class="docutils literal notranslate"><span class="pre">[...]</span></code> par les options de parallélisme nécessaires pour une
+tâche multi-fils et demandez 2 cœurs CPU.</p></li>
+<li><p>Exécutez le programme en arrière-plan avec <code class="docutils literal notranslate"><span class="pre">./pi</span> <span class="pre">&amp;</span></code>.</p></li>
+<li><p>Pendant que <code class="docutils literal notranslate"><span class="pre">pi</span></code> s’exécute, observez sa consommation CPU avec <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span>
+<span class="pre">$USER</span></code> et <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code>.</p></li>
+<li><p>Si vous n’êtes pas déjà de retour sur <code class="docutils literal notranslate"><span class="pre">login1</span></code>, terminez votre tâche
+interactive avec <code class="docutils literal notranslate"><span class="pre">exit</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le programme utilisé dans cet exercice calcule le nombre <span class="math notranslate nohighlight">\(π\)</span> (pi), le
+ratio de la circonférence d’un cercle sur son diamètre. Pour ce faire, on
+génère un grand nombre de points au hasard dans un carré arbitraire. Pour
+chaque point, on vérifie ensuite s’il est à l’intérieur d’un cercle inscrit.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/circle.svg"><img alt="../_images/circle.svg" src="../_images/circle.svg" style="width: 94px;" />
+</a>
+</figure>
+<p>Le ratio du nombre de points dans le cercle inscrit (<span class="math notranslate nohighlight">\(p\)</span>) sur le
+nombre total de points (<span class="math notranslate nohighlight">\(n\)</span>) est aussi le ratio de l’aire du cercle
+sur celle du carré :</p>
+<div class="math notranslate nohighlight">
+\[\frac{πr^2}{(2r)^2} = \frac{p}{n} \quad → \quad π = \frac{4p}{n}\]</div>
+<p>Une estimation précise de <span class="math notranslate nohighlight">\(π\)</span> par cette méthode, dite de Monte Carlo,
+requiert un grand nombre de points aléatoires (ici 10 milliards par défaut).
+Pour accélérer le calcul, on le décompose : les points à générer sont
+distribués entre les cœurs CPU alloués à la tâche. Avec 2 cœurs, chacun
+génère la moitié des points, ce qui double la vitesse.</p>
+<p>Cet algorithme est un exemple de parallélisme dit « trivial » puisqu’il ne
+nécessite pratiqument aucune communication : chaque cœur CPU (<span class="math notranslate nohighlight">\(i\)</span>)
+génère des points aléatoires indépendamment et compte combien d’entre eux
+sont dans le cercle inscrit (<span class="math notranslate nohighlight">\(p_i\)</span>). Ces valeurs sont ensuite
+additionnées pour donner <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>Vous pouvez lire le code source du programme dans <code class="docutils literal notranslate"><span class="pre">pi.c</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="programmes-mpi">
+<span id="para-mpi"></span><h2>Programmes MPI<a class="headerlink" href="#programmes-mpi" title="Lien vers cette rubrique">#</a></h2>
+<p>Les programmes MPI (<em>Message Passing Interface</em>) créent de multiples processus
+(<em>processes</em>). Chaque processus contient un fil d’exécution et utilise un cœur
+CPU. Chaque processus a son propre espace mémoire et communique avec les autres
+processus en échangeant des messages :</p>
+<figure class="align-default">
+<img alt="../_images/mpi-prog-vs-cpu_fr.svg" src="../_images/mpi-prog-vs-cpu_fr.svg" />
+</figure>
+<p>Les tâches de calcul qui exécutent un programme MPI peuvent utiliser plusieurs
+nœuds de calcul puisque les processus peuvent échanger des messages via le
+réseau qui connecte les nœuds.</p>
+<section id="identifier-un-programme-mpi">
+<h3>Identifier un programme MPI<a class="headerlink" href="#identifier-un-programme-mpi" title="Lien vers cette rubrique">#</a></h3>
+<p>Cherchez les mots-clés suivants dans la documentation de votre programme :</p>
+<ul class="simple">
+<li><p>Message Passing Interface (MPI)</p></li>
+<li><p><em>Distributed memory</em> : réfère à la stratégie de communication utilisée par les
+programmes MPI</p></li>
+</ul>
+<p>Les programmes MPI peuvent aussi être identifiés grâce aux instructions données
+pour les exécuter. Ces programmes sont lancés avec les commandes <code class="docutils literal notranslate"><span class="pre">mpirun</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> ou <code class="docutils literal notranslate"><span class="pre">srun</span></code>. Par exemple, <code class="docutils literal notranslate"><span class="pre">mpirun</span> <span class="pre">-n</span> <span class="pre">8</span> <span class="pre">prog</span></code> exécutera 8 processus
+du programme MPI <code class="docutils literal notranslate"><span class="pre">prog</span></code>.</p>
+<p>Finalement, les programmes MPI peuvent aussi être identifiés par leur
+comportement dans le gestionnaire de tâches. Dans <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code>, un programme
+MPI intensif aura de multiples entrées, chacune avec une utilisation CPU de près
+de 100 % (une entrée pour chaque processus) :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65025 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65027 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65028 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65033 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65022 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65023 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog</span>
+</span><span class="hll"><span class="go">65020 alice     20   0   20272   6896   3296 R  99,7   0,0   1:39.15 mpi-prog</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Demander les ressources appropriées<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
+<p>Voici un script minimal pour une tâche parallèle utilisant un programme MPI :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-mpi-job</span>
+<span class="hll"><span class="c1">#SBATCH --nodes=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --ntasks-per-node=8</span>
+</span><span class="hll"><span class="c1">#SBATCH --mem-per-cpu=1G</span>
+</span><span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+<span class="hll">srun<span class="w"> </span>./mpi-prog
+</span></pre></div>
+</div>
+<p>Dans ce contexte, <code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> réfère non pas à une tâche de calcul
+mais plutôt au nombre de processus à exécuter. Les programmes MPI utilisent de
+multiples processus.</p>
+<p>Les programmes MPI devraient être exécutés via la commande <code class="docutils literal notranslate"><span class="pre">srun</span></code>. Cette
+dernière exécute le nombre de processus spécifié sur le ou les nœuds de calcul
+alloués à la tâche. La commande <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> accomplit le même rôle et peut être
+utilisée pour tester un programme MPI sur un nœud de connexion.</p>
+<p>Dans l’exemple ci-dessus, les 8 processus MPI sont lancés sur le même nœud de
+calcul. Pour permettre davantage de flexibilité, il est aussi possible de
+spécifier uniquement le nombre de processus à lancer, comme dans l’exemple
+suivant. Les processus sont alors distribués sur un ou plusieurs nœuds selon ce
+qui est disponible au moment où l’ordonnanceur alloue les ressources.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-mpi-job</span>
+<span class="hll"><span class="c1">#SBATCH --ntasks=8</span>
+</span><span class="c1">#SBATCH --mem-per-cpu=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+srun<span class="w"> </span>./mpi-prog
+</pre></div>
+</div>
+<p>En général, il est préférable de regrouper les processus sur le plus petit
+nombre de nœuds possible avec <code class="docutils literal notranslate"><span class="pre">--nodes</span></code> et <code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> car cela
+améliore la performance en réduisant la communication entre les nœuds, qui est
+plus lente que celle à l’intérieur d’un nœud. Par contre, lorsque la
+communication inter-processus est peu fréquente, l’utilisation de <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>
+est avantageuse car l’ordonnanceur peut allouer les ressources plus facilement.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Une tâche MPI qui demande plus d’un nœud de calcul devrait occuper tous les
+cœurs CPU de ces nœuds. Par exemple, sur une grappe de calcul dont les nœuds
+ont chacun 8 cœurs, ces options seraient appropriées :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=8</span>
+</pre></div>
+</div>
+<p>À l’inverse, avec les options suivantes, l’ordonnanceur aurait plus de
+difficulté à allouer des ressources à la tâche et la performance pourrait
+être moindre :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --nodes=4</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Exercice<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Objectifs</strong></p>
+<ul class="simple">
+<li><p>Déterminer les options nécessaires pour une tâche MPI.</p></li>
+<li><p>Évaluer le comportement d’un programme MPI à l’aide de <code class="docutils literal notranslate"><span class="pre">top</span></code>.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip201-main/lab/pi-mpi</span></code>.</p></li>
+<li><p>Compilez le programme <code class="docutils literal notranslate"><span class="pre">pi</span></code> avec la commande <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
+<li><p>Démarrez une tâche interactive avec <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">[...]</span> <span class="pre">--time=00:10:00</span></code>.
+Remplacez <code class="docutils literal notranslate"><span class="pre">[...]</span></code> par les options de parallélisme nécessaires pour une
+tâche MPI et demandez 1 nœud et 2 cœurs CPU.</p></li>
+<li><p>Exécutez le programme en arrière-plan avec <code class="docutils literal notranslate"><span class="pre">mpirun</span> <span class="pre">./pi</span> <span class="pre">&amp;</span></code>.</p></li>
+<li><p>Pendant que <code class="docutils literal notranslate"><span class="pre">pi</span></code> s’exécute, observez sa consommation CPU avec <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span>
+<span class="pre">$USER</span></code> et <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code>.</p></li>
+<li><p>Si vous n’êtes pas déjà de retour sur <code class="docutils literal notranslate"><span class="pre">login1</span></code>, terminez votre tâche
+interactive avec <code class="docutils literal notranslate"><span class="pre">exit</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ce programme est une version MPI de celui présenté lors de l’exercice sur
+les programmes multi-fils : il calcule le nombre <span class="math notranslate nohighlight">\(π\)</span> (pi) par une
+méthode de Monte Carlo.</p>
+</div>
+</section>
+</section>
+<section id="parallelisme-imbrique">
+<span id="para-nested"></span><h2>Parallélisme imbriqué<a class="headerlink" href="#parallelisme-imbrique" title="Lien vers cette rubrique">#</a></h2>
+<p>Certains programmes ont plusieurs niveaux de parallélisme imbriqués. Par
+exemple, un programme MPI peut créer de multiples fils d’exécution dans chacun
+de ses processus. Cette stratégie, dite hybride, nécessite de combiner les
+options de parallélisme MPI et multi-fils.</p>
+<p>Voici un script de tâche typique pour un programme MPI et multi-fils OpenMP :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-hybrid-job</span>
+<span class="hll"><span class="c1">#SBATCH --nodes=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --ntasks-per-node=4</span>
+</span><span class="hll"><span class="c1">#SBATCH --cpus-per-task=2</span>
+</span><span class="hll"><span class="c1">#SBATCH --mem-per-cpu=1G</span>
+</span><span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+<span class="hll"><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+</span>
+<span class="hll">srun<span class="w"> </span>./mpi-prog
+</span></pre></div>
+</div>
+<p>Tel que discuté précédemment, il est habituellement préférable de rassembler les
+processus MPI sur le plus petit nombre de nœuds de calcul possible. Toutefois,
+il est aussi possible d’utiliser un programme hybride MPI/multi-fils en
+spécifiant uniquement le nombre de processus :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-hybrid-job</span>
+<span class="hll"><span class="c1">#SBATCH --ntasks=4</span>
+</span><span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+
+srun<span class="w"> </span>./mpi-prog
+</pre></div>
+</div>
+<p>Dans <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code>, un programme hybride MPI/multi-fils aura de multiples
+entrées, chacune avec une utilisation CPU de plus de 100 % :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65021 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog</span>
+</span><span class="hll"><span class="go">65025 alice     20   0   20272   6896   3296 R 200,0   0,0   1:39.15 hyb-prog</span>
+</span><span class="hll"><span class="go">65027 alice     20   0   20272   6896   3296 R 199,9   0,0   1:39.15 hyb-prog</span>
+</span><span class="hll"><span class="go">65028 alice     20   0   20272   6896   3296 R 199,7   0,0   1:39.15 hyb-prog</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+<p>Le parallélisme imbriqué n’est pas limité à la stratégie hybride MPI/multi-fils.
+Un autre cas commun est celui d’un programme multi-fils où chaque fil
+d’exécution crée lui-même d’autres fils. Cette stratégie nécessite de régler
+adéquatement le nombre de fils créés par chaque niveau de parallélisme. Par
+exemple, si 8 cœurs CPU sont alloués à une tâche qui utilise deux niveaux de
+parallélisme multi-fils imbriqués, le premier niveau pourrait créer 4 fils
+d’exécution et le second 2, pour un total qui correspond au nombre de cœurs
+(4 × 2 = 8). Par contre, si les deux niveaux créaient 4 fils, il y aurait plus
+de fils (4 × 4 = 16) que de cœurs, ce qui peut ralentir la tâche. Une telle
+situation peut être repérée avec <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code> :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65021 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65022 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65023 alice     20   0   20272   6896   3296 R 100,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65024 alice     20   0   20272   6896   3296 R  99,9   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65025 alice     20   0   20272   6896   3296 R  80,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65026 alice     20   0   20272   6896   3296 R  59,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65027 alice     20   0   20272   6896   3296 R  49,7   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65028 alice     20   0   20272   6896   3296 R  49,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65029 alice     20   0   20272   6896   3296 R  40,1   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65030 alice     20   0   20272   6896   3296 R  30,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65031 alice     20   0   20272   6896   3296 R  17,5   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65032 alice     20   0   20272   6896   3296 R  16,0   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65033 alice     20   0   20272   6896   3296 R  15,2   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65034 alice     20   0   20272   6896   3296 R  14,5   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65035 alice     20   0   20272   6896   3296 R  14,5   0,0   1:39.15 nst-prog</span>
+</span><span class="hll"><span class="go">65036 alice     20   0   20272   6896   3296 R  10,9   0,0   1:39.15 nst-prog</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+<p>Lorsque le nombre de fils d’exécution est supérieur au nombre de cœurs alloués à
+la tâche, chaque fil n’a pas nécessairement accès à la même quantité de temps
+CPU : certains fils progresseront plus rapidement, d’autres plus lentement, ce
+qui nuira à leur synchronisation. Puisque chaque cœur ne peut exécuter qu’un fil
+à la fois, il y aura alternance entre les fils : les cœurs sont surchargés. La
+solution la plus simple à ce problème est de désactiver un des niveaux de
+parallélisme.</p>
+</section>
+<section id="autres-types-de-parallelisme">
+<span id="para-others"></span><h2>Autres types de parallélisme<a class="headerlink" href="#autres-types-de-parallelisme" title="Lien vers cette rubrique">#</a></h2>
+<p>Le parallélisme de données consiste à répéter une tâche séquentielle ou
+parallèle avec différentes données d’entrées, par exemple des images, molécules
+ou séquences d’ADN. Alors que l’objectif du parallélisme dans une tâche est de
+réduire le temps de calcul nécessaire à cette tâche, le parallélisme de données
+vise à augmenter le débit de calcul en exécutant de multiples tâches
+simultanément. Nous convrirons ce sujet en détails dans l’atelier <em>Parallélisme
+de données sur les grappes</em> (CIP202).</p>
+<p>Les processeurs graphiques (GPU) permettent des calculs massivement parallèles.
+Les calculs sur GPU étant très différents de ceux sur CPU présentés ici, ce
+sujet fera également l’objet d’un atelier séparé (à venir).</p>
+<p>La vectorisation est une technique de calcul parallèle qui utilise des
+instructions spécialisées du CPU pour répéter une opération mathématique sur de
+multiples données d’entrées en même temps (<em>single instruction, multiple data</em>,
+SIMD). Ce parallélisme n’implique pas de fils d’exécution ou de processus
+multiples. À la place, le programmeur ou le compilateur optimise le programme
+afin que les opérations les plus demandantes soient effectuées en parallèle
+(vectorisées) à l’aide d’instructions SIMD. (Voir la figure ci-dessous pour un
+exemple.)</p>
+<figure class="align-default">
+<img alt="../_images/vectorization_fr.svg" src="../_images/vectorization_fr.svg" />
+</figure>
+<p>Les logiciels disponibles sur nos grappes ont été optimisés pour utiliser les
+instructions SIMD des CPU. Vous n’avez donc typiquement rien à faire pour
+bénéficier de ce parallélisme. Si vous compilez vous-même un programme,
+toutefois, il est possible d’ativer le support pour ces jeux d’instructions
+spécialisés et ainsi obtenir de meilleures performances. Nous vous suggérons de
+contacter notre <a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_support/fr">soutien technique</a> pour obtenir de
+l’aide.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="serial.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Tâches séquentielles</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../resources/time.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Temps</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmes-multi-fils">Programmes multi-fils</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-un-programme-multi-fil">Identifier un programme multi-fil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demander-les-ressources-appropriees">Demander les ressources appropriées</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmes-mpi">Programmes MPI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-un-programme-mpi">Identifier un programme MPI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Demander les ressources appropriées</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelisme-imbrique">Parallélisme imbriqué</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-types-de-parallelisme">Autres types de parallélisme</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Serial jobs &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'task-types/serial';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parallel jobs" href="parallel.html" />
+    <link rel="prev" title="Job scripts" href="../slurm/scripts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Job monitoring and resource estimation (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The job scheduler</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">General information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Job scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compute job types</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Serial jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel jobs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimating required resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cpu.html">CPU cores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Monitoring jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/compute-nodes.html">Connecting to compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/interactive-sessions.html">Interactive sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/user-portal.html">User portals</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">External links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/en">Alliance Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/en/academic-research-services/training/">Calcul Québec Training</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/task-types/serial.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Serial jobs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-a-serial-job">Identifying a serial job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-task-manager">Using a task manager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-appropriate-resources">Requesting appropriate resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="serial-jobs">
+<h1>Serial jobs<a class="headerlink" href="#serial-jobs" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="../../fr/task-types/serial.html">Français</a></p>
+<p>There are two types of compute jobs: serial and parallel. Being able to
+distinguish the two is critical to determine the resources needed for a job.</p>
+<p>Serial jobs are those that use only a single CPU core. Conversely, parallel jobs
+are able to use many cores simultaneously. A different way to put it is that, in
+a serial job, all calculation steps are performed one after the other while, in
+a parallel job, some steps happen simultaneously (see figure below). Serial
+calculations are by far the most common.</p>
+<figure class="align-default">
+<img alt="../_images/task-types_en.svg" src="../_images/task-types_en.svg" />
+</figure>
+<section id="identifying-a-serial-job">
+<h2>Identifying a serial job<a class="headerlink" href="#identifying-a-serial-job" title="Link to this heading">#</a></h2>
+<p>How can you find out if your job is serial or parallel?</p>
+<ul class="simple">
+<li><p>Check your program’s documentation. If there is no mention of parallel
+computing, it probably is a serial program.</p></li>
+<li><p>If the program works on your personal computer, do a test: run the program and
+check how many CPU cores it uses with the help of a <a class="reference internal" href="#task-manager"><span class="std std-ref">task manager</span></a>.</p></li>
+<li><p>Do a short test on a cluster login node: run the program in the background and
+check how many CPU cores it uses with the help of the <code class="docutils literal notranslate"><span class="pre">top</span></code> task manager
+(or, alternatively, <code class="docutils literal notranslate"><span class="pre">htop</span></code>). Then, stop the program to avoid overloading the
+login node.</p></li>
+</ul>
+</section>
+<section id="using-a-task-manager">
+<span id="task-manager"></span><h2>Using a task manager<a class="headerlink" href="#using-a-task-manager" title="Link to this heading">#</a></h2>
+<p>A task manager shows the programs running on the computer. It typically displays
+the processor time and memory consumed by the most intensive programs, along
+with the total load, that is the processor time and memory used by all programs.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Task_Manager_(Windows)">Windows Task Manager</a> can be started in two
+ways:</p>
+<ul class="simple">
+<li><p>Look for <em>Task Manager</em> in the <em>Start</em> Menu.</p></li>
+<li><p>Use the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd> shortcut.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/win-task-manager_en.png" src="../_images/win-task-manager_en.png" />
+</figure>
+<p>In the Windows Task Manager, 100 % CPU usage means that all CPU cores are
+fully used. If your computer has <em>n</em> CPU cores (this information is in the
+<em>Performance</em> panel), an intensive serial program should show 100 % / <em>n</em>
+CPU usage in the <em>Processes</em> panel. For example, that would be 100 % / 4 =
+25 % on a 4-core computer.</p>
+<p>In the above figure, the <em>Python</em> process uses more than one CPU core since
+its usage is above 50 % on a 10-core computer. If this program had been
+serial, usage would have been around 10 %, or 100 % / 10 cores.</p>
+</section>
+<section id="macos">
+<h3>MacOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://support.apple.com/en-ca/guide/activity-monitor/actmntr1001/mac">Activity Monitor</a> can
+be started in two ways:</p>
+<ul class="simple">
+<li><p>Look for <em>Activity Monitor</em> in <em>Applications</em> → <em>Utilities</em>.</p></li>
+<li><p>Use the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">Space</kbd></kbd> keyboard shortcut to show the finder, then enter the
+first few letters of <em>Activity Monitor</em> and select the application when its
+name shows up.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/mac-os-task-manager_en.png" src="../_images/mac-os-task-manager_en.png" />
+</figure>
+<p>(Image from Apple technical support)</p>
+<p>In the MacOS task manager, 100 % CPU usage means one fully used CPU core. When
+an intensive serial program is running, the task manager should show the process
+along with a CPU usage close to 100 %.</p>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">top</span></code> task manager is used in a terminal.</p>
+<ul class="simple">
+<li><p>To quit <code class="docutils literal notranslate"><span class="pre">top</span></code>, use the <kbd class="kbd docutils literal notranslate">q</kbd> key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code> accepts several options. The following ones are used in this workshop.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code> : Show only the processes started by a specific user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-H</span></code> : Show each program’s threads of execution separately. In <code class="docutils literal notranslate"><span class="pre">top</span></code>,
+the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">h</kbd></kbd> keyboard shortcut switches between individual and
+collective display of execution threads.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/linux-top.png" src="../_images/linux-top.png" />
+</figure>
+<p>In <code class="docutils literal notranslate"><span class="pre">top</span></code> (and other Linux task managers), 100 % CPU usage means one fully used
+CPU core. When an intensive serial program is running, <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code> should
+show the process along with a CPU usage close to 100 % :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">top - 18:55:40 up 121 days, 10:34,  1 user,  load average: 0.84, 0.41, 0.56</span>
+<span class="go">Tasks: 1153 total,   2 running, 1151 sleeping,   0 stopped,   0 zombie</span>
+<span class="gp">%</span>Cpu<span class="o">(</span>s<span class="o">)</span>:<span class="w">  </span><span class="m">0</span>.9<span class="w"> </span>us,<span class="w">  </span><span class="m">0</span>.1<span class="w"> </span>sy,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>ni,<span class="w"> </span><span class="m">98</span>.9<span class="w"> </span>id,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>wa,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>hi,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>si,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>st
+<span class="go">MiB Mem : 515670.6 total, 366210.5 free,  20660.2 used, 128799.9 buff/cache</span>
+<span class="go">MiB Swap:      0.0 total,      0.0 free,      0.0 used. 490099.2 avail Mem</span>
+
+<span class="go">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COM.</span>
+<span class="hll"><span class="go">65826 alice     20   0   20272   6896   3296 R  98.3   0.0   1:39.15 python</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1.1   0.0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0.0   0.0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0.0   0.0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0.0   0.0   0:00.02 bash</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">htop</span></code> task manager is a <code class="docutils literal notranslate"><span class="pre">top</span></code> alternative that offers additional
+features and a more sophisticated interface.</p>
+<figure class="align-default">
+<img alt="../_images/linux-htop.png" src="../_images/linux-htop.png" />
+</figure>
+</section>
+</section>
+<section id="requesting-appropriate-resources">
+<h2>Requesting appropriate resources<a class="headerlink" href="#requesting-appropriate-resources" title="Link to this heading">#</a></h2>
+<p>Since a serial job can use only a single CPU core, it should not include any
+parallelism options, such as <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> or <code class="docutils literal notranslate"><span class="pre">--nodes</span></code>. Here is a minimal job script example for
+a serial program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-serial-job</span>
+<span class="c1">#SBATCH --mem=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+./serial-prog
+</pre></div>
+</div>
+<p>To make the serial nature of a job explicit, its script can include the default
+values for parallelism options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --job-name=my-serial-job</span>
+<span class="hll"><span class="c1">#SBATCH --ntasks=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --cpus-per-task=1</span>
+</span><span class="c1">#SBATCH --mem=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Verify that the <code class="docutils literal notranslate"><span class="pre">fibo</span></code> program in the exercise directory is serial.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">top</span></code> task manager.</p></li>
+<li><p>Manage a background program with <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>If you are not already on the login node <code class="docutils literal notranslate"><span class="pre">login1</span></code>, log in with
+<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">login1</span></code>.</p></li>
+<li><p>Go to the exercise directory with
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/cq-formation-cip201-main/lab/fibonacci-serial</span></code>.</p></li>
+<li><p>Compile the <code class="docutils literal notranslate"><span class="pre">fibo</span></code> program with the <code class="docutils literal notranslate"><span class="pre">make</span></code> command.</p></li>
+<li><p>Start an interactive job with <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">--cpus-per-task=2</span>
+<span class="pre">--time=00:10:00</span></code>.</p></li>
+<li><p>Run the program with <code class="docutils literal notranslate"><span class="pre">./fibo</span> <span class="pre">&amp;</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Used as a final character, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> runs a program in the background. You can
+then continue typing commands while the program runs.</p></li>
+<li><p>Show the background programs with <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+<li><p>When a background program is done, a
+<code class="docutils literal notranslate"><span class="pre">[1]+</span>&#160; <span class="pre">Done...</span></code> message is displayed.</p></li>
+</ol>
+</li>
+<li><p>While <code class="docutils literal notranslate"><span class="pre">fibo</span></code> runs, check its CPU usage in the task manager.</p>
+<ol class="arabic simple">
+<li><p>Show the task manager with <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code>.</p></li>
+<li><p>Quit the manager with <kbd class="kbd docutils literal notranslate">q</kbd>.</p></li>
+</ol>
+</li>
+<li><p>Stop the <code class="docutils literal notranslate"><span class="pre">fibo</span></code> program with <code class="docutils literal notranslate"><span class="pre">kill</span> <span class="pre">%1</span></code>.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kill</span></code> immediately terminates a program. <code class="docutils literal notranslate"><span class="pre">%1</span></code> identifies <code class="docutils literal notranslate"><span class="pre">fibo</span></code>
+in the list shown with <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+</ol>
+</li>
+<li><p>If you are not already back on <code class="docutils literal notranslate"><span class="pre">login1</span></code>, end your interactive job with
+<code class="docutils literal notranslate"><span class="pre">exit</span></code>.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">jobs</span></code> command used in this exercise shows the programs
+started in the background with the Bash interpreter. It does not list and
+has nothing to do with the jobs submitted to the scheduler!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">fibo</span> <span class="pre">[n]</span></code> computes the nth number (by default the fiftieth) in the
+Fibonacci sequence, where each number is the sum of the previous two:</p>
+<blockquote>
+<div><p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …</p>
+</div></blockquote>
+<p>This is an example of an intrinsically serial mathematical problem. Since
+each computation step is entirely dependent on the results of the previous
+steps, these steps can only be performed one after the other. No algorithm
+can compute the nth Fibonacci number in parallel.</p>
+<p>You can read the program’s source code in <code class="docutils literal notranslate"><span class="pre">fibo.c</span></code>.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../slurm/scripts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Job scripts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parallel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parallel jobs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-a-serial-job">Identifying a serial job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-task-manager">Using a task manager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-appropriate-resources">Requesting appropriate resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

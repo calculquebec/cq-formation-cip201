@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mémoire &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'resources/memory';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Cœurs CPU" href="cpu.html" />
+    <link rel="prev" title="Temps" href="time.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Suivi des tâches de calcul et estimation des ressources (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">L’ordonnanceur de tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commandes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Scripts de tâches</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Types de tâches de calcul</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../task-types/serial.html">Tâches séquentielles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../task-types/parallel.html">Tâches parallèles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimer les ressources requises</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time.html">Temps</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mémoire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpu.html">Cœurs CPU</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Suivi des tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/compute-nodes.html">Se connecter aux nœuds de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/interactive-sessions.html">Sessions interactives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/user-portal.html">Portails des utilisateurs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/resources/memory.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mémoire</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-se-fixer-une-limite-de-memoire">Pourquoi se fixer une limite de mémoire?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determiner-le-besoin-en-memoire-a-partir-de-votre-ordinateur">Déterminer le besoin en mémoire à partir de votre ordinateur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtenir-la-quantite-de-memoire-utilisee-sur-la-grappe">Obtenir la quantité de mémoire utilisée sur la grappe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimer-la-memoire-requise-pour-un-plus-grand-calcul">Estimer la mémoire requise pour un plus grand calcul</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercice</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="memoire">
+<h1>Mémoire<a class="headerlink" href="#memoire" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../../en/resources/memory.html">English</a></p>
+<p>L’analyse des besoins en mémoire vive est similaire à celle pour les besoins en
+temps, excepté que les métriques sont différentes.</p>
+<p>Pour rappel, voici les deux principales options de l’ordonnanceur Slurm pour
+demander de la mémoire :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--mem=&lt;quantité&gt;</span></code>, quantité de mémoire
+<a class="reference external" href="https://slurm.schedmd.com/sbatch.html#OPT_mem">par noeud de calcul</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mem-per-cpu=&lt;quantité&gt;</span></code>, quantité de mémoire
+<a class="reference external" href="https://slurm.schedmd.com/sbatch.html#OPT_mem-per-cpu">par coeur CPU</a>.</p>
+<ul>
+<li><p>Par défaut : <code class="docutils literal notranslate"><span class="pre">256M</span></code></p></li>
+</ul>
+</li>
+</ul>
+<section id="pourquoi-se-fixer-une-limite-de-memoire">
+<h2>Pourquoi se fixer une limite de mémoire?<a class="headerlink" href="#pourquoi-se-fixer-une-limite-de-memoire" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>Dans les
+<a class="reference external" href="https://docs.alliancecan.ca/wiki/National_systems/fr#Liste_des_grappes_de_calcul">grappes nationales</a>,
+la grande majorité des noeuds de calcul contiennent un peu moins de <strong>4G de
+mémoire vive utilisable par coeur CPU</strong>.</p>
+<ul>
+<li><p>Une poignée de noeuds ont entre 16G et 32G par coeur, ce qui en fait
+une ressource très limitée et peut causer un plus long temps d’attente
+pour y accéder.</p></li>
+</ul>
+</li>
+<li><p>Pour protéger le noeud de calcul de votre programme dans le cas d’une
+surutilisation de mémoire.</p></li>
+<li><p>Enfin, pour remplacer la valeur par défaut de 256M par coeur CPU.</p></li>
+</ul>
+<p>En somme, <strong>il est nécessaire de spécifier une quantité de mémoire</strong>, avec
+bien sûr une certaine marge de sécurité (par exemple, ajouter 20% sur la
+quantité prévue).</p>
+</section>
+<section id="determiner-le-besoin-en-memoire-a-partir-de-votre-ordinateur">
+<h2>Déterminer le besoin en mémoire à partir de votre ordinateur<a class="headerlink" href="#determiner-le-besoin-en-memoire-a-partir-de-votre-ordinateur" title="Lien vers cette rubrique">#</a></h2>
+<p>En utilisant le gestionnaire de tâches (sur Windows), le moniteur d’activité
+(sur Mac OS) ou la commande <code class="docutils literal notranslate"><span class="pre">top</span></code>, vous pouvez déjà voir la consommation en
+mémoire de votre programme. À données égales, la consommation en mémoire
+devrait être très similaire sur la grappe de calcul.</p>
+<figure class="align-default">
+<img alt="../_images/win-task-manager_fr.png" src="../_images/win-task-manager_fr.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Avec <code class="docutils literal notranslate"><span class="pre">top</span></code> et <code class="docutils literal notranslate"><span class="pre">htop</span></code>, c’est la colonne <code class="docutils literal notranslate"><span class="pre">RES</span></code> qu’il faut regarder. Il
+s’agit de la quantité de mémoire occupée ou <em>résidente</em> par le processus.</p>
+</div>
+</section>
+<section id="obtenir-la-quantite-de-memoire-utilisee-sur-la-grappe">
+<h2>Obtenir la quantité de mémoire utilisée sur la grappe<a class="headerlink" href="#obtenir-la-quantite-de-memoire-utilisee-sur-la-grappe" title="Lien vers cette rubrique">#</a></h2>
+<p>Avec l’identifiant d’une tâche terminée, on peut utiliser la commande <code class="docutils literal notranslate"><span class="pre">seff</span>
+<span class="pre">&lt;jobid&gt;</span></code>. Le champ <code class="docutils literal notranslate"><span class="pre">Memory</span> <span class="pre">Utilized</span></code> est le pic mesuré d’utilisation mémoire.
+Voir la <a class="reference external" href="https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2ches_termin%C3%A9es">documentation ici</a>.</p>
+<p>Le même calcul peut être fait avec <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span> <span class="pre">-o</span>
+<span class="pre">JobID,JobName,NTasks,AveRSS,MaxRSS</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NTasks</span></code> : le nombre de processus parallèles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveRSS</span></code> : la moyenne des pics d’utilisation mémoire de tous les processus.
+« RSS » signifie <em>Resident set size</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MaxRSS</span></code> : le pic d’utilisation mémoire du processus qui en a utilisé
+le plus.</p></li>
+</ul>
+<p>Pour les tâches séquentielles et multi-fils, <code class="docutils literal notranslate"><span class="pre">AveRSS</span></code> et <code class="docutils literal notranslate"><span class="pre">MaxRSS</span></code> sont
+identiques et correspondent au pic d’utilisation mémoire mesuré.</p>
+<p>Pour les tâches MPI, le pic d’utilisation mémoire peut être estimé par
+<code class="docutils literal notranslate"><span class="pre">NTasks</span></code> × <code class="docutils literal notranslate"><span class="pre">AveRSS</span></code>. Cela correspond à la valeur <code class="docutils literal notranslate"><span class="pre">Memory</span> <span class="pre">Utilized</span></code>
+rapportée par <code class="docutils literal notranslate"><span class="pre">seff</span></code>. Si les valeurs <code class="docutils literal notranslate"><span class="pre">AveRSS</span></code> et <code class="docutils literal notranslate"><span class="pre">MaxRSS</span></code> sont très
+différentes, la consommation de mémoire du programme n’est pas balancée, ce qui
+peut causer des problèmes de performance ou d’allocation de mémoire. Lorsque
+c’est le cas, <code class="docutils literal notranslate"><span class="pre">seff</span></code> affiche un avertissement.</p>
+<section id="exercice">
+<h3>Exercice<a class="headerlink" href="#exercice" title="Lien vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Affichez la liste des dernières tâches avec
+<code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-X</span> <span class="pre">-o</span> <span class="pre">JobID,JobName</span></code>.</p></li>
+<li><p>Essayez la commande <code class="docutils literal notranslate"><span class="pre">seff</span> <span class="pre">&lt;jobid&gt;</span></code> pour la tâche ayant testé les deux
+programmes de tri. Quel est le pic de mémoire utilisée?</p></li>
+<li><p>Voyez aussi cette quantité avec la commande
+<code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span> <span class="pre">-o</span> <span class="pre">JobID,JobName,NTasks,AveRSS,MaxRSS</span></code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="estimer-la-memoire-requise-pour-un-plus-grand-calcul">
+<h2>Estimer la mémoire requise pour un plus grand calcul<a class="headerlink" href="#estimer-la-memoire-requise-pour-un-plus-grand-calcul" title="Lien vers cette rubrique">#</a></h2>
+<p>Voici quelques facteurs à considérer pour caractériser l’utilisation de la
+mémoire :</p>
+<ul class="simple">
+<li><p>Le nombre de fichiers à traiter <strong>en simultané</strong>.</p></li>
+<li><p>La taille moyenne des fichiers en entrée.</p>
+<ul>
+<li><p>Si les données sont stockées avec de la compression, il faut considérer
+un certain facteur de décompression.</p></li>
+</ul>
+</li>
+<li><p>Les paramètres du programme et donc de l’algorithme.</p></li>
+<li><p>Les données qui seront ensuite générées en mémoire.</p></li>
+</ul>
+<p>En faisant varier l’un ou l’autre de ces facteurs, et ce, en prévision d’un
+très grand calcul, il devient possible de voir la tendance d’utilisation de la
+mémoire. Quelques détails à considérer :</p>
+<ul class="simple">
+<li><p>La mesure sur la grappe doit se faire une tâche à la fois.</p></li>
+<li><p>Pour que la mesure soit fiable, il faut que le pic d’utilisation soit maintenu
+pendant environ 30 secondes.</p></li>
+<li><p>Autrement, il faudra utiliser des techniques de <a class="reference internal" href="../monitoring/compute-nodes.html"><span class="doc">suivi des tâches en
+temps réel</span></a>.</p></li>
+</ul>
+<section id="id1">
+<h3>Exercice<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Objectif :</strong> dans cet exercice, nous allons provoquer une surutilisation
+de mémoire :</p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/cq-formation-cip201-main/lab/sort</span></code>.</p></li>
+<li><p>Au besoin, recompilez les programmes <code class="docutils literal notranslate"><span class="pre">bubble</span></code> et <code class="docutils literal notranslate"><span class="pre">quick</span></code> avec la
+commande <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
+<li><p>Éditez le fichier <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> de sorte à configurer <code class="docutils literal notranslate"><span class="pre">--mem=400M</span></code>
+(seulement 400 mébioctets).</p></li>
+<li><p>Soumettez une tâche avec le script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code>.</p></li>
+<li><p>Une fois le calcul terminé :</p>
+<ol class="arabic simple">
+<li><p>Voir le message d’erreur dans le fichier <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code>.</p></li>
+<li><p>Voir l’état (<em>State</em>) <code class="docutils literal notranslate"><span class="pre">OUT_OF_MEMORY</span></code> dans la sortie de
+<code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span></code></p></li>
+</ol>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="time.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Temps</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cpu.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Cœurs CPU</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-se-fixer-une-limite-de-memoire">Pourquoi se fixer une limite de mémoire?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determiner-le-besoin-en-memoire-a-partir-de-votre-ordinateur">Déterminer le besoin en mémoire à partir de votre ordinateur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtenir-la-quantite-de-memoire-utilisee-sur-la-grappe">Obtenir la quantité de mémoire utilisée sur la grappe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimer-la-memoire-requise-pour-un-plus-grand-calcul">Estimer la mémoire requise pour un plus grand calcul</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercice</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

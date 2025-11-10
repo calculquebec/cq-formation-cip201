@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tâches séquentielles &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'task-types/serial';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Tâches parallèles" href="parallel.html" />
+    <link rel="prev" title="Scripts de tâches" href="../slurm/scripts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Suivi des tâches de calcul et estimation des ressources (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">L’ordonnanceur de tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commandes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Scripts de tâches</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Types de tâches de calcul</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tâches séquentielles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Tâches parallèles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimer les ressources requises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/time.html">Temps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/memory.html">Mémoire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cpu.html">Cœurs CPU</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Suivi des tâches</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/compute-nodes.html">Se connecter aux nœuds de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/interactive-sessions.html">Sessions interactives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/user-portal.html">Portails des utilisateurs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/task-types/serial.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tâches séquentielles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-une-tache-sequentielle">Identifier une tâche séquentielle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-un-gestionnaire-de-taches">Utiliser un gestionnaire de tâches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demander-les-ressources-appropriees">Demander les ressources appropriées</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="taches-sequentielles">
+<h1>Tâches séquentielles<a class="headerlink" href="#taches-sequentielles" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../../en/task-types/serial.html">English</a></p>
+<p>Il existe deux types de tâches de calcul : séquentielles et parallèles.
+Distinguer les deux types est crucial pour déterminer les ressources de calcul
+nécessaires à chaque tâche.</p>
+<p>Les tâches séquentielles sont celles qui n’utilisent qu’un seul cœur CPU. À
+l’inverse, les tâches parallèles sont capables d’utiliser simultanément
+plusieurs cœurs. Une autre manière de voir les choses est que, dans une tâche
+séquentielle, les étapes du calcul sont toujours réalisées l’une après l’autre
+alors que, dans une tâche parallèle, certaines étapes sont réalisées
+simultanément (voir figure ci-dessous). Les calculs séquentiels sont de loin les
+plus communs.</p>
+<figure class="align-default">
+<img alt="../_images/task-types_fr.svg" src="../_images/task-types_fr.svg" />
+</figure>
+<section id="identifier-une-tache-sequentielle">
+<h2>Identifier une tâche séquentielle<a class="headerlink" href="#identifier-une-tache-sequentielle" title="Lien vers cette rubrique">#</a></h2>
+<p>Comment déterminer si votre tâche est séquentielle ou parallèle ?</p>
+<ul class="simple">
+<li><p>Consultez la documentation de votre programme. S’il n’y a aucune mention de
+calcul parallèle, il s’agit probablement d’un programme séquentiel.</p></li>
+<li><p>Si le programme fonctionne sur votre ordinateur personnel, faites un test :
+lancez le programme et vérifiez combien de cœurs CPU il utilise à l’aide d’un
+<a class="reference internal" href="#task-manager"><span class="std std-ref">gestionnaire de tâches</span></a>.</p></li>
+<li><p>Faites un court test sur un nœud de connexion d’une grappe : lancez le
+programme en arrière-plan et vérifiez combien de cœurs CPU il utilise à l’aide
+du gestionnaire de tâches <code class="docutils literal notranslate"><span class="pre">top</span></code> (ou, alternativement, <code class="docutils literal notranslate"><span class="pre">htop</span></code>). Interrompez
+ensuite le programme pour ne pas surcharger le nœud de connexion.</p></li>
+</ul>
+</section>
+<section id="utiliser-un-gestionnaire-de-taches">
+<span id="task-manager"></span><h2>Utiliser un gestionnaire de tâches<a class="headerlink" href="#utiliser-un-gestionnaire-de-taches" title="Lien vers cette rubrique">#</a></h2>
+<p>Un gestionnaire de tâches affiche les programmes qui s’exécutent sur
+l’ordinateur. Il inclut typiquement le temps processeur et la mémoire consommés
+par les programmes les plus intensifs, ainsi que la charge totale, soit le temps
+processeur et la mémoire utilisés par l’ensemble des programmes en cours.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Lien vers cette rubrique">#</a></h3>
+<p>Le <a class="reference external" href="https://fr.wikipedia.org/wiki/Gestionnaire_des_t%C3%A2ches_Windows">Gestionnaire des tâches Windows</a> peut
+être affiché de deux manières :</p>
+<ul class="simple">
+<li><p>Cherchez <em>Gestionnaire des tâches</em> dans le menu <em>Démarrer</em>.</p></li>
+<li><p>Utilisez le raccourci clavier <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">Suppr</kbd></kbd>.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/win-task-manager_fr.png" src="../_images/win-task-manager_fr.png" />
+</figure>
+<p>Dans le gestionnaire de tâches Windows, une utilisation CPU de 100 % indique que
+tous les cœurs CPU sont pleinement utilisés. Si votre ordinateur a <em>n</em> cœurs CPU
+(cette information est dans le panneau <em>Performance</em>), un programme séquentiel
+intensif devrait avoir une consommation de 100 % / <em>n</em> dans le panneau
+<em>Processus</em>. Par exemple 100 % / 4 = 25 % sur un ordinateur ayant 4 cœurs.</p>
+<p>Dans la figure ci-dessus, le processus <em>Python</em> utilise plus d’un cœur CPU
+puisque l’utilisation dépasse 50 % sur un ordinateur ayant 10 cœurs. Si le
+programme avait été séquentiel, l’utilisation aurait été d’environ 10 %, soit
+100 % / 10 cœurs.</p>
+</section>
+<section id="macos">
+<h3>MacOS<a class="headerlink" href="#macos" title="Lien vers cette rubrique">#</a></h3>
+<p>Le <a class="reference external" href="https://support.apple.com/fr-ca/guide/activity-monitor/actmntr1001/mac">Moniteur d’activité</a> peut
+être affiché de deux manières :</p>
+<ul class="simple">
+<li><p>Cherchez <em>Moniteur d’activité</em> dans <em>Applications</em> → <em>Utilitaires</em>.</p></li>
+<li><p>Utilisez le raccourci clavier <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">Espace</kbd></kbd> pour afficher le champ de
+recherche, tapez les premières lettres de <em>Moniteur d’activité</em>, puis
+choisissez l’application lorsque son nom apparaît.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/mac-os-task-manager_fr.png" src="../_images/mac-os-task-manager_fr.png" />
+</figure>
+<p>(Image tirée du soutien technique d’Apple)</p>
+<p>Dans le gestionnaire des tâches MacOS, une utilisation CPU de 100 % correspond à
+un cœur CPU pleinement utilisé. Lors de l’exécution d’un programme séquentiel
+intensif, le gestionnaire devrait afficher le processus et une utilisation CPU
+de près de 100 %.</p>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Lien vers cette rubrique">#</a></h3>
+<p>Le gestionnaire de tâche <code class="docutils literal notranslate"><span class="pre">top</span></code> peut être affiché dans un terminal.</p>
+<ul class="simple">
+<li><p>Pour quitter <code class="docutils literal notranslate"><span class="pre">top</span></code>, utilisez la touche <kbd class="kbd docutils literal notranslate">q</kbd>.</p></li>
+<li><p>La commande <code class="docutils literal notranslate"><span class="pre">top</span></code> accepte plusieurs options. Nous verrons les suivantes
+pendant la formation.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code> : Afficher uniquement les tâches d’un utilisateur
+spécifique.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-H</span></code> : Afficher séparément les fils d’exécution de chaque programme. Dans
+<code class="docutils literal notranslate"><span class="pre">top</span></code>, le raccourci clavier <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Maj</kbd>+<kbd class="kbd docutils literal notranslate">h</kbd></kbd> alterne entre l’affichage
+individuel et collectif des fils d’exécution.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/linux-top.png" src="../_images/linux-top.png" />
+</figure>
+<p>Dans <code class="docutils literal notranslate"><span class="pre">top</span></code> (et les autres gestionnaires de tâches Linux), une utilisation CPU
+de 100 % correspond à un cœur CPU pleinement utilisé. Lors de l’exécution d’un
+programme séquentiel intensif, <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code> devrait afficher le processus et
+une utilisation CPU de près de 100 % :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">top - 18:55:40 up 121 days, 10:34,  1 user,  load average: 0,84, 0,41, 0,56</span>
+<span class="go">Tâches: 1153 total,   2 en cours, 1151 en veille,   0 arrêté,   0 zombie</span>
+<span class="gp">%</span>Cpu<span class="o">(</span>s<span class="o">)</span>:<span class="w">  </span><span class="m">0</span>,9<span class="w"> </span>ut,<span class="w">  </span><span class="m">0</span>,1<span class="w"> </span>sy,<span class="w">  </span><span class="m">0</span>,0<span class="w"> </span>ni,<span class="w"> </span><span class="m">98</span>,9<span class="w"> </span>id,<span class="w">  </span><span class="m">0</span>,0<span class="w"> </span>wa,<span class="w">  </span><span class="m">0</span>,0<span class="w"> </span>hi,<span class="w">  </span><span class="m">0</span>,0<span class="w"> </span>si,<span class="w">  </span><span class="m">0</span>,0<span class="w"> </span>st
+<span class="go">MiB Mem : 515670,6 total, 366210,5 libr,  20660,2 util, 128799,9 tamp/cache</span>
+<span class="go">MiB Éch :      0,0 total,      0,0 libr,      0,0 util. 490099,2 dispo Mem</span>
+
+<span class="go">  PID UTIL.     PR  NI    VIRT    RES    SHR S  %CPU  %MEM    TEMPS+ COM.</span>
+<span class="hll"><span class="go">65826 alice     20   0   20272   6896   3296 R  98,3   0,0   1:39.15 python</span>
+</span><span class="go">66465 alice     20   0   22528   3088   1344 R   1,1   0,0   0:00.03 top</span>
+<span class="go">64485 alice     20   0   24280   5704   2088 S   0,0   0,0   0:00.04 bash</span>
+<span class="go">65900 alice     20   0  192996   2968   1032 S   0,0   0,0   0:00.01 sshd</span>
+<span class="go">65901 alice     20   0  127588   3544   1796 S   0,0   0,0   0:00.02 bash</span>
+</pre></div>
+</div>
+<p>Le gestionnaire <code class="docutils literal notranslate"><span class="pre">htop</span></code> est une alternative à <code class="docutils literal notranslate"><span class="pre">top</span></code> offrant davantage de
+fonctionnalités et une interface plus sophistiquée.</p>
+<figure class="align-default">
+<img alt="../_images/linux-htop.png" src="../_images/linux-htop.png" />
+</figure>
+</section>
+</section>
+<section id="demander-les-ressources-appropriees">
+<h2>Demander les ressources appropriées<a class="headerlink" href="#demander-les-ressources-appropriees" title="Lien vers cette rubrique">#</a></h2>
+<p>Puisque une tâche séquentielle ne peut utiliser qu’un seul cœur CPU, elle ne
+devrait inclure aucune des options relatives au parallélisme que sont
+<code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>, <code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> ou <code class="docutils literal notranslate"><span class="pre">--nodes</span></code>. Voici
+un script de tâche minimal pour un programme séquentiel :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-serial-job</span>
+<span class="c1">#SBATCH --mem=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+./serial-prog
+</pre></div>
+</div>
+<p>Pour expliciter la nature séquentielle d’une tâche, son script peut inclure les
+valeurs par défaut des options pour le parallélisme :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --job-name=my-serial-job</span>
+<span class="hll"><span class="c1">#SBATCH --ntasks=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --cpus-per-task=1</span>
+</span><span class="c1">#SBATCH --mem=1G</span>
+<span class="c1">#SBATCH --time=4:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+</pre></div>
+</div>
+</section>
+<section id="exercice">
+<h2>Exercice<a class="headerlink" href="#exercice" title="Lien vers cette rubrique">#</a></h2>
+<p><strong>Objectifs</strong></p>
+<ul class="simple">
+<li><p>Vérifier que le programme <code class="docutils literal notranslate"><span class="pre">fibo</span></code> dans le répertoire des exercices est
+séquentiel.</p></li>
+<li><p>Utiliser le gestionnaire de tâches <code class="docutils literal notranslate"><span class="pre">top</span></code>.</p></li>
+<li><p>Gérer un programme en arrière-plan avec <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> et <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Si vous n’êtes pas déjà sur le nœud de connexion <code class="docutils literal notranslate"><span class="pre">login1</span></code>, connectez-vous
+avec <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">login1</span></code>.</p></li>
+<li><p>Allez dans le répertoire de l’exercice avec
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/cq-formation-cip201-main/lab/fibonacci-serial</span></code>.</p></li>
+<li><p>Compilez le programme <code class="docutils literal notranslate"><span class="pre">fibo</span></code> avec la commande <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
+<li><p>Démarrez une tâche interactive avec <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">--cpus-per-task=2</span>
+<span class="pre">--time=00:10:00</span></code>.</p></li>
+<li><p>Exécutez le programme avec <code class="docutils literal notranslate"><span class="pre">./fibo</span> <span class="pre">&amp;</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Le caractère final <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> exécute un programme en arrière-plan. Vous pouvez
+alors taper de nouvelles commandes pendant que le programme s’exécute.</p></li>
+<li><p>Affichez les programmes en arrière-plan avec <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+<li><p>Quand un programme en arrière-plan est terminé, un message
+<code class="docutils literal notranslate"><span class="pre">[1]+</span>&#160; <span class="pre">Fini...</span></code> apparaît.</p></li>
+</ol>
+</li>
+<li><p>Pendant que <code class="docutils literal notranslate"><span class="pre">fibo</span></code> s’exécute, observez sa consommation de CPU dans le
+gestionnaire de tâches.</p>
+<ol class="arabic simple">
+<li><p>Affichez le gestionnaire avec <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span> <span class="pre">-H</span></code>.</p></li>
+<li><p>Quittez le gestionnaire avec <kbd class="kbd docutils literal notranslate">q</kbd>.</p></li>
+</ol>
+</li>
+<li><p>Interrompez le programme <code class="docutils literal notranslate"><span class="pre">fibo</span></code> avec <code class="docutils literal notranslate"><span class="pre">kill</span> <span class="pre">%1</span></code>.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kill</span></code> termine immédiatement un programme. <code class="docutils literal notranslate"><span class="pre">%1</span></code> identifie <code class="docutils literal notranslate"><span class="pre">fibo</span></code>
+dans la liste affichée avec <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Si vous n’êtes pas déjà de retour sur <code class="docutils literal notranslate"><span class="pre">login1</span></code>, terminez votre tâche
+interactive avec <code class="docutils literal notranslate"><span class="pre">exit</span></code>.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>La commande <code class="docutils literal notranslate"><span class="pre">jobs</span></code> utilisée dans cet exercice affiche les programmes
+lancés en arrière-plan avec l’interprète de commande Bash. Elle n’affiche
+pas et n’a rien à voir avec les tâches soumises à l’ordonnanceur !</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le programme <code class="docutils literal notranslate"><span class="pre">fibo</span> <span class="pre">[n]</span></code> calcule le nième nombre (par défaut le
+cinquantième) dans la suite de Fibonacci, où chaque nombre est la somme des
+deux précédents :</p>
+<blockquote>
+<div><p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …</p>
+</div></blockquote>
+<p>C’est un exemple d’un problème mathématique intrinsèquement séquentiel.
+Puisque chaque étape du calcul dépend entièrement du résultat des étapes
+précédentes, les étapes ne peuvent s’exécuter qu’une après l’autre. Aucun
+algorithme ne permet de calculer le nième nombre de Fibonacci en parallèle.</p>
+<p>Vous pouvez lire le code source du programme dans <code class="docutils literal notranslate"><span class="pre">fibo.c</span></code>.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../slurm/scripts.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Scripts de tâches</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parallel.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Tâches parallèles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-une-tache-sequentielle">Identifier une tâche séquentielle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-un-gestionnaire-de-taches">Utiliser un gestionnaire de tâches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demander-les-ressources-appropriees">Demander les ressources appropriées</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

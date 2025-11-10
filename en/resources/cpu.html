@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CPU cores &#8212; CIP201</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'resources/cpu';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Connecting to compute nodes" href="../monitoring/compute-nodes.html" />
+    <link rel="prev" title="Memory" href="memory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Job monitoring and resource estimation (CIP201)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The job scheduler</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../slurm/intro.html">General information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/scripts.html">Job scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compute job types</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../task-types/serial.html">Serial jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../task-types/parallel.html">Parallel jobs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Estimating required resources</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Memory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CPU cores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Monitoring jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/compute-nodes.html">Connecting to compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/interactive-sessions.html">Interactive sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitoring/user-portal.html">User portals</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">External links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/en">Alliance Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/en/academic-research-services/training/">Calcul Québec Training</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/resources/cpu.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CPU cores</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-check-cpu-usage">Why check CPU usage?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-cpu-usage">Checking CPU usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-optimise-the-number-of-cpu-cores">Why optimise the number of CPU cores?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">Scalability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability-exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-isnt-scaling-linear">Why isn’t scaling linear?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cpu-cores">
+<h1>CPU cores<a class="headerlink" href="#cpu-cores" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="../../fr/resources/cpu.html">Français</a></p>
+<p>CPU cores are a resource very different from time or memory. For parallel
+jobs, one must of course choose a number of cores. However, for both serial and
+parallel jobs, it is important to verify that the CPU is properly utilised.</p>
+<section id="why-check-cpu-usage">
+<h2>Why check CPU usage?<a class="headerlink" href="#why-check-cpu-usage" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The CPU cores allocated to a job are not constantly performing computations:
+they are sometimes waiting for data from a file, for a reply to a network
+communication, etc.</p></li>
+<li><p>If this wait time is important, the CPU cores are underused.</p></li>
+<li><p>Fixing this problem accelerates your program and avoids wasting resources,
+increasing your jobs’ priority.</p></li>
+</ul>
+</section>
+<section id="checking-cpu-usage">
+<h2>Checking CPU usage<a class="headerlink" href="#checking-cpu-usage" title="Link to this heading">#</a></h2>
+<p>The CPU usage in a completed job can be checked with <code class="docutils literal notranslate"><span class="pre">seff</span></code>. For instance:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="gp">[alice@narval3 ~]$ </span>seff<span class="w"> </span><span class="m">39732872</span>
+</span><span class="go">Job ID: 39732872</span>
+<span class="go">Cluster: narval</span>
+<span class="go">User/Group: alice/alice</span>
+<span class="go">State: COMPLETED (exit code 0)</span>
+<span class="hll"><span class="go">Nodes: 1</span>
+</span><span class="hll"><span class="go">Cores per node: 12</span>
+</span><span class="hll"><span class="go">CPU Utilized: 00:51:04</span>
+</span><span class="hll"><span class="go">CPU Efficiency: 70.71% of 01:13:24 core-walltime</span>
+</span><span class="hll"><span class="go">Job Wall-clock time: 00:06:07</span>
+</span><span class="go">Memory Utilized: 270.59 MB</span>
+<span class="go">Memory Efficiency: 8.81% of 3.00 GB</span>
+</pre></div>
+</div>
+<p>Where <em>CPU Utilized</em> is the total CPU time used by all cores and <em>Job Wall-clock
+time</em> is the real elapsed time. This job’s CPU usage is 70.71 %. This means that
+close to 30 % of the available CPU time was unused! <code class="docutils literal notranslate"><span class="pre">seff</span></code> computes the usage
+(<span class="math notranslate nohighlight">\(U\)</span>) for <span class="math notranslate nohighlight">\(n\)</span> cores as:</p>
+<div class="math notranslate nohighlight">
+\[U = \frac{t_\text{CPU}}{t_\text{real}\;n}\]</div>
+<p>The raw values needed for this calculation can be queried with <code class="docutils literal notranslate"><span class="pre">sacct</span></code>.
+For instance:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="gp">[alice@narval3 ~]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">39732872</span><span class="w"> </span>-o<span class="w"> </span>JobID%15,JobName,Elapsed,TotalCPU,NCPUs
+</span><span class="go">          JobID    JobName    Elapsed   TotalCPU      NCPUS</span>
+<span class="go">--------------- ---------- ---------- ---------- ----------</span>
+<span class="hll"><span class="go">       39732872     gmx-md   00:06:07  51:04.301         12</span>
+</span><span class="go"> 39732872.batch      batch   00:06:07  00:01.043         12</span>
+<span class="go">39732872.extern     extern   00:06:07  00:00.001         12</span>
+<span class="go">     39732872.0        gmx   00:06:05  51:03.255         12</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">%15</span></code> characters set the column’s width.</p>
+</div>
+<p>A CPU usage lower than 90 % is a red flag. Does your program spend a lot of time
+reading files rather than computing? Is there inefficient communication between
+the CPU cores allocated to a parallel job? To investigate:</p>
+<ul class="simple">
+<li><p>Reduce the number of CPU cores if the job is parallel.</p></li>
+<li><p>Optimise storage access by reading files from <a class="reference external" href="https://docs.alliancecan.ca/wiki/Using_node-local_storage/en">node-local storage</a> rather than
+a network filesystem (<code class="docutils literal notranslate"><span class="pre">/home</span></code>, <code class="docutils literal notranslate"><span class="pre">/project</span></code>, <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>). Your jobs
+have access to a temporary local directory in <code class="docutils literal notranslate"><span class="pre">$SLURM_TMPDIR</span></code>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">seff</span></code>’s output, CPU usage is called <em>CPU Efficiency</em>. However, this
+measure has nothing to do with a parallel program’s <em>efficiency</em>, which
+relates to its <a class="reference internal" href="#scalability"><span class="std std-ref">scalability</span></a>, as discussed in later
+sections.</p>
+</div>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>List your recent jobs with <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-X</span></code>.</p></li>
+<li><p>Try <code class="docutils literal notranslate"><span class="pre">seff</span> <span class="pre">&lt;jobid&gt;</span></code> for one of these jobs and check its CPU usage.</p></li>
+<li><p>Try <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-j</span> <span class="pre">&lt;jobid&gt;</span> <span class="pre">-o</span> <span class="pre">JobID,JobName,Elapsed,TotalCPU,NCPUs</span></code> for the same
+job. Compute CPU usage.</p></li>
+</ol>
+</section>
+</section>
+<section id="why-optimise-the-number-of-cpu-cores">
+<h2>Why optimise the number of CPU cores?<a class="headerlink" href="#why-optimise-the-number-of-cpu-cores" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Your parallel program will compute faster if more CPU cores are allocated to
+the job.</p></li>
+<li><p>However, the performance of a parallel program does not increase indefinitely
+as more cores are added.</p></li>
+<li><p>In addition, jobs that require more cores wait longer in the queue and
+consume more resources, lowering your jobs’ priority.</p></li>
+<li><p>An optimal number of CPU cores balances these opposite effects. It minimises
+the total time (wait and calculation) needed for your jobs and avoids wasting
+resources.</p></li>
+</ul>
+</section>
+<section id="scalability">
+<span id="id1"></span><h2>Scalability<a class="headerlink" href="#scalability" title="Link to this heading">#</a></h2>
+<p>A program’s <a class="reference external" href="https://docs.alliancecan.ca/wiki/Scalability/en">scalability</a> is
+its capacity to reduce computing time as it uses more CPU cores. For instance,
+using two CPU cores rather than one should, ideally, halve the computing time,
+while using four should reduce that time to 1/4.</p>
+<p>In reality, however, parallel programs have limitations. As they use more cores,
+the gain in time diminishes and, eventually, becomes negligible. Some programs
+and algorithms are more scalable than others. In addition, scalability varies as
+a function of certain parameters, such as input data size.</p>
+<p>Scalability is quantified with two quantities: speedup and efficiency. For
+<span class="math notranslate nohighlight">\(n\)</span> CPU cores, speedup (<span class="math notranslate nohighlight">\(S\)</span>) is the ratio of serial computing time
+to parallel computing time:</p>
+<div class="math notranslate nohighlight">
+\[S_n = \frac{t_\text{serial}}{t_n}\]</div>
+<p>For instance, if a calculation requires 10 minutes with 1 CPU cores and 6
+minutes with 2, acceleration is 1.67. It is a measure of “how many times faster
+the program is”.</p>
+<p>Efficiency (<span class="math notranslate nohighlight">\(E\)</span>) is the ratio of speedup to number of CPU cores:</p>
+<div class="math notranslate nohighlight">
+\[E_n = \frac{S_n}{n}\]</div>
+<p>Continuing the above example, a speedup of 1.67 for 2 CPU cores gives a 0.835
+efficiency (83.5 %). An efficiency of 100 % is called linear scaling. When the
+efficiency drops under 75 %, the number of CPU cores should typically be
+reduced.</p>
+<p>In the following example of a program’s scalability (see figure below), there is
+an inflection point at 256 cores: efficiency drops rapidly past this point.</p>
+<figure class="align-default">
+<img alt="../_images/gmx-scaling_en.svg" src="../_images/gmx-scaling_en.svg" />
+</figure>
+<p>In this example, performance (<span class="math notranslate nohighlight">\(P\)</span>) is used rather than computing time
+(<span class="math notranslate nohighlight">\(t\)</span>) to show scalability. The two approaches are equivalent, with
+performance simply having the inverse dimension (<span class="math notranslate nohighlight">\(t^{-1}\)</span>). Performance
+is expressed in a problem-specific unit: steps per second, number of images or
+molecules processed per hour, simulated trajectory length per day, etc. Speedup
+can be calculated from performance rather than computing time:</p>
+<div class="math notranslate nohighlight">
+\[S_n = \frac{P_{n}}{P_\text{serial}}\]</div>
+<section id="scalability-exercise">
+<span id="id2"></span><h3>Exercise<a class="headerlink" href="#scalability-exercise" title="Link to this heading">#</a></h3>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Analyse a parallel job’s scalability.</p></li>
+<li><p>Determine the optimal number of CPU cores to use for this job.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Go to the exercise directory with <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip201-main/lab/gmx-scaling</span></code>.</p></li>
+<li><p>Prepare the input files with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">gmx-prepare.sh</span></code>.</p></li>
+<li><p>Edit the job script with <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">gmx-job.sh</span></code>. Ask for 1, 2, 4, or 8 CPU
+cores with the <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> option.</p></li>
+<li><p>Submit the job.</p></li>
+<li><p>Once the job has completed, get the program’s performance with <code class="docutils literal notranslate"><span class="pre">grep</span>
+<span class="pre">^Performance</span> <span class="pre">slurm-&lt;jobid&gt;.out</span></code>.</p>
+<ul class="simple">
+<li><p>Note the first of the two values obtained and enter it in
+<code class="docutils literal notranslate"><span class="pre">gmx-scaling.txt</span></code> in the <span class="math notranslate nohighlight">\(P\)</span> (ns/day) column on the row where
+<span class="math notranslate nohighlight">\(n\)</span> corresponds to the number of CPU cores used.</p></li>
+</ul>
+</li>
+<li><p>Change the number of requested CPU cores and repeat the job. (Do not prepare
+the input files again.)</p></li>
+<li><p>Fill and analyze the rest of the table in <code class="docutils literal notranslate"><span class="pre">gmx-scaling.txt</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Calculate speedup <span class="math notranslate nohighlight">\(S\)</span> and efficiency <span class="math notranslate nohighlight">\(E\)</span> (%) for 2, 4, and 8
+cores.</p></li>
+<li><p>How many CPU cores would you use for similar jobs?</p></li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This job computes the interactions in a periodic box containing 216 water
+molecules (648 atoms, see figure below) with GROMACS, a software for
+biomolecular simulations.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/water-box.png"><img alt="../_images/water-box.png" src="../_images/water-box.png" style="width: 320px;" />
+</a>
+</figure>
+<p>The program’s authors report that it is scalable until around 50 atoms per
+CPU core. Below this value, performance no longer increases even if more
+cores are used. However, efficiency decreases long before reaching this
+limit!</p>
+<p>In practice, biomolecular simulations process much bigger systems, often in
+the order of hundreds of thousands of atoms. The parallel programs that
+simulate these systems are efficient even with hundreds of CPU cores.</p>
+</div>
+</section>
+<section id="why-isnt-scaling-linear">
+<h3>Why isn’t scaling linear?<a class="headerlink" href="#why-isnt-scaling-linear" title="Link to this heading">#</a></h3>
+<p>Scalability is limited by the fraction of the program that computes in parallel
+(see figure below). This is referred to as
+<a class="reference external" href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl’s law</a>. A parallel
+program can have a serial fraction for a variety of reasons:</p>
+<ul class="simple">
+<li><p>Reading an input file or updating an output file in a non-parallel manner.</p></li>
+<li><p>Pre- or post-processing data before or after applying a parallel algorithm.</p></li>
+<li><p>A non-parallel intermediate calculation step.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/serial-vs-parallel_en.svg" src="../_images/serial-vs-parallel_en.svg" />
+</figure>
+<p>In addition, the time required for the threads of execution to communicate
+lowers efficiency. In general, the larger a problem is, the better it scales.</p>
+<p>For all these reasons, the only way to accurately determine the optimal number
+of CPU cores for a parallel job is to perform a scalability analysis (see the
+above <a class="reference internal" href="#scalability-exercise"><span class="std std-ref">exercise</span></a>) and to repeat it every time your
+job’s parameters or the size of your input data change significantly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A distinction is made between strong scaling and week scaling.</p>
+<ul class="simple">
+<li><p>Strong scaling is how computing time varies as a function of the number of
+CPU cores for a problem whose <em>total</em> size is constant. Ideally, computing
+time is inversely proportional to the number of CPU cores.</p></li>
+<li><p>Weak scaling is how computing time varies as a function of the number of
+CPU cores for a problem whose size <em>per CPU core</em> is constant. Ideally,
+computing time stays constant.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Again, a parallel program’s efficiency is not the same measure as its CPU
+usage. The measure called <em>CPU efficiency</em> in the output of the <code class="docutils literal notranslate"><span class="pre">seff</span></code>
+command is actually CPU usage and is not a measure of a program’s
+scalability: <code class="docutils literal notranslate"><span class="pre">seff</span></code> cannot guess the performance of a parallel program and
+analyse it automatically!</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="memory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Memory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../monitoring/compute-nodes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Connecting to compute nodes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-check-cpu-usage">Why check CPU usage?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-cpu-usage">Checking CPU usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-optimise-the-number-of-cpu-cores">Why optimise the number of CPU cores?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">Scalability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability-exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-isnt-scaling-linear">Why isn’t scaling linear?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
